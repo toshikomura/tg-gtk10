@@ -1,0 +1,6 @@
+gtk10@ubuntu:~$ rails new projeto_teste_gemtranslatetoenglish
+      create
+      ...
+      create  Gemfile
+      create  config/routes.rb
+      ...

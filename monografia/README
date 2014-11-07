@@ -1,0 +1,8 @@
+Para gerar o documento em pdf e dvi:
+make all
+
+Para remover arquivos intermediários do latex:
+make clean
+
+Para remover arquivos intermediários, pdf e dvi:
+make clean-all

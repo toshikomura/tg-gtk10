@@ -1,0 +1,1261 @@
+Como visto no capítulo anterior [\ref{chap:ruby_e_suas_bibliotecas}] a maior parte das bibliotecas do 
+\emph{Ruby} são distribuídas na forma de \emph{gemas} (\emph{gems}) e também vimos na seção 
+[\ref{subsection:gem}] deste mesmo cápitulo que o \emph{gem} é um sistema de distribuição sinilar ao 
+\emph{\href{https://packages.qa.debian.org/a/apt.html}{apt-get}} que facilita o compartilhamento e a 
+instalação das \emph{gemas}. 
+
+Deste modo, como já temos alguns conhecimento básicos sobre bibliotecas e sobre o \emph{Ruby}, neste cápitulo 
+iremos apresentar um tutorial básco de como se pode criar ou adaptar uma \emph{gema} do \emph{Ruby}.
+
+Na seção \ref{section:ferramentas_utilizadas} iremos apresentar as ferramentas que serão necessárias 
+para seguir este tutorial, e depois na seção \ref{section:preparação_do_ambiente} vamos mostar como se 
+deve preprar o ambiente de desenvolvimento, sendo seguida pela seção \ref{section:criando_uma_gema} onde
+apresentaremos o método básico para criar uma gema, e por fim na seção \ref{section:adaptando_uma_gema}
+mostraremos o passo-a-passo para se adaptar uma gema.
+
+\section{Ferramentas utilizadas}
+\label{section:ferramentas_utilizadas}
+
+\subsection{VMware® Player}
+
+\emph{\href{http://www.vmware.com/products/player}{VMware® Player}} é um aplicativo de virtualização de 
+\emph{desktop} que pode rodar um ou mais sistemas operacionais ao mesmo tempo no mesmo computador sem 
+a necessidade de reiniciar a máquina. Possui uma interface fácil de usar, suporte a vários sistemas 
+operacionais, como por exemplo \emph{Windows}, \emph{MAC} e \emph{Linux} e é portável 
+[\citeonline{vmplayer}].
+
+Com o \emph{VMware® Player} pode-se fazer o compartilhamento de vários recursos, como por exemplo pode-se 
+fazer a transferência de arquivos do sistema opercional virtual com o sistema opercional que está rodando 
+na máquina fisica. 
+
+\subsection{RVM}
+
+\emph{\href{http://rvm.io/}{Ruby enVironment (Version) Manager}} \footnote{RVM: \url{http://rvm.io/}} é uma 
+ferramenta de linha de comando que permite facilmente instalar, gerenciar e trabalhar com multiplos ambientes 
+do \emph{Ruby} para interpretar um certo conjunto de gemas [\citeonline{rvm}].
+
+ \href{https://github.com/wayneeseguin}{Wayne E. Seguin} \footnote{Wayne E. Seguin: 
+ \url{https://github.com/wayneeseguin}} iniciou o projeto do \emph{RVM} em outubro de 2007
+e a partir de então com uma considerável experiência programando em \emph{Bash}, \emph{Ruby} e outras 
+linguagens obteve o conhecimento suficiente para criar o gerenciador [\citeonline{about_rvm}].
+
+\subsection{Ruby On Rails}
+
+\emph{\href{http://rubyonrails.org/}{Ruby On Rails}} \footnote{Ruby On Rails: \url{http://rubyonrails.org/}} 
+é um \emph{web framework} de código aberto que tem por finalidade facilitar a programação
+visando a produtividade sustentável. Este \emph{framework} permite escrever códigos bem estruturados
+favorecendo a manutenção de aplicações [\citeonline{ruby_on_rails}].
+
+O \emph{Rails} foi criado em 2003 por \emph{\href{http://david.heinemeierhansson.com/}{David Heinemeier Hansson}}
+\footnote{David Heinemeier Hansson: \url{http://david.heinemeierhansson.com/}} e desde então é extendido 
+pela equipe do \emph{\href{http://rubyonrails.org/core/}{Rails Core Team}} 
+\footnote{Rails Core Team: \url{http://rubyonrails.org/core/}} e mais de 3.400 usuários 
+[\citeonline{ruby_on_rails}].
+
+\subsection{Git}
+
+\emph{\href{http://git-scm.com/}{Git}} \footnote{Git: \url{http://git-scm.com/}} é um sistema distribuído de 
+controle de versão livre e de código aberto, desenhado para controlar projetos pequenos e grandes com 
+rapidez e eficiência. É uma ferramenta fácil de manipular com alto desempenho [\citeonline{git}].
+
+Por irônia do destino o \emph{git} foi criado em 2005 por 
+\emph{\href{http://torvalds-family.blogspot.com.br/}{Linus Torvalds}} 
+\footnote{Linus Torvalds: \url{http://torvalds-family.blogspot.com.br/}} graças ao fim da relação entre a 
+comunidade que desenvolvia o \emph{Linux} e a compania que desenvolvia o 
+\emph{\href{http://www.bitkeeper.com/}{BitKeeper}}, ferramenta que até aquele ano fazia o gerênciamento de 
+código do \emph{Linux}. Sem uma ferramento \emph{SCM} (\emph{Source Code Management}), \emph{Torvalds} 
+resolveu desenvolver uma ferramenta parecida com o \emph{BitKeeper} que possuiria mais velocidade,
+\emph{design} simples, grande suporte para \emph{non-linear development} (centenas de \emph{branchs}), 
+completamente distribuído e capacidade de controlar grandes projeto com grandes quantidades de dados.
+
+\section{Preparação do ambiente}
+\label{section:preparação_do_ambiente}
+
+Para seguir com este trabalho, será necessário a instalação de alguns softwares para que se possa realizar
+o passo-a-passo de como criar ou adaptar uma \emph{gema} do \emph{Ruby}.
+Inicialmente por comodidade utilizaremos o sistema operacional 
+\emph{\href{http://releases.ubuntu.com/12.04/}{Ubuntu 12.04 LTS}}, pois a comunidade prometeu manter essa 
+versão por pelo menos 5 anos, com o 
+\emph{\href{https://www.ruby-lang.org/en/downloads/}{Ruby 1.9.3p547 (2014-05-14 revision 45962) [i686-linux]}} 
+que era a versão mais recente do \emph{Ruby} no momento de inicio desse trabalho, e o 
+\emph{\href{http://rubyonrails.org/download/}{Rails 3.2.12}} que era uma versão que já tinhamos experiência
+trabalhando no projeto \emph{\href{http://agendador.c3sl.ufpr.br/}{Agendador}}.
+
+Primeiramente deve-se instalar o \emph{Ubuntu 12.04} no 
+\emph{\href{https://my.vmware.com/web/vmware/free\#desktop_end_user_computing/vmware_player/}{VMware® Player}}, 
+e no nosso caso foi utilizado o \emph{VMware Player 6.0.3 build-1895310}. Após a instalação do \emph{Ubuntu}
+deve-se logar no \emph{Ubuntu}, acessar um \emph{terminal}, e fazer a isntalação do 
+\emph{\href{https://github.com/wayneeseguin/rvm}{RVM 1.25.28}} com os seguinte comandos no código 
+‘‘Código \ref{lst:instala_rvm} - Instala RVM'' que serão explicados logo a seguir:
+ 
+ \lstinputlisting[ style=customBash, caption={Instala RVM}, label={lst:instala_rvm}]
+ {codigos/install_rvm.sh}
+ 
+\begin{itemize}
+
+\item O comando ‘‘\emph{sudo -i}'' na linha ‘‘2'' é necessário para acessar o usuário root, pois 
+  para instalar os outros \emph{softwares} é preciso ser um administrador do sistema.
+  
+  \item O comando ‘‘\emph{apt-get install curl}'' na linha ‘‘6'' é necessário pois o script de 
+  instalação do \emph{RVM} depende do \emph{curl} para executar corretamente.
+  
+  \item O comando ‘‘\emph{wget https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer}'' 
+  na linha ‘‘9'' é necessário para baixar o script (‘‘\emph{rvm-installer}'') de instalação do \emph{RVM}.
+  
+  \item O comando ‘‘\emph{bash rvm-installer}'' na linha ‘‘12'' é necessário para instalar o \emph{RVM}.
+  
+\end{itemize}
+
+Ao terminar de instalar o \emph{RVM} deve-se fazer a instalação do \emph{Ruby} que pode ser feita com a 
+sequência de comandos do código ‘‘Código \ref{lst:instala_ruby} - Instala Ruby'', onde cada comando será 
+explicado logo em seguida:
+ 
+\lstinputlisting[ style=customBash, caption={Instala Ruby}, label={lst:instala_ruby}]{codigos/install_ruby.sh}
+ 
+\begin{itemize}
+
+ \item O comando ‘‘\emph{ource "/usr/local/rvm/scripts/rvm"}'' serve para carregar o código do \emph{RVM}.
+ 
+ \item O comando ‘‘\emph{rvm requirements}'' serve para instalar as dependências do \emph{RVM} caso elas 
+ ainda não estejam instaladas.
+ 
+ \item O comando ‘‘\emph{rvm install 1.9.3}'' serve para fazer a instalação do \emph{Ruby} versão 1.9.3.
+ 
+ \item O comando ‘‘\emph{rvm --default use 1.9.3}'' serve para informar o \emph{RVM} para usar o \emph{Ruby}
+ 1.9.3 como default. Essa é uma medida preventiva, pois podem existir outras versões do \emph{Ruby} instaldas.
+ 
+ \item O comando ‘‘\emph{rvm use 1.9.3}'' serve para informar o \emph{RVM} para usar o \emph{Ruby} 1.9.3.
+ 
+\end{itemize}
+
+  
+Tammbém pode-se configurar as variáveis de ambiente do \emph{RVM} para não precisar a todo momento executar
+o comando ‘‘ source "/usr/local/rvm/scripts/rvm" '', e isso pode ser feito executando o seguinte código
+‘‘Código \ref{lst:configura_variavel_rvm} - Configura Variáveis RVM'' que é exibilido e explicado logo abaixo:
+ 
+\lstinputlisting[ style=customBash, caption={Configura Variáveis RVM}, label={lst:configura_variavel_rvm}]
+{codigos/configura_variavel_rvm.sh}
+ 
+\begin{itemize}
+
+  \item O comando ‘‘\emph{echo '...' >> $\sim$/.bashrc }'' pega todo o código, aqui representado por ‘‘...'' 
+  e insere no final do arquivo ‘‘$\sim$/.bashrc''. Uma alternativa seria somente copiar o código dentro do 
+  ‘‘\emph{echo}'' e colar no final do arquivo ‘‘$\sim$/.bashrc''.
+  
+\end{itemize}
+
+E depois da execução de todas essa instalações, ainda devemos instalar as gemas essências, ‘‘\emph{rails}'' 
+e ‘‘\emph{bundle}'', executando os seguintes comandos no código 
+‘‘Código \ref{lst:install_essentials_gems} - Instala Gemas Essênciais'' explicado logo a seguir:
+ 
+\lstinputlisting[ style=customBash, caption={Instala Gemas Essênciais}, label={lst:install_essentials_gems}]
+{codigos/install_essentials_gems.sh}
+
+\begin{itemize}
+
+ \item O comando ‘‘ \emph{gem install rails --version ‘3.2.12'} '' faz a instalação da gema \emph{rails}
+ versão \emph{3.2.12}.
+ 
+ \item O comando ‘‘\emph{gem install bundle}'' faz a instalação da gema \emph{bundle}.
+ 
+\end{itemize}
+
+
+\section{Criando uma gema}
+\label{section:criando_uma_gema}
+
+A ideia de se criar uma gema geralmente vai surgir quando se perceber que uma determinadade funcionalidade de
+um sistema também é utilizado em vários outros sistemas que a equipe trabalha. Por este motivo visando a economia
+de tempo se faz a criação de bibliotecas para que não seja mais necessário copiar e colar códigos 
+% (\emph{Ctrl + C}, \emph{Ctrl + V}).
+
+Para se criar uma gema (biblioteca do \emph{Ruby}) precisamos inicialmente entender para que serve cada um
+de seus compoentes e isso será explicado logo a seguir na sub-seção 
+‘‘\ref{subsec:estrutura_de_uma_gema} Estrutura de uma gema'', e depois em seguida veremos um modelo de criação 
+na sub-seção ‘‘\ref{subsection:modelo_de_criação} Modelo de Criação''.
+
+\subsection{Estrutura de uma gema}
+\label{subsec:estrutura_de_uma_gema}
+
+Uma gema do \emph{Ruby} obrigatoriamente deve possui um nome, um número de versão e uma plataforma.
+Internamente ela possui código, documentação e o \emph{\textbf{gemspec}}, onde a sua estrutura geralmente é 
+organizada em 3 arquivos bases: o \emph{\textbf{gemspec}}, o \emph{\textbf{Rakefile}} e o 
+\emph{\textbf{README}}, e em 3 diretórios principais: \emph{\textbf{bin}}, \emph{\textbf{lib}}, e 
+\emph{\textbf{test}} ou \emph{\textbf{spec}}. Na listagem abaixo veremos para que serve cada um destes
+arquivos e diretórios.
+
+\begin{itemize}
+
+ \item O \emph{\textbf{gemspec}} é um arquivo do tipo ‘‘\emph{.gemspec}'' que possui as informações básicas 
+ de uma gema, como por exemplo o seu nome, sua descrição, seu autor, seu endereço, e suas dependências.
+
+ \item O \emph{\textbf{bin}} é um diretório que possui os arquivos executáveis da gema que serão 
+ carregados quando a gema for instalada.
+
+ \item O \emph{\textbf{lib}} é um diretório que possui todos os códigos \emph{Ruby} referente ao 
+ funcionamento da gema.
+
+ \item O \emph{\textbf{test}} ou \emph{\textbf{spec}} é um diretório que possui todos os códigos \emph{Ruby} 
+ de testes, onde eles podem ser executados manualmente ou por meio do \emph{Rakefile}.
+
+ \item O \emph{\textbf{Rakefile}} é um arquivo que possui código \emph{Ruby} que faz a otimização de algumas
+ funcinalidades por meio da execução do programa \emph{\href{https://github.com/jimweirich/rake}{rake}} 
+\footnote{rake: \url{https://github.com/jimweirich/rake}}. Um exemplo é a execução de todos os arquivos 
+de testes do diretório \emph{test} ou \emph{spec}.
+
+ \item O \emph{\textbf{README}} é um arquivo que usualmente possui a documentação da gema que está dentro do 
+ código. Geralmente ele é gerado automaticamente quando a gema é instalada. A maioria das gemas possuem
+ a documentação \emph{\href{http://rdoc.sourceforge.net/doc/}{RDoc}} 
+ \footnote{RDoc: \url{http://rdoc.sourceforge.net/doc/}}, e as outras em menoria possuem a documentação 
+ \emph{\href{http://yardoc.org/}{YARD}} \footnote{YARD: \url{http://yardoc.org/}} 
+ [\citeonline{guide_what_is_a_gem_rubygems}].
+
+\end{itemize}
+
+\subsection{Modelo de criação}
+\label{subsection:modelo_de_criação}
+
+O primeiro passo para se criar uma gema é construir uma solução de um certo problema que geralmente vai
+ser utilizado. Por exemplo a função que calcula a raiz quadrada de um número é uma funcionalidade que 
+usualmente utilizamos quando estamos fazendo cálculos. 
+
+Após encontrar uma ideia para a criação de uma gema deve-se elaborar um projeto, fazendo o levantamento 
+de requisitos, o \emph{design}, a implementação, os testes e a entrega.
+
+Por simplificação nesta sub-seção somente apresentaremos a parte de implementação do modelo de criação de uma
+gema, mas nunca se deve esquecer de seguir todos os passos de um projeto, desde o momento da formação da 
+ideia até a sua entrega, pois caso esses passos não sejam seguidos, os riscos de se 
+perder recursos, como tempo e dinheiro, é muito alto.
+
+Para facilitar a apresentção deste modelo utilizaremos como exemplo a gema 
+\emph{\href{https://github.com/toshikomura/gemtranslatetoenglish/tree/without_path}{gemtranslatetoenglish}} 
+\footnote{gemtranslatetoenglish : \url{https://github.com/toshikomura/gemtranslatetoenglish/tree/without_path}} que tem 
+como objetivo fazer a tradução de um texto em português para um texto em inglês. 
+
+Futuramente pretendemos aumentar o vocabulário da gema de exemplo, mas até o momento de término deste 
+trabalho, ela possuía somente a tradução de duas palavras, ‘‘\emph{OI}'' para ‘‘\emph{HELLO}'' e 
+‘‘\emph{MUNDO}'' para ‘‘\emph{WORLD}''. Apesar de possuir pouco vocabulário, a gema ‘‘\emph{gemtranslatetoenglish}''
+será suficiente para a aparesentação do tutorial deste trabalho. 
+
+Nesta sub-seção apresentaremos primeiramente como se pode criar uma estrtura básica de uma gema na sub-sub-seção 
+‘‘\ref{subsubsection:criando_a_estrutura} Criando a Estrutura'', em seguida mostraremos na 
+‘‘\ref{subsubsection:gemspec} Gemspec'' como se deve editar o arquivo \emph{.gemspec}, depois iremos apresentar 
+como se pode desenvolver o código de funcionalidades de uma gema na sub-sub-seção ‘‘\ref{subsubsection:lib} Lib'', 
+sequêncialmente apresentaremos na sub-sub-seção ‘‘\ref{subsubsection:test_ou_spec_e_arquivo_rakefile} Teste ou Spec e 
+Arquivo Rakefile'' como implementar o código de testes, em seguida na sub-sub-seção 
+‘‘\ref{subsubsection:execução_de_testes} Execução de Testes'' apresentaremos uma forma para executar os testes, 
+depois apresentaremos uma forma de testar a gema através da ferramenta \emph{IRB} na sub-sub-seção 
+‘‘\ref{subsubsection:irb} IRB'', e por fim na sub-sub-seção ‘‘\ref{subsubsection:exemplo_de_uso_de_gemtranslatetoenglish} 
+Exemplo de Uso de gemtranslatetoenglish'' apresentaremos um exemplo de uso da gema 
+‘‘\emph{gemtranslatetoenglish}'' dentro de um projeto.
+
+\subsubsection{Criando a Estrutura}
+\label{subsubsection:criando_a_estrutura}
+
+O primeiro passo é fazer a criação da estrutura da gema e isso pode ser feito de forma manual ou automática. 
+A forma manual implica em criar todos os diretórios e arquivos manualmente e a forma automática implica na
+execução de um simples comando. Contudo podemos perceber qua a forma manual não é muito aconselhável e 
+por esse motivo utilizaremos a forma automática que pode ser feita no terminal com a execução do comando
+que pode ser vista no código ‘‘Código \ref{lst:cria_gema_forma_geral} - Cria Gema Forma Geral''.
+
+\lstinputlisting[ style=customBash, caption={Cria Gema Forma Geral}, label={lst:cria_gema_forma_geral}]
+{codigos/cria_gema_forma_geral.sh}
+
+No caso da nossa gema de exemplo foi feita a execução do seguinte comando apresentado no código 
+‘‘Código \ref{lst:cria_gema_gemtranslatetoenglish} - Cria Gema gemtranslatetoenglish''.
+
+\lstinputlisting[ style=customBash, caption={Cria Gema gemtranslatetoenglish}, label={lst:cria_gema_gemtranslatetoenglish}]
+{codigos/cria_gema_gemtranslatetoenglish.sh}
+
+Ao se fazer a execução do comando ‘‘\emph{bundle gem gemtranslatetoenglish}'' obtemos a seguinte estrutura de gema mostrada 
+no código ‘‘Código \ref{lst:execucao_que_cria_gema_gemtranslatetoenglish} - Execução que cria gema gemtranslatetoenglish''.
+% na imagem ‘‘Figura \ref{fig:execucao_que_cria_gema_gemtranslatetoenglish} - Execução que cria gema gemtranslatetoenglish''.
+
+\lstinputlisting[ style=customBash, caption={Execução que cria gema gemtranslatetoenglish}, label={lst:execucao_que_cria_gema_gemtranslatetoenglish}]
+{codigos/execucao_que_cria_gema_gemtranslatetoenglish.sh}
+
+\begin{comment}
+\begin{figure}[ht]
+  \includegraphics[scale=0.4]{images/execucao_que_cria_gema_gemtranslatetoenglish}
+  \caption{Execução que cria gema gemtranslatetoenglish}
+  \label{fig:execucao_que_cria_gema_gemtranslatetoenglish}
+\end{figure}
+\end{comment}
+
+\subsubsection{Gemspec}
+\label{subsubsection:gemspec}
+
+Agora que possuimos a estrutura da gema, devemos fazer a edição do arquivo \emph{\textbf{gemspec}} 
+para informar os dados básicos da gema e isso pode ser feito editando o arquivo ‘‘ 'nome da gema'.gemspec ''. 
+No nosso exemplo fizemos a edição do arquivo ‘‘gemtranslatetoenglish.gemspec'' resultado no arquivo mostrado 
+no código ‘‘Código \ref{lst:gemspec_gemtranslatetoenglish} - gemspec gemtranslatetoenglish''
+%na imagem ‘‘Figura \ref{fig:gemspec_gemtranslatetoenglish} - gemspec gemtranslatetoenglish''
+, onde cada linha será explicada com mais detalhes logo a seguir.
+
+\lstinputlisting[ style=customBash, caption={gemspec gemtranslatetoenglish}, label={lst:gemspec_gemtranslatetoenglish}]
+{codigos/gemtranslatetoenglish/gemtranslatetoenglish.gemspec}
+
+\begin{comment}
+\begin{figure}[ht]
+  \includegraphics[scale=0.3]{images/gemspec_gemtranslatetoenglish}
+  \caption{gemspec gemtranslatetoenglish}
+  \label{fig:gemspec_gemtranslatetoenglish}
+\end{figure}
+\end{comment}
+
+\begin{itemize}
+
+ \item ‘‘\emph{\# coding: utf-8}'' na linha ‘‘1'' indica que o texto do arquivo está no formato \emph{UTF-8}.
+ 
+ \item ‘‘\emph{lib = File.expand\_path('..\/lib', \_\_FILE\_\_)}'' na linha ‘‘2'' indica onde se encontra o 
+ diretório \emph{\textbf{lib}} da gema.
+ 
+ \item ‘‘\emph{\$LOAD\_PATH.unshift(lib) unless \$LOAD\_PATH.include?(lib)}'' na linha ‘‘3'' faz o 
+ carregamento dos arquivos que estão no diretório \emph{\textbf{lib}} caso o diretório já esteja definido.
+ 
+ \item ‘‘ \emph{require 'gemtranslatetoenglish/version'} '' na linha ‘‘4'' requisita o arquivo de versão da
+ gema.
+ 
+ \item ‘‘\emph{Gem::Specification.new do |spec|} ... end'' da linha ‘‘6'' a ‘‘23'' define a especifação da
+ gema como \emph{spec}, ou seja, ao invés de escrever ‘‘\emph{Gem::Specification}'' a todo momento que for 
+ definir uma especificação da gema se escreve somente ‘‘\emph{spec}''.
+ 
+ \item ‘‘\emph{spec. }'' da linha ‘‘7'' a linha ‘‘14'' defini-se espcificações básicas da gema, como nome,
+ versão, autor, e-mail do autor, breve descrição, descrição completa, página e tipo de licença.
+ 
+ \item ‘‘\emph{spec.files = `git ls-files -z`.split("$\backslash$x0")}'' na linha ‘‘16'' indica os arquivos
+ que devem ser incluídos na gema. Esses arquivos são incluídos dinâmicamente através do comando 
+ ‘‘\emph{git ls-files -z}'' que traz como resultado todos os arquivos que estão naquele repositório 
+ colocando entre as \emph{PATH}s deles o caracter ‘‘\emph{$\backslash$0}'' 
+ (\emph{line termination on output}). Por consequência com a adição do comando \emph{Ruby} 
+ ‘‘\emph{.split("$\backslash$x0")}'', que indica a divisão por ‘‘\emph{$\backslash$0}'', os arquivos 
+ adicionados na gema são todos que estão no repositório. 
+ 
+ Para se adicionar arquivos no repositório é necessário executar o comando ‘‘\emph{git add PATH}'', 
+ onde \emph{PATH} é o caminho do arquivo que se deseja adicionar no repositório.
+ 
+ \item ‘‘\emph{spec.executables = ...}'' e ‘‘\emph{spec.tes\_files = ...}'' nas linhas ‘‘17'' e ‘‘18'' 
+ indicam os arquivos executáveis e os arquivos de teste respectivamente, e também indica que ambos devem
+ ter permissão de execução, pois caso este arquivos não possuam essa permissão, eles não são incluídos 
+ na gema.
+ 
+ \item ‘‘\emph{spec.require\_paths = ["lib"]}'' requisita o diretório da \emph{\textbf{lib}} da gema.
+ 
+ \item ‘‘\emph{spec.add\_development\_dependency = ...}'' nas linhas ‘‘21'', ‘‘22'' e ‘‘23'' requistam como 
+ dependências as gemas ‘‘\emph{bundle}'' versão ‘‘1.5'', ‘‘\emph{rake}'' e ‘‘\emph{action\_controller}''
+ respectivamente.
+ 
+\end{itemize}
+
+\subsubsection{Desenvolvimento de código de funcionalidade ou teste}
+\label{subsubsection:desenvolvimento_de_codigo_de_funcionalidade_ou_teste}
+
+Nesse momento podemos tomar 2 caminhos e isso depende da metodologia de projeto que adotadomos no inicio 
+do desenvolvimento, ou seja, é nesse momento que podemos desenvolver o código das funcinalidades
+ou implementar o código de testes. 
+
+Na metodologia tradicional se faz a implementação do código de funcionalidades e depois se
+desenvolve o código para testar essas funcionalidades. Por outro lado na metodologia voltada para 
+testes, se implementa o código de testes para depois se desenvolver o código de funcionalidades.
+
+Seguindo a metodologia tradicional, primeiramente iremos fazer o código das funcinalidades da gema.
+Depois ao terminar de criar essas funcionalidades iremos elaborar os arquivos testes, mas nada o impede
+de desenvolver os códigos de testes que serão apresentado na sub-sub-seção 
+‘‘\ref{subsubsection:test_ou_spec_e_arquivo_rakefile} Test ou Spec e arquivo Rakefile'' antes de 
+desenvolver os códigos de funcionalidade mostrados na sub-sub-seção ‘‘\ref{subsubsection:lib} Lib''.
+
+\subsubsection{Lib}
+\label{subsubsection:lib}
+
+Nesta sub-seção vamos aprender a fazer o código de funcionalidade de uma gema, mas caso deseje fazer 
+primeiro os códigos de casos de testes, pode-se consultar a sub-seção 
+‘‘\ref{subsubsection:test_ou_spec_e_arquivo_rakefile} Test ou Spec e arquivo Rakefile'' e depois retornar
+para esta sub-seção para dar continuidade ao desenvolvimento.
+
+Caso esse código seja por meio de código \emph{Ruby} devemos fazer a edição e criação de arquivos no 
+diretório \emph{\textbf{lib}}. Este diretório obrigatoriamente deve possuir um arquivo 
+‘‘ 'nome da gema'.rb '' e um diretório também com o nome da gema. Dentro do diretório devemos criar um 
+arquivo de versão. No nosso exemplo isso pode ser verificado consultando no código ‘‘Código 
+\ref{lst:execucao_que_cria_gema_gemtranslatetoenglish} - Execução que cria gema gemtranslatetoenglish'' 
+que após a execução do comando ‘‘\emph{bundle gem gemtranslatetoenglish}'' é feita a criação do arquivo 
+‘‘\emph{lib/gemtranslatetoenglish.rb}'' na linha ‘‘8'', e o drietório ‘‘\emph{lib/gemtranslatetoenglish}'' 
+com o arquivo ‘‘\emph{version}'' dentro dele na linha ‘‘9''.
+
+O arquivo ‘‘\emph{version}'' somente define a versão que a gema está, onde no nosso exemplo da gema 
+‘‘\emph{gemtranslatetoenglish}'' a primeira versão é a ‘‘\emph{0.0.1}''. 
+
+Basicamente a descrição da versão de uma gema é uma string com números e pontos. Também é permitido 
+colocar ao final a palavra chave ‘‘\emph{pre}'' caso seja um pré-lançamento de alguma versão, como 
+por exemplo ‘‘\emph{1.0.0.pre}'' é um pré-lançamento da versão ‘‘\emph{1.0.0}''.
+
+O \emph{Rubygems} recomenda seguir as seguintes politicas mencionadas logo abaixo que foram consultadas
+em \emph{\href{http://guides.rubygems.org/patterns/\#semantic-versioning}{semantic-versioning}}
+\footnote{semantic-version: \url{http://guides.rubygems.org/patterns/\#semantic-versioning}} e em
+\emph{\href{http://guides.rubygems.org/specification-reference/\#version}{specification-reference-version}}
+\footnote{specification-reference-version: \url{http://guides.rubygems.org/specification-reference/\#version}}.
+
+\begin{itemize}
+ \item PATH : “0.0.X” para pequenas alterações, como por exemplo correção de pequenos \emph{bugs}.
+ \item MINOR: “0.X.0” para médias alterações, como por exemplo alteração/adição de funcionalidades.
+ \item MAJOR: “X.0.0” para grandes alterações, como por exemplo remoção de alguma funcionalidade.
+\end{itemize}
+
+Antes de continuarmos a codificação das funcionalidades da gema precisamos entender algumas diferenças
+básicas de conceitos do \emph{Ruby}, como por exemplo a diferença entre \emph{module} e \emph{class},
+
+Os ‘‘\emph{modules}'' ou módulos se preferir, definem um conjunto de métodos e constantes. Podemos 
+dizer que os métodos dos módulos são estáticos, pois não precisamos instanciar o módulo para usar oS 
+seuS métodoS. Contudo podemos dizer que os módulos são parecidos com o conceito de interface do 
+\emph{Java}. 
+
+Por outro lado a ‘‘\emph{class}'' também é um conjunto de métodos e constantes, no 
+entanto para usar os seus métodos e constantes é necessário instância-lá, ou seja, é necessário criar 
+um objeto da ‘‘\emph{class}'' na memória para usar os seus respectivos métodos. 
+
+Contudo por essas características podemos dizer que uma ‘‘\emph{class}'' é basicamente 
+uma subclasse do ‘‘\emph{module}'', pois a ‘‘\emph{class}'' possui 4 métodos a mais, que no caso são 
+os métodos ‘‘\emph{initialize()}'', ‘‘\emph{superclass()}'', ‘‘\emph{allocate()}'' e ‘‘\emph{to\_yank()}''.
+
+Agora que temos alguns conceitos do \emph{Ruby} apresentados, podemos continuar com a implementação 
+da nossa gema. 
+
+No arquivo ‘‘ lib/'nome da gema'.rb '' temos a possibilidade de escerver todas as 
+funcinalidades desejadas. No nosso exemplo o arquivo ‘‘lib/gemtranslatetoenglish.rb'' é mostrado no código 
+‘‘Código \ref{lst:gemtranslatetoenglish.rb} - gemtranslatetoenglish.rb'', onde cada linha é explicado 
+logo a seguir.
+
+\lstinputlisting[ style=customRuby, caption={gemtranslatetoenglish.rb}, label={lst:gemtranslatetoenglish.rb}]
+{codigos/gemtranslatetoenglish/lib/gemtranslatetoenglish.rb}
+
+\begin{itemize}
+
+ \item ‘‘\emph{require "gemtranslatetoenglish/version"} '' na linha ‘‘1'' é feita a requsição do arquivo de
+ versão.
+ 
+ \item ‘‘\emph{require "gemtranslatetoenglish/translatetoenglish.rb"} '' na linha ‘‘4'' é feita a requisição
+ do arquivo ‘‘\emph{translatetoenglish.rb}'' contido no diretório ‘‘gemtranslatetoenglish''.
+ 
+ \item ‘‘\emph{module Gemtranslatetoenglish ... end}'' na linha ‘‘6'' a ‘‘8'' define o módula da gema.
+ 
+ \item ‘‘\emph{ActionController::Base.helper Gemtranslatetoenglish::Helpers::Translatetoenglish}'' na linha 
+ ‘‘10'' define uma extensão da classe ‘‘ActionController::Base.helper'', onde a classe a ser acrescentada é
+ a classe ‘‘\emph{Gemtranslatetoenglish::Helpers::Translatetoenglish}''. Esta extensão foi adicionada
+ para que no momento de uso das funcionalidades da gema na \emph{view} não fosse necessário fazer a chamada 
+ de tradução  escrevendo toda \emph{PATH}. Por exemplo para chamar a função de tradução, ao invés
+ de chamar ‘‘\emph{gemtranslatetoenglish.Translatetoenglish.translate(‘Oi’)}'', se faz a chamada 
+ ‘‘\emph{translate(‘Oi’)}'' na \emph{view}.
+ 
+\end{itemize}
+
+Podemos perceber que o comando ‘‘\emph{require}'' é utilizado para fazer a chamada de código de outros 
+arquivos e isso serve para fazer a modularização da gema que no caso é uma boa prática de programação.
+
+Podemos supor que desenvolvemos uma gema e depois de um certo tempo precisamos fazer a manutenção do 
+seu código. Neste caso se não modularizamos a gema, a correção de \emph{bugs} ou mesmo a adição de 
+novas funcionalidades torna-se uma tarefa muito complexa, pois não existe nenhuma organização 
+estrutural na gema preparada para facilitar esse tipo de operação. 
+
+Observando novamente o código ‘‘Código \ref{lst:gemtranslatetoenglish.rb} - gemtranslatetoenglish.rb'' 
+podemos perceber que na linha ‘‘4'' foi feito o \emph{require} do arquivo 
+‘‘\emph{gemtranslatetoenglish/translatetoenglish.rb}'' que será mostrado no código ‘‘Código 
+\ref{lst:translatetoenglish.rb} - translatetoenglish.rb'' e explicado logo a seguir.
+
+\lstinputlisting[ style=customRuby, caption={translatetoenglish.rb}, label={lst:translatetoenglish.rb}]
+{codigos/gemtranslatetoenglish/lib/gemtranslatetoenglish/translatetoenglish.rb}
+
+\begin{itemize}
+
+  \item ‘‘\emph{module ... end} nas linhas ‘‘1'', ‘‘2'' e ‘‘3'' até as linhas ‘‘44'', ‘‘45'' e ‘‘46'' 
+  define a árvore de módulos ‘‘\emph{Gemtranslatetoenglish}'' na raiz, ‘‘\emph{Helpers}'' no segundo 
+  nível e depois ‘‘\emph{Translatetoenglish}'' no terceiro nível.
+  \item ‘‘\emph{def translate( phrase) ... end}'' da linha ‘‘5'' até a linha ‘‘42'' define a função de 
+  tradução da gema, onde foi definido somente duas traduções, ‘‘\emph{OI}'' para ‘‘\emph{HELLO}'' 
+  e ‘‘MUNDO'' para ‘‘\emph{WORLD}''.
+  
+  A árvore definida no código ‘‘Código \ref{lst:translatetoenglish.rb} - translatetoenglish.rb'' foi 
+  necessário por causa do código inserido na linha ‘‘10'' 
+  ‘‘\emph{ActionController::Base.helper Gemtranslatetoenglish::Helpers::Translatetoenglish}''
+  no código ‘‘Código \ref{lst:gemtranslatetoenglish.rb} - gemtranslatetoenglish.rb'' que serve para 
+  evitar a necesseidade de escrever a \emph{PATH} completa na \emph{view} para chamar uma função 
+  da gema na \emph{view}.
+  
+\end{itemize}
+
+\subsubsection{Test ou Spec e arquivo Rakefile}
+\label{subsubsection:test_ou_spec_e_arquivo_rakefile}
+
+Lembrando que podemos fazer o desenvolvimento de código de funcinalidades ou o código de testes, e isso é
+dependente da metodologia adotada no inicio do projeto, caso queira fazer o código de funcionalidade antes
+do desenvolvimento dos casos de teste se pode consutar a sub-seção ‘‘\ref{subsubsection:lib} Lib''.
+
+Para se fazer os testes, deve-se criar os arquivos de testes dentro do diretório ‘‘\emph{test}'' ou se 
+preferir ‘‘\emph{spec}''. Não existe um padrão especificado, mais recomenda-se criar um arquivo de 
+teste com o nome ‘‘\emph{test/test\_‘definição do teste'.rb}''. No nosso exemplo criamos o arquivo 
+‘‘\emph{test/test\_check\_translate.rb}'' que podemo ver no código ‘‘\ref{lst:test_check_translate.rb} - 
+Testa translate gemtranslatetoenglish'' explicado logo a seguir.
+
+\lstinputlisting[ style=customRuby, caption={Testa translate gemtranslatetoenglish}, label={lst:test_check_translate.rb}]
+{codigos/gemtranslatetoenglish/test/test_check_translate.rb}
+
+\begin{itemize}
+
+ \item Nas linhas ‘‘1'', ‘‘2'' e ‘‘3'' nos códigos ‘‘ \emph{require ‘...'} '' requisitamos respectivamente o 
+ ‘‘\emph{autorun}'' da gema ‘‘\emph{minitest}'' que utilizaremos para realizar os testes, 
+ ‘‘\emph{action\_controller}'' que utilizamos para evitar a obrigação de digitar a ‘‘\emph{PATH}'' completa 
+ na \emph{view}, e ‘‘\emph{gemtranslatetoenglish}'' que é a nossa gema de exemplo.
+ 
+ \item Na linha ‘‘5'' fomos obrigados a fazer o ‘‘\emph{include}'' do módulo 
+ ‘‘\emph{Gemtranslatetoenglish::Helpers::Translatetoenglish}'' para que todas as funções do módulo fossem 
+ disponiblizadas para uso e no nosso caso era o método ‘‘\emph{translate()}''.
+ 
+ \item Da linha ‘‘7'' a linha ‘‘16'' é definido a classe de teste \emph{TranslateTest} que herda as 
+ características de ‘‘\emph{MiniTest::Unit::TestCase}''.
+ 
+ \item Da linha ‘‘8'' a linha ‘‘11'' é definido o teste por palavra, onde é verificado através do 
+ ‘‘\emph{assert\_equal}'' se a ‘‘\emph{string}'' esperada no primeiro parâmetro é retornadda pela chamada 
+ da função ‘‘\emph{Gemtranslatetoenglish::Helpers::Translatetoenglish.translate()}'' no segundo parâmetro.
+  
+ \item Da linha ‘‘12'' a linha ‘‘15'' é definido o teste por texto, onde é verificado através do 
+ ‘‘\emph{assert\_equal}'' se a ‘‘\emph{string}'' esperada no primeiro parâmetro é retornadda pela chamada 
+ da função ‘‘\emph{Gemtranslatetoenglish::Helpers::Translatetoenglish.translate()}'' no segundo parâmetro.
+ 
+\end{itemize}
+
+Agora que temos o nosso arquivo de teste, precisamos criar o arquivo ‘‘\emph{Rakefile}'' e executar o 
+comando ‘‘\emph{rake}'' para realizarmos os testes.
+
+No nosso exemplo da gema ‘‘\emph{gemtranslatetoenglish}'' desenvolvemos o seguinte arquivo 
+‘‘\emph{Rakefile}'' que pode ser visualizado no código ‘‘Código \ref{lst:rakefile} - 
+Rakefile gemtranslatetoenglish'' sendo explicado os detalhes logo a seguir.
+
+\lstinputlisting[ style=customRuby, caption={Rakefile gemtranslatetoenglish}, label={lst:rakefile}]
+{codigos/gemtranslatetoenglish/Rakefile}
+
+\begin{itemize}
+
+\item Nas linhas ‘‘1'' e ‘‘2'' nos códigos ‘‘ \emph{require ‘...'} '' requisitamos respectivamente o 
+ ‘‘\emph{gem\_tasks}'' do ‘‘\emph{bundler}'' e ‘‘\emph{testtask}'' do ‘‘\emph{rake}'', ambos necessários para
+ a execução dos testes.
+ 
+ \item Da linha ‘‘4'' a ‘‘6'' é feito a criação de uma nova ‘‘\emph{task}'' de teste para cada arquivo 
+ que esteja no diretório ‘‘\emph{test}''.
+ 
+ \item A linha ‘‘5'' com o código ‘‘ \emph{t.libs << ‘test'} '' inidica que os arquivos de testes estão no 
+ diretório ‘‘\emph{test}''.
+
+ \item Por fim na linha ‘‘9'' com o código ‘‘\emph{task :default => :test}'' se requisita a execução 
+ dos testes.
+ 
+\end{itemize}
+
+\subsubsection{Execução de testes}
+\label{subsubsection:execução_de_testes}
+
+Antes de realizarmos os testes, precisamos criar a gema com comando ‘‘\emph{gem build 'nome da gema'.gemspec}'' 
+e fazer a instalação com o comando ‘‘\emph{sudo gem install 'nome da gema'-'versão da gema'.gem}''. No nosso 
+caso é fazer a crição e a instalação da gema ‘‘\emph{gemtranslatetoenglish}'', que pode ser feito da mesma 
+forma como apresentado no código ‘‘Código \ref{lst:execucao_que_cria_e_instala_gemtranslatetoenglish} - Execução 
+gem install gemtranslatetoenglish''.
+
+\lstinputlisting[ style=customBash, caption={Execução que Cria e Instala gemtranslatetoenglish}, label={lst:execucao_que_cria_e_instala_gemtranslatetoenglish}]
+{codigos/execucao_que_cria_e_instala_gemtranslatetoenglish.sh }
+
+Agora após ter implementado o código das funcionalidades, o arquivo de teste 
+‘‘\emph{test/test\_check\_translate.rb}'', o arquivo \emph{Rakefile}, e ter feito a criação e a instalação 
+da gema de exemplo, podemos realizar os testes com a execução do comando ‘‘\emph{rake}'' no terminal. 
+
+Com a execução dos testes obtemos como resultado o código ‘‘Código 
+\ref{lst:execucao_rake_gema_gemtranslatetoenglish} - Execução rake gema gemtranslatetoenglish'' explicado 
+logo a seguir.
+
+\lstinputlisting[ style=customBash, caption={Execução rake gema gemtranslatetoenglish}, label={lst:execucao_rake_gema_gemtranslatetoenglish}]
+{codigos/execucao_rake_gema_gemtranslatetoenglish.sh }
+
+\begin{itemize}
+
+ \item Na linha ‘‘1'' é feito a execução do comando ‘‘\emph{rake}'' para se realizar os testes.
+ 
+ \item Na linha ‘‘9'' é mostrado que foram feitos 2 testes, no caso os 2 que definimos no código 
+ ‘‘\ref{lst:test_check_translate.rb} - Testa translate gemtranslatetoenglish'' nas linhas 
+ ‘‘8'' a ‘‘11'' no teste ‘‘\emph{test\_world\_translation}'' e nas linhas ‘‘12'' a ‘‘15'' no teste 
+ ‘‘\emph{test\_text\_translation}''. Também é apresentado na linha ‘‘9'' que foram feitos 4 
+ ‘‘\emph{assertions}'', no caso dois para cada caso de teste feitos por meio do ‘‘\emph{assert\_equal}''.
+ E além disso é apresentado que não ocorreram  \emph{failures}''), ‘‘\emph{errors}'' e ‘‘\emph{skips}''.
+ 
+\end{itemize}
+
+Deste modo ao se realizar estes testes garantimos que pelo menos a função ‘‘\emph{translate()}'' da gema
+‘‘\emph{gemtranslatetoenglish}'' esta funcionando como o esperado.
+
+Contudo no momento do desenvolvimento do código de testes, o aconselhável é para cada função adicionada 
+na gema, fazer testes com todas as possíveis entradas, verificando se o resultado para cada entrada 
+está correto.
+
+\subsubsection{IRB}
+\label{subsubsection:irb}
+
+O \emph{\href{http://www.ruby-doc.org/stdlib-2.0/libdoc/irb/rdoc/IRB.html}{IRB}} 
+\footnote{IRB: \url{http://www.ruby-doc.org/stdlib-2.0/libdoc/irb/rdoc/IRB.html}}
+(\emph{Interactive Ruby Shell}) é uma ferramenta do \emph{Ruby} que serve para executar expressões
+interativamente, fazendo a leitura da entrada padrão [\citeonline{irb_doc}].
+
+Caso se deseje fazer os testes de uma gema manualmente sem a necessidade de inclui-lá em um projeto, podemos
+fazer o uso do ‘‘\emph{IRB}'', chamando o comando ‘‘\emph{irb}''.
+% o seguinte comando mostrado no código ‘‘Código \ref{lst:executa_irb} - Executa IRB'' no terminal para iniciá-lo.
+
+\begin{comment}
+\lstinputlisting[ style=customBash, caption={Executa IRB}, label={lst:executa_irb}]
+{codigos/executa_irb.sh}
+\end{comment}
+
+Um exemplo de uso do \emph{IRB} pode ser visto 
+% na imagem ‘‘Figure \ref{fig:exemplo_de_uso_do_irb} - Exemplo de Uso do IRB'' 
+no código ‘‘Código \ref{lst:exemplo_de_uso_do_irb} - Exemplo de Uso do IRB''
+abaixo, explicado em mais detalhes na listagem abaixo. 
+
+\begin{comment}
+\begin{figure}[ht]
+  \includegraphics[scale=0.3]{images/exemplo_de_uso_do_irb}
+  \caption{Exemplo de Uso do IRB}
+  \label{fig:exemplo_de_uso_do_irb}
+\end{figure}
+\end{comment}
+
+\lstinputlisting[ style=customBash, caption={Exemplo de uso do IRB}, label={lst:exemplo_de_uso_do_irb}]
+{codigos/exemplo_de_uso_do_irb.sh}
+
+\begin{itemize}
+
+\begin{comment}
+ \item Primeiramente é feita a chamada da ferramenta \emph{IRB} com o comando ‘‘\emph{irb}'' no terminal.
+ 
+ \item Depois é requisitado a soma entre ‘‘\emph{1 + 1}'' resultando em ‘‘\emph{2}''.
+ 
+ \item Em seguida é perguntado se ‘‘\emph{1 == 1}'' resultando em ‘‘\emph{true}''.
+
+ \item E no fim é criado uma função chamada de ‘‘\emph{hello}'' com o parâmetro ‘‘\emph{name}'' e ao se 
+ chamar essa função é devolvido na tela ‘‘\emph{Hello +}'' o parâmetro passado para a função. O resultado
+ pode ser visto quando se requisita ‘‘\emph{hello(‘‘Maria'')}'' e se obtem como resultado 
+ ‘‘\emph{Hello Maria}''.
+\end{comment}
+ 
+  \item Primeiramente na linha ‘‘1'' é feita a chamada da ferramenta \emph{IRB} com o comando ‘‘\emph{irb}'' 
+  no terminal.
+ 
+ \item Depois na linha ‘‘2'' é requisitado a soma entre ‘‘\emph{1 + 1}'' resultando em ‘‘\emph{2}'' na linha 
+ ‘‘3''.
+ 
+ \item Em seguida na linha ‘‘4'' é verificado se ‘‘\emph{1 == 1}'' resultando em ‘‘\emph{true}'' na linha 
+ ‘‘5''.
+
+ \item E no fim entre as linhas ‘‘6'' e ‘‘8'' é criado uma função chamada de ‘‘\emph{hello}'' com o 
+ parâmetro ‘‘\emph{name}'' e ao se chamar essa função é devolvido na tela ‘‘\emph{Hello}'' mais o 
+ parâmetro passado para a função. O resultado pode ser visto quando se requisita 
+ ‘‘\emph{hello(‘‘Maria'')}'' na linha ‘‘10'', obtendo como resultado ‘‘\emph{Hello Maria}'' na linha ‘‘11''.
+ 
+\end{itemize}
+
+No nosso exemplo da gema ‘‘\emph{gemtranslatetoenglish}'' fizemos alguns testes simples mostrados
+na código ‘‘Código \ref{lst:teste_irb_da_gema_gemtranslatetoenglish} - Teste IRB da gema 
+gemtranslatetoenglish'' explicado com mais detalhes nos itens abaixo.
+
+\begin{comment}
+\begin{figure}[ht]
+  \includegraphics[scale=0.28]{images/teste_irb_da_gema_gemtranslatetoenglish.png}
+  \caption{Teste IRB da gema gemtranslatetoenglish}
+  \label{fig:teste_irb_da_gema_gemtranslatetoenglish}
+\end{figure}
+\end{comment}
+
+\lstinputlisting[ style=customBash, caption={Teste IRB da gema gemtranslatetoenglish}, label={lst:teste_irb_da_gema_gemtranslatetoenglish}]
+{codigos/teste_irb_da_gema_gemtranslatetoenglish.sh}
+
+\begin{itemize}
+
+ \item Primeiramente na linha ‘‘1'' é feita a chamada da ferramenta \emph{IRB} com o comando ‘‘\emph{irb}'' 
+  no terminal.
+  
+  \item Na linha ‘‘2'' é executado o comando ‘‘ \emph{require 'action\_controller'} '' para buscar a gema 
+  ‘‘\emph{ActionController}'' necessária no uso da nossa gema de exemplo quando evitamos digitar a 
+  \emph{PATH} completa na ‘‘\emph{view}''.
+
+  \item Na linha ‘‘4'' é executado o comando ‘‘ \emph{require 'gemtranslatetoenglish'} '' para buscar a 
+  nossa gema de exemplo.
+  
+  \item Na linha ‘‘6'' é executado o comando 
+  ‘‘ \emph{instance\_method\_names}'' para verificar se o nosso método \emph{translate()} existe.
+  
+  \item Na linha ‘‘8'' é executado o comando ‘‘\emph{include}'' para incluir as funções do módulo 
+  ‘‘\emph{Translatetoenglish}''.
+  
+  \item Na linha ‘‘10'' é executado o comando 
+  ‘‘\emph{translate('Oi')}'' para verificar se a função funciona como o esperado.
+  
+  \item E no fim na linha ‘‘11'' podemos verificar que a função \emph{translate()} funcionou corretamente,
+  pois obtemos como resultado a palavra ‘‘\emph{HELLO }''.
+  
+ \end{itemize}
+
+\subsubsection{Exemplo de uso de gemtranslatetoenglish}
+\label{subsubsection:exemplo_de_uso_de_gemtranslatetoenglish}
+
+Até o momento falamos muito da utilização do \emph{action\_controller} para simplificar o uso da função 
+\emph{translate()} na \emph{view}, e agora vamos apresentar essa facilidade através de um exemplo, 
+fazendo o uso da gema ‘‘\emph{gemtranslatetoenglish}'' em um projeto.
+
+O primeiro passo é criar um projeto no \emph{framework rails} e isso pode ser feito executando 
+o seguinte comando apresentado no código ‘‘Código 
+\ref{lst:executa_rails_new_para_gemtranslatetoenglish} - Executa rails new para gemtranslatetoenglish''
+explicado logo a seguir.
+
+\lstinputlisting[ style=customBash, caption={Executa rails new para gemtranslatetoenglish}, label={lst:executa_rails_new_para_gemtranslatetoenglish}]
+{codigos/executa_rails_new_para_gemtranslatetoenglish_simplificado.sh} 
+
+\begin{itemize}
+
+ \item O comando ‘‘\emph{rails new}'' implica na criação de um projeto básico do \emph{Ruby On Rails}.
+ 
+ \item O nome ‘‘\emph{projeto\_teste\_gemtranslatetoenglish}'' é o nome do proejto a ser criado.
+ 
+  \item Os códigos a partir da linha ‘‘2'' não representam execuções. No caso estes códigos somente 
+ mostram os passos realizados por causa da execução do comando na primeira linha.
+ 
+ \item A execução deste comando implica na criação de alguns diretórios e arquivos e por simplificação 
+ somente explicaremos aqueles que vamos utilizar neste exemplo:
+  
+  \subitem - ‘‘\emph{Gemfile}'' arquivo que contém as \emph{gemas} que são utilizadas no projeto.
+ 
+  \subitem - ‘‘\emph{config/routes.rb}'' arquivos que possui as rotas utilizadas no projeto.
+ 
+\end{itemize}
+
+Agora que criamos o projeto, precisamos fazer a criação de pelo menos um \emph{controller} e uma \emph{view}.
+O \emph{controller} serve para receber uma requisição e determinar a partir dos parâmetros desta 
+requisição, a \emph{view} e os dados que devem ser apresentados. A \emph{view} serve para 
+determinar um formato e mostrar os dados no \emph{browser}.
+
+Para o nosso exemplo criamos o \emph{controller} ‘‘traducao'' e a \emph{view} ‘‘index'' com a execução do 
+comando que pode ser visto no código ‘‘Código \ref{lst:executa_rails_generate_para_gemtranslatetoenglish} - 
+Executa rails generate para gemtranslatetoenglish'' explicado logo a seguir.
+
+\lstinputlisting[ style=customBash, caption={Executa rails generate para gemtranslatetoenglish}, label={lst:executa_rails_generate_para_gemtranslatetoenglish}]
+{codigos/executa_rails_generate_para_gemtranslatetoenglish.sh} 
+
+\begin{itemize}
+
+ \item Na linha ‘‘1'' é feito a execução do comando ‘‘\emph{rails generate controller traducao index}'' no 
+ terminal para gerar o \emph{controller} ‘‘\emph{traducao}'', e a \emph{view} ‘‘\emph{index}'' para 
+ ‘‘\emph{traducao}''.
+
+ \item Os códigos a partir da linha ‘‘2'' não representam execuções. No caso estes códigos somente 
+ mostram os passos realizados por causa da execução do comando na primeira linha.
+ 
+ \item Na linha ‘‘2'' foi criado o \emph{controller} com o nome ‘‘\emph{traducao\_controller.rb}''
+ 
+ \item Na linha ‘‘3'' foi adicionado no arquivo ‘‘\emph{config/routes.rb} o método \emph{get} para a 
+ \emph{view} ‘‘\emph{traducao/index}''.
+ 
+ \item Na linha ‘‘6'' foi criado a \emph{view} ‘‘\emph{traducao/index.html.erb}''.
+ 
+ \item A partir da linha ‘‘7'' são criados os arquivos de teste funcional, os \emph{helpers}, e os 
+ \emph{assets} que possuem códigos \emph{coffeescript} que depois vão se tornar \emph{javascript} e 
+ \emph{scss} que depois vão se tornar \emph{css}.
+ 
+\end{itemize}
+
+
+Agora para fazer o uso da nossa gema de exemplo em um projeto feito no \emph{Ruby On Rails}, basta fazer a 
+inclusão da gema no final do arquivo \emph{Gemfile} da mesma forma como mostrado no código ‘‘Código 
+\ref{lst:adiciona_gemtranslatetoenglish_no_gemfile} - Adiciona gemtranslatetoenglish no Gemfile''
+ 
+ \lstinputlisting[ style=customRuby, caption={Adiciona gemtranslatetoenglish no Gemfile}, label={lst:adiciona_gemtranslatetoenglish_no_gemfile}]
+{codigos/adiciona_gemtranslatetoenglish_no_gemfile}
+ 
+Agora que a gema ‘‘\emph{gemtranslatetoenglish}'' já esta incluída no nosso projeto, podemos fazer o uso 
+dela em uma \emph{view} da seguinte maneira apresentada no código ‘‘Código 
+\ref{lst:exemplo_do_translate_na_view} - Exemplo do translate() na view'' explicado logo a seguir.
+
+\lstinputlisting[ style=customRubyHTML, caption={Exemplo do translate() na view}, label={lst:exemplo_do_translate_na_view}]
+{codigos/projeto_teste_gemtranslatetoenglish/app/views/traducao/index.html.erb} 
+ 
+ \begin{itemize}
+ 
+  \item As linhas ‘‘1'' e ‘‘2'' já existiam, pois foram criadas automaticamente após a execução do comando 
+  ‘‘\emph{rails generate controller traducao index}'' que mostramos no código ‘‘Código 
+  \ref{lst:executa_rails_generate_para_gemtranslatetoenglish} - Executa rails generate para 
+  gemtranslatetoenglish''.
+  
+  \item Na linha ‘‘4'' inserimos uma \emph{tag <p>} indicando para o \emph{browser} que vamos inserir um 
+  texto. Depois inserimos a \emph{tag <\%= ... \%>} que indica que entre essas \emph{tags} será inserido um 
+  código \emph{Ruby}. E dentro destas \emph{tags} chamamos o nosso método \emph{translate()} da gema 
+  ‘‘\emph{gemtranslatetoenglish}'' com o parâmetro ‘‘Oi Mundo''.
+  
+ \end{itemize}
+
+Agora que temos a nossa função ‘‘\emph{translate()}'' dentro da \emph{view} ‘‘\emph{traducao/index}'', podemos 
+verificar se a tradução funciona corretamente. Para isso devemos dentro do diretório do nosso projeto,
+iniciar o servidor no terminal através do comando ‘‘\emph{rails server -p2342}'', onde o parâmetro ‘‘-p2342'' 
+indica que o servidor vai usar a porta ‘‘2342''. 
+
+Depois com o servidor funcionando, podemos verificar na imagem ‘‘Figure \ref{fig:resultado_de_translate_na_view} - 
+Resultado de Translate na View'' que ao se acessar o endereço ‘‘localhost:2342/traducao/index'' no 
+\emph{browser}, a nossa função de tradução funciona corretamente, pois na página é apresentado o 
+texto ‘‘HELLO WORLD''.
+ 
+ \begin{figure}[ht]
+  \includegraphics[scale=0.49]{images/resultado_de_translate_na_view.png}
+  \caption{Resultado de Translate na View}
+  \label{fig:resultado_de_translate_na_view}
+\end{figure}
+ 
+\section{Adaptando uma gema}
+\label{section:adaptando_uma_gema}
+
+Agora que sabemos como criar uma gema visto na seção ‘‘\ref{section:criando_uma_gema} - Criando uma gema'', 
+podemos partir para a ideia de fazer modificações em uma gema que já existe, ou seja, fazer a adaptação de 
+uma gema adicionando novas funcionalidade que geralmente utilizamos. 
+
+Suponha o cenário aonde utilizamos com frequência uma certa gema, no entanto apesar dela comportar várias 
+funcionalidades, ela não possui tudo que desejamos. Neste caso basta fazer a adaptação desta gema, não 
+sendo necessário criar uma nova gema do zero, isso desde que a funcionalidade que precisamos 
+esteja no mesmo contexto abordado pela gema. 
+
+Por exemplo se estamos utilizando uma gema matemática e ela não possuir uma função para calcular a 
+raiz de um número, podemos fazer uma modificação nesta gema para que ela possa calcular a raiz. 
+No entanto não faz nenhum sentido incluuir uma funcionalidade de criar mapas do \emph{Google}, pois 
+não está no mesmo contexto da gema.
+
+Para facilitar o entendimento utilizaremos para a explicação a gema 
+\emph{\href{https://github.com/toshikomura/Google-Maps-for-Rails}{Google-Maps-for-Rails}} 
+\footnote{Google-Maps-for-Rails : \url{https://github.com/toshikomura/Google-Maps-for-Rails}} que é um 
+\emph{branch} da gema 
+\emph{\href{https://github.com/apneadiving/Google-Maps-for-Rails}{Google-Maps-for-Rails}} 
+\footnote{Google-Maps-for-Rails : \url{https://github.com/apneadiving/Google-Maps-for-Rails}} criada por 
+\emph{\href{https://github.com/apneadiving}{Benjamin Roth}} 
+\footnote{Bejamin Roth: \url{https://github.com/apneadiving}} e 
+\emph{\href{https://github.com/MrRuru}{David Ruyer}} \footnote{David Ruyer: \url{https://github.com/MrRuru}}.
+
+Essa gema criada por \emph{Bejamin Roth} e \emph{David Ruyer} tem como objetivo criar mapas de forma 
+simplificada, proporcionando a inclusão de sobreposições oferecidas pelo \emph{Google} como por exemplo 
+marcadores e circulos. Ela também possui um código bem flexível que permite a aceitação de outros 
+provedores de mapas [\citeonline{google_maps_for_rails}].
+
+\subsubsection{API do Google Maps} 
+\label{api_do_google_maps} 
+ 
+Para fazer a adaptação da gema foi necessário fazer um estudo sobre como utilizar a \emph{API} do 
+\emph{Google} e para isso foi utilizado como base o livro \emph{Beginning Google Maps API 3} 
+[\citeonline{beginning_google_maps_api3}] e a 
+\emph{\href{https://developers.google.com/maps/}{Google Maps API V3}} 
+\footnote{Google Maps API V3: \url{https://developers.google.com/maps/}}, onde ambos se complementam 
+ensinando os passos básicos para criar e manipular mapas do \emph{Google}. 
+
+O \emph{Google Maps} e sua respectiva \emph{API} foram criadas por dois irmãos \emph{Lars} e 
+\emph{Jens Rasmussen}, cofundadores da ‘‘\emph{Where 2 Technologies}'', compania dedicada a criação de mapas
+que foi comprada pelo \emph{Google} em 2004 [\citeonline{beginning_google_maps_api3}].
+
+Até o inicio do ano 2005 a rederização de mapas pela rede possuía um alto custo, necessitando de 
+servidores altamente equipados para suportar a carga de trabalho. Mas em Fevereiro de 2005 através 
+de um \emph{post} em seu \emph{blog}, o \emph{Google} anunciou uma nova solução de rederização, 
+possiblitando ao usuário interagir com um mapa em uma página \emph{web}
+[\citeonline{beginning_google_maps_api3}].
+
+Depois de fazer o lançamento da nova forma para criar mapas, o \emph{Google} percebeu que 
+muitos desenvolvedores gostariam de incorporar essa nova solução em seus projetos, e por esse 
+movtio em Junho de 2005 anunciou a primeira versão pública da \emph{API} do \emph{Google Maps}
+[\citeonline{beginning_google_maps_api3}].
+
+O \emph{Google Maps} funciona de uma forma bem simples fazendo a criação e a manipulação do mapa
+por meio de \emph{HTML}, \emph{CSS} e \emph{Javascript}. Basicamente o usuário por meio do \emph{browser}
+requisita algum local do mapa informando a coordenada e o zoon desejado. Desta forma o servidor retorna a 
+imagem do mapa que representa a posição requisitada [\citeonline{beginning_google_maps_api3}]. 
+
+\subsubsection{Engenharia Reversa}
+\label{engenharia_reversa}
+
+Para conseguirmos entender o funcionamento de uma gema, precisamos obrigatoriamente fazer uma tradução
+do código fonte para diagramas, pois não conseguiremos fazer nenhuma modificação consistente
+se não tivermos uma visão geral de seu funcionamento, e esse procedimento de tradução se chama 
+\emph{engenharia reversa}.
+
+\emph{Engenharia reversa} é um processo de análise para a extração de informações de algo que já 
+existe em um modelo de abstração de alto nível. Essas informações podem estar no formato de código 
+fonte ou mesmo em um executável, O processo de análise para a extração de dados deve ser feita de forma
+minunciosa, pois pode ocorrer uma grande perda de recursos, caso alguma funcionalidade seja entendida de
+forma incorreta. E o modelo de abstração de alto nível pode ser por exemplo um diagram de caso de uso ou
+um diagrama de sequência.
+
+Aplicando a \emph{engenharia reversa} na gema \emph{Google-Maps-For-Rails} conseguimos obter como resultado
+os diagrama de classe na imagem ‘‘Figure \ref{fig:diagrama_de_classes_google_maps_for_rails} - Diagrama de 
+Classes Google-Maps-For-Rails'', o diagrama de atributos na imagem ‘‘Figure - 
+\ref{fig:diagrama_de_atributos_google_maps_for_rails} - Diagrama de Atributos Google-Maps-For-Rails'' e o 
+diagrama de herança na imagem ‘‘Figure - \ref{fig:diagrama_de_heranca_google_maps_for_rails} - Diagrama de 
+Herança Google-Maps-For-Rails'' que serão explicados em mais detalhes logo a seguir.
+
+Nenhum dos 3 diagramas segue os seus respectivos padrões e isso deve ao fato de que não existia espaço 
+suficiente na imagem para representar o sistema da gema por completo. Por esse motivo optamos por definir 
+novos diagramas que possuem características sinilares aos seus padrões, mas com algumas características
+adicionais.
+
+Para as imagens de diagrama de classes ‘‘Figure \ref{fig:diagrama_de_classes_google_maps_for_rails} - 
+Diagrama de Classes Google-Maps-For-Rails'' e o diagrama de atributos na imagem ‘‘Figure - 
+\ref{fig:diagrama_de_atributos_google_maps_for_rails} - Diagrama de Atributos Google-Maps-For-Rails''
+as seguintes explicações são válidas:
+
+\begin{itemize}
+
+ \item Cada retângulo representa uma classe da gema.
+ 
+ \item O nome ácima dos traços ‘‘-----'' representa o nome da classe.
+ 
+ \item O símbolo ‘‘*'' do lado esquerdo do nome da classe representa que ela é \emph{superclasse} e o 
+ símbolo ‘‘*'' do lado direito do nome da classe representa que ela é uma \emph{subclasse}, por exemplo
+ ‘‘\emph{* Objects.BaseBuilder}'' é \emph{superclasse} de ‘‘\emph{Google.Builders.Map *}'', neste caso 
+ ‘‘\emph{Google.Builders.Map *}'' é \emph{subclasse} de ‘‘\emph{* Objects.BaseBuilder}''. O mesmo 
+ critério é válido para o símbolo ‘‘\$''.
+ 
+ \item O símbolo ‘‘+'' do lado esquerdo do nome da classe representa que ela é \emph{incluída} em outra  
+ \emph{classe} e o símbolo ‘‘+'' do lado direito do nome da classe representa que ela \emph{incluí} outra 
+ \emph{classe}, por exemplo ‘‘\emph{+ Google.Objects.Common}'' é \emph{incluída} na \emph{classe} 
+ ‘‘\emph{Google.Objects.Bound \$+}'', neste caso ‘‘\emph{Google.Objects.Bound \$+}'' \emph{incluí} a 
+ \emph{classe} ‘‘\emph{+ Google.Objects.Common}''.
+ 
+\end{itemize}
+
+\begin{figure}[ht]
+  \includegraphics[scale=0.48]{images/diagrama_de_classes_google_maps_for_rails.png}
+  \caption{Diagrama de Classes Google-Maps-For-Rails}
+  \label{fig:diagrama_de_classes_google_maps_for_rails}
+\end{figure}
+
+\begin{comment}
+Percebe-se que o diagrama de classe na imagem ‘‘Figure \ref{fig:diagrama_de_classes_google_maps_for_rails} - 
+Diagrama de Classes Google-Maps-For-Rails'' não segue os padrões de um diagrama de classes, por causa que 
+no espaço disponível na imagem não seria possível inserir o sistema por completo, comprometendo o 
+entendimento da gema. Por esse motivo as definições deste diagrama serão explicados logo a seguir.
+\end{comment}
+
+As seguintes explicações são válidas para o diagrama de classe na imagem ‘Figure 
+\ref{fig:diagrama_de_classes_google_maps_for_rails} - Diagrama de Classes Google-Maps-For-Rails'':
+
+\begin{itemize}
+
+ \item O digrama não mostra os atributos das classes. 
+ 
+ \item Todos os nomes seguidos de ‘‘(...)'' abiaxo do traço ‘‘-----'' representam os métodos da classe.
+ 
+ \item Existem classes que não possuem os traços ‘‘-----'', neste caso elas possuem o nome delas
+ seguida do símbolo ‘‘->'' e depois um nome de outra classe. Isso significa que esta classe
+ possui os mesmo métodos da classe que vem depois do símbolo ‘‘->''. Por exemplo a 
+ classe ‘‘\emph{Google.Builder.Circle -> Kml}'' representa a classe ‘‘\emph{Google.Builder.Circle}'' 
+ e ela possuí os mesmo métodos da classe ‘‘\emph{Kml}'', ou seja, ela possuí os métodos
+ ‘‘\emph{constructor()}'', ‘‘\emph{create\_...()}'' e ‘‘\emph{...\_option()}''. E também existe o caso 
+ onde esta classe possuí métodos além dos da outra, e neesse caso esses métodos são colocados na linha 
+ de baixo. Por exemplo a classe ‘‘\emph{Google.Builder.Polyline -> Kml}'' que é a classe 
+ ‘‘\emph{Google.Builder.Polyline}'', além de possuír os métodos da classe \emph{Kml}, ela 
+ possuí o método ‘‘\emph{\_build\_path()}''.
+ 
+\end{itemize}
+
+\begin{figure}[ht]
+  \includegraphics[scale=0.48]{images/diagrama_de_atributos_google_maps_for_rails.png}
+  \caption{Diagrama de Atributos Google-Maps-For-Rails}
+  \label{fig:diagrama_de_atributos_google_maps_for_rails}
+\end{figure}
+
+\begin{comment}
+O diagrama de atributos na imagem ‘‘Figure \ref{fig:diagrama_de_atributos_google_maps_for_rails} - 
+Diagrama de Atributos Google-Maps-For-Rails'' não é um diagrama padrão de projeto, mas neste caso ele
+serve como complemento do diagrama de classe ‘‘Figure \ref{fig:diagrama_de_classes_google_maps_for_rails} - 
+Diagrama de Classes Google-Maps-For-Rails'', e isso também foi feito por causa do pouco
+espaço disponível na imagem. Por esse motivo as definições deste diagrama serão explicados logo a seguir.
+\end{comment}
+
+As seguintes explicações são válidas para o diagrama de de atributos na imagem ‘‘Figure 
+\ref{fig:diagrama_de_atributos_google_maps_for_rails} - Diagrama de Atributos Google-Maps-For-Rails'':
+
+\begin{itemize}
+ 
+ \item Todos os nomes abiaxo do traço ‘‘-----'' representam os atributos da classe. Também 
+ existe o caso onde esse métodos são seguidos pelos símbolos ‘‘\{ ... \}'', onde o método é um 
+ \emph{objeto} e os nomes separados por ‘‘,'' entre os símbolos ‘‘\{ ... \}'' são os atributos
+ do \emph{objeto}.
+ 
+ \item Existem classes que não possuem os traços ‘‘-----'', neste caso elas possuem o nome delas
+ seguida do símbolo ‘‘->'' e depois um nome de outra classe. Isso significa que esta classe 
+ possui os mesmo atributos da classe que vem depois do símbolo ‘‘->''. Por exemplo a 
+ classe ‘‘\emph{Google.Builder.Polyline -> Kml}'' que representa a classe 
+ ‘‘\emph{Google.Builder.Polyline}'', ela possuí os mesmo atributos da classe
+ ‘‘\emph{Kml}'', ou seja, ela possuí os atributos 
+ ‘‘\emph{args \{ url \}}'', ‘‘\emph{provider\_option}'' e ‘‘\emph{serviceObject}''. E também existe o caso 
+ onde esta classe possuí atributos além dos da outra classe e neesse caso esses 
+ atributos são colocados na linha de baixo. Por exemplo a classe 
+ ‘‘\emph{Google.Builder.Circle -> Kml}'' que é a classe ‘‘\emph{Google.Builder.Circle}'', além de 
+ possuír os atributos da classe \emph{Kml}, ela possuí o atributo 
+ ‘‘\emph{args \{ lat, lng, radius \}}''.
+ 
+\end{itemize}
+
+\begin{figure}[ht]
+  \includegraphics[scale=0.48]{images/diagrama_de_heranca_google_maps_for_rails.png}
+  \caption{Diagrama de Herança Google-Maps-For-Rails}
+  \label{fig:diagrama_de_heranca_google_maps_for_rails}
+\end{figure}
+
+\begin{comment}
+O diagrama de herança na imagem ‘‘Figure \ref{fig:diagrama_de_heranca_google_maps_for_rails} - 
+Diagrama de Herança Google-Maps-For-Rails'' não é um diagrama padrão de projeto, mas neste caso ele também
+serve como complemento do diagrama de classe ‘‘Figure \ref{fig:diagrama_de_classes_google_maps_for_rails} - 
+Diagrama de Classes Google-Maps-For-Rails'', e isso também foi feito por causa do pouco
+espaço disponível na imagem. Por esse motivo as definições deste diagrama serão explicados logo a seguir.
+\end{comment}
+
+As seguintes explicações são válidas para o diagrama de herança na imagem ‘‘Figure 
+\ref{fig:diagrama_de_heranca_google_maps_for_rails} - Diagrama de Herança Google-Maps-For-Rails'':
+
+\begin{itemize}
+
+ \item As linhas pretas indicam a organização da gema sendo que a classe \emph{Gmaps} é a classe principal.
+ 
+ \item Os retângulos normais representam as classes.
+ 
+ \item A classe \emph{Gmaps} possui os atributos \emph{Builders}, \emph{Objects} e 
+ \emph{Google}, onde o \emph{Google} possui os atributos \emph{Builders} e \emph{Objects}.
+ 
+ \item As linhas vermelhas com pontas de seta representam a herança entre duas \emph{classes}, onde 
+ a classe que está com a seta, é a classe que herda as características da classe
+ na outra ponta da linha.
+
+ \item As linhas azuis com pontas de quadrado representam a inclusão de uma classe na outra, onde
+ a classe que está com o quadrado, é a classe que incluí a classe que está na outra ponta da linha.
+ 
+  \item Os retângulos que tem uma dobra no canto inferior direito representam um conjunto de classes, 
+ onde estas classes possuem uma característica em comum. Por exemplo as classes ‘‘\emph{Kml}'', 
+ ‘‘\emph{Polygon}'', ‘‘\emph{Polyline}'', ‘‘\emph{Circle}'', ‘‘\emph{Map}'', ‘‘\emph{Marker}'' e 
+ ‘‘\emph{Bound}'' que são ‘‘\emph{Objects}'' do ‘‘\emph{Google}'', estão em um conjunto onde todas elas 
+ herdam as características da classe ‘‘\emph{Base}''.
+ 
+ \end{itemize}
+ 
+ 
+\subsubsection{Entendimento da gema} 
+\label{entendimento_da_gema} 
+
+Agora que realizamos a \emph{engenharia reversa} da \emph{gema}, podemos analisar algumas de suas 
+características que serão listadas e explicadas logo a seguir.
+
+\begin{itemize}
+
+ \item Apesar do ‘‘\emph{GMaps}'' ser a classe principal da gema, ela não é a mais
+ importante, pois todas as funcionalidades da gema são controladas pela classe
+ ‘‘\emph{Hanlder}''. A única funcionalidade da classe ‘‘\emph{GMaps}'' é fazer a chamada
+ para a criação de ‘‘\emph{Handler}'', ou seja quando se requisita o método 
+ ‘‘\emph{GMaps.build('Google')}'' o método verifica se o objeto ‘‘\emph{Handler}'' já
+ existe, e caso ele não exista, o ‘‘\emph{GMaps}'' faz a criação chamando o método 
+ ‘‘\emph{new Gmaps.Objects.Handler(type, options)}''.
+
+ \item ‘‘\emph{Hander}'' é a classe que controla todo o funcionamento da gema e 
+ basicamente ela possui dois momentos:
+ 
+  \subitem - No primeiro momento ela prepara a estrutura da \emph{gema} para criação e manipulação
+  do mapa, criando e setando os objetos de configuração, como por exemplo criando o \emph{objeto}
+  ‘‘\emph{Primitives}''.
+  
+  \subitem - No segundo momento ela cria o mapa com as configurações e permite a manipulação do mapa, 
+  possibilitando a criação e inserção de sobreposições como \emph{circles} e \emph{polylines}.
+ 
+ \item A classe ‘‘\emph{Primitives}'' possui as definições que são comuns na gema, 
+ como por exemplo, é ela possui a definição do tipo ‘‘\emph{Marker: google.maps.Marker}'' que 
+ é a classe \emph{Marker} do \emph{Google Maps}.
+ 
+ \item O atributo ‘‘\emph{serviceObject}'' de todas as classes de 
+ ‘‘\emph{Builders}'' do ‘‘\emph{Google}'', representam o atributo que recebe o objeto do 
+ \emph{Google Maps}.
+ 
+\end{itemize}
+ 
+\subsubsection{Adaptações}
+\label{adaptações}
+
+Agora que temos uma abstração de alto nível para a gema \emph{Google-Maps-For-Rails} podemos partir para a 
+adaptação dela, ou seja, agora que temos alguns diagramas que nos auxiliam a visualizar o funcionamento 
+geral da gema, podemos tentar acrescentar novas funcionalidades, analisando os locais das possíveis 
+modificações e os impactos que essas mudanças podem causar. 
+
+A gema já possuí sobreposições como \emph{markers} e \emph{circles}, mas até o momento não possuí a 
+funcinalidade de criar direções entre um ponto de origem e um ponto de destino. Contudo a ideia é criar 
+uma funcionalidade que receba como parâmetro um local de origem e um local de destino e retorne como
+resultado uma sequência de ruas e direções a serem seguidas para ir do local de origem ao local de destino.
+
+Para realizarmos essa modificação foi necessário consultar a \emph{API} do 
+\emph{\href{https://developers.google.com/maps/documentation/javascript/directions}{Direction Service}} 
+\footnote{Direction Service: \url{https://developers.google.com/maps/documentation/javascript/directions}}
+(\emph{Serviço de Direção}) do \emph{Google}, onde verificamos que seria necessário o uso de pelo menos
+quatro \emph{classes} que serão listadas e explicadas logo a seguir:
+
+\begin{itemize}
+
+ \item ‘‘\emph{DirectionService}'' (\emph{google.maps.DirectionsService}) que é a classe que tem o 
+ objetivo de requisitar e receber o caminho entre o local de origem e o local de destino.
+ 
+ \item ‘‘\emph{DirectionRender}'' (\emph{google.maps.DirectionsRenderer}) que é a classe que tem o 
+ objetivo de rederizar no mapa o caminho entre o local de origem e o local de destino.
+ 
+ \item ‘‘\emph{TravelMode}'' (\emph{google.maps.TravelMode}) que é a classe que tem o objetivo de 
+ informar a forma como esse caminho deve ser percorrido, que pode ser caminhando (walking), de carro 
+ (driving), bicicleta (bicycling) e/ou por meios de locomoção públicos (transit).
+ 
+ \item ‘‘\emph{DirectionsStatus}'' (\emph{google.maps.DirectionsStatus}) que é a classe que tem o
+ objetivo de informar o \emph{status} da requisição feita pela objeto da classe
+ ‘‘\emph{DirectionService}''.
+ 
+\end{itemize}
+
+Sabendo da necessidade da inclusão de ‘‘\emph{DirectionService}'', ‘‘\emph{DirectionRender}'',
+‘‘\emph{TravelMode}'' e ‘‘\emph{DirectionsStatus}'', decidimos que a primeira modificação na gema seria 
+incluir estas quatros classe nas definições da classe ‘‘\emph{Primitives}''. E isso foi 
+feita da seguinte forma como apresentado no código ‘‘Código 
+\ref{lst:classe_primitives_com_atributos_de_directions} - Classe Primitives com atributo de Directions'' 
+logo abaixo.
+
+\lstinputlisting[ style=customCoffee, caption={Classe Primitives com atributo de Directions}, label={lst:classe_primitives_com_atributos_de_directions}]
+{codigos/classe_primitives_com_atributos_de_directions.coffee}
+
+\begin{figure}[ht]
+  \includegraphics[scale=0.48]{images/novo_diagrama_de_heranca_google_maps_for_rails.png}
+  \caption{Novo Diagrama de Herança Google-Maps-For-Rails}
+  \label{fig:novo_diagrama_de_heranca_google_maps_for_rails}
+\end{figure}
+
+Em seguida criamos quatro \emph{classes} para o ‘‘\emph{Google}'', sendo que duas são ‘‘\emph{Builders}'' de 
+‘‘\emph{DirectionService}'' e ‘‘\emph{DirectionRender}'', e as outras duas são ‘‘\emph{Objects}'' também das 
+classes ‘‘\emph{DirectionService}'' e ‘‘\emph{DirectionRender}''. Para facilitar a compreensão, elaboramos o 
+diagrama representado na imagem ‘‘Figure \ref{fig:novo_diagrama_de_heranca_google_maps_for_rails} - Novo 
+Diagrama de HrançaGoogle-Maps-For-Rails'' para mostrar o local aonde inserimos as classes e quais as 
+dependências que elas possuem. No caso este diagrama é o mesmo diagrama de herança que desenvolvemos na 
+\emph{engenharia reversa}, mostrado na imagem ‘‘Figure \ref{fig:diagrama_de_heranca_google_maps_for_rails} - 
+Diagrama de Herança Google-Maps-For-Rails'', com a adição das quatro classes que são representadas 
+por retângulos tracejados.
+
+Agora que acrescentamos estas quatro classes na gema adaptada, devemos adicionar no ‘‘\emph{Handler}'', 
+novas funções para maminpular essas classes. E neste caso inserimos as funçãoes ‘‘\emph{addDirection()}'' e 
+‘‘\emph{calculate\_route()}'' que podem ser vistas no código ‘‘Código 
+\ref{lst:funcoes_adicionais_do_handler} - Funções adicionais do Handler'' que será explicado logo a seguir.
+
+\begin{itemize}
+
+ \item Na linha ‘‘2'' é adicionado a função ‘‘\emph{addDirection}'' que recebe como parâmetro 
+ ‘‘\emph{direction\_data}'', que possui o informações do local de origem e local de destino que são 
+ obrigatórios para criar a direção, e ‘‘\emph{provider\_options}'' que pode conter as opções da forma
+ como esse direção deve ser gerada. Essa função tem por objetivo criar as direções e colocá-las no mapas.
+ 
+ \item Na linha ‘‘13'' é adicionado a função ‘‘\emph{calculate\_route}'' com o parâmetro 
+ ‘‘\emph{direction\_data}'' que tem por principal objtivo fazer a requisição para o \emph{Google } de uma 
+ possível direção entre o local de origem ao local de destino.
+ 
+ \item Da linha ‘‘3'' a linha ‘‘10'' é o conteúdo da função ‘‘\emph{addDirection}'', onde se cria os
+ atributos ‘‘\emph{direction\_service}'' e ‘‘\emph{direction\_render}'' para o ‘‘\emph{Handler}'', e
+ para cada um deles é atribuido o seu respectivo objeto do \emph{Google Maps} com a chamada da função 
+ ‘‘\emph{@\_builder(...)}''. Depois é feito a chamada da função ‘‘\emph{calulate\_route(...)}''
+ para encontrar uma possível direção e finalmente com o código 
+ ‘‘\emph{@direction\_render.getServiceObject().setMap(@getMap())}'' a direção encontrada é colocado 
+ no mapa.
+ 
+ \item Da linha ‘‘13'' a linha ‘‘20'' é o conteúdo da função ‘‘\emph{calculate\_route(...)}'', onde 
+ inicialmente é colocado em uma variável local o \emph{status Ok} de requisição que será utilizado
+ para verificar se a requisição de direção foi feita com sucesso, e também é criada uma variável local 
+ para o \emph{objeto DirectionRender} do \emph{Google Maps}. Em seguida através da chamada da função 
+ ‘‘\emph{route(...)}'' do \emph{objeto DirectionService} que passa como parâmetro o local de origem e
+ o local de destino e recebe como resposta o \emph{status} da requisição e o \emph{response} que pode
+ conter o caminho solução. Após a execução desta função é feita a verificação da resposta, e caso 
+ ela venha como o \emph{status Ok} o \emph{objeto DirectionRender} recebe o caminho solução.
+ 
+\end{itemize}
+
+\lstinputlisting[ style=customCoffee, caption={Funções adicionais do Handler}, label={lst:funcoes_adicionais_do_handler}]
+{codigos/funcoes_adicionais_do_handler.coffee}
+
+\subsubsection{Exemplo de uso de Google-Maps-for-Rails}
+\label{subsubsection:exemplo_de_uso_de_google-maps-for-rails}
+
+Como exemplo de uso da gema ‘‘\emph{Google-Maps-for-Rails}'' adaptada criamos o projeto 
+‘‘\emph{\href{https://github.com/toshikomura/DiseasesMap}{DiseasesMap}}'' 
+\footnote{DiseasesMap : \url{https://github.com/toshikomura/DiseasesMap}} que tem como objetivo representar 
+a frequência de doenças no mapa do \emph{Google} utilizando sobreposições. Até o momento de término deste
+trabalho essa função ainda não havia sido implementada, mas fizemos o uso da funcionalidade de direções.
+
+Inicialmente fizemos a instalção e inclusão da gema adaptada no arquivo \emph{Gemfile} do projeto. Depois 
+criamos uma estrutura básica de \emph{model/view/controller} de ‘‘\emph{locations}''. 
+
+Em seguida para fazer o uso da função de direções utilizamos o código‘‘Código 
+\ref{lst:exemplo_coffeescript_que_cria_mapa_com_direcao} - Exemplo CoffeeScript que Cria Mapa com 
+Direção'' explicado logo abaixo.
+
+\lstinputlisting[ style=customCoffee, caption={Exemplo CoffeeScript que Cria Mapa com Direção}, label={lst:exemplo_coffeescript_que_cria_mapa_com_direcao}]
+{codigos/DiseasesMap/app/assets/javascripts/locations.js.coffee}
+
+\begin{itemize}
+
+ \item Na linha ‘‘6'' é feita a preparação da estrtura de configuração do mapa com a chamada 
+ ‘‘\emph{GMaps.build('Google')}'', sendo feita a criação do \emph{objeto Handler}, que é atribuida a 
+ variável local ‘‘\emph{handler}'', juntamente com as outras configurações básicas que o mapa necessita.
+ 
+ \item Na linha ‘‘7'' é feita a chamada de ‘‘\emph{handler.buildMap(...)}'' que tem como função fazer a 
+ criação do mapa a parir das configurações básicas já definidas quando foi feita a chamada de 
+ ‘‘\emph{GMaps.build('Google')}''. São passados como parâmetros as variáveis, ‘‘\emph{provider}''
+ que neste caso está vazio, e internal que define o ‘‘\emph{id}'' do mapa como ‘‘\emph{map}'', neste caso
+ o ‘‘\emph{id}'' serve para identificar o mapa a ser modificado.
+ 
+ \item Na linha ‘‘11'' é criado uma \emph{function} determinada pelo símbolo ‘‘->'', onde ela somente será 
+ executada depois que a função ‘‘\emph{handler.buildMap(...)}'' terminar, ou seja, quando toda a criação do mapa for 
+ concluída. Neste caso essa função executa as seguintes operações:
+ 
+  \subitem Na linha ‘‘12'' é feita a criação de um \emph{marker} com a chamada da função 
+  ‘‘\emph{handler.addMarker(...)}'', sendo passado como parâmetro, a sua posição que no caso é (0,0) 
+  definido ‘‘\emph{lat}'' e ‘‘\emph{lng}'', a sua imagem definida por ‘‘\emph{picture}'', e sua informação 
+  definido por ‘‘\emph{infowindow}''.
+ 
+  \subitem Na linha ‘‘22'' é feita a extensão de fronteiras incluindo o novo \emph{marker} com a chamada 
+  da função ‘‘\emph{handler.bounds.extendWith(...)}'', sendo passado como parâmetro o \emph{marker} criado
+  anteriormente.
+ 
+  \subitem Na linha ‘‘23'' é feita a criação de direções com a chamada da função 
+  ‘‘\emph{handler.addDirection(...)}''que incluimos no ‘‘\emph{Handler}'', sendo passado como parâmetro, um 
+  local de origem definido por ‘‘\emph{ origin: ‘‘São Paulo''} '', e um local de destino definido por 
+  ‘‘\emph{destination: ‘‘Curitiba''} ''.
+ 
+\end{itemize}
+
+E para mostrar o mapa na view de ‘‘\emph{locations}'' adicionamos o código mostrado em ‘‘Código 
+\ref{lst:exemplo_locations_view_que_cria_mapa_com_direcao} - Exemplo Locations view que Cria Mapa com Direção'' 
+que é parte do código da \emph{view}, explicado logo a seguir.
+
+\lstinputlisting[ style=customRubyHTML, caption={Exemplo Locations view que Cria Mapa com Direção}, label={lst:exemplo_locations_view_que_cria_mapa_com_direcao}]
+{codigos/index_simplificado.html.erb}
+
+\begin{itemize}
+
+ \item Na linha ‘‘1'' com a \emph{tag} \emph{<h1>...</h1>} é definido como título principal da \emph{view} o
+ texto ‘‘\emph{Listining locations}''.
+ 
+ \item Os ‘‘\emph{...}'' indica que existe código, mas por simplificação na explicação, ele não fo mostrado.
+ 
+ \item Da linha ‘‘3'' a ‘‘5'' é definido uma \emph{div} com ‘‘800px'' de largura, e dentro dessa \emph{div}
+ é definido o local para a criação do mapa com ‘‘800px'' de largura e ‘‘400px'' de altura. No caso o local 
+ de criação do mapa é referênciado pelo atributo \emph{id} que o mesmo \emph{id} utilizado no código 
+ ‘‘Código \ref{lst:exemplo_coffeescript_que_cria_mapa_com_direcao} - Exemplo CoffeeScript que Cria Mapa com 
+ Direção'' na linha ‘‘10''.  
+ 
+\end{itemize}
+
+Como resultado ao se acessar o \emph{index} de locations obtemos como resultado a imagem ‘‘Figure 
+\ref{fig:caminho_entre_sao_paulo_e_curitiba} - Caminho entre São Paulo e Curitiba''. Neste caso a
+nossa gema adaptada com a nova funcionalidade de direções funcionou corretamente, pois o caminho
+mostrado é entre ‘‘São Paulo'' e ‘‘Curitiba'' como requisitamos na linha ‘‘24'' do código ‘‘Código 
+\ref{lst:exemplo_coffeescript_que_cria_mapa_com_direcao} - Exemplo CoffeeScript que Cria Mapa com Direção''.
+
+ \begin{figure}[ht]
+  \includegraphics[scale=0.44]{images/caminho_entre_sao_paulo_e_curitiba.png}
+  \caption{Caminho entre São Paulo e Curitiba}
+  \label{fig:caminho_entre_sao_paulo_e_curitiba}
+\end{figure}
