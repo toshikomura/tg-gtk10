@@ -1,0 +1,88 @@
+Para seguir com este trabalho, será necessário a instalação de alguns softwares para que se possa realizar
+o passo-a-passo de como criar ou adaptar uma \emph{gema} do \emph{Ruby}.
+Inicialmente por comodidade utilizaremos o sistema operacional 
+\emph{\href{http://releases.ubuntu.com/12.04/}{Ubuntu 12.04 LTS}}, pois a comunidade prometeu manter essa 
+versão por pelo menos 5 anos, com o 
+\emph{\href{https://www.ruby-lang.org/en/downloads/}{Ruby 1.9.3p547 (2014-05-14 revision 45962) [i686-linux]}} 
+que era a versão mais recente do \emph{Ruby} no momento de inicio desse trabalho, e o 
+\emph{\href{http://rubyonrails.org/download/}{Rails 3.2.12}} que era uma versão que já tinhamos experiência
+trabalhando no projeto \emph{\href{http://agendador.c3sl.ufpr.br/}{Agendador}}.
+
+Primeiramente deve-se instalar o \emph{Ubuntu 12.04} no 
+\emph{\href{https://my.vmware.com/web/vmware/free\#desktop_end_user_computing/vmware_player/}{VMware® Player}}, 
+e no nosso caso foi utilizado o \emph{VMware Player 6.0.3 build-1895310}. Após a instalação do \emph{Ubuntu}
+deve-se logar no \emph{Ubuntu}, acessar um \emph{terminal}, e fazer a isntalação do 
+\emph{\href{https://github.com/wayneeseguin/rvm}{RVM 1.25.28}} com os seguinte comandos no código 
+‘‘Código \ref{lst:instala_rvm} - Instala RVM'' que serão explicados logo a seguir:
+ 
+ \lstinputlisting[ style=customBash, caption={Instala RVM}, label={lst:instala_rvm}]
+ {codigos/install_rvm.sh}
+ 
+\begin{itemize}
+
+\item O comando ‘‘\emph{sudo -i}'' na linha ‘‘2'' é necessário para acessar o usuário root, pois 
+  para instalar os outros \emph{softwares} é preciso ser um administrador do sistema.
+  
+  \item O comando ‘‘\emph{apt-get install curl}'' na linha ‘‘6'' é necessário pois o script de 
+  instalação do \emph{RVM} depende do \emph{curl} para executar corretamente.
+  
+  \item O comando ‘‘\emph{wget https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer}'' 
+  na linha ‘‘9'' é necessário para baixar o script (‘‘\emph{rvm-installer}'') de instalação do \emph{RVM}.
+  
+  \item O comando ‘‘\emph{bash rvm-installer}'' na linha ‘‘12'' é necessário para instalar o \emph{RVM}.
+  
+\end{itemize}
+
+Ao terminar de instalar o \emph{RVM} deve-se fazer a instalação do \emph{Ruby} que pode ser feita com a 
+sequência de comandos do código ‘‘Código \ref{lst:instala_ruby} - Instala Ruby'', onde cada comando será 
+explicado logo em seguida:
+ 
+\lstinputlisting[ style=customBash, caption={Instala Ruby}, label={lst:instala_ruby}]{codigos/install_ruby.sh}
+ 
+\begin{itemize}
+
+ \item O comando ‘‘\emph{ource "/usr/local/rvm/scripts/rvm"}'' serve para carregar o código do \emph{RVM}.
+ 
+ \item O comando ‘‘\emph{rvm requirements}'' serve para instalar as dependências do \emph{RVM} caso elas 
+ ainda não estejam instaladas.
+ 
+ \item O comando ‘‘\emph{rvm install 1.9.3}'' serve para fazer a instalação do \emph{Ruby} versão 1.9.3.
+ 
+ \item O comando ‘‘\emph{rvm --default use 1.9.3}'' serve para informar o \emph{RVM} para usar o \emph{Ruby}
+ 1.9.3 como default. Essa é uma medida preventiva, pois podem existir outras versões do \emph{Ruby} instaldas.
+ 
+ \item O comando ‘‘\emph{rvm use 1.9.3}'' serve para informar o \emph{RVM} para usar o \emph{Ruby} 1.9.3.
+ 
+\end{itemize}
+
+  
+Tammbém pode-se configurar as variáveis de ambiente do \emph{RVM} para não precisar a todo momento executar
+o comando ‘‘ source "/usr/local/rvm/scripts/rvm" '', e isso pode ser feito executando o seguinte código
+‘‘Código \ref{lst:configura_variavel_rvm} - Configura Variáveis RVM'' que é exibilido e explicado logo abaixo:
+ 
+\lstinputlisting[ style=customBash, caption={Configura Variáveis RVM}, label={lst:configura_variavel_rvm}]
+{codigos/configura_variavel_rvm.sh}
+ 
+\begin{itemize}
+
+  \item O comando ‘‘\emph{echo '...' >> $\sim$/.bashrc }'' pega todo o código, aqui representado por ‘‘...'' 
+  e insere no final do arquivo ‘‘$\sim$/.bashrc''. Uma alternativa seria somente copiar o código dentro do 
+  ‘‘\emph{echo}'' e colar no final do arquivo ‘‘$\sim$/.bashrc''.
+  
+\end{itemize}
+
+E depois da execução de todas essa instalações, ainda devemos instalar as gemas essências, ‘‘\emph{rails}'' 
+e ‘‘\emph{bundle}'', executando os seguintes comandos no código 
+‘‘Código \ref{lst:install_essentials_gems} - Instala Gemas Essênciais'' explicado logo a seguir:
+ 
+\lstinputlisting[ style=customBash, caption={Instala Gemas Essênciais}, label={lst:install_essentials_gems}]
+{codigos/install_essentials_gems.sh}
+
+\begin{itemize}
+
+ \item O comando ‘‘ \emph{gem install rails --version ‘3.2.12'} '' faz a instalação da gema \emph{rails}
+ versão \emph{3.2.12}.
+ 
+ \item O comando ‘‘\emph{gem install bundle}'' faz a instalação da gema \emph{bundle}.
+ 
+\end{itemize}

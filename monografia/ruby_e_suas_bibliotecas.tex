@@ -1,49 +1,49 @@
-Neste capitulo iremos apresentar alguns conceitos da linguagem \emph{Ruby} na seção \ref{ruby}, 
-depois vamos falar um pouco de sua história na seção \ref{história_ruby}, também vamos ver 
-a importância de uma \emph{API} na seção \ref{API}, em seguida vamos apresentar alguns conceitos 
-de bibliotecas do \emph{Ruby} na seção \ref{bibliotecas_do_ruby}, e no fim vamos falar um pouco 
+Neste capitulo iremos apresentar alguns conceitos da linguagem \emph{Ruby} na seção \ref{ruby},
+depois vamos falar um pouco de sua história na seção \ref{história_ruby}, também vamos ver
+a importância de uma \emph{API} na seção \ref{API}, em seguida vamos apresentar alguns conceitos
+de bibliotecas do \emph{Ruby} na seção \ref{bibliotecas_do_ruby}, e no fim vamos falar um pouco
 sobre segurança de bibliotecas do \emph{Ruby} na seção \ref{segurança_ruby}.
 
 \section{Ruby}
 \label{ruby}
 
-\emph{\href{https://www.ruby-lang.org/en/}{Ruby}} é uma linguagem de programação 
-dinâmica de código aberto com foco na simplicidade e produtividade, tem uma sintaxe elegante, é natural de 
+\emph{\href{https://www.ruby-lang.org/en/}{Ruby}} é uma linguagem de programação
+dinâmica de código aberto com foco na simplicidade e produtividade, tem uma sintaxe elegante, é natural de
 ler e escrever, e foi inventada por \emph{ \href{http://www.rubyist.net/~matz/}{Yukihiro ‘‘Matz'' Matsumoto}}
 \footnote{Yukihiro ‘‘Matz'' Matsumoto: \url{http://www.rubyist.net/~matz/}}
-que tentou cuidadosamente criar uam linguagem balaceanda, misturando as suas linguagens favoritas 
-( \emph{Perl}, \emph{Smalltalk}, \emph{Eiffel}, \emph{Ada}, e \emph{Lisp}) [\citeonline{ruby_site}]. 
+que tentou cuidadosamente criar uam linguagem balaceanda, misturando as suas linguagens favoritas
+( \emph{Perl}, \emph{Smalltalk}, \emph{Eiffel}, \emph{Ada}, e \emph{Lisp}) [\citeonline{ruby_site}].
 
-\emph{{Yukihiro ‘‘Matz'' Matsumoto}} sempre enfativa que ele estava ‘‘tentando fazer o \emph{Ruby} natural, não simples'' e também com toda a 
-sua experiência acrescenta que ‘‘\emph{Ruby} é simples na aparência, mas é muito complexo internamente, assim 
-como o corpo humano.''. \emph{‘‘Matz''} também relembra que procurava uma linguagem de script que fosse mais 
-poderosa que \emph{Perl} e mais orientada a objeto do que \emph{Python}, tentando encontrar a 
-sintaxe ideal nas outras linguagens [\citeonline{matz_ruby_talk_main_list}] [\citeonline{matz_often_sya_of_ruby}]. 
+\emph{{Yukihiro ‘‘Matz'' Matsumoto}} sempre enfativa que ele estava ‘‘tentando fazer o \emph{Ruby} natural, não simples'' e também com toda a
+sua experiência acrescenta que ‘‘\emph{Ruby} é simples na aparência, mas é muito complexo internamente, assim
+como o corpo humano.''. \emph{‘‘Matz''} também relembra que procurava uma linguagem de script que fosse mais
+poderosa que \emph{Perl} e mais orientada a objeto do que \emph{Python}, tentando encontrar a
+sintaxe ideal nas outras linguagens [\citeonline{matz_ruby_talk_main_list}] [\citeonline{matz_often_sya_of_ruby}].
 
-Em muitas linguagens números e outros tipos primitivos não são \emph{objetos}, no entanto no \emph{Ruby} 
-cada pedaço de informação possui propiedades e ações, ou seja, tudo é \emph{objeto}, Neste caso o 
-\emph{Ruby} possui esse tipo de característica, pois ele seguiu a influência do \emph{SmallTalk}, onde 
+Em muitas linguagens números e outros tipos primitivos não são \emph{objetos}, no entanto no \emph{Ruby}
+cada pedaço de informação possui propiedades e ações, ou seja, tudo é \emph{objeto}, Neste caso o
+\emph{Ruby} possui esse tipo de característica, pois ele seguiu a influência do \emph{SmallTalk}, onde
 todos seus tipos, inclusive os mais primitivos como inteiros e booleanos são objetos.
 
-Logo abaixo no código \emph{Ruby} ‘‘\ref{lst:objeto_ruby} - Tudo é objeto para o Ruby'' segue um 
-exemplo onde construimos um \emph{método} ‘‘tipo'' para o \emph{objeto} inteiro ‘‘5''. Suponde que se 
+Logo abaixo no código \emph{Ruby} ‘‘\ref{lst:objeto_ruby} - Tudo é objeto para o Ruby'' segue um
+exemplo onde construimos um \emph{método} ‘‘tipo'' para o \emph{objeto} inteiro ‘‘5''. Suponde que se
 requisite o \emph{método} ‘‘\emph{5.tipo}'' o retorno seria ‘‘\emph{Tipo inteiro}''.
 
 \lstinputlisting[ style=customRuby, caption={Tudo é objeto para o Ruby}, label={lst:objeto_ruby}]
 {codigos/objeto_ruby.rb}
 
-O \emph{Ruby} também é flexível, pois possibilita remover ou redefinir seu própio \emph{core}, por 
-exemplo no código ‘‘\ref{lst:ruby_flexivel} - Ruby Flexível'' acrescentamos na \emph{classe ‘‘Numeric''} 
-o \emph{método} ‘‘vezes()'' que possui a mesma característica do operador ‘‘*''. Ao se fazer a execução 
+O \emph{Ruby} também é flexível, pois possibilita remover ou redefinir seu própio \emph{core}, por
+exemplo no código ‘‘\ref{lst:ruby_flexivel} - Ruby Flexível'' acrescentamos na \emph{classe ‘‘Numeric''}
+o \emph{método} ‘‘vezes()'' que possui a mesma característica do operador ‘‘*''. Ao se fazer a execução
 deste código a variável ‘‘y'' recebe o valor ‘‘10'' como resultado da operação ‘‘5.vezes 2''.
 
 \lstinputlisting[ style=customRuby, caption={Ruby flexível}, label={lst:ruby_flexivel}]
 {codigos/ruby_flexivel.rb}
 
-Apesar de ser flexível esta linguagem possui algumas convenções com por exemplo no código 
-‘‘\ref{lst:convencao_ruby} - Convenção Ruby'', a definição de ‘‘var'' ou qualquer outro nome de 
-variável dependendo do contexto sozinha deve ser uma variável local, ‘‘@var'' deve ser uma instância 
-de uma variável por causa do caracter ‘‘@'' como primeiro caracter e ‘‘\$var'' deve ser uma variável global 
+Apesar de ser flexível esta linguagem possui algumas convenções com por exemplo no código
+‘‘\ref{lst:convencao_ruby} - Convenção Ruby'', a definição de ‘‘var'' ou qualquer outro nome de
+variável dependendo do contexto sozinha deve ser uma variável local, ‘‘@var'' deve ser uma instância
+de uma variável por causa do caracter ‘‘@'' como primeiro caracter e ‘‘\$var'' deve ser uma variável global
 por causa do caracter ‘‘\$'' como primeiro caracter.
 
 \lstinputlisting[ style=customRuby, caption={Convenção Ruby}, label={lst:convencao_ruby}]
@@ -52,43 +52,43 @@ por causa do caracter ‘‘\$'' como primeiro caracter.
 \section{História}
 \label{história_ruby}
 
-O \emph{Ruby} foi criado em 24 de fevereiro de 1993 e o com o passar do tempo foi ganhando espaço na 
-comunidade de desenvolvedores, chegando em 2006 a ter uma grande massa de aceitação, possuindo várias 
+O \emph{Ruby} foi criado em 24 de fevereiro de 1993 e o com o passar do tempo foi ganhando espaço na
+comunidade de desenvolvedores, chegando em 2006 a ter uma grande massa de aceitação, possuindo várias
 conferências de grupos de usuários ativos pelas principais cidades do mundo [\citeonline{ruby_site}].
 
-O nome \emph{Ruby} veio a partir de uma conversa de chat entre \emph{Matsumoto} e \emph{Keiju Ishitsuka}, 
-antes mesmo de qualquer linha de código ser escrita. Inicialmente dois nomes foram propostos ‘‘\emph{Coral}'' 
-e ‘‘\emph{Ruby}''. \emph{Matsumoto} escolheu o segundo em um e-mail mais tarde. E depois de um tempo, após 
-já ter escolhido o nome, ele percebeu no fato de que \emph{Ruby} era o nome da \emph{birthstone} (pedra 
+O nome \emph{Ruby} veio a partir de uma conversa de chat entre \emph{Matsumoto} e \emph{Keiju Ishitsuka},
+antes mesmo de qualquer linha de código ser escrita. Inicialmente dois nomes foram propostos ‘‘\emph{Coral}''
+e ‘‘\emph{Ruby}''. \emph{Matsumoto} escolheu o segundo em um e-mail mais tarde. E depois de um tempo, após
+já ter escolhido o nome, ele percebeu no fato de que \emph{Ruby} era o nome da \emph{birthstone} (pedra
 preciosa que simboliza o mês de nascimento) de um de seus colegas.
 
-Sua primeira versão foi anunciada em 21 de dezembro de 1995 na ‘‘\emph{Japanese domestic newsgroups}''. 
+Sua primeira versão foi anunciada em 21 de dezembro de 1995 na ‘‘\emph{Japanese domestic newsgroups}''.
 Subsequêncialmente em dois dias foram lançadas mais três versões juntamente com a
 ‘‘\emph{Japanese-Language ruby-list main-list}'' (\emph{RubyTalk}).
 
-\emph{Ruby-Talk} \footnote{Ruby-Talk: \url{https://www.ruby-forum.com/}} a primeira \emph{lista de 
-discussão da Ruby} \footnote{Listas de discussões do Ruby: 
+\emph{Ruby-Talk} \footnote{Ruby-Talk: \url{https://www.ruby-forum.com/}} a primeira \emph{lista de
+discussão da Ruby} \footnote{Listas de discussões do Ruby:
 \url{https://www.ruby-lang.org/en/community/mailing-lists/}} chegou a possuir em média 200 mensagens por dia
-em 2006. E com o passar dos útlimos anos, essa média veio a cair, pois o crescimento da comunidade 
+em 2006. E com o passar dos útlimos anos, essa média veio a cair, pois o crescimento da comunidade
 obrigou a criação de grupos especificos, empurrando os usuários da lista principal para as lista específica.
 
 
 \section{API}
 \label{API}
 
-Uma \emph{Application Programming Interface (API)} possui como principal função definir de forma simplificada 
-o acesso as funcinalidades de um certo componente, informando ao usuário somente para que serve cada função 
-e como usá-la, indicando os parâmetros de entrada e saída com os seus respectivos tipos. 
+Uma \emph{Application Programming Interface (API)} possui como principal função definir de forma simplificada
+o acesso as funcinalidades de um certo componente, informando ao usuário somente para que serve cada função
+e como usá-la, indicando os parâmetros de entrada e saída com os seus respectivos tipos.
 
-Basicmante uma \emph{API} diminui a complexidade para o seu usuário. Por exemplo por analogia a \emph{API} 
-de um elevador seria o seu painel, e a entrada seria o andar que se deseja ir. Desta forma supondo que 
-um usuário deseja ir do segundo para o décimo andar, bastaria ele apertar o botão para chamar o 
-elevador. Depois quando o elevador chegasse bastaria ele entrar e apertar o botão (10), e mesmo sem ter 
+Basicmante uma \emph{API} diminui a complexidade para o seu usuário. Por exemplo por analogia a \emph{API}
+de um elevador seria o seu painel, e a entrada seria o andar que se deseja ir. Desta forma supondo que
+um usuário deseja ir do segundo para o décimo andar, bastaria ele apertar o botão para chamar o
+elevador. Depois quando o elevador chegasse bastaria ele entrar e apertar o botão (10), e mesmo sem ter
 nenhum conhecimento mecânico do elevador, ele conseguiria obter como saída o décimo andar.
 
 A \emph{API} do \emph{Ruby} não é diferente, ou seja, não é necessário que se tenha
-conhecimento do funcionamento do \emph{core} do \emph{Ruby} 
-\footnote{ Core do Ruby: \url{http://www.ruby-doc.org/core-2.1.3/}}, basta saber para que 
+conhecimento do funcionamento do \emph{core} do \emph{Ruby}
+\footnote{ Core do Ruby: \url{http://www.ruby-doc.org/core-2.1.3/}}, basta saber para que
 serve cada uma de suas funções disponibilizadas, seus parâmetro de entrada e saída com seus respectivos tipos.
 
 \section{Bibliotecas do Ruby}
@@ -96,69 +96,69 @@ serve cada uma de suas funções disponibilizadas, seus parâmetro de entrada e 
 
 Assim como muitas linguagens como por exemplo \emph{C}, \emph{C++}, \emph{Java}, \emph{Python} e muitas
 outras, o \emph{Ruby} também possui um vasto conjunto de bibliotecas de terceiros, sendo que a maior parte
-delas é distribuída na forma de \emph{gem}, e o menor número de bibliotecas são lançadas como arquivos 
-compactados em ‘‘.zip'' ou ‘‘.tar.gz'' onde seu processo de instalação geralmente é feito por meio de 
+delas é distribuída na forma de \emph{gem}, e o menor número de bibliotecas são lançadas como arquivos
+compactados em ‘‘.zip'' ou ‘‘.tar.gz'' onde seu processo de instalação geralmente é feito por meio de
 arquivos de ‘‘README'' ou ‘‘INSTALL'' que possuem instruções de instalação [\citeonline{libraries_ruby}].
 
 \subsection{O programa gem}
 \label{subsection:gem}
 
-O \emph{\href{https://rubygems.org/}{gem}} \footnote{gem: \url{https://rubygems.org/}} (RubyGems) é um sistema 
-de pacotes do \emph{Ruby} desenvolvido para facilitar a criação, o compartilhamento e a instalação de 
+O \emph{\href{https://rubygems.org/}{gem}} \footnote{gem: \url{https://rubygems.org/}} (RubyGems) é um sistema
+de pacotes do \emph{Ruby} desenvolvido para facilitar a criação, o compartilhamento e a instalação de
 bibliotecas. O \emph{gem} possui características sinilares ao sistema de distruição de pacotes
-\emph{\href{https://packages.qa.debian.org/a/apt.html}{apt-get}}, no entanto ao invés de fazer a distribuição 
-de pacotes para \emph{\href{https://www.debian.org/}{Debian GNU/Linux distribution}} e seus variantes, ele faz 
+\emph{\href{https://packages.qa.debian.org/a/apt.html}{apt-get}}, no entanto ao invés de fazer a distribuição
+de pacotes para \emph{\href{https://www.debian.org/}{Debian GNU/Linux distribution}} e seus variantes, ele faz
 a distribuição de pacotes \emph{Ruby} [\citeonline{libraries_ruby}].
 
 O projeto do \emph{RubyGems} foi criado em abril de 2009 por \emph{\href{https://twitter.com/qrush}{Nick Quaranto}}
-\footnote{Nick Quaranto: \url{https://twitter.com/qrush}} e com o tempo cresceu atingindo mais de 115 
-\emph{Rubyistis} e milhões de gemas baixadas. Até a versão ‘‘\emph{1.3.6}'' o \emph{RubyGems} possuía o nome 
-\emph{Gemcutter}, sendo renomaeda a partir desta versão para \emph{RubyGems} com o objetivo de 
+\footnote{Nick Quaranto: \url{https://twitter.com/qrush}} e com o tempo cresceu atingindo mais de 115
+\emph{Rubyistis} e milhões de gemas baixadas. Até a versão ‘‘\emph{1.3.6}'' o \emph{RubyGems} possuía o nome
+\emph{Gemcutter}, sendo renomaeda a partir desta versão para \emph{RubyGems} com o objetivo de
 solidificar o papel central do site na comunidade do \emph{Ruby} [\citeonline{about_rubygems}].
 
-A instalação do \emph{gem} pode ser feita pelo terminar executando ‘‘\emph{sudo apt-get install gem}'' com 
-privilégios de administrador ou acessando \url{https://rubygems.org/pages/download/} e baixando a última 
-versão do \emph{RubyGems}. Para o caso de baixar a instalação, depois deve-se descompactar o pacote, entrar 
-no diretório e executar ‘‘\emph{ruby setup.rb}'' com privilégios de administrador. 
+A instalação do \emph{gem} pode ser feita pelo terminar executando ‘‘\emph{sudo apt-get install gem}'' com
+privilégios de administrador ou acessando \url{https://rubygems.org/pages/download/} e baixando a última
+versão do \emph{RubyGems}. Para o caso de baixar a instalação, depois deve-se descompactar o pacote, entrar
+no diretório e executar ‘‘\emph{ruby setup.rb}'' com privilégios de administrador.
 
-Caso haja uma versão do \emph{gem} instalada, pode-se fazer a atualização para a última versão executando 
-‘‘\emph{gem update --system}'', nesse caso também é necessário possuir privilégios de administrador. 
+Caso haja uma versão do \emph{gem} instalada, pode-se fazer a atualização para a última versão executando
+‘‘\emph{gem update --system}'', nesse caso também é necessário possuir privilégios de administrador.
 
-Se ocorrer algum problema no momento de instalação, no momento de atualização ou necessitar de mais 
+Se ocorrer algum problema no momento de instalação, no momento de atualização ou necessitar de mais
 alguma informações, se pode executar ‘‘\emph{ruby setup.rb --help}'' para obter ajuda.
 
-A partir da versão ‘‘\emph{1.9}'' do \emph{Ruby} esse proceso de instalação não é mais necessário, pois o 
-\emph{RubyGems} vem por \emph{default} instalado junto com \emph{Ruby}, mas para as versões anteriores 
+A partir da versão ‘‘\emph{1.9}'' do \emph{Ruby} esse proceso de instalação não é mais necessário, pois o
+\emph{RubyGems} vem por \emph{default} instalado junto com \emph{Ruby}, mas para as versões anteriores
 é necessário fazer a instalação manualmente.
 
-Após feito a instalação, a ferramenta \emph{gem} nos auxilia a fazer a busca de gemas com o comando 
-‘‘ \emph{gem search ‘nome da gema' }'' e também na instalação utilizando ‘‘ \emph{gem install ‘nome 
+Após feito a instalação, a ferramenta \emph{gem} nos auxilia a fazer a busca de gemas com o comando
+‘‘ \emph{gem search ‘nome da gema' }'' e também na instalação utilizando ‘‘ \emph{gem install ‘nome
 da gema' }'' ou ‘‘ \emph{gem install ‘nome da gema'.gem }'' quando o código da gema já está na nossa máquina.
 
-Caso haja mais interesse também se pode acessar os guias do \emph{RubyGems} em 
+Caso haja mais interesse também se pode acessar os guias do \emph{RubyGems} em
 \url{http://guides.rubygems.org/rubygems-org-api/}, onde se pode aprender como o \emph{gem} funciona e como
-se pode contriuir, criar e publicar novas gemas. 
+se pode contriuir, criar e publicar novas gemas.
 
 \section{Segurança}
 \label{segurança_ruby}
 
-A proteção de dados sempre foi uma questão muito discutida e na comunidade do \emph{Ruby} isso não é 
-diferente, justamente porque a todo momento estamos sujeitos a sofrer ataques e com isso podemos ser 
+A proteção de dados sempre foi uma questão muito discutida e na comunidade do \emph{Ruby} isso não é
+diferente, justamente porque a todo momento estamos sujeitos a sofrer ataques e com isso podemos ser
 prejudicados, perdendo dinheiro e informações sigilosas.
 
-Sabendo destes problemas a comunidade do \emph{Ruby} possui um esquema para corrigir os problemas de 
+Sabendo destes problemas a comunidade do \emph{Ruby} possui um esquema para corrigir os problemas de
 segurança. Neste esquema as vulnerabilidade descobertas são reportadas via e-mail para
-\href{mailto:security@ruby-lang.org}{\nolinkurl{security@ruby-lang.org}} que é uma lista privada com 
-membros que administram o \emph{Ruby}, como por exemplo \emph{Ruby commiters}. Neste esquema por medidas 
-de segurança, os membors da lista de segurança somente compartilham as vulnerabilidades quando elas já 
-estão solucionadas. Neste publicação é informado o tipo de erro, os problemas que o erro causa, e a 
-solução que deve ser tomada para 
+\href{mailto:security@ruby-lang.org}{\nolinkurl{security@ruby-lang.org}} que é uma lista privada com
+membros que administram o \emph{Ruby}, como por exemplo \emph{Ruby commiters}. Neste esquema por medidas
+de segurança, os membors da lista de segurança somente compartilham as vulnerabilidades quando elas já
+estão solucionadas. Neste publicação é informado o tipo de erro, os problemas que o erro causa, e a
+solução que deve ser tomada para
 sua correção [\citeonline{security_ruby}].
 
-Um exemplo é a vulnerabilidade publicada em 10/04/2014 que fala sobre um grave problema na 
-implementação no \emph{\href{https://www.openssl.org}{OpenSSL’s}} do \emph{TLS/DTLS} (\emph{transport 
-layer security protocols}) que foi referênciado com o identificador \emph{\href{https://cve.mitre.org/}{CVE}} 
-(\href{https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-0160}{CVE-2014-0160)}. Neste problema 
+Um exemplo é a vulnerabilidade publicada em 10/04/2014 que fala sobre um grave problema na
+implementação no \emph{\href{https://www.openssl.org}{OpenSSL’s}} do \emph{TLS/DTLS} (\emph{transport
+layer security protocols}) que foi referênciado com o identificador \emph{\href{https://cve.mitre.org/}{CVE}}
+(\href{https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-0160}{CVE-2014-0160)}. Neste problema
 uma pessoa mal intencionada pode roubar dados da memória tanto na comunicação entre o servidor com o cliente,
 como na comunicação do cliente para o servidor, mas não limitado para chaves secretas usada para criptografia
 \emph{SSL} e autenticação de \emph{tokens} [\citeonline{openssl_problem_security_ruby}].
@@ -169,36 +169,36 @@ O foco deste trabalho não é segurança, mas vale atentar para alguns detalhes 
 não ter dor de cabeça depois.
 
 Uma \emph{gema} pode ser instalada a qualquer momento em um projeto \emph{Ruby}, deste modo o código desta
-\emph{gema} será executado no contexto de uma aplicação em um servidor. Claramente isso implica em uma séria 
-vulnerabilidade no servidor, pois caso o autor da gema seja mal intencionado, ele pode conseguir invadir o 
+\emph{gema} será executado no contexto de uma aplicação em um servidor. Claramente isso implica em uma séria
+vulnerabilidade no servidor, pois caso o autor da gema seja mal intencionado, ele pode conseguir invadir o
 servidor.
 
-\emph{RubyGems} a partir da versão ‘‘\emph{0.8.11}'' permite a assinatura criptografada de uma \emph{gema}. Essa 
+\emph{RubyGems} a partir da versão ‘‘\emph{0.8.11}'' permite a assinatura criptografada de uma \emph{gema}. Essa
 assinatura funciona com o comando ‘‘\emph{gem cert}'' que criar um par de chaves e empacota o dado da
 assinatura dentro da \emph{gema}, e o comando ‘‘\emph{gem install}'' permite que se defina uma politica de
-segurança, onde se pode verificar a chave da assinatura antes da instalação. Apesar deste método 
-ser benéfico, ele geralmente não é usado, pois é necessário vários passos manuais no desenvolvimento e 
-também não existe nenhuma medida de confiança bem definida para estas chaves de assintura 
+segurança, onde se pode verificar a chave da assinatura antes da instalação. Apesar deste método
+ser benéfico, ele geralmente não é usado, pois é necessário vários passos manuais no desenvolvimento e
+também não existe nenhuma medida de confiança bem definida para estas chaves de assintura
 [\citeonline{guide_security_rubygems}].
 
 Assim como o \emph{Ruby}, o \emph{RubyGems} também possui um esquema para reportar vulnerabilidades que
-é composto por duas vertentes. Na primeira vertente se reporta erros na gema de outros usuários e na  
+é composto por duas vertentes. Na primeira vertente se reporta erros na gema de outros usuários e na
 segunda vertente se reporta erros da própia gema.
 
-No caso para reportar vulnerabilidade de \emph{gemas} de outros usuários, sempre é necessário verificar 
-se a vulnerabilidade ainda não é conhecida. Caso ela ainda não seja conhecida, é recomendado que se 
-reporte o erro por um e-mail privado diretamente para o dono da gema, informando o problema e 
-indicando uma possível solução. 
+No caso para reportar vulnerabilidade de \emph{gemas} de outros usuários, sempre é necessário verificar
+se a vulnerabilidade ainda não é conhecida. Caso ela ainda não seja conhecida, é recomendado que se
+reporte o erro por um e-mail privado diretamente para o dono da gema, informando o problema e
+indicando uma possível solução.
 
-Por outro lado caso descubra uma vulnerabilidade em uma de suas \emph{gema}, primeiramente 
-é necessário que se requisite um identificador \emph{\href{https://cve.mitre.org/}{CVE}} via e-mail para 
+Por outro lado caso descubra uma vulnerabilidade em uma de suas \emph{gema}, primeiramente
+é necessário que se requisite um identificador \emph{\href{https://cve.mitre.org/}{CVE}} via e-mail para
 \href{mailto:cve-assign@mitre.org}{\nolinkurl{cve-assign@mitre.org} }, pois deste modo existirá
-um identificador único para o problema. Com o identificador em mãos é necessário trabalhar em uma 
-possível solução. E assim que encontrar uma solução, será necessário criar um \emph{patch} de correção. 
-E finalmente depois de criar o \emph{patch}, deve-se informar a comunidade que existia um problema na 
-\emph{gema} e que essa vulnerabilidade foi corrigida no \emph{patch ‘‘x''}. Para este caso também 
-recomenda-se adicionar o problema em um \emph{database open source} de vulnerabilidade, como por exmeplo o 
-\href{http://osvdb.org/}{OSVDB}, e também enviar um e-mail para \href{mailto:ruby-talk@ruby-lang.org} 
-{\nolinkurl{ruby-talk@ruby-lang.org} } com o \emph{subject: ‘‘[ANN][Security]''}, informando detalhes 
-sobre a vulnerabilidade, as versões que possuem esse erro, e quais as ações que devem ser tomadas 
-para corrigir o problema. 
+um identificador único para o problema. Com o identificador em mãos é necessário trabalhar em uma
+possível solução. E assim que encontrar uma solução, será necessário criar um \emph{patch} de correção.
+E finalmente depois de criar o \emph{patch}, deve-se informar a comunidade que existia um problema na
+\emph{gema} e que essa vulnerabilidade foi corrigida no \emph{patch ‘‘x''}. Para este caso também
+recomenda-se adicionar o problema em um \emph{database open source} de vulnerabilidade, como por exmeplo o
+\href{http://osvdb.org/}{OSVDB}, e também enviar um e-mail para \href{mailto:ruby-talk@ruby-lang.org}
+{\nolinkurl{ruby-talk@ruby-lang.org} } com o \emph{subject: ‘‘[ANN][Security]''}, informando detalhes
+sobre a vulnerabilidade, as versões que possuem esse erro, e quais as ações que devem ser tomadas
+para corrigir o problema.

@@ -1,69 +1,47 @@
-Nos dias de hoje com o avanço da tecnologia para satisfazer um cliente é necessário entregar um 
-produto com qualidade e no menor tempo possível. Pensando na área da computação mais 
-especificamente no desenvolvimento de software, existe uma grande chance de se obter a qualidade 
-do produto quando se têm em mãos um projeto bem elaborado. Para se ter esse projeto, primeiramente  
-se define um processo de desenvolvimento com regras a serem seguida e com o passar do tempo é 
-necessário adaptar este processo para uma forma que possiblite atender as necessidades do cliente 
-de uma forma mais rápida e concisa.
+Até o ano de 2005 para se rederizar um mapa em uma página web, era necessário possuir servidores
+altamente equipados para suportar a carga de trabalho que a tarefa exigia. No entanto, essa dor
+de cabeça foi aliviada em um anúncio do \emph{Google}, com a criação da ferramenta
+\emph{Google Maps} em Fevereiro de 2005. Esta ferramenta, possuía uma nova solução que reduzia
+o trabalho dos servidores, possibilitando assim, a economia na compra de equipamentos.
 
-Pensando pelo lado da agilidade, além de aplicar os método para obter qualidade, é necessário 
-possuir mais algumas caracteristicas para garantir a sua eficácia, como por exemplo possuir uma 
-equipe que já tenha experiência com o tipo de projeto e também ter em mãos ferramentas que facilitem e 
-agilizem o desenvolvimento, podendo desta forma diminuir razoavelmente o tempo de duração do projeto. 
+Além da ferramenta \emph{Google Maps} do \emph{Google}, exitem outras ferramentas que possuem
+soluções sinilares, como por exemplo, o \emph{Yahoo Maps} do \emph{Yahoo}, o \emph{Bing Maps}
+da \emph{Microsoft} e o \emph{Yandex Maps} do \emph{Yandex}.
 
-Estão entre os exemplos de ferramentas que agilizam o trabalho do desenvolvedor: O 
-\emph{\href{http://ganttproject.biz/}{Gantt Project}} \footnote{Gantt Project: 
-\url{http://ganttproject.biz/}} que pode ser encontrado no site \url{http://ganttproject.biz/}, ele 
-é multiplataforma, ou seja pode ser usado no \emph{Windows}, \emph{Linux} e \emph{Mac OS}, e permitem 
-fazer a análise de projetos por meio de uma interface gráfica. O 
-\emph{\href{http://argouml.tigris.org/}{ArgoUML}} \footnote{ArgoUML: \url{http://argouml.tigris.org/}} 
-que pode ser encontrado em  \url{http://argouml.tigris.org/} também multiplataforma, permite 
-por meio do \emph{\href{https://netbeans.org/}{NetBeans}} \footnote{NetBeans: 
-\url{https://netbeans.org/}} gerar diagrama de classes e casos de uso, e tem a possibilidade de gerar 
-códigos a partir de diagramas ou diagramas a partir de códigos. E o 
-\emph{\href{http://www.eclipse.org/}{Eclipse}} \footnote{Eclipse: \url{http://www.eclipse.org/}} 
-também multiplataforma que pode ser encontrado em \url{http://www.eclipse.org/}, ele tem suporte 
-para várias linguagens como \emph{Java}, \emph{PHP}, \emph{C}, \emph{C++} e muito mais, e também 
-possui uma grande massa de \emph{plugins} disponíveis para uso.
+A rederização de mapas, torna-se interessante quando analisamos as operações que podemos
+realizar sobre eles. Por exemplo nos mapas do \emph{Google Maps}. podemos criar um mapa em
+uma página web, utilizar marcadores para marcar locais ou regiões do mapa que consideramos
+importante. Também como exemplo, podemos determinar caminhos no mapa para ir de um local
+de origem a um local de destino.
 
-Além da utilização de ferramentas uma boa prática de programação utilizada por todos os 
-programadores é o uso de bibliotecas que ajuda a economizar um bom tempo de desenvolvimento, 
-Essa economia se deve ao fato de que com o uso desta prática, se evita de certa 
-forma a re-implementação de muitas funções que já estão prontas para uso. 
+Como a solução de rederização de mapas do \emph{Google} era inovadora, muitos
+desenvolvedores procuraram na época, uma forma de incorporar esta nova ferramenta em seus
+projetos. E por este motivo, o \emph{Google} divulgou em Junho de 2005 uma \emph{API}
+(\emph{Application Programming Interface}) para o \emph{Google Maps}.
 
-As bibliotecas basicamente são funções pré-compiladas que resolvem determinados tipos de
-problemas, evitando que se tenha que ‘‘invetar a roda’’ novamente, ou seja elas tem por 
-finalidade disponibilizar funcinalidades que geralmente são usadas. Por exemplo 
-na linguagem \emph{C} não é necessário desenvolver funções para mostrar dados na tela, basta 
-incluir no projeto a biblioteca \emph{stdio} que já possui implementado a função 
-\emph{printf()}, deste modo não é necessário implementar uma função para mostrar os 
-dados, e sim somente fazer o uso da função \emph{printf()} contida na biblioteca \emph{stdio}.
+Esta \emph{API} do \emph{Google Maps}, possui informações de como importar a biblioteca
+e fazer uso de suas funções, como por exemplo, criar mapas nas páginas web, criar
+marcadores, e criar caminhos entre um local de origem e um local de destino.
 
-Percebendo que a agilidade de desenvolvimento é um fator muito importante para a satisfação do 
-cliente, e sabendo que o uso das bibliotecas ajuda e muito a economizar tempo. O objetivo 
-deste trabalho é apresentar um tutorial de como se pode criar ou adaptar uma
-biblioteca do \emph{Ruby}.
+O \emph{Ruby On Rails} que é um \emph{framework} da linguagem \emph{Ruby}, possui
+bibliotecas que simplificam o acesso da \emph{API} do \emph{Google Maps}, ou seja,
+as bibliotecas do \emph{Ruby On Rails} mapeiam a \emph{API} do \emph{Google Maps}.
+Esse mapeamento da \emph{API} facilita o trabalho do desenvolvedor, porque ao invés do
+programador precisar criar objeto por objeto, a biblioteca do \emph{Ruby On Rails}
+já cria os objetos internamente.
 
-O contexto do trabalho visa ajudar uma equipe a construir e/ou adaptar
-as suas própias gemas, sendo que esssas gemas possuiriam as funções que são 
-mais utilizadas nos projetos que a equipe trabalha. Deste modo a equipe se preocuparia somente 
-em desenvolver novas funcionalidades, pois as funcionalidades mais usuais já estariam 
-presentes nas suas gemas. Assim quando fosse necessário usar algumas dessas 
-funcionalidades, bastaria somente incluir as gemas necessárias no projeto e chamar as 
-funções desejadas.
+O objetivo deste trabalho, é mostrar como se pode criar uma biblioteca simples do 
+\emph{Ruby On Rails}, e também como se pode modificar uma biblioteca
+do \emph{Ruby On Rails} que trabalha com o mapeamento da \emph{API} do
+\emph{Google Maps}.
 
-Estarão entre as ferramentas que veremos neste trabalho o \emph{Ruby On Rails} que é um 
-\emph{framework} baseado na linguagem \emph{Ruby}, as gemas do \emph{Ruby On Rails} que 
-funcionam como plugins e que podem ser incorporadas a qualquer momento no projeto, e também a 
-biblioteca do \emph{Google Maps} que facilita o uso de mapas do \emph{Google}, tanto na sua 
-criação como na sua manipulação.
-
-Este trabalho esta organizado da seguinte maneira: história e conceitos de bibliotecas no 
-capítulo \ref{chap:historico_e_concetios_de_bibliotecas}, onde será revisado a história 
-das bibliotecas e explicado alguns conceitos básicos sobre elas, conceitos de 
-\emph{Ruby} e suas bibliotecas no capítulo \ref{chap:ruby_e_suas_bibliotecas}, onde 
-será apresentado alguns conceitos da linguagem \emph{Ruby}, do \emph{framework} 
-\emph{Ruby On Rails} e da manipulação de suas bibliotecas (gemas), criação e adaptação
-de bibliotecas do \emph{Ruby} no capítulo \ref{chap:criacao_e_adaptacao_de_bibliotecas_do_ruby}, 
-onde será apresentado um tutorial de como criar e/ou adaptar uma gema, e a conclusão no 
-capítulo \ref{chap:conclusao}.
+Deste modo, este trabalho esta organizado da seguinte maneira: história e conceitos de
+bibliotecas no capítulo \ref{chapter:historia_e_concetios_de_bibliotecas}, onde será
+revisado a história das bibliotecas e explicado alguns conceitos básicos sobre elas,
+conceitos de \emph{Ruby} e suas bibliotecas no capítulo \ref{chapter:ruby_e_suas_bibliotecas},
+onde será apresentado alguns conceitos da linguagem \emph{Ruby}, do \emph{framework}
+\emph{Ruby On Rails} e da manipulação de suas bibliotecas, criação e adaptação
+de bibliotecas do \emph{Ruby On Rails} no capítulo 
+\ref{chapter:criacao_e_adaptacao_de_bibliotecas_do_ruby_on_rails}, onde será apresentado um tutorial
+de como criar e/ou adaptar uma biblioteca do \emph{Ruby On Rails}, e a conclusão no
+capítulo \ref{chapter:conclusao}.

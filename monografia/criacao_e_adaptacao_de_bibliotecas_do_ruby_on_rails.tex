@@ -7,159 +7,8 @@ instalação das \emph{gemas}.
 Deste modo, como já temos alguns conhecimento básicos sobre bibliotecas e sobre o \emph{Ruby}, neste cápitulo 
 iremos apresentar um tutorial básco de como se pode criar ou adaptar uma \emph{gema} do \emph{Ruby}.
 
-Na seção \ref{section:ferramentas_utilizadas} iremos apresentar as ferramentas que serão necessárias 
-para seguir este tutorial, e depois na seção \ref{section:preparação_do_ambiente} vamos mostar como se 
-deve preprar o ambiente de desenvolvimento, sendo seguida pela seção \ref{section:criando_uma_gema} onde
-apresentaremos o método básico para criar uma gema, e por fim na seção \ref{section:adaptando_uma_gema}
-mostraremos o passo-a-passo para se adaptar uma gema.
-
-\section{Ferramentas utilizadas}
-\label{section:ferramentas_utilizadas}
-
-\subsection{VMware® Player}
-
-\emph{\href{http://www.vmware.com/products/player}{VMware® Player}} é um aplicativo de virtualização de 
-\emph{desktop} que pode rodar um ou mais sistemas operacionais ao mesmo tempo no mesmo computador sem 
-a necessidade de reiniciar a máquina. Possui uma interface fácil de usar, suporte a vários sistemas 
-operacionais, como por exemplo \emph{Windows}, \emph{MAC} e \emph{Linux} e é portável 
-[\citeonline{vmplayer}].
-
-Com o \emph{VMware® Player} pode-se fazer o compartilhamento de vários recursos, como por exemplo pode-se 
-fazer a transferência de arquivos do sistema opercional virtual com o sistema opercional que está rodando 
-na máquina fisica. 
-
-\subsection{RVM}
-
-\emph{\href{http://rvm.io/}{Ruby enVironment (Version) Manager}} \footnote{RVM: \url{http://rvm.io/}} é uma 
-ferramenta de linha de comando que permite facilmente instalar, gerenciar e trabalhar com multiplos ambientes 
-do \emph{Ruby} para interpretar um certo conjunto de gemas [\citeonline{rvm}].
-
- \href{https://github.com/wayneeseguin}{Wayne E. Seguin} \footnote{Wayne E. Seguin: 
- \url{https://github.com/wayneeseguin}} iniciou o projeto do \emph{RVM} em outubro de 2007
-e a partir de então com uma considerável experiência programando em \emph{Bash}, \emph{Ruby} e outras 
-linguagens obteve o conhecimento suficiente para criar o gerenciador [\citeonline{about_rvm}].
-
-\subsection{Ruby On Rails}
-
-\emph{\href{http://rubyonrails.org/}{Ruby On Rails}} \footnote{Ruby On Rails: \url{http://rubyonrails.org/}} 
-é um \emph{web framework} de código aberto que tem por finalidade facilitar a programação
-visando a produtividade sustentável. Este \emph{framework} permite escrever códigos bem estruturados
-favorecendo a manutenção de aplicações [\citeonline{ruby_on_rails}].
-
-O \emph{Rails} foi criado em 2003 por \emph{\href{http://david.heinemeierhansson.com/}{David Heinemeier Hansson}}
-\footnote{David Heinemeier Hansson: \url{http://david.heinemeierhansson.com/}} e desde então é extendido 
-pela equipe do \emph{\href{http://rubyonrails.org/core/}{Rails Core Team}} 
-\footnote{Rails Core Team: \url{http://rubyonrails.org/core/}} e mais de 3.400 usuários 
-[\citeonline{ruby_on_rails}].
-
-\subsection{Git}
-
-\emph{\href{http://git-scm.com/}{Git}} \footnote{Git: \url{http://git-scm.com/}} é um sistema distribuído de 
-controle de versão livre e de código aberto, desenhado para controlar projetos pequenos e grandes com 
-rapidez e eficiência. É uma ferramenta fácil de manipular com alto desempenho [\citeonline{git}].
-
-Por irônia do destino o \emph{git} foi criado em 2005 por 
-\emph{\href{http://torvalds-family.blogspot.com.br/}{Linus Torvalds}} 
-\footnote{Linus Torvalds: \url{http://torvalds-family.blogspot.com.br/}} graças ao fim da relação entre a 
-comunidade que desenvolvia o \emph{Linux} e a compania que desenvolvia o 
-\emph{\href{http://www.bitkeeper.com/}{BitKeeper}}, ferramenta que até aquele ano fazia o gerênciamento de 
-código do \emph{Linux}. Sem uma ferramento \emph{SCM} (\emph{Source Code Management}), \emph{Torvalds} 
-resolveu desenvolver uma ferramenta parecida com o \emph{BitKeeper} que possuiria mais velocidade,
-\emph{design} simples, grande suporte para \emph{non-linear development} (centenas de \emph{branchs}), 
-completamente distribuído e capacidade de controlar grandes projeto com grandes quantidades de dados.
-
-\section{Preparação do ambiente}
-\label{section:preparação_do_ambiente}
-
-Para seguir com este trabalho, será necessário a instalação de alguns softwares para que se possa realizar
-o passo-a-passo de como criar ou adaptar uma \emph{gema} do \emph{Ruby}.
-Inicialmente por comodidade utilizaremos o sistema operacional 
-\emph{\href{http://releases.ubuntu.com/12.04/}{Ubuntu 12.04 LTS}}, pois a comunidade prometeu manter essa 
-versão por pelo menos 5 anos, com o 
-\emph{\href{https://www.ruby-lang.org/en/downloads/}{Ruby 1.9.3p547 (2014-05-14 revision 45962) [i686-linux]}} 
-que era a versão mais recente do \emph{Ruby} no momento de inicio desse trabalho, e o 
-\emph{\href{http://rubyonrails.org/download/}{Rails 3.2.12}} que era uma versão que já tinhamos experiência
-trabalhando no projeto \emph{\href{http://agendador.c3sl.ufpr.br/}{Agendador}}.
-
-Primeiramente deve-se instalar o \emph{Ubuntu 12.04} no 
-\emph{\href{https://my.vmware.com/web/vmware/free\#desktop_end_user_computing/vmware_player/}{VMware® Player}}, 
-e no nosso caso foi utilizado o \emph{VMware Player 6.0.3 build-1895310}. Após a instalação do \emph{Ubuntu}
-deve-se logar no \emph{Ubuntu}, acessar um \emph{terminal}, e fazer a isntalação do 
-\emph{\href{https://github.com/wayneeseguin/rvm}{RVM 1.25.28}} com os seguinte comandos no código 
-‘‘Código \ref{lst:instala_rvm} - Instala RVM'' que serão explicados logo a seguir:
- 
- \lstinputlisting[ style=customBash, caption={Instala RVM}, label={lst:instala_rvm}]
- {codigos/install_rvm.sh}
- 
-\begin{itemize}
-
-\item O comando ‘‘\emph{sudo -i}'' na linha ‘‘2'' é necessário para acessar o usuário root, pois 
-  para instalar os outros \emph{softwares} é preciso ser um administrador do sistema.
-  
-  \item O comando ‘‘\emph{apt-get install curl}'' na linha ‘‘6'' é necessário pois o script de 
-  instalação do \emph{RVM} depende do \emph{curl} para executar corretamente.
-  
-  \item O comando ‘‘\emph{wget https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer}'' 
-  na linha ‘‘9'' é necessário para baixar o script (‘‘\emph{rvm-installer}'') de instalação do \emph{RVM}.
-  
-  \item O comando ‘‘\emph{bash rvm-installer}'' na linha ‘‘12'' é necessário para instalar o \emph{RVM}.
-  
-\end{itemize}
-
-Ao terminar de instalar o \emph{RVM} deve-se fazer a instalação do \emph{Ruby} que pode ser feita com a 
-sequência de comandos do código ‘‘Código \ref{lst:instala_ruby} - Instala Ruby'', onde cada comando será 
-explicado logo em seguida:
- 
-\lstinputlisting[ style=customBash, caption={Instala Ruby}, label={lst:instala_ruby}]{codigos/install_ruby.sh}
- 
-\begin{itemize}
-
- \item O comando ‘‘\emph{ource "/usr/local/rvm/scripts/rvm"}'' serve para carregar o código do \emph{RVM}.
- 
- \item O comando ‘‘\emph{rvm requirements}'' serve para instalar as dependências do \emph{RVM} caso elas 
- ainda não estejam instaladas.
- 
- \item O comando ‘‘\emph{rvm install 1.9.3}'' serve para fazer a instalação do \emph{Ruby} versão 1.9.3.
- 
- \item O comando ‘‘\emph{rvm --default use 1.9.3}'' serve para informar o \emph{RVM} para usar o \emph{Ruby}
- 1.9.3 como default. Essa é uma medida preventiva, pois podem existir outras versões do \emph{Ruby} instaldas.
- 
- \item O comando ‘‘\emph{rvm use 1.9.3}'' serve para informar o \emph{RVM} para usar o \emph{Ruby} 1.9.3.
- 
-\end{itemize}
-
-  
-Tammbém pode-se configurar as variáveis de ambiente do \emph{RVM} para não precisar a todo momento executar
-o comando ‘‘ source "/usr/local/rvm/scripts/rvm" '', e isso pode ser feito executando o seguinte código
-‘‘Código \ref{lst:configura_variavel_rvm} - Configura Variáveis RVM'' que é exibilido e explicado logo abaixo:
- 
-\lstinputlisting[ style=customBash, caption={Configura Variáveis RVM}, label={lst:configura_variavel_rvm}]
-{codigos/configura_variavel_rvm.sh}
- 
-\begin{itemize}
-
-  \item O comando ‘‘\emph{echo '...' >> $\sim$/.bashrc }'' pega todo o código, aqui representado por ‘‘...'' 
-  e insere no final do arquivo ‘‘$\sim$/.bashrc''. Uma alternativa seria somente copiar o código dentro do 
-  ‘‘\emph{echo}'' e colar no final do arquivo ‘‘$\sim$/.bashrc''.
-  
-\end{itemize}
-
-E depois da execução de todas essa instalações, ainda devemos instalar as gemas essências, ‘‘\emph{rails}'' 
-e ‘‘\emph{bundle}'', executando os seguintes comandos no código 
-‘‘Código \ref{lst:install_essentials_gems} - Instala Gemas Essênciais'' explicado logo a seguir:
- 
-\lstinputlisting[ style=customBash, caption={Instala Gemas Essênciais}, label={lst:install_essentials_gems}]
-{codigos/install_essentials_gems.sh}
-
-\begin{itemize}
-
- \item O comando ‘‘ \emph{gem install rails --version ‘3.2.12'} '' faz a instalação da gema \emph{rails}
- versão \emph{3.2.12}.
- 
- \item O comando ‘‘\emph{gem install bundle}'' faz a instalação da gema \emph{bundle}.
- 
-\end{itemize}
-
+Na seção \ref{section:criando_uma_gema} apresentaremos o método básico para criar uma gema, e na
+seção \ref{section:adaptando_uma_gema} mostraremos o passo-a-passo para se adaptar uma gema.
 
 \section{Criando uma gema}
 \label{section:criando_uma_gema}
@@ -840,8 +689,8 @@ simplificada, proporcionando a inclusão de sobreposições oferecidas pelo \emp
 marcadores e circulos. Ela também possui um código bem flexível que permite a aceitação de outros 
 provedores de mapas [\citeonline{google_maps_for_rails}].
 
-\subsubsection{API do Google Maps} 
-\label{api_do_google_maps} 
+\subsection{API do Google Maps} 
+\label{subsection:api_do_google_maps} 
  
 Para fazer a adaptação da gema foi necessário fazer um estudo sobre como utilizar a \emph{API} do 
 \emph{Google} e para isso foi utilizado como base o livro \emph{Beginning Google Maps API 3} 
@@ -870,8 +719,8 @@ por meio de \emph{HTML}, \emph{CSS} e \emph{Javascript}. Basicamente o usuário 
 requisita algum local do mapa informando a coordenada e o zoon desejado. Desta forma o servidor retorna a 
 imagem do mapa que representa a posição requisitada [\citeonline{beginning_google_maps_api3}]. 
 
-\subsubsection{Engenharia Reversa}
-\label{engenharia_reversa}
+\subsection{Engenharia Reversa}
+\label{subsection:engenharia_reversa}
 
 Para conseguirmos entender o funcionamento de uma gema, precisamos obrigatoriamente fazer uma tradução
 do código fonte para diagramas, pois não conseguiremos fazer nenhuma modificação consistente
@@ -1038,8 +887,8 @@ As seguintes explicações são válidas para o diagrama de herança na imagem �
  \end{itemize}
  
  
-\subsubsection{Entendimento da gema} 
-\label{entendimento_da_gema} 
+\subsection{Entendimento da gema} 
+\label{subsection:entendimento_da_gema} 
 
 Agora que realizamos a \emph{engenharia reversa} da \emph{gema}, podemos analisar algumas de suas 
 características que serão listadas e explicadas logo a seguir.
@@ -1074,8 +923,8 @@ características que serão listadas e explicadas logo a seguir.
  
 \end{itemize}
  
-\subsubsection{Adaptações}
-\label{adaptações}
+\subsection{Adaptações}
+\label{subsection:adaptações}
 
 Agora que temos uma abstração de alto nível para a gema \emph{Google-Maps-For-Rails} podemos partir para a 
 adaptação dela, ou seja, agora que temos alguns diagramas que nos auxiliam a visualizar o funcionamento 
@@ -1175,8 +1024,8 @@ novas funções para maminpular essas classes. E neste caso inserimos as funçã
 \lstinputlisting[ style=customCoffee, caption={Funções adicionais do Handler}, label={lst:funcoes_adicionais_do_handler}]
 {codigos/funcoes_adicionais_do_handler.coffee}
 
-\subsubsection{Exemplo de uso de Google-Maps-for-Rails}
-\label{subsubsection:exemplo_de_uso_de_google-maps-for-rails}
+\subsection{Exemplo de uso de Google-Maps-for-Rails}
+\label{subsection:exemplo_de_uso_de_google-maps-for-rails}
 
 Como exemplo de uso da gema ‘‘\emph{Google-Maps-for-Rails}'' adaptada criamos o projeto 
 ‘‘\emph{\href{https://github.com/toshikomura/DiseasesMap}{DiseasesMap}}'' 
