@@ -1,0 +1,121 @@
+Este capitulo tem o objetivo de mostrar alguns conceitos básicos sobre as bibliotecas do
+\emph{Ruby}, e os riscos e procedimento de segurança que existem para elas.
+Na seção \ref{bibliotecas_do_ruby} vamos apresentar alguns conceitos das bibliotecas do
+\emph{Ruby}, e no fim do capítulo na seção \ref{segurança_ruby} vamos falar um pouco
+sobre a segurança de bibliotecas do \emph{Ruby}.
+
+\section{Bibliotecas do Ruby}
+\label{bibliotecas_do_ruby}
+
+Assim como muitas linguagens como por exemplo \emph{C}, \emph{C++}, \emph{Java}, \emph{Python} e muitas
+outras, o \emph{Ruby} também possui um vasto conjunto de bibliotecas, sendo que a maior parte
+delas é distribuída na forma de \emph{gem}. Seu precoesso de instalação é feito por meio do programa
+\emph{gem} que será explicação na sub-seção \ref{subsection:gem}. Também existe um menor número de
+bibliotecas que são lançadas como arquivos compactados em ‘‘.zip'' ou ‘‘.tar.gz''. Seu processo
+de instalação geralmente é feito por meio de arquivos de ‘‘README'' ou ‘‘INSTALL'' que possuem
+instruções de instalação [\citeonline{libraries_ruby}].
+
+\subsection{O programa gem}
+\label{subsection:gem}
+
+O \emph{\href{https://rubygems.org/}{gem}} \footnote{gem: \url{https://rubygems.org/}} é um sistema
+de pacotes do \emph{Ruby} desenvolvido para facilitar a criação, o compartilhamento, e a instalação de
+bibliotecas. O \emph{gem} possui características sinilares ao sistema de distruição de pacotes
+\emph{\href{https://packages.qa.debian.org/a/apt.html}{apt-get}}, no entanto ao invés de fazer a distribuição
+de pacotes para \emph{\href{https://www.debian.org/}{Debian GNU/Linux distribution}} e seus variantes, ele faz
+a distribuição de pacotes \emph{Ruby} [\citeonline{libraries_ruby}].
+
+O projeto do \emph{RubyGems}, que desenvolve a ferramenta \emph{gem}, foi criado em abril de 2009 por
+\emph{\href{https://twitter.com/qrush}{Nick Quaranto}} \footnote{Nick Quaranto: \url{https://twitter.com/qrush}}.
+Com o tempo cresceu atingindo mais de 115 \emph{Rubyistis} e milhões de gemas baixadas. Até a versão
+‘‘\emph{1.3.6}'' o \emph{RubyGems} possuía o nome \emph{Gemcutter}, sendo renomaeda a partir desta versão
+para \emph{RubyGems}, objetivando a solidificação do papel central do site na comunidade do \emph{Ruby}
+[\citeonline{about_rubygems}].
+
+A instalação do \emph{gem} pode ser feita pelo terminar executando ‘‘\emph{sudo apt-get install gem}'' com
+privilégios de administrador ou acessando \url{https://rubygems.org/pages/download/} e baixando a última
+versão do \emph{RubyGems}. Para o caso de baixar a instalação, depois deve-se descompactar o pacote, entrar
+no diretório e executar ‘‘\emph{ruby setup.rb}'' com privilégios de administrador.
+
+Caso haja uma versão do \emph{gem} instalada, pode-se fazer a atualização para a última versão executando
+‘‘\emph{gem update --system}'' com privilégios de administrador.
+
+Se ocorrer algum problema no momento da instalação, atualização ou se necessitar de mais
+alguma informações, se pode executar ‘‘\emph{ruby setup.rb --help}'' para obter ajuda.
+
+A partir da versão ‘‘\emph{1.9}'' do \emph{Ruby} esse proceso de instalação não é mais necessário, pois o
+\emph{gem} vem por \emph{default} instalado junto com \emph{Ruby}, mas para as versões anteriores
+é necessário fazer a instalação manualmente.
+
+Após feito a instalação, a ferramenta \emph{gem} nos auxilia a fazer a busca de gemas com o comando
+‘‘ \emph{gem search ‘nome da gema' }''. Esta ferramenta, também nos permite fazer a instalação de
+gemas utilizando o comando ‘‘ \emph{gem install ‘nome da gema' }'' ou o comando
+‘‘ \emph{gem install ‘nome da gema'.gem }'' quando o código da gema já está na nossa máquina.
+
+Caso haja mais interesse também se pode acessar os guias do \emph{RubyGems} em
+\url{http://guides.rubygems.org/rubygems-org-api/}, onde se pode aprender como o \emph{gem} funciona e como
+se pode contriuir, criar e publicar novas gemas.
+
+\section{Segurança}
+\label{segurança_ruby}
+
+A proteção de dados sempre foi uma questão muito discutida e na comunidade do \emph{Ruby} isso não é
+diferente, justamente porque a todo momento estamos sujeitos a sofrer ataques e com isso podemos ser
+prejudicados, perdendo dinheiro e informações sigilosas.
+
+Sabendo destes problemas a comunidade do \emph{Ruby} possui um esquema para corrigir os problemas de
+segurança. Neste esquema as vulnerabilidade descobertas são reportadas via e-mail para
+\href{mailto:security@ruby-lang.org}{\nolinkurl{security@ruby-lang.org}} que é uma lista privada com
+membros que administram o \emph{Ruby}, como por exemplo \emph{Ruby commiters}. Neste esquema por medidas
+de segurança, os membors da lista de segurança somente compartilham as vulnerabilidades quando elas já
+estão solucionadas. Neste publicação é informado o tipo de erro, os problemas que o erro causa, e a
+solução que deve ser tomada para
+sua correção [\citeonline{security_ruby}].
+
+Um exemplo é a vulnerabilidade publicada em 10/04/2014 que fala sobre um grave problema na
+implementação no \emph{\href{https://www.openssl.org}{OpenSSL’s}} do \emph{TLS/DTLS} (\emph{transport
+layer security protocols}) que foi referênciado com o identificador \emph{\href{https://cve.mitre.org/}{CVE}}
+(\href{https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-0160}{CVE-2014-0160)}. Neste problema
+uma pessoa mal intencionada pode roubar dados da memória tanto na comunicação entre o servidor com o cliente,
+como na comunicação do cliente para o servidor, mas não limitado para chaves secretas usada para criptografia
+\emph{SSL} e autenticação de \emph{tokens} [\citeonline{openssl_problem_security_ruby}].
+
+\subsection{Segurança das gemas}
+
+O foco deste trabalho não é segurança, mas vale atentar para alguns detalhes de segurança do \emph{gem} para
+não ter dor de cabeça depois.
+
+Uma \emph{gema} pode ser instalada a qualquer momento em um projeto \emph{Ruby}, deste modo o código desta
+\emph{gema} será executado no contexto de uma aplicação em um servidor. Claramente isso implica em uma séria
+vulnerabilidade no servidor, pois caso o autor da gema seja mal intencionado, ele pode conseguir invadir o
+servidor.
+
+\emph{RubyGems} a partir da versão ‘‘\emph{0.8.11}'' permite a assinatura criptografada de uma \emph{gema}. Essa
+assinatura funciona com o comando ‘‘\emph{gem cert}'' que criar um par de chaves e empacota o dado da
+assinatura dentro da \emph{gema}, e o comando ‘‘\emph{gem install}'' permite que se defina uma politica de
+segurança, onde se pode verificar a chave da assinatura antes da instalação. Apesar deste método
+ser benéfico, ele geralmente não é usado, pois é necessário vários passos manuais no desenvolvimento e
+também não existe nenhuma medida de confiança bem definida para estas chaves de assintura
+[\citeonline{guide_security_rubygems}].
+
+Assim como o \emph{Ruby}, o \emph{RubyGems} também possui um esquema para reportar vulnerabilidades que
+é composto por duas vertentes. Na primeira vertente se reporta erros na gema de outros usuários e na
+segunda vertente se reporta erros da própia gema.
+
+No caso para reportar vulnerabilidade de \emph{gemas} de outros usuários, sempre é necessário verificar
+se a vulnerabilidade ainda não é conhecida. Caso ela ainda não seja conhecida, é recomendado que se
+reporte o erro por um e-mail privado diretamente para o dono da gema, informando o problema e
+indicando uma possível solução.
+
+Por outro lado caso descubra uma vulnerabilidade em uma de suas \emph{gema}, primeiramente
+é necessário que se requisite um identificador \emph{\href{https://cve.mitre.org/}{CVE}} via e-mail para
+\href{mailto:cve-assign@mitre.org}{\nolinkurl{cve-assign@mitre.org} }, pois deste modo existirá
+um identificador único para o problema. Com o identificador em mãos é necessário trabalhar em uma
+possível solução. E assim que encontrar uma solução, será necessário criar um \emph{patch} de correção.
+E finalmente depois de criar o \emph{patch}, deve-se informar a comunidade que existia um problema na
+\emph{gema} e que essa vulnerabilidade foi corrigida no \emph{patch ‘‘x''}. Para este caso também
+recomenda-se adicionar o problema em um \emph{database open source} de vulnerabilidade, como por exmeplo o
+\href{http://osvdb.org/}{OSVDB}, e também enviar um e-mail para \href{mailto:ruby-talk@ruby-lang.org}
+{\nolinkurl{ruby-talk@ruby-lang.org} } com o \emph{subject: ‘‘[ANN][Security]''}, informando detalhes
+sobre a vulnerabilidade, as versões que possuem esse erro, e quais as ações que devem ser tomadas
+para corrigir o problema.

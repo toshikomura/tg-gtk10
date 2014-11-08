@@ -1,0 +1,134 @@
+\providecommand{\abntreprintinfo}[1]{%
+ \citeonline{#1}}
+\begin{thebibliography}{}
+\providecommand{\abntrefinfo}[3]{}
+\providecommand{\abntbstabout}[1]{}
+\abntbstabout{v-1.8 }
+
+\bibitem{history_of_programming_languages}
+\abntrefinfo{Wexelblat}{WEXELBLAT}{1981}
+{WEXELBLAT, R. \emph{History of Programming Languages}. 1. ed. New York, NY:
+  Academic Press: ACM Monograph Series, 1981.}
+
+\bibitem{libraries_ruby}
+\abntrefinfo{Community}{COMMUNITY}{2014a}
+{COMMUNITY, R. \emph{Ruby Libraries}. 2014. Ruby Site - Libraries.
+Dispon{\'\i}vel em:
+  \htmladdnormallink{$<$http:\-/\-/www\-.ruby-lang\-.org\-/en\-/libraries\-/$>$}{http://www.ruby-lang.org/en/libraries/}.
+  Acesso em: 17 out. 2014.}
+
+\bibitem{about_rubygems}
+\abntrefinfo{Community}{COMMUNITY}{2014b}
+{COMMUNITY, R. \emph{RubyGems About}. 2014. RubyGems Site - About.
+Dispon{\'\i}vel em:
+  \htmladdnormallink{$<$http:\-/\-/rubygems\-.org\-/pages\-/about$>$}{http://rubygems.org/pages/about}.
+  Acesso em: 21 out. 2014.}
+
+\bibitem{security_ruby}
+\abntrefinfo{Community}{COMMUNITY}{2014c}
+{COMMUNITY, R. \emph{Ruby Security}. 2014. Ruby Site - Security.
+Dispon{\'\i}vel em:
+  \htmladdnormallink{$<$http:\-/\-/www\-.ruby-lang\-.org\-/en\-/security\-/$>$}{http://www.ruby-lang.org/en/security/}.
+  Acesso em: 22 out. 2014.}
+
+\bibitem{openssl_problem_security_ruby}
+\abntrefinfo{Community}{COMMUNITY}{2014d}
+{COMMUNITY, R. \emph{OpenSSL Severe Vulnerability in TLS Heartbeat Extension
+  (CVE-2014-0160)}. 2014. Ruby Site - News.
+Dispon{\'\i}vel em:
+  \htmladdnormallink{$<$http:\-/\-/www\-.ruby-lang\-.org\-/en\-/news\-/2014\-/04\-/10\-/severe-openssl-vulnerability\-/$>$}{http://www.ruby-lang.org/en/news/2014/04/10/severe-openssl-vulnerability/}.
+  Acesso em: 22 out. 2014.}
+
+\bibitem{guide_security_rubygems}
+\abntrefinfo{Community}{COMMUNITY}{2014e}
+{COMMUNITY, R. \emph{RubyGems Guides Security}. 2014. RubyGems Site - Guides -
+  Security.
+Dispon{\'\i}vel em:
+  \htmladdnormallink{$<$http:\-/\-/guides\-.rubygems\-.org\-/security\-/$>$}{http://guides.rubygems.org/security/}.
+  Acesso em: 21 out. 2014.}
+
+\bibitem{guide_what_is_a_gem_rubygems}
+\abntrefinfo{Community}{COMMUNITY}{2014f}
+{COMMUNITY, R. \emph{RubyGems Guides What is a gem}. 2014. RubyGems Site -
+  Guides - What is a gem.
+Dispon{\'\i}vel em:
+  \htmladdnormallink{$<$http:\-/\-/guides\-.rubygems\-.org\-/what-is-a-gem\-/$>$}{http://guides.rubygems.org/what-is-a-gem/}.
+  Acesso em: 23 out. 2014.}
+
+\bibitem{irb_doc}
+\abntrefinfo{Community}{COMMUNITY}{2014g}
+{COMMUNITY, R. \emph{IRB}. 2014. Ruby Community.
+Dispon{\'\i}vel em:
+  \htmladdnormallink{$<$http:\-/\-/www\-.ruby-doc\-.org\-/stdlib-2\-.0\-/libdoc\-/irb\-/rdoc\-/IRB\-.html$>$}{http://www.ruby-doc.org/stdlib-2.0/libdoc/irb/rdoc/IRB.html}.
+  Acesso em: 28 out. 2014.}
+
+\bibitem{google_maps_for_rails}
+\abntrefinfo{Roth}{ROTH}{2014}
+{ROTH, D.~R. B. \emph{Google-Maps-For-Rails}. 2014. Google-Maps-For-Rails.
+Dispon{\'\i}vel em:
+  \htmladdnormallink{$<$http:\-/\-/github\-.com\-/apneadiving\-/Google-Maps-for-Rails$>$}{http://github.com/apneadiving/Google-Maps-for-Rails}.
+  Acesso em: 30 out. 2014.}
+
+\bibitem{beginning_google_maps_api3}
+\abntrefinfo{Svennerberg}{SVENNERBERG}{2010}
+{SVENNERBERG, G. \emph{Beginning Google Maps API 3}. 2. ed. New York, NY 10013:
+  Apress, 2010.}
+
+\bibitem{ruby_site}
+\abntrefinfo{Community}{COMMUNITY}{2014}
+{COMMUNITY, R. \emph{Ruby}. 2014. Ruby Community.
+Dispon{\'\i}vel em:
+  \htmladdnormallink{$<$http:\-/\-/www\-.ruby-lang\-.org\-/$>$}{http://www.ruby-lang.org/}.
+  Acesso em: 10 out. 2014.}
+
+\bibitem{matz_ruby_talk_main_list}
+\abntrefinfo{Matsumoto}{MATSUMOTO}{2000}
+{MATSUMOTO, Y.~M. \emph{Re: More code browsing questions}. 2000. Ruby Talk Main
+  List.
+Dispon{\'\i}vel em:
+  \htmladdnormallink{$<$http:\-/\-/blade\-.nagaokaut\-.ac\-.jp\-/cgi-bin\-/scat\-.rb\-/ruby\-/ruby-talk\-/2773$>$}{http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/2773}.
+  Acesso em: 17 out. 2014.}
+
+\bibitem{matz_often_sya_of_ruby}
+\abntrefinfo{Matsumoto}{MATSUMOTO}{2014}
+{MATSUMOTO, Y.~M. \emph{About Ruby}. 2014. Ruby Site - About Ruby.
+Dispon{\'\i}vel em:
+  \htmladdnormallink{$<$http:\-/\-/www\-.ruby-lang\-.org\-/en\-/about\-/$>$}{http://www.ruby-lang.org/en/about/}.
+  Acesso em: 17 out. 2014.}
+
+\bibitem{vmplayer}
+\abntrefinfo{VMware}{VMWARE}{2014}
+{VMWARE, I. \emph{VMware® Player}. 2014. VMware® Player.
+Dispon{\'\i}vel em:
+  \htmladdnormallink{$<$http:\-/\-/www\-.vmware\-.com\-/products\-/player$>$}{http://www.vmware.com/products/player}.
+  Acesso em: 23 out. 2014.}
+
+\bibitem{rvm}
+\abntrefinfo{Seguin}{SEGUIN}{2014a}
+{SEGUIN, M.~P. W.~E. \emph{RVM}. 2014. RVM.
+Dispon{\'\i}vel em:
+  \htmladdnormallink{$<$http:\-/\-/rvm\-.io\-/$>$}{http://rvm.io/}. Acesso em:
+  22 out. 2014.}
+
+\bibitem{about_rvm}
+\abntrefinfo{Seguin}{SEGUIN}{2014b}
+{SEGUIN, M.~P. W.~E. \emph{RVM}. 2014. RVM.
+Dispon{\'\i}vel em:
+  \htmladdnormallink{$<$http:\-/\-/rvm\-.io\-/rvm\-/about$>$}{http://rvm.io/rvm/about}.
+  Acesso em: 22 out. 2014.}
+
+\bibitem{ruby_on_rails}
+\abntrefinfo{Hansson}{HANSSON}{2014}
+{HANSSON, D.~H. \emph{Ruby On Rails}. 2014. Ruby On Rails.
+Dispon{\'\i}vel em:
+  \htmladdnormallink{$<$http:\-/\-/rubyonrails\-.org\-/$>$}{http://rubyonrails.org/}.
+  Acesso em: 22 out. 2014.}
+
+\bibitem{git}
+\abntrefinfo{Torvalds}{TORVALDS}{2014}
+{TORVALDS, L. \emph{Git}. 2014. Git.
+Dispon{\'\i}vel em:
+  \htmladdnormallink{$<$http:\-/\-/git-scm\-.com\-/$>$}{http://git-scm.com/}.
+  Acesso em: 23 out. 2014.}
+
+\end{thebibliography}

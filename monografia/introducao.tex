@@ -1,47 +1,60 @@
-Até o ano de 2005 para se rederizar um mapa em uma página web, era necessário possuir servidores
-altamente equipados para suportar a carga de trabalho que a tarefa exigia. No entanto, essa dor
-de cabeça foi aliviada em um anúncio do \emph{Google}, com a criação da ferramenta
-\emph{Google Maps} em Fevereiro de 2005. Esta ferramenta, possuía uma nova solução que reduzia
-o trabalho dos servidores, possibilitando assim, a economia na compra de equipamentos.
+Até o ano de 2005, a rederização de mapas em uma página web custava caro, pois era necessário
+servidores altamente equipados para suportar a carga de trabalho que a tarefa exigia.
+Graças ao \emph{Google}, em Fevereiro de 2005, essa dor de cabeça foi aliviada com a criação
+de uma nova solução de rederização implementada na ferramenta \emph{Google Maps}. Esta nova
+solução reduzia o trabalho dos servidores, possibilitando assim, a economia de dinheiro na
+compra de equipamentos.
 
-Além da ferramenta \emph{Google Maps} do \emph{Google}, exitem outras ferramentas que possuem
-soluções sinilares, como por exemplo, o \emph{Yahoo Maps} do \emph{Yahoo}, o \emph{Bing Maps}
-da \emph{Microsoft} e o \emph{Yandex Maps} do \emph{Yandex}.
+Muitas companias, percebendo a solução revolucionária adotada pelo \emph{Google} na
+ferramenta \emph{Google Maps}, não ficaram atrás, adotando soluções sinilares que
+também reduziam a carga nos servidores. Estão entre estas ferramentas, o
+\emph{Yahoo Maps} do \emph{Yahoo}, o \emph{Bing Maps} da \emph{Microsoft}, e o
+\emph{Yandex Maps} do \emph{Yandex}.
 
-A rederização de mapas, torna-se interessante quando analisamos as operações que podemos
-realizar sobre eles. Por exemplo nos mapas do \emph{Google Maps}. podemos criar um mapa em
-uma página web, utilizar marcadores para marcar locais ou regiões do mapa que consideramos
-importante. Também como exemplo, podemos determinar caminhos no mapa para ir de um local
-de origem a um local de destino.
+Poara os desenvolvedores, esta nova solução de rederização, torna-se interessante
+quando se analisa as operações que podem ser realizadas sobre os mapas. Por exemplo, nos mapas
+do \emph{Google Maps}, podemos criar um mapa em uma página web, utilizar marcadores para
+marcar locais ou regiões do mapa que consideramos importante, e até determinar caminhos
+para ir de um local ao outro.
 
-Como a solução de rederização de mapas do \emph{Google} era inovadora, muitos
-desenvolvedores procuraram na época, uma forma de incorporar esta nova ferramenta em seus
-projetos. E por este motivo, o \emph{Google} divulgou em Junho de 2005 uma \emph{API}
-(\emph{Application Programming Interface}) para o \emph{Google Maps}.
-
-Esta \emph{API} do \emph{Google Maps}, possui informações de como importar a biblioteca
-e fazer uso de suas funções, como por exemplo, criar mapas nas páginas web, criar
-marcadores, e criar caminhos entre um local de origem e um local de destino.
+Muito desenvolvedres perceberam que a nova ferramenta do \emph{Google} poderia ser muito útil
+em seus projeto, e por este motivo eles se mobilizaram na procura de uma forma de incorporar o
+\emph{Google Maps} em suas aplicações. Percebendo essa mobilização, o \emph{Google} facilitou
+o acesso a ferramenta, divulgando em Junho de 2005 uma \emph{API}
+(\emph{Application Programming Interface}) para o \emph{Google Maps}, descrevendo como importar
+e utilzar as funções da ferramenta.
 
 O \emph{Ruby On Rails} que é um \emph{framework} da linguagem \emph{Ruby}, possui
-bibliotecas que simplificam o acesso da \emph{API} do \emph{Google Maps}, ou seja,
-as bibliotecas do \emph{Ruby On Rails} mapeiam a \emph{API} do \emph{Google Maps}.
-Esse mapeamento da \emph{API} facilita o trabalho do desenvolvedor, porque ao invés do
-programador precisar criar objeto por objeto, a biblioteca do \emph{Ruby On Rails}
-já cria os objetos internamente.
+bibliotecas que simplificam o acesso da \emph{API} do \emph{Google Maps}. Basicamente estas
+bibliotecas preparam internamente os objetos do mapa e depois mapeiam as funções da
+ferramenta do \emph{Google}. Por exemplo, no momento de criação do mapa, o desenvolvedor
+não precisa saber quais os objetos do \emph{Google Maps} que são necessários. Ele
+precisa saber somente qual a função da biblioteca que faz a criação do mapa, pois
+internamente a biblioteca prepara o objeto do mapa e faz a chamada da função do
+\emph{Google Maps} que cria mapas.
 
-O objetivo deste trabalho, é mostrar como se pode criar uma biblioteca simples do 
-\emph{Ruby On Rails}, e também como se pode modificar uma biblioteca
-do \emph{Ruby On Rails} que trabalha com o mapeamento da \emph{API} do
-\emph{Google Maps}.
+O objetivo deste trabalho, é mostrar alguns conceitos básicos sobre bibliotecas, bem
+como a criação do mesmo, apresentando um tutorial de como se pode criar e modificar
+uma biblioteca do \emph{Ruby On Rails}.
 
-Deste modo, este trabalho esta organizado da seguinte maneira: história e conceitos de
+O tutorial de como se pode criar um biblioteca do \emph{Ruby On Rails}, apresentará
+um passo-a-paaso da implementação de uma biblioteca simples que faz a tradução de
+palavras do português para o inglês.
+
+O tutorial de como se pode modificar uma biblioteca do \emph{Ruby On Rail}, apresentará
+os passos que devem ser realizados para se adaptar uma biblioteca, utilizando como exemplo,
+a adição da função de determinar caminhos entre dois locais, em uma biblioteca que mapeia a
+\emph{API} do \emph{Google Maps}.
+
+Este trabalho esta organizado da seguinte maneira: história e conceitos de
 bibliotecas no capítulo \ref{chapter:historia_e_concetios_de_bibliotecas}, onde será
 revisado a história das bibliotecas e explicado alguns conceitos básicos sobre elas,
-conceitos de \emph{Ruby} e suas bibliotecas no capítulo \ref{chapter:ruby_e_suas_bibliotecas},
-onde será apresentado alguns conceitos da linguagem \emph{Ruby}, do \emph{framework}
-\emph{Ruby On Rails} e da manipulação de suas bibliotecas, criação e adaptação
-de bibliotecas do \emph{Ruby On Rails} no capítulo 
-\ref{chapter:criacao_e_adaptacao_de_bibliotecas_do_ruby_on_rails}, onde será apresentado um tutorial
-de como criar e/ou adaptar uma biblioteca do \emph{Ruby On Rails}, e a conclusão no
-capítulo \ref{chapter:conclusao}.
+bibliotecas do \emph{ruby} e segurança no capítulo \ref{chapter:bibliotecas_do_ruby_e_segurança},
+onde será apresentado alguns conceitos das bibliotecas do \emph{Ruby}, criação de
+bibliotecas do \emph{Ruby On Rails} no capítulo 
+\ref{chapter:criacao_de_bibliotecas_do_ruby_on_rails}, onde será apresentado
+um tutorial de como criar uma biblioteca do \emph{Ruby On Rails}, adaptação de
+bibliotecas do \emph{Ruby On Rails} no capítulo 
+\ref{chapter:adaptacao_de_bibliotecas_do_ruby_on_rails}, onde será apresentado
+um tutorial de como adaptar uma biblioteca do \emph{Ruby On Rails}, e a
+conclusão no capítulo \ref{chapter:conclusao}.

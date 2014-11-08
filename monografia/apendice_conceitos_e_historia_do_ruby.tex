@@ -1,0 +1,92 @@
+Este capitulo tem o objetivo de mostrar alguns conceitos básicos sobre o \emph{Ruby}, suas
+história, suas bibliotecas, riscos e procedimento de segurança que existem.
+Na seção \ref{ruby} iremos apresentar alguns conceitos da linguagem \emph{Ruby},
+depois vamos falar um pouco sobre sua história na seção \ref{história_ruby}, e no fim vamos ver
+a importância de uma \emph{API} na seção \ref{API}.
+
+\section{Ruby}
+\label{ruby}
+
+\emph{\href{https://www.ruby-lang.org/en/}{Ruby}} é uma linguagem de programação
+dinâmica de código aberto com foco na simplicidade e produtividade, tem uma sintaxe elegante, é natural de
+ler e escrever, e foi inventada por \emph{ \href{http://www.rubyist.net/~matz/}{Yukihiro ‘‘Matz'' Matsumoto}}
+\footnote{Yukihiro ‘‘Matz'' Matsumoto: \url{http://www.rubyist.net/~matz/}}
+que tentou cuidadosamente criar uam linguagem balaceanda, misturando as suas linguagens favoritas
+( \emph{Perl}, \emph{Smalltalk}, \emph{Eiffel}, \emph{Ada}, e \emph{Lisp}) [\citeonline{ruby_site}].
+
+\emph{{Yukihiro ‘‘Matz'' Matsumoto}} sempre enfativa que ele estava ‘‘tentando fazer o \emph{Ruby} natural, não simples'' e também com toda a
+sua experiência acrescenta que ‘‘\emph{Ruby} é simples na aparência, mas é muito complexo internamente, assim
+como o corpo humano.''. \emph{‘‘Matz''} também relembra que procurava uma linguagem de script que fosse mais
+poderosa que \emph{Perl} e mais orientada a objeto do que \emph{Python}, tentando encontrar a
+sintaxe ideal nas outras linguagens [\citeonline{matz_ruby_talk_main_list}] [\citeonline{matz_often_sya_of_ruby}].
+
+Em muitas linguagens números e outros tipos primitivos não são \emph{objetos}, no entanto no \emph{Ruby}
+cada pedaço de informação possui propiedades e ações, ou seja, tudo é \emph{objeto}, Neste caso o
+\emph{Ruby} possui esse tipo de característica, pois ele seguiu a influência do \emph{SmallTalk}, onde
+todos seus tipos, inclusive os mais primitivos como inteiros e booleanos são objetos.
+
+Logo abaixo no código \emph{Ruby} ‘‘\ref{lst:objeto_ruby} - Tudo é objeto para o Ruby'' segue um
+exemplo onde construimos um \emph{método} ‘‘tipo'' para o \emph{objeto} inteiro ‘‘5''. Suponde que se
+requisite o \emph{método} ‘‘\emph{5.tipo}'' o retorno seria ‘‘\emph{Tipo inteiro}''.
+
+\lstinputlisting[ style=customRuby, caption={Tudo é objeto para o Ruby}, label={lst:objeto_ruby}]
+{codigos/objeto_ruby.rb}
+
+O \emph{Ruby} também é flexível, pois possibilita remover ou redefinir seu própio \emph{core}, por
+exemplo no código ‘‘\ref{lst:ruby_flexivel} - Ruby Flexível'' acrescentamos na \emph{classe ‘‘Numeric''}
+o \emph{método} ‘‘vezes()'' que possui a mesma característica do operador ‘‘*''. Ao se fazer a execução
+deste código a variável ‘‘y'' recebe o valor ‘‘10'' como resultado da operação ‘‘5.vezes 2''.
+
+\lstinputlisting[ style=customRuby, caption={Ruby flexível}, label={lst:ruby_flexivel}]
+{codigos/ruby_flexivel.rb}
+
+Apesar de ser flexível esta linguagem possui algumas convenções com por exemplo no código
+‘‘\ref{lst:convencao_ruby} - Convenção Ruby'', a definição de ‘‘var'' ou qualquer outro nome de
+variável dependendo do contexto sozinha deve ser uma variável local, ‘‘@var'' deve ser uma instância
+de uma variável por causa do caracter ‘‘@'' como primeiro caracter e ‘‘\$var'' deve ser uma variável global
+por causa do caracter ‘‘\$'' como primeiro caracter.
+
+\lstinputlisting[ style=customRuby, caption={Convenção Ruby}, label={lst:convencao_ruby}]
+{codigos/convencao_ruby.rb}
+
+\section{História}
+\label{história_ruby}
+
+O \emph{Ruby} foi criado em 24 de fevereiro de 1993 e o com o passar do tempo foi ganhando espaço na
+comunidade de desenvolvedores, chegando em 2006 a ter uma grande massa de aceitação, possuindo várias
+conferências de grupos de usuários ativos pelas principais cidades do mundo [\citeonline{ruby_site}].
+
+O nome \emph{Ruby} veio a partir de uma conversa de chat entre \emph{Matsumoto} e \emph{Keiju Ishitsuka},
+antes mesmo de qualquer linha de código ser escrita. Inicialmente dois nomes foram propostos ‘‘\emph{Coral}''
+e ‘‘\emph{Ruby}''. \emph{Matsumoto} escolheu o segundo em um e-mail mais tarde. E depois de um tempo, após
+já ter escolhido o nome, ele percebeu no fato de que \emph{Ruby} era o nome da \emph{birthstone} (pedra
+preciosa que simboliza o mês de nascimento) de um de seus colegas.
+
+Sua primeira versão foi anunciada em 21 de dezembro de 1995 na ‘‘\emph{Japanese domestic newsgroups}''.
+Subsequêncialmente em dois dias foram lançadas mais três versões juntamente com a
+‘‘\emph{Japanese-Language ruby-list main-list}'' (\emph{RubyTalk}).
+
+\emph{Ruby-Talk} \footnote{Ruby-Talk: \url{https://www.ruby-forum.com/}} a primeira \emph{lista de
+discussão da Ruby} \footnote{Listas de discussões do Ruby:
+\url{https://www.ruby-lang.org/en/community/mailing-lists/}} chegou a possuir em média 200 mensagens por dia
+em 2006. E com o passar dos útlimos anos, essa média veio a cair, pois o crescimento da comunidade
+obrigou a criação de grupos especificos, empurrando os usuários da lista principal para as lista específica.
+
+
+\section{API}
+\label{API}
+
+Uma \emph{Application Programming Interface (API)} possui como principal função definir de forma simplificada
+o acesso as funcinalidades de um certo componente, informando ao usuário somente para que serve cada função
+e como usá-la, indicando os parâmetros de entrada e saída com os seus respectivos tipos.
+
+Basicmante uma \emph{API} diminui a complexidade para o seu usuário. Por exemplo por analogia a \emph{API}
+de um elevador seria o seu painel, e a entrada seria o andar que se deseja ir. Desta forma supondo que
+um usuário deseja ir do segundo para o décimo andar, bastaria ele apertar o botão para chamar o
+elevador. Depois quando o elevador chegasse bastaria ele entrar e apertar o botão (10), e mesmo sem ter
+nenhum conhecimento mecânico do elevador, ele conseguiria obter como saída o décimo andar.
+
+A \emph{API} do \emph{Ruby} não é diferente, ou seja, não é necessário que se tenha
+conhecimento do funcionamento do \emph{core} do \emph{Ruby}
+\footnote{ Core do Ruby: \url{http://www.ruby-doc.org/core-2.1.3/}}, basta saber para que
+serve cada uma de suas funções disponibilizadas, seus parâmetro de entrada e saída com seus respectivos tipos.

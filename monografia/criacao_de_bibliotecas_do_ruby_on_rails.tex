@@ -1,17 +1,11 @@
-Como visto no capítulo anterior [\ref{chap:ruby_e_suas_bibliotecas}] a maior parte das bibliotecas do 
+Como visto no capítulo anterior [\ref{chapter:ruby_e_suas_bibliotecas}] a maior parte das bibliotecas do 
 \emph{Ruby} são distribuídas na forma de \emph{gemas} (\emph{gems}) e também vimos na seção 
 [\ref{subsection:gem}] deste mesmo cápitulo que o \emph{gem} é um sistema de distribuição sinilar ao 
 \emph{\href{https://packages.qa.debian.org/a/apt.html}{apt-get}} que facilita o compartilhamento e a 
 instalação das \emph{gemas}. 
 
 Deste modo, como já temos alguns conhecimento básicos sobre bibliotecas e sobre o \emph{Ruby}, neste cápitulo 
-iremos apresentar um tutorial básco de como se pode criar ou adaptar uma \emph{gema} do \emph{Ruby}.
-
-Na seção \ref{section:criando_uma_gema} apresentaremos o método básico para criar uma gema, e na
-seção \ref{section:adaptando_uma_gema} mostraremos o passo-a-passo para se adaptar uma gema.
-
-\section{Criando uma gema}
-\label{section:criando_uma_gema}
+iremos apresentar um tutorial básco de como se pode criar uma \emph{gema} do \emph{Ruby}.
 
 A ideia de se criar uma gema geralmente vai surgir quando se perceber que uma determinadade funcionalidade de
 um sistema também é utilizado em vários outros sistemas que a equipe trabalha. Por este motivo visando a economia
@@ -19,12 +13,12 @@ de tempo se faz a criação de bibliotecas para que não seja mais necessário c
 % (\emph{Ctrl + C}, \emph{Ctrl + V}).
 
 Para se criar uma gema (biblioteca do \emph{Ruby}) precisamos inicialmente entender para que serve cada um
-de seus compoentes e isso será explicado logo a seguir na sub-seção 
-‘‘\ref{subsec:estrutura_de_uma_gema} Estrutura de uma gema'', e depois em seguida veremos um modelo de criação 
-na sub-seção ‘‘\ref{subsection:modelo_de_criação} Modelo de Criação''.
+de seus compoentes e isso será explicado logo a seguir na seção 
+‘‘\ref{section:estrutura_de_uma_gema} Estrutura de uma gema'', e depois em seguida veremos um modelo de criação 
+na seção ‘‘\ref{section:modelo_de_criação} Modelo de Criação''.
 
-\subsection{Estrutura de uma gema}
-\label{subsec:estrutura_de_uma_gema}
+\section{Estrutura de uma gema}
+\label{section:estrutura_de_uma_gema}
 
 Uma gema do \emph{Ruby} obrigatoriamente deve possui um nome, um número de versão e uma plataforma.
 Internamente ela possui código, documentação e o \emph{\textbf{gemspec}}, onde a sua estrutura geralmente é 
@@ -61,8 +55,8 @@ de testes do diretório \emph{test} ou \emph{spec}.
 
 \end{itemize}
 
-\subsection{Modelo de criação}
-\label{subsection:modelo_de_criação}
+\section{Modelo de criação}
+\label{section:modelo_de_criação}
 
 O primeiro passo para se criar uma gema é construir uma solução de um certo problema que geralmente vai
 ser utilizado. Por exemplo a função que calcula a raiz quadrada de um número é uma funcionalidade que 
@@ -86,20 +80,20 @@ trabalho, ela possuía somente a tradução de duas palavras, ‘‘\emph{OI}'' 
 ‘‘\emph{MUNDO}'' para ‘‘\emph{WORLD}''. Apesar de possuir pouco vocabulário, a gema ‘‘\emph{gemtranslatetoenglish}''
 será suficiente para a aparesentação do tutorial deste trabalho. 
 
-Nesta sub-seção apresentaremos primeiramente como se pode criar uma estrtura básica de uma gema na sub-sub-seção 
-‘‘\ref{subsubsection:criando_a_estrutura} Criando a Estrutura'', em seguida mostraremos na 
-‘‘\ref{subsubsection:gemspec} Gemspec'' como se deve editar o arquivo \emph{.gemspec}, depois iremos apresentar 
-como se pode desenvolver o código de funcionalidades de uma gema na sub-sub-seção ‘‘\ref{subsubsection:lib} Lib'', 
-sequêncialmente apresentaremos na sub-sub-seção ‘‘\ref{subsubsection:test_ou_spec_e_arquivo_rakefile} Teste ou Spec e 
-Arquivo Rakefile'' como implementar o código de testes, em seguida na sub-sub-seção 
-‘‘\ref{subsubsection:execução_de_testes} Execução de Testes'' apresentaremos uma forma para executar os testes, 
-depois apresentaremos uma forma de testar a gema através da ferramenta \emph{IRB} na sub-sub-seção 
-‘‘\ref{subsubsection:irb} IRB'', e por fim na sub-sub-seção ‘‘\ref{subsubsection:exemplo_de_uso_de_gemtranslatetoenglish} 
+Nesta sub-seção apresentaremos primeiramente como se pode criar uma estrtura básica de uma gema na sub-seção 
+‘‘\ref{subsection:criando_a_estrutura} Criando a Estrutura'', em seguida mostraremos na 
+‘‘\ref{subsection:gemspec} Gemspec'' como se deve editar o arquivo \emph{.gemspec}, depois iremos apresentar 
+como se pode desenvolver o código de funcionalidades de uma gema na sub-seção ‘‘\ref{subsection:lib} Lib'', 
+sequêncialmente apresentaremos na sub-seção ‘‘\ref{subsection:test_ou_spec_e_arquivo_rakefile} Teste ou Spec e 
+Arquivo Rakefile'' como implementar o código de testes, em seguida na sub-seção 
+‘‘\ref{subsection:execução_de_testes} Execução de Testes'' apresentaremos uma forma para executar os testes, 
+depois apresentaremos uma forma de testar a gema através da ferramenta \emph{IRB} na sub-seção 
+‘‘\ref{subsection:irb} IRB'', e por fim na sub-seção ‘‘\ref{subsection:exemplo_de_uso_de_gemtranslatetoenglish} 
 Exemplo de Uso de gemtranslatetoenglish'' apresentaremos um exemplo de uso da gema 
 ‘‘\emph{gemtranslatetoenglish}'' dentro de um projeto.
 
-\subsubsection{Criando a Estrutura}
-\label{subsubsection:criando_a_estrutura}
+\subsection{Criando a Estrutura}
+\label{subsection:criando_a_estrutura}
 
 O primeiro passo é fazer a criação da estrutura da gema e isso pode ser feito de forma manual ou automática. 
 A forma manual implica em criar todos os diretórios e arquivos manualmente e a forma automática implica na
@@ -131,8 +125,8 @@ no código ‘‘Código \ref{lst:execucao_que_cria_gema_gemtranslatetoenglish} 
 \end{figure}
 \end{comment}
 
-\subsubsection{Gemspec}
-\label{subsubsection:gemspec}
+\subsection{Gemspec}
+\label{subsection:gemspec}
 
 Agora que possuimos a estrutura da gema, devemos fazer a edição do arquivo \emph{\textbf{gemspec}} 
 para informar os dados básicos da gema e isso pode ser feito editando o arquivo ‘‘ 'nome da gema'.gemspec ''. 
@@ -196,8 +190,8 @@ no código ‘‘Código \ref{lst:gemspec_gemtranslatetoenglish} - gemspec gemtr
  
 \end{itemize}
 
-\subsubsection{Desenvolvimento de código de funcionalidade ou teste}
-\label{subsubsection:desenvolvimento_de_codigo_de_funcionalidade_ou_teste}
+\subsection{Desenvolvimento de código de funcionalidade ou teste}
+\label{subsection:desenvolvimento_de_codigo_de_funcionalidade_ou_teste}
 
 Nesse momento podemos tomar 2 caminhos e isso depende da metodologia de projeto que adotadomos no inicio 
 do desenvolvimento, ou seja, é nesse momento que podemos desenvolver o código das funcinalidades
@@ -210,15 +204,15 @@ testes, se implementa o código de testes para depois se desenvolver o código d
 Seguindo a metodologia tradicional, primeiramente iremos fazer o código das funcinalidades da gema.
 Depois ao terminar de criar essas funcionalidades iremos elaborar os arquivos testes, mas nada o impede
 de desenvolver os códigos de testes que serão apresentado na sub-sub-seção 
-‘‘\ref{subsubsection:test_ou_spec_e_arquivo_rakefile} Test ou Spec e arquivo Rakefile'' antes de 
-desenvolver os códigos de funcionalidade mostrados na sub-sub-seção ‘‘\ref{subsubsection:lib} Lib''.
+‘‘\ref{subsection:test_ou_spec_e_arquivo_rakefile} Test ou Spec e arquivo Rakefile'' antes de 
+desenvolver os códigos de funcionalidade mostrados na sub-sub-seção ‘‘\ref{subsection:lib} Lib''.
 
-\subsubsection{Lib}
-\label{subsubsection:lib}
+\subsection{Lib}
+\label{subsection:lib}
 
 Nesta sub-seção vamos aprender a fazer o código de funcionalidade de uma gema, mas caso deseje fazer 
 primeiro os códigos de casos de testes, pode-se consultar a sub-seção 
-‘‘\ref{subsubsection:test_ou_spec_e_arquivo_rakefile} Test ou Spec e arquivo Rakefile'' e depois retornar
+‘‘\ref{subsection:test_ou_spec_e_arquivo_rakefile} Test ou Spec e arquivo Rakefile'' e depois retornar
 para esta sub-seção para dar continuidade ao desenvolvimento.
 
 Caso esse código seja por meio de código \emph{Ruby} devemos fazer a edição e criação de arquivos no 
@@ -330,12 +324,12 @@ podemos perceber que na linha ‘‘4'' foi feito o \emph{require} do arquivo
   
 \end{itemize}
 
-\subsubsection{Test ou Spec e arquivo Rakefile}
-\label{subsubsection:test_ou_spec_e_arquivo_rakefile}
+\subsection{Test ou Spec e arquivo Rakefile}
+\label{subsection:test_ou_spec_e_arquivo_rakefile}
 
 Lembrando que podemos fazer o desenvolvimento de código de funcinalidades ou o código de testes, e isso é
 dependente da metodologia adotada no inicio do projeto, caso queira fazer o código de funcionalidade antes
-do desenvolvimento dos casos de teste se pode consutar a sub-seção ‘‘\ref{subsubsection:lib} Lib''.
+do desenvolvimento dos casos de teste se pode consutar a sub-seção ‘‘\ref{subsection:lib} Lib''.
 
 Para se fazer os testes, deve-se criar os arquivos de testes dentro do diretório ‘‘\emph{test}'' ou se 
 preferir ‘‘\emph{spec}''. Não existe um padrão especificado, mais recomenda-se criar um arquivo de 
@@ -397,8 +391,8 @@ Rakefile gemtranslatetoenglish'' sendo explicado os detalhes logo a seguir.
  
 \end{itemize}
 
-\subsubsection{Execução de testes}
-\label{subsubsection:execução_de_testes}
+\subsection{Execução de testes}
+\label{subsection:execução_de_testes}
 
 Antes de realizarmos os testes, precisamos criar a gema com comando ‘‘\emph{gem build 'nome da gema'.gemspec}'' 
 e fazer a instalação com o comando ‘‘\emph{sudo gem install 'nome da gema'-'versão da gema'.gem}''. No nosso 
@@ -440,8 +434,8 @@ Contudo no momento do desenvolvimento do código de testes, o aconselhável é p
 na gema, fazer testes com todas as possíveis entradas, verificando se o resultado para cada entrada 
 está correto.
 
-\subsubsection{IRB}
-\label{subsubsection:irb}
+\subsection{IRB}
+\label{subsection:irb}
 
 O \emph{\href{http://www.ruby-doc.org/stdlib-2.0/libdoc/irb/rdoc/IRB.html}{IRB}} 
 \footnote{IRB: \url{http://www.ruby-doc.org/stdlib-2.0/libdoc/irb/rdoc/IRB.html}}
@@ -545,8 +539,8 @@ gemtranslatetoenglish'' explicado com mais detalhes nos itens abaixo.
   
  \end{itemize}
 
-\subsubsection{Exemplo de uso de gemtranslatetoenglish}
-\label{subsubsection:exemplo_de_uso_de_gemtranslatetoenglish}
+\subsection{Exemplo de uso de gemtranslatetoenglish}
+\label{subsection:exemplo_de_uso_de_gemtranslatetoenglish}
 
 Até o momento falamos muito da utilização do \emph{action\_controller} para simplificar o uso da função 
 \emph{translate()} na \emph{view}, e agora vamos apresentar essa facilidade através de um exemplo, 
@@ -655,456 +649,4 @@ texto ‘‘HELLO WORLD''.
   \includegraphics[scale=0.49]{images/resultado_de_translate_na_view.png}
   \caption{Resultado de Translate na View}
   \label{fig:resultado_de_translate_na_view}
-\end{figure}
- 
-\section{Adaptando uma gema}
-\label{section:adaptando_uma_gema}
-
-Agora que sabemos como criar uma gema visto na seção ‘‘\ref{section:criando_uma_gema} - Criando uma gema'', 
-podemos partir para a ideia de fazer modificações em uma gema que já existe, ou seja, fazer a adaptação de 
-uma gema adicionando novas funcionalidade que geralmente utilizamos. 
-
-Suponha o cenário aonde utilizamos com frequência uma certa gema, no entanto apesar dela comportar várias 
-funcionalidades, ela não possui tudo que desejamos. Neste caso basta fazer a adaptação desta gema, não 
-sendo necessário criar uma nova gema do zero, isso desde que a funcionalidade que precisamos 
-esteja no mesmo contexto abordado pela gema. 
-
-Por exemplo se estamos utilizando uma gema matemática e ela não possuir uma função para calcular a 
-raiz de um número, podemos fazer uma modificação nesta gema para que ela possa calcular a raiz. 
-No entanto não faz nenhum sentido incluuir uma funcionalidade de criar mapas do \emph{Google}, pois 
-não está no mesmo contexto da gema.
-
-Para facilitar o entendimento utilizaremos para a explicação a gema 
-\emph{\href{https://github.com/toshikomura/Google-Maps-for-Rails}{Google-Maps-for-Rails}} 
-\footnote{Google-Maps-for-Rails : \url{https://github.com/toshikomura/Google-Maps-for-Rails}} que é um 
-\emph{branch} da gema 
-\emph{\href{https://github.com/apneadiving/Google-Maps-for-Rails}{Google-Maps-for-Rails}} 
-\footnote{Google-Maps-for-Rails : \url{https://github.com/apneadiving/Google-Maps-for-Rails}} criada por 
-\emph{\href{https://github.com/apneadiving}{Benjamin Roth}} 
-\footnote{Bejamin Roth: \url{https://github.com/apneadiving}} e 
-\emph{\href{https://github.com/MrRuru}{David Ruyer}} \footnote{David Ruyer: \url{https://github.com/MrRuru}}.
-
-Essa gema criada por \emph{Bejamin Roth} e \emph{David Ruyer} tem como objetivo criar mapas de forma 
-simplificada, proporcionando a inclusão de sobreposições oferecidas pelo \emph{Google} como por exemplo 
-marcadores e circulos. Ela também possui um código bem flexível que permite a aceitação de outros 
-provedores de mapas [\citeonline{google_maps_for_rails}].
-
-\subsection{API do Google Maps} 
-\label{subsection:api_do_google_maps} 
- 
-Para fazer a adaptação da gema foi necessário fazer um estudo sobre como utilizar a \emph{API} do 
-\emph{Google} e para isso foi utilizado como base o livro \emph{Beginning Google Maps API 3} 
-[\citeonline{beginning_google_maps_api3}] e a 
-\emph{\href{https://developers.google.com/maps/}{Google Maps API V3}} 
-\footnote{Google Maps API V3: \url{https://developers.google.com/maps/}}, onde ambos se complementam 
-ensinando os passos básicos para criar e manipular mapas do \emph{Google}. 
-
-O \emph{Google Maps} e sua respectiva \emph{API} foram criadas por dois irmãos \emph{Lars} e 
-\emph{Jens Rasmussen}, cofundadores da ‘‘\emph{Where 2 Technologies}'', compania dedicada a criação de mapas
-que foi comprada pelo \emph{Google} em 2004 [\citeonline{beginning_google_maps_api3}].
-
-Até o inicio do ano 2005 a rederização de mapas pela rede possuía um alto custo, necessitando de 
-servidores altamente equipados para suportar a carga de trabalho. Mas em Fevereiro de 2005 através 
-de um \emph{post} em seu \emph{blog}, o \emph{Google} anunciou uma nova solução de rederização, 
-possiblitando ao usuário interagir com um mapa em uma página \emph{web}
-[\citeonline{beginning_google_maps_api3}].
-
-Depois de fazer o lançamento da nova forma para criar mapas, o \emph{Google} percebeu que 
-muitos desenvolvedores gostariam de incorporar essa nova solução em seus projetos, e por esse 
-movtio em Junho de 2005 anunciou a primeira versão pública da \emph{API} do \emph{Google Maps}
-[\citeonline{beginning_google_maps_api3}].
-
-O \emph{Google Maps} funciona de uma forma bem simples fazendo a criação e a manipulação do mapa
-por meio de \emph{HTML}, \emph{CSS} e \emph{Javascript}. Basicamente o usuário por meio do \emph{browser}
-requisita algum local do mapa informando a coordenada e o zoon desejado. Desta forma o servidor retorna a 
-imagem do mapa que representa a posição requisitada [\citeonline{beginning_google_maps_api3}]. 
-
-\subsection{Engenharia Reversa}
-\label{subsection:engenharia_reversa}
-
-Para conseguirmos entender o funcionamento de uma gema, precisamos obrigatoriamente fazer uma tradução
-do código fonte para diagramas, pois não conseguiremos fazer nenhuma modificação consistente
-se não tivermos uma visão geral de seu funcionamento, e esse procedimento de tradução se chama 
-\emph{engenharia reversa}.
-
-\emph{Engenharia reversa} é um processo de análise para a extração de informações de algo que já 
-existe em um modelo de abstração de alto nível. Essas informações podem estar no formato de código 
-fonte ou mesmo em um executável. O processo de análise para a extração de dados deve ser feita de forma
-minunciosa, pois pode ocorrer uma grande perda de recursos, caso alguma funcionalidade seja entendida de
-forma incorreta. E o modelo de abstração de alto nível pode ser por exemplo um diagrama de caso de uso ou
-um diagrama de sequência.
-
-Aplicando a \emph{engenharia reversa} na gema \emph{Google-Maps-For-Rails} conseguimos obter como resultado
-os diagrama de classe na imagem ‘‘Figure \ref{fig:diagrama_de_classes_google_maps_for_rails} - Diagrama de 
-Classes Google-Maps-For-Rails'', o diagrama de atributos na imagem ‘‘Figure - 
-\ref{fig:diagrama_de_atributos_google_maps_for_rails} - Diagrama de Atributos Google-Maps-For-Rails'' e o 
-diagrama de herança na imagem ‘‘Figure - \ref{fig:diagrama_de_heranca_google_maps_for_rails} - Diagrama de 
-Herança Google-Maps-For-Rails'' que serão explicados em mais detalhes logo a seguir.
-
-Nenhum dos 3 diagramas segue os seus respectivos padrões e isso deve ao fato de que não existia espaço 
-suficiente na imagem para representar o sistema da gema por completo. Por esse motivo optamos por definir 
-novos diagramas que possuem características sinilares aos seus padrões, mas com algumas características
-adicionais.
-
-Para as imagens de diagrama de classes ‘‘Figure \ref{fig:diagrama_de_classes_google_maps_for_rails} - 
-Diagrama de Classes Google-Maps-For-Rails'' e o diagrama de atributos na imagem ‘‘Figure - 
-\ref{fig:diagrama_de_atributos_google_maps_for_rails} - Diagrama de Atributos Google-Maps-For-Rails''
-as seguintes explicações são válidas:
-
-\begin{itemize}
-
- \item Cada retângulo representa uma classe da gema.
- 
- \item O nome ácima dos traços ‘‘-----'' representa o nome da classe.
- 
- \item O símbolo ‘‘*'' do lado esquerdo do nome da classe representa que ela é \emph{superclasse} e o 
- símbolo ‘‘*'' do lado direito do nome da classe representa que ela é uma \emph{subclasse}, por exemplo
- ‘‘\emph{* Objects.BaseBuilder}'' é \emph{superclasse} de ‘‘\emph{Google.Builders.Map *}'', neste caso 
- ‘‘\emph{Google.Builders.Map *}'' é \emph{subclasse} de ‘‘\emph{* Objects.BaseBuilder}''. O mesmo 
- critério é válido para o símbolo ‘‘\$''.
- 
- \item O símbolo ‘‘+'' do lado esquerdo do nome da classe representa que ela é \emph{incluída} em outra  
- \emph{classe} e o símbolo ‘‘+'' do lado direito do nome da classe representa que ela \emph{incluí} outra 
- \emph{classe}, por exemplo ‘‘\emph{+ Google.Objects.Common}'' é \emph{incluída} na \emph{classe} 
- ‘‘\emph{Google.Objects.Bound \$+}'', neste caso ‘‘\emph{Google.Objects.Bound \$+}'' \emph{incluí} a 
- \emph{classe} ‘‘\emph{+ Google.Objects.Common}''.
- 
-\end{itemize}
-
-\begin{figure}[ht]
-  \includegraphics[scale=0.48]{images/diagrama_de_classes_google_maps_for_rails.png}
-  \caption{Diagrama de Classes Google-Maps-For-Rails}
-  \label{fig:diagrama_de_classes_google_maps_for_rails}
-\end{figure}
-
-\begin{comment}
-Percebe-se que o diagrama de classe na imagem ‘‘Figure \ref{fig:diagrama_de_classes_google_maps_for_rails} - 
-Diagrama de Classes Google-Maps-For-Rails'' não segue os padrões de um diagrama de classes, por causa que 
-no espaço disponível na imagem não seria possível inserir o sistema por completo, comprometendo o 
-entendimento da gema. Por esse motivo as definições deste diagrama serão explicados logo a seguir.
-\end{comment}
-
-As seguintes explicações são válidas para o diagrama de classe na imagem ‘Figure 
-\ref{fig:diagrama_de_classes_google_maps_for_rails} - Diagrama de Classes Google-Maps-For-Rails'':
-
-\begin{itemize}
-
- \item O digrama não mostra os atributos das classes. 
- 
- \item Todos os nomes seguidos de ‘‘(...)'' abiaxo do traço ‘‘-----'' representam os métodos da classe.
- 
- \item Existem classes que não possuem os traços ‘‘-----'', neste caso elas possuem o nome delas
- seguida do símbolo ‘‘->'' e depois um nome de outra classe. Isso significa que esta classe
- possui os mesmo métodos da classe que vem depois do símbolo ‘‘->''. Por exemplo a 
- classe ‘‘\emph{Google.Builder.Circle -> Kml}'' representa a classe ‘‘\emph{Google.Builder.Circle}'' 
- e ela possuí os mesmo métodos da classe ‘‘\emph{Kml}'', ou seja, ela possuí os métodos
- ‘‘\emph{constructor()}'', ‘‘\emph{create\_...()}'' e ‘‘\emph{...\_option()}''. E também existe o caso 
- onde esta classe possuí métodos além dos da outra, e neesse caso esses métodos são colocados na linha 
- de baixo. Por exemplo a classe ‘‘\emph{Google.Builder.Polyline -> Kml}'' que é a classe 
- ‘‘\emph{Google.Builder.Polyline}'', além de possuír os métodos da classe \emph{Kml}, ela 
- possuí o método ‘‘\emph{\_build\_path()}''.
- 
-\end{itemize}
-
-\begin{figure}[ht]
-  \includegraphics[scale=0.48]{images/diagrama_de_atributos_google_maps_for_rails.png}
-  \caption{Diagrama de Atributos Google-Maps-For-Rails}
-  \label{fig:diagrama_de_atributos_google_maps_for_rails}
-\end{figure}
-
-\begin{comment}
-O diagrama de atributos na imagem ‘‘Figure \ref{fig:diagrama_de_atributos_google_maps_for_rails} - 
-Diagrama de Atributos Google-Maps-For-Rails'' não é um diagrama padrão de projeto, mas neste caso ele
-serve como complemento do diagrama de classe ‘‘Figure \ref{fig:diagrama_de_classes_google_maps_for_rails} - 
-Diagrama de Classes Google-Maps-For-Rails'', e isso também foi feito por causa do pouco
-espaço disponível na imagem. Por esse motivo as definições deste diagrama serão explicados logo a seguir.
-\end{comment}
-
-As seguintes explicações são válidas para o diagrama de de atributos na imagem ‘‘Figure 
-\ref{fig:diagrama_de_atributos_google_maps_for_rails} - Diagrama de Atributos Google-Maps-For-Rails'':
-
-\begin{itemize}
- 
- \item Todos os nomes abiaxo do traço ‘‘-----'' representam os atributos da classe. Também 
- existe o caso onde esse métodos são seguidos pelos símbolos ‘‘\{ ... \}'', onde o método é um 
- \emph{objeto} e os nomes separados por ‘‘,'' entre os símbolos ‘‘\{ ... \}'' são os atributos
- do \emph{objeto}.
- 
- \item Existem classes que não possuem os traços ‘‘-----'', neste caso elas possuem o nome delas
- seguida do símbolo ‘‘->'' e depois um nome de outra classe. Isso significa que esta classe 
- possui os mesmo atributos da classe que vem depois do símbolo ‘‘->''. Por exemplo a 
- classe ‘‘\emph{Google.Builder.Polyline -> Kml}'' que representa a classe 
- ‘‘\emph{Google.Builder.Polyline}'', ela possuí os mesmo atributos da classe
- ‘‘\emph{Kml}'', ou seja, ela possuí os atributos 
- ‘‘\emph{args \{ url \}}'', ‘‘\emph{provider\_option}'' e ‘‘\emph{serviceObject}''. E também existe o caso 
- onde esta classe possuí atributos além dos da outra classe e neesse caso esses 
- atributos são colocados na linha de baixo. Por exemplo a classe 
- ‘‘\emph{Google.Builder.Circle -> Kml}'' que é a classe ‘‘\emph{Google.Builder.Circle}'', além de 
- possuír os atributos da classe \emph{Kml}, ela possuí o atributo 
- ‘‘\emph{args \{ lat, lng, radius \}}''.
- 
-\end{itemize}
-
-\begin{figure}[ht]
-  \includegraphics[scale=0.48]{images/diagrama_de_heranca_google_maps_for_rails.png}
-  \caption{Diagrama de Herança Google-Maps-For-Rails}
-  \label{fig:diagrama_de_heranca_google_maps_for_rails}
-\end{figure}
-
-\begin{comment}
-O diagrama de herança na imagem ‘‘Figure \ref{fig:diagrama_de_heranca_google_maps_for_rails} - 
-Diagrama de Herança Google-Maps-For-Rails'' não é um diagrama padrão de projeto, mas neste caso ele também
-serve como complemento do diagrama de classe ‘‘Figure \ref{fig:diagrama_de_classes_google_maps_for_rails} - 
-Diagrama de Classes Google-Maps-For-Rails'', e isso também foi feito por causa do pouco
-espaço disponível na imagem. Por esse motivo as definições deste diagrama serão explicados logo a seguir.
-\end{comment}
-
-As seguintes explicações são válidas para o diagrama de herança na imagem ‘‘Figure 
-\ref{fig:diagrama_de_heranca_google_maps_for_rails} - Diagrama de Herança Google-Maps-For-Rails'':
-
-\begin{itemize}
-
- \item As linhas pretas indicam a organização da gema sendo que a classe \emph{Gmaps} é a classe principal.
- 
- \item Os retângulos normais representam as classes.
- 
- \item A classe \emph{Gmaps} possui os atributos \emph{Builders}, \emph{Objects} e 
- \emph{Google}, onde o \emph{Google} possui os atributos \emph{Builders} e \emph{Objects}.
- 
- \item As linhas vermelhas com pontas de seta representam a herança entre duas \emph{classes}, onde 
- a classe que está com a seta, é a classe que herda as características da classe
- na outra ponta da linha.
-
- \item As linhas azuis com pontas de quadrado representam a inclusão de uma classe na outra, onde
- a classe que está com o quadrado, é a classe que incluí a classe que está na outra ponta da linha.
- 
-  \item Os retângulos que tem uma dobra no canto inferior direito representam um conjunto de classes, 
- onde estas classes possuem uma característica em comum. Por exemplo as classes ‘‘\emph{Kml}'', 
- ‘‘\emph{Polygon}'', ‘‘\emph{Polyline}'', ‘‘\emph{Circle}'', ‘‘\emph{Map}'', ‘‘\emph{Marker}'' e 
- ‘‘\emph{Bound}'' que são ‘‘\emph{Objects}'' do ‘‘\emph{Google}'', estão em um conjunto onde todas elas 
- herdam as características da classe ‘‘\emph{Base}''.
- 
- \end{itemize}
- 
- 
-\subsection{Entendimento da gema} 
-\label{subsection:entendimento_da_gema} 
-
-Agora que realizamos a \emph{engenharia reversa} da \emph{gema}, podemos analisar algumas de suas 
-características que serão listadas e explicadas logo a seguir.
-
-\begin{itemize}
-
- \item Apesar do ‘‘\emph{GMaps}'' ser a classe principal da gema, ela não é a mais
- importante, pois todas as funcionalidades da gema são controladas pela classe
- ‘‘\emph{Hanlder}''. A única funcionalidade da classe ‘‘\emph{GMaps}'' é fazer a chamada
- para a criação de ‘‘\emph{Handler}'', ou seja quando se requisita o método 
- ‘‘\emph{GMaps.build('Google')}'' o método verifica se o objeto ‘‘\emph{Handler}'' já
- existe, e caso ele não exista, o ‘‘\emph{GMaps}'' faz a criação chamando o método 
- ‘‘\emph{new Gmaps.Objects.Handler(type, options)}''.
-
- \item ‘‘\emph{Hander}'' é a classe que controla todo o funcionamento da gema e 
- basicamente ela possui dois momentos:
- 
-  \subitem - No primeiro momento ela prepara a estrutura da \emph{gema} para criação e manipulação
-  do mapa, criando e setando os objetos de configuração, como por exemplo criando o \emph{objeto}
-  ‘‘\emph{Primitives}''.
-  
-  \subitem - No segundo momento ela cria o mapa com as configurações e permite a manipulação do mapa, 
-  possibilitando a criação e inserção de sobreposições como \emph{circles} e \emph{polylines}.
- 
- \item A classe ‘‘\emph{Primitives}'' possui as definições que são comuns na gema, 
- como por exemplo, é ela possui a definição do tipo ‘‘\emph{Marker: google.maps.Marker}'' que 
- é a classe \emph{Marker} do \emph{Google Maps}.
- 
- \item O atributo ‘‘\emph{serviceObject}'' de todas as classes de 
- ‘‘\emph{Builders}'' do ‘‘\emph{Google}'', representam o atributo que recebe o objeto do 
- \emph{Google Maps}.
- 
-\end{itemize}
- 
-\subsection{Adaptações}
-\label{subsection:adaptações}
-
-Agora que temos uma abstração de alto nível para a gema \emph{Google-Maps-For-Rails} podemos partir para a 
-adaptação dela, ou seja, agora que temos alguns diagramas que nos auxiliam a visualizar o funcionamento 
-geral da gema, podemos tentar acrescentar novas funcionalidades, analisando os locais das possíveis 
-modificações e os impactos que essas mudanças podem causar. 
-
-A gema já possuí sobreposições como \emph{markers} e \emph{circles}, mas até o momento não possuí a 
-funcinalidade de criar direções entre um ponto de origem e um ponto de destino. Contudo a ideia é criar 
-uma funcionalidade que receba como parâmetro um local de origem e um local de destino e retorne como
-resultado uma sequência de ruas e direções a serem seguidas para ir do local de origem ao local de destino.
-
-Para realizarmos essa modificação foi necessário consultar a \emph{API} do 
-\emph{\href{https://developers.google.com/maps/documentation/javascript/directions}{Direction Service}} 
-\footnote{Direction Service: \url{https://developers.google.com/maps/documentation/javascript/directions}}
-(\emph{Serviço de Direção}) do \emph{Google}, onde verificamos que seria necessário o uso de pelo menos
-quatro \emph{classes} que serão listadas e explicadas logo a seguir:
-
-\begin{itemize}
-
- \item ‘‘\emph{DirectionService}'' (\emph{google.maps.DirectionsService}) que é a classe que tem o 
- objetivo de requisitar e receber o caminho entre o local de origem e o local de destino.
- 
- \item ‘‘\emph{DirectionRender}'' (\emph{google.maps.DirectionsRenderer}) que é a classe que tem o 
- objetivo de rederizar no mapa o caminho entre o local de origem e o local de destino.
- 
- \item ‘‘\emph{TravelMode}'' (\emph{google.maps.TravelMode}) que é a classe que tem o objetivo de 
- informar a forma como esse caminho deve ser percorrido, que pode ser caminhando (walking), de carro 
- (driving), bicicleta (bicycling) e/ou por meios de locomoção públicos (transit).
- 
- \item ‘‘\emph{DirectionsStatus}'' (\emph{google.maps.DirectionsStatus}) que é a classe que tem o
- objetivo de informar o \emph{status} da requisição feita pela objeto da classe
- ‘‘\emph{DirectionService}''.
- 
-\end{itemize}
-
-Sabendo da necessidade da inclusão de ‘‘\emph{DirectionService}'', ‘‘\emph{DirectionRender}'',
-‘‘\emph{TravelMode}'' e ‘‘\emph{DirectionsStatus}'', decidimos que a primeira modificação na gema seria 
-incluir estas quatros classe nas definições da classe ‘‘\emph{Primitives}''. E isso foi 
-feita da seguinte forma como apresentado no código ‘‘Código 
-\ref{lst:classe_primitives_com_atributos_de_directions} - Classe Primitives com atributo de Directions'' 
-logo abaixo.
-
-\lstinputlisting[ style=customCoffee, caption={Classe Primitives com atributo de Directions}, label={lst:classe_primitives_com_atributos_de_directions}]
-{codigos/classe_primitives_com_atributos_de_directions.coffee}
-
-\begin{figure}[ht]
-  \includegraphics[scale=0.48]{images/novo_diagrama_de_heranca_google_maps_for_rails.png}
-  \caption{Novo Diagrama de Herança Google-Maps-For-Rails}
-  \label{fig:novo_diagrama_de_heranca_google_maps_for_rails}
-\end{figure}
-
-Em seguida criamos quatro \emph{classes} para o ‘‘\emph{Google}'', sendo que duas são ‘‘\emph{Builders}'' de 
-‘‘\emph{DirectionService}'' e ‘‘\emph{DirectionRender}'', e as outras duas são ‘‘\emph{Objects}'' também das 
-classes ‘‘\emph{DirectionService}'' e ‘‘\emph{DirectionRender}''. Para facilitar a compreensão, elaboramos o 
-diagrama representado na imagem ‘‘Figure \ref{fig:novo_diagrama_de_heranca_google_maps_for_rails} - Novo 
-Diagrama de HrançaGoogle-Maps-For-Rails'' para mostrar o local aonde inserimos as classes e quais as 
-dependências que elas possuem. No caso este diagrama é o mesmo diagrama de herança que desenvolvemos na 
-\emph{engenharia reversa}, mostrado na imagem ‘‘Figure \ref{fig:diagrama_de_heranca_google_maps_for_rails} - 
-Diagrama de Herança Google-Maps-For-Rails'', com a adição das quatro classes que são representadas 
-por retângulos tracejados.
-
-Agora que acrescentamos estas quatro classes na gema adaptada, devemos adicionar no ‘‘\emph{Handler}'', 
-novas funções para maminpular essas classes. E neste caso inserimos as funçãoes ‘‘\emph{addDirection()}'' e 
-‘‘\emph{calculate\_route()}'' que podem ser vistas no código ‘‘Código 
-\ref{lst:funcoes_adicionais_do_handler} - Funções adicionais do Handler'' que será explicado logo a seguir.
-
-\begin{itemize}
-
- \item Na linha ‘‘2'' é adicionado a função ‘‘\emph{addDirection}'' que recebe como parâmetro 
- ‘‘\emph{direction\_data}'', que possui o informações do local de origem e local de destino que são 
- obrigatórios para criar a direção, e ‘‘\emph{provider\_options}'' que pode conter as opções da forma
- como esse direção deve ser gerada. Essa função tem por objetivo criar as direções e colocá-las no mapas.
- 
- \item Na linha ‘‘13'' é adicionado a função ‘‘\emph{calculate\_route}'' com o parâmetro 
- ‘‘\emph{direction\_data}'' que tem por principal objtivo fazer a requisição para o \emph{Google } de uma 
- possível direção entre o local de origem ao local de destino.
- 
- \item Da linha ‘‘3'' a linha ‘‘10'' é o conteúdo da função ‘‘\emph{addDirection}'', onde se cria os
- atributos ‘‘\emph{direction\_service}'' e ‘‘\emph{direction\_render}'' para o ‘‘\emph{Handler}'', e
- para cada um deles é atribuido o seu respectivo objeto do \emph{Google Maps} com a chamada da função 
- ‘‘\emph{@\_builder(...)}''. Depois é feito a chamada da função ‘‘\emph{calulate\_route(...)}''
- para encontrar uma possível direção e finalmente com o código 
- ‘‘\emph{@direction\_render.getServiceObject().setMap(@getMap())}'' a direção encontrada é colocado 
- no mapa.
- 
- \item Da linha ‘‘13'' a linha ‘‘20'' é o conteúdo da função ‘‘\emph{calculate\_route(...)}'', onde 
- inicialmente é colocado em uma variável local o \emph{status Ok} de requisição que será utilizado
- para verificar se a requisição de direção foi feita com sucesso, e também é criada uma variável local 
- para o \emph{objeto DirectionRender} do \emph{Google Maps}. Em seguida através da chamada da função 
- ‘‘\emph{route(...)}'' do \emph{objeto DirectionService} que passa como parâmetro o local de origem e
- o local de destino e recebe como resposta o \emph{status} da requisição e o \emph{response} que pode
- conter o caminho solução. Após a execução desta função é feita a verificação da resposta, e caso 
- ela venha como o \emph{status Ok} o \emph{objeto DirectionRender} recebe o caminho solução.
- 
-\end{itemize}
-
-\lstinputlisting[ style=customCoffee, caption={Funções adicionais do Handler}, label={lst:funcoes_adicionais_do_handler}]
-{codigos/funcoes_adicionais_do_handler.coffee}
-
-\subsection{Exemplo de uso de Google-Maps-for-Rails}
-\label{subsection:exemplo_de_uso_de_google-maps-for-rails}
-
-Como exemplo de uso da gema ‘‘\emph{Google-Maps-for-Rails}'' adaptada criamos o projeto 
-‘‘\emph{\href{https://github.com/toshikomura/DiseasesMap}{DiseasesMap}}'' 
-\footnote{DiseasesMap : \url{https://github.com/toshikomura/DiseasesMap}} que tem como objetivo representar 
-a frequência de doenças no mapa do \emph{Google} utilizando sobreposições. Até o momento de término deste
-trabalho essa função ainda não havia sido implementada, mas fizemos o uso da funcionalidade de direções.
-
-Inicialmente fizemos a instalção e inclusão da gema adaptada no arquivo \emph{Gemfile} do projeto. Depois 
-criamos uma estrutura básica de \emph{model/view/controller} de ‘‘\emph{locations}''. 
-
-Em seguida para fazer o uso da função de direções utilizamos o código‘‘Código 
-\ref{lst:exemplo_coffeescript_que_cria_mapa_com_direcao} - Exemplo CoffeeScript que Cria Mapa com 
-Direção'' explicado logo abaixo.
-
-\lstinputlisting[ style=customCoffee, caption={Exemplo CoffeeScript que Cria Mapa com Direção}, label={lst:exemplo_coffeescript_que_cria_mapa_com_direcao}]
-{codigos/DiseasesMap/app/assets/javascripts/locations.js.coffee}
-
-\begin{itemize}
-
- \item Na linha ‘‘6'' é feita a preparação da estrtura de configuração do mapa com a chamada 
- ‘‘\emph{GMaps.build('Google')}'', sendo feita a criação do \emph{objeto Handler}, que é atribuida a 
- variável local ‘‘\emph{handler}'', juntamente com as outras configurações básicas que o mapa necessita.
- 
- \item Na linha ‘‘7'' é feita a chamada de ‘‘\emph{handler.buildMap(...)}'' que tem como função fazer a 
- criação do mapa a parir das configurações básicas já definidas quando foi feita a chamada de 
- ‘‘\emph{GMaps.build('Google')}''. São passados como parâmetros as variáveis, ‘‘\emph{provider}''
- que neste caso está vazio, e internal que define o ‘‘\emph{id}'' do mapa como ‘‘\emph{map}'', neste caso
- o ‘‘\emph{id}'' serve para identificar o mapa a ser modificado.
- 
- \item Na linha ‘‘11'' é criado uma \emph{function} determinada pelo símbolo ‘‘->'', onde ela somente será 
- executada depois que a função ‘‘\emph{handler.buildMap(...)}'' terminar, ou seja, quando toda a criação do mapa for 
- concluída. Neste caso essa função executa as seguintes operações:
- 
-  \subitem Na linha ‘‘12'' é feita a criação de um \emph{marker} com a chamada da função 
-  ‘‘\emph{handler.addMarker(...)}'', sendo passado como parâmetro, a sua posição que no caso é (0,0) 
-  definido ‘‘\emph{lat}'' e ‘‘\emph{lng}'', a sua imagem definida por ‘‘\emph{picture}'', e sua informação 
-  definido por ‘‘\emph{infowindow}''.
- 
-  \subitem Na linha ‘‘22'' é feita a extensão de fronteiras incluindo o novo \emph{marker} com a chamada 
-  da função ‘‘\emph{handler.bounds.extendWith(...)}'', sendo passado como parâmetro o \emph{marker} criado
-  anteriormente.
- 
-  \subitem Na linha ‘‘23'' é feita a criação de direções com a chamada da função 
-  ‘‘\emph{handler.addDirection(...)}''que incluimos no ‘‘\emph{Handler}'', sendo passado como parâmetro, um 
-  local de origem definido por ‘‘\emph{ origin: ‘‘São Paulo''} '', e um local de destino definido por 
-  ‘‘\emph{destination: ‘‘Curitiba''} ''.
- 
-\end{itemize}
-
-E para mostrar o mapa na view de ‘‘\emph{locations}'' adicionamos o código mostrado em ‘‘Código 
-\ref{lst:exemplo_locations_view_que_cria_mapa_com_direcao} - Exemplo Locations view que Cria Mapa com Direção'' 
-que é parte do código da \emph{view}, explicado logo a seguir.
-
-\lstinputlisting[ style=customRubyHTML, caption={Exemplo Locations view que Cria Mapa com Direção}, label={lst:exemplo_locations_view_que_cria_mapa_com_direcao}]
-{codigos/index_simplificado.html.erb}
-
-\begin{itemize}
-
- \item Na linha ‘‘1'' com a \emph{tag} \emph{<h1>...</h1>} é definido como título principal da \emph{view} o
- texto ‘‘\emph{Listining locations}''.
- 
- \item Os ‘‘\emph{...}'' indica que existe código, mas por simplificação na explicação, ele não fo mostrado.
- 
- \item Da linha ‘‘3'' a ‘‘5'' é definido uma \emph{div} com ‘‘800px'' de largura, e dentro dessa \emph{div}
- é definido o local para a criação do mapa com ‘‘800px'' de largura e ‘‘400px'' de altura. No caso o local 
- de criação do mapa é referênciado pelo atributo \emph{id} que o mesmo \emph{id} utilizado no código 
- ‘‘Código \ref{lst:exemplo_coffeescript_que_cria_mapa_com_direcao} - Exemplo CoffeeScript que Cria Mapa com 
- Direção'' na linha ‘‘10''.  
- 
-\end{itemize}
-
-Como resultado ao se acessar o \emph{index} de locations obtemos como resultado a imagem ‘‘Figure 
-\ref{fig:caminho_entre_sao_paulo_e_curitiba} - Caminho entre São Paulo e Curitiba''. Neste caso a
-nossa gema adaptada com a nova funcionalidade de direções funcionou corretamente, pois o caminho
-mostrado é entre ‘‘São Paulo'' e ‘‘Curitiba'' como requisitamos na linha ‘‘24'' do código ‘‘Código 
-\ref{lst:exemplo_coffeescript_que_cria_mapa_com_direcao} - Exemplo CoffeeScript que Cria Mapa com Direção''.
-
- \begin{figure}[ht]
-  \includegraphics[scale=0.44]{images/caminho_entre_sao_paulo_e_curitiba.png}
-  \caption{Caminho entre São Paulo e Curitiba}
-  \label{fig:caminho_entre_sao_paulo_e_curitiba}
 \end{figure}
