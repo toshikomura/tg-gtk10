@@ -1,7 +1,6 @@
-Agora que sabemos como criar uma gema visto no capítulo
-‘‘\ref{chapter:criacao_de_bibliotecas_do_ruby_on_rails} - Criando uma gema'', podemos partir para a
-ideia de fazer modificações em uma gema que já existe, ou seja, fazer a adaptação de uma gema
-adicionando novas funcionalidade que geralmente utilizamos. 
+Agora que sabemos como criar uma gema visto no capítulo \ref{chapter:criacao_de_bibliotecas_do_ruby},
+podemos partir para a ideia de fazer modificações em uma gema que já existe, ou seja, fazer a
+adaptação de uma gema adicionando novas funcionalidade que geralmente utilizamos. 
 
 Suponha o cenário aonde utilizamos com frequência uma certa gema, no entanto apesar dela comportar várias 
 funcionalidades, ela não possui tudo que desejamos. Neste caso basta fazer a adaptação desta gema, não 
@@ -28,35 +27,14 @@ simplificada, proporcionando a inclusão de sobreposições oferecidas pelo \emp
 marcadores e circulos. Ela também possui um código bem flexível que permite a aceitação de outros 
 provedores de mapas [\citeonline{google_maps_for_rails}].
 
-\section{API do Google Maps} 
-\label{section:api_do_google_maps} 
- 
-Para fazer a adaptação da gema foi necessário fazer um estudo sobre como utilizar a \emph{API} do 
-\emph{Google} e para isso foi utilizado como base o livro \emph{Beginning Google Maps API 3} 
-[\citeonline{beginning_google_maps_api3}] e a 
-\emph{\href{https://developers.google.com/maps/}{Google Maps API V3}} 
-\footnote{Google Maps API V3: \url{https://developers.google.com/maps/}}, onde ambos se complementam 
-ensinando os passos básicos para criar e manipular mapas do \emph{Google}. 
-
-O \emph{Google Maps} e sua respectiva \emph{API} foram criadas por dois irmãos \emph{Lars} e 
-\emph{Jens Rasmussen}, cofundadores da ‘‘\emph{Where 2 Technologies}'', compania dedicada a criação de mapas
-que foi comprada pelo \emph{Google} em 2004 [\citeonline{beginning_google_maps_api3}].
-
-Até o inicio do ano 2005 a rederização de mapas pela rede possuía um alto custo, necessitando de 
-servidores altamente equipados para suportar a carga de trabalho. Mas em Fevereiro de 2005 através 
-de um \emph{post} em seu \emph{blog}, o \emph{Google} anunciou uma nova solução de rederização, 
-possiblitando ao usuário interagir com um mapa em uma página \emph{web}
-[\citeonline{beginning_google_maps_api3}].
-
-Depois de fazer o lançamento da nova forma para criar mapas, o \emph{Google} percebeu que 
-muitos desenvolvedores gostariam de incorporar essa nova solução em seus projetos, e por esse 
-movtio em Junho de 2005 anunciou a primeira versão pública da \emph{API} do \emph{Google Maps}
-[\citeonline{beginning_google_maps_api3}].
-
-O \emph{Google Maps} funciona de uma forma bem simples fazendo a criação e a manipulação do mapa
-por meio de \emph{HTML}, \emph{CSS} e \emph{Javascript}. Basicamente o usuário por meio do \emph{browser}
-requisita algum local do mapa informando a coordenada e o zoon desejado. Desta forma o servidor retorna a 
-imagem do mapa que representa a posição requisitada [\citeonline{beginning_google_maps_api3}]. 
+Este capítulo tem o objetivo de mostrar os passos que devem ser realizados para se adaptar uma biblioteca
+do \emph{Ruby}. Na seção \ref{section:engenharia_reversa}, apresentaramos o processo de engenharia
+reversa para gerar diagramas que representam o sistema em um alto nível de abstração, sendo seguida pela
+seção \ref{section:entendimento_da_biblioteca_do_ruby}, onde apresentaramos como fazer a leitura dos diagramas de alto
+nível. depois na seção \ref{section:adaptações}, mostraremos o processo de adaptação e os cuidados que devemos
+tomar, e fechando o capítulo com a seção \ref{section:exemplo_de_uso_de_google-maps-for-rails}, onde
+apresentaramos o uso da gema de exemplo que adaptamos. Caso haja interesse, pode-se consultar o apêndice
+\ref{chapter:api_do_google_maps} para conhecer um pouco da história do \emph{Google Maps} e sua \emph{API}.
 
 \section{Engenharia Reversa}
 \label{section:engenharia_reversa}
@@ -74,21 +52,19 @@ forma incorreta. E o modelo de abstração de alto nível pode ser por exemplo u
 um diagrama de sequência.
 
 Aplicando a \emph{engenharia reversa} na gema \emph{Google-Maps-For-Rails} conseguimos obter como resultado
-os diagrama de classe na imagem ‘‘Figure \ref{fig:diagrama_de_classes_google_maps_for_rails} - Diagrama de 
-Classes Google-Maps-For-Rails'', o diagrama de atributos na imagem ‘‘Figure - 
-\ref{fig:diagrama_de_atributos_google_maps_for_rails} - Diagrama de Atributos Google-Maps-For-Rails'' e o 
-diagrama de herança na imagem ‘‘Figure - \ref{fig:diagrama_de_heranca_google_maps_for_rails} - Diagrama de 
-Herança Google-Maps-For-Rails'' que serão explicados em mais detalhes logo a seguir.
+os diagrama de classe na imagem \ref{fig:diagrama_de_classes_google_maps_for_rails}, o diagrama de
+atributos na imagem \ref{fig:diagrama_de_atributos_google_maps_for_rails} e o diagrama de herança na
+imagem \ref{fig:diagrama_de_heranca_google_maps_for_rails} que serão explicados em mais detalhes logo a
+seguir.
 
 Nenhum dos 3 diagramas segue os seus respectivos padrões e isso deve ao fato de que não existia espaço 
 suficiente na imagem para representar o sistema da gema por completo. Por esse motivo optamos por definir 
 novos diagramas que possuem características sinilares aos seus padrões, mas com algumas características
 adicionais.
 
-Para as imagens de diagrama de classes ‘‘Figure \ref{fig:diagrama_de_classes_google_maps_for_rails} - 
-Diagrama de Classes Google-Maps-For-Rails'' e o diagrama de atributos na imagem ‘‘Figure - 
-\ref{fig:diagrama_de_atributos_google_maps_for_rails} - Diagrama de Atributos Google-Maps-For-Rails''
-as seguintes explicações são válidas:
+Para as imagens de diagrama de classes \ref{fig:diagrama_de_classes_google_maps_for_rails} e o diagrama
+de atributos na imagem \ref{fig:diagrama_de_atributos_google_maps_for_rails} as seguintes explicações
+são válidas:
 
 \begin{itemize}
 
@@ -123,8 +99,8 @@ no espaço disponível na imagem não seria possível inserir o sistema por comp
 entendimento da gema. Por esse motivo as definições deste diagrama serão explicados logo a seguir.
 \end{comment}
 
-As seguintes explicações são válidas para o diagrama de classe na imagem ‘Figure 
-\ref{fig:diagrama_de_classes_google_maps_for_rails} - Diagrama de Classes Google-Maps-For-Rails'':
+As seguintes explicações são válidas para o diagrama de classe na imagem
+\ref{fig:diagrama_de_classes_google_maps_for_rails}:
 
 \begin{itemize}
 
@@ -159,8 +135,8 @@ Diagrama de Classes Google-Maps-For-Rails'', e isso também foi feito por causa 
 espaço disponível na imagem. Por esse motivo as definições deste diagrama serão explicados logo a seguir.
 \end{comment}
 
-As seguintes explicações são válidas para o diagrama de de atributos na imagem ‘‘Figure 
-\ref{fig:diagrama_de_atributos_google_maps_for_rails} - Diagrama de Atributos Google-Maps-For-Rails'':
+As seguintes explicações são válidas para o diagrama de de atributos na imagem
+\ref{fig:diagrama_de_atributos_google_maps_for_rails}:
 
 \begin{itemize}
  
@@ -198,8 +174,8 @@ Diagrama de Classes Google-Maps-For-Rails'', e isso também foi feito por causa 
 espaço disponível na imagem. Por esse motivo as definições deste diagrama serão explicados logo a seguir.
 \end{comment}
 
-As seguintes explicações são válidas para o diagrama de herança na imagem ‘‘Figure 
-\ref{fig:diagrama_de_heranca_google_maps_for_rails} - Diagrama de Herança Google-Maps-For-Rails'':
+As seguintes explicações são válidas para o diagrama de herança na imagem
+\ref{fig:diagrama_de_heranca_google_maps_for_rails}:
 
 \begin{itemize}
 
@@ -226,11 +202,24 @@ As seguintes explicações são válidas para o diagrama de herança na imagem �
  \end{itemize}
  
  
-\section{Entendimento da gema} 
-\label{section:entendimento_da_gema} 
+\section{Entendimento da Biblioteca do Ruby} 
+\label{section:entendimento_da_biblioteca_do_ruby} 
 
-Agora que realizamos a \emph{engenharia reversa} da \emph{gema}, podemos analisar algumas de suas 
-características que serão listadas e explicadas logo a seguir.
+Agora que realizamos a \emph{engenharia reversa} da \emph{gema}, podemos analisar algumas
+características dos diagramas e responder algumas perguntas como por exemplo.
+
+\begin{itemize}
+
+ \item Qaais as principais classes da gema ?
+ 
+ \item Quais são as classes mais usadas na gema ?
+ 
+ \item Quais são as classes de controle da gema ? 
+ 
+\end{itemize}
+
+Para a gema de exemplo, encontramos as seguinte características que serão listadas e explicadas
+logo a seguir.
 
 \begin{itemize}
 
@@ -302,8 +291,7 @@ quatro \emph{classes} que serão listadas e explicadas logo a seguir:
 Sabendo da necessidade da inclusão de ‘‘\emph{DirectionService}'', ‘‘\emph{DirectionRender}'',
 ‘‘\emph{TravelMode}'' e ‘‘\emph{DirectionsStatus}'', decidimos que a primeira modificação na gema seria 
 incluir estas quatros classe nas definições da classe ‘‘\emph{Primitives}''. E isso foi 
-feita da seguinte forma como apresentado no código ‘‘Código 
-\ref{lst:classe_primitives_com_atributos_de_directions} - Classe Primitives com atributo de Directions'' 
+feita da seguinte forma como apresentado no código \ref{lst:classe_primitives_com_atributos_de_directions}
 logo abaixo.
 
 \lstinputlisting[ style=customCoffee, caption={Classe Primitives com atributo de Directions}, label={lst:classe_primitives_com_atributos_de_directions}]
@@ -318,17 +306,16 @@ logo abaixo.
 Em seguida criamos quatro \emph{classes} para o ‘‘\emph{Google}'', sendo que duas são ‘‘\emph{Builders}'' de 
 ‘‘\emph{DirectionService}'' e ‘‘\emph{DirectionRender}'', e as outras duas são ‘‘\emph{Objects}'' também das 
 classes ‘‘\emph{DirectionService}'' e ‘‘\emph{DirectionRender}''. Para facilitar a compreensão, elaboramos o 
-diagrama representado na imagem ‘‘Figure \ref{fig:novo_diagrama_de_heranca_google_maps_for_rails} - Novo 
-Diagrama de HrançaGoogle-Maps-For-Rails'' para mostrar o local aonde inserimos as classes e quais as 
-dependências que elas possuem. No caso este diagrama é o mesmo diagrama de herança que desenvolvemos na 
-\emph{engenharia reversa}, mostrado na imagem ‘‘Figure \ref{fig:diagrama_de_heranca_google_maps_for_rails} - 
-Diagrama de Herança Google-Maps-For-Rails'', com a adição das quatro classes que são representadas 
+diagrama representado na imagem \ref{fig:novo_diagrama_de_heranca_google_maps_for_rails} para mostrar o
+local aonde inserimos as classes e quais as dependências que elas possuem. No caso este diagrama é o mesmo
+diagrama de herança que desenvolvemos na \emph{engenharia reversa}, mostrado na imagem
+\ref{fig:diagrama_de_heranca_google_maps_for_rails}, com a adição das quatro classes que são representadas 
 por retângulos tracejados.
 
 Agora que acrescentamos estas quatro classes na gema adaptada, devemos adicionar no ‘‘\emph{Handler}'', 
 novas funções para maminpular essas classes. E neste caso inserimos as funçãoes ‘‘\emph{addDirection()}'' e 
-‘‘\emph{calculate\_route()}'' que podem ser vistas no código ‘‘Código 
-\ref{lst:funcoes_adicionais_do_handler} - Funções adicionais do Handler'' que será explicado logo a seguir.
+‘‘\emph{calculate\_route()}'' que podem ser vistas no código \ref{lst:funcoes_adicionais_do_handler} que
+será explicado logo a seguir.
 
 \begin{itemize}
 
@@ -363,6 +350,9 @@ novas funções para maminpular essas classes. E neste caso inserimos as funçã
 \lstinputlisting[ style=customCoffee, caption={Funções adicionais do Handler}, label={lst:funcoes_adicionais_do_handler}]
 {codigos/funcoes_adicionais_do_handler.coffee}
 
+Na adaptação de exemplo, somente inserimos 4 classes e 2 funções e com isso podemos perceber que as modificações que
+fizemos não afetaram o funcionamento da gema, pois não foi necessário mexer no código que já existia.
+
 \section{Exemplo de uso de Google-Maps-for-Rails}
 \label{section:exemplo_de_uso_de_google-maps-for-rails}
 
@@ -375,9 +365,8 @@ trabalho essa função ainda não havia sido implementada, mas fizemos o uso da 
 Inicialmente fizemos a instalção e inclusão da gema adaptada no arquivo \emph{Gemfile} do projeto. Depois 
 criamos uma estrutura básica de \emph{model/view/controller} de ‘‘\emph{locations}''. 
 
-Em seguida para fazer o uso da função de direções utilizamos o código‘‘Código 
-\ref{lst:exemplo_coffeescript_que_cria_mapa_com_direcao} - Exemplo CoffeeScript que Cria Mapa com 
-Direção'' explicado logo abaixo.
+Em seguida para fazer o uso da função de direções utilizamos o código
+\ref{lst:exemplo_coffeescript_que_cria_mapa_com_direcao} explicado logo abaixo.
 
 \lstinputlisting[ style=customCoffee, caption={Exemplo CoffeeScript que Cria Mapa com Direção}, label={lst:exemplo_coffeescript_que_cria_mapa_com_direcao}]
 {codigos/DiseasesMap/app/assets/javascripts/locations.js.coffee}
@@ -414,8 +403,8 @@ Direção'' explicado logo abaixo.
  
 \end{itemize}
 
-E para mostrar o mapa na view de ‘‘\emph{locations}'' adicionamos o código mostrado em ‘‘Código 
-\ref{lst:exemplo_locations_view_que_cria_mapa_com_direcao} - Exemplo Locations view que Cria Mapa com Direção'' 
+E para mostrar o mapa na view de ‘‘\emph{locations}'' adicionamos o código mostrado em
+\ref{lst:exemplo_locations_view_que_cria_mapa_com_direcao}
 que é parte do código da \emph{view}, explicado logo a seguir.
 
 \lstinputlisting[ style=customRubyHTML, caption={Exemplo Locations view que Cria Mapa com Direção}, label={lst:exemplo_locations_view_que_cria_mapa_com_direcao}]
@@ -436,11 +425,11 @@ que é parte do código da \emph{view}, explicado logo a seguir.
  
 \end{itemize}
 
-Como resultado ao se acessar o \emph{index} de locations obtemos como resultado a imagem ‘‘Figure 
-\ref{fig:caminho_entre_sao_paulo_e_curitiba} - Caminho entre São Paulo e Curitiba''. Neste caso a
+Como resultado ao se acessar o \emph{index} de locations obtemos como resultado a imagem
+\ref{fig:caminho_entre_sao_paulo_e_curitiba}. Neste caso a
 nossa gema adaptada com a nova funcionalidade de direções funcionou corretamente, pois o caminho
-mostrado é entre ‘‘São Paulo'' e ‘‘Curitiba'' como requisitamos na linha ‘‘24'' do código ‘‘Código 
-\ref{lst:exemplo_coffeescript_que_cria_mapa_com_direcao} - Exemplo CoffeeScript que Cria Mapa com Direção''.
+mostrado é entre ‘‘São Paulo'' e ‘‘Curitiba'' como requisitamos na linha ‘‘24'' do código
+\ref{lst:exemplo_coffeescript_que_cria_mapa_com_direcao}.
 
  \begin{figure}[ht]
   \includegraphics[scale=0.44]{images/caminho_entre_sao_paulo_e_curitiba.png}

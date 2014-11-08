@@ -55,24 +55,12 @@ Dispon{\'\i}vel em:
   \htmladdnormallink{$<$http:\-/\-/guides\-.rubygems\-.org\-/what-is-a-gem\-/$>$}{http://guides.rubygems.org/what-is-a-gem/}.
   Acesso em: 23 out. 2014.}
 
-\bibitem{irb_doc}
-\abntrefinfo{Community}{COMMUNITY}{2014g}
-{COMMUNITY, R. \emph{IRB}. 2014. Ruby Community.
-Dispon{\'\i}vel em:
-  \htmladdnormallink{$<$http:\-/\-/www\-.ruby-doc\-.org\-/stdlib-2\-.0\-/libdoc\-/irb\-/rdoc\-/IRB\-.html$>$}{http://www.ruby-doc.org/stdlib-2.0/libdoc/irb/rdoc/IRB.html}.
-  Acesso em: 28 out. 2014.}
-
 \bibitem{google_maps_for_rails}
 \abntrefinfo{Roth}{ROTH}{2014}
 {ROTH, D.~R. B. \emph{Google-Maps-For-Rails}. 2014. Google-Maps-For-Rails.
 Dispon{\'\i}vel em:
   \htmladdnormallink{$<$http:\-/\-/github\-.com\-/apneadiving\-/Google-Maps-for-Rails$>$}{http://github.com/apneadiving/Google-Maps-for-Rails}.
   Acesso em: 30 out. 2014.}
-
-\bibitem{beginning_google_maps_api3}
-\abntrefinfo{Svennerberg}{SVENNERBERG}{2010}
-{SVENNERBERG, G. \emph{Beginning Google Maps API 3}. 2. ed. New York, NY 10013:
-  Apress, 2010.}
 
 \bibitem{ruby_site}
 \abntrefinfo{Community}{COMMUNITY}{2014}
@@ -130,5 +118,17 @@ Dispon{\'\i}vel em:
 Dispon{\'\i}vel em:
   \htmladdnormallink{$<$http:\-/\-/git-scm\-.com\-/$>$}{http://git-scm.com/}.
   Acesso em: 23 out. 2014.}
+
+\bibitem{irb_doc}
+\abntrefinfo{Community}{COMMUNITY}{2014}
+{COMMUNITY, R. \emph{IRB}. 2014. Ruby Community.
+Dispon{\'\i}vel em:
+  \htmladdnormallink{$<$http:\-/\-/www\-.ruby-doc\-.org\-/stdlib-2\-.0\-/libdoc\-/irb\-/rdoc\-/IRB\-.html$>$}{http://www.ruby-doc.org/stdlib-2.0/libdoc/irb/rdoc/IRB.html}.
+  Acesso em: 28 out. 2014.}
+
+\bibitem{beginning_google_maps_api3}
+\abntrefinfo{Svennerberg}{SVENNERBERG}{2010}
+{SVENNERBERG, G. \emph{Beginning Google Maps API 3}. 2. ed. New York, NY 10013:
+  Apress, 2010.}
 
 \end{thebibliography}
