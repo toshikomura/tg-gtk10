@@ -1,24 +1,247 @@
 \subsection{Ruby - Definição} 
 \begin{frame}
  \frametitle{Ruby - Definição}
- Texto
+  
+  \begin{block}{Ruby}
+  
+   \begin{itemize}
+   
+   \item Criada por \emph{\textbf{Yukihiro ‘‘Matz'' Matsumoto}}.
+   
+    \item \emph{\textbf{‘‘Matz''}} diz que ‘‘\emph{\textbf{Ruby} é natural, não simples}'' e também fala que 
+    ‘‘\emph{\textbf{Ruby} é uma linguagem simples na aparência, mas é muito complexo internamente, assim como 
+    o corpo humano}''.
+   
+    \item É uma linguagem dinâmica de código aberto com foco na simplicidade e produtividade.
+    
+    \item Possui sintaxe elegante natural de ler e escrever.
+    
+    \item Baseada nas melhores características de \emph{\textbf{Perl}}, \emph{\textbf{SmallTalk}}, 
+    \emph{\textbf{Python}}, \emph{\textbf{Eiffel}}, \emph{\textbf{Ada}} e \emph{\textbf{Lisp}}.
+    
+    \item Linguagem de script mais poderosa que \emph{\textbf{Perl}} e mais orientada a objeto que 
+    \emph{\textbf{Python}}.
+    
+    \item Tudo é objeto.   
+    
+   \end{itemize}   
+   
+  \end{block}
+  
 \end{frame}
+
 
 \subsection{Ruby - História} 
 \begin{frame}
  \frametitle{Ruby - História}
- Texto
+ 
+   \begin{block}{Ruby}
+  
+    \begin{itemize}
+   
+     \item Criada por \emph{\textbf{Yukihiro ‘‘Matz'' Matsumoto}} em 24 de fevereiro de 1993.          
+     
+     \item O nome foi escolhido entre uma conversa entre \emph{\textbf{Yukihiro ‘‘Matz'' Matsumoto}} e 
+     \emph{\textbf{Keiju Ishitsuka}}.
+     
+     \item \emph{\textbf{Ruby}} poderia ter o nome \emph{\textbf{Coral}}.
+     
+     \item \emph{\textbf{Ruby}} é uma \emph{birthstone} que coincidentemente representava o mês de aniversário de 
+     um de seus colegas.          
+   
+     \item Sua primeira versão foi lançada oficialmente em 21 de dezembro de 1995 na 
+     ‘‘\emph{Japanese Domestic NewsGroup}''. E nos 2 dias subsequentes foram lançadas mais 3 versões junto 
+     com sua lista ‘‘\emph{Japanese-Language ruby-list main-list}'' (‘‘\emph{RubyTalk}'').
+   
+   \item Em 2006 atingiu o seu auge com conferências pelas principais cidades do mundo e com mais de 200 mensagens
+   por dia na sua principal lista.
+   
+    \end{itemize}
+   
+   \end{block} 
+ 
 \end{frame}
 
 
-\subsection{Bibliotecas do Ruby} 
+\subsection{Bibliotecas do Ruby (gemas)} 
 \begin{frame}
- \frametitle{Bibliotecas do Ruby}
- Texto
+ \frametitle{Bibliotecas do Ruby (gemas)}
+
+  \begin{block}{gem}
+  
+   \begin{itemize}
+   
+    \item A maior parte das gemas são distribuídas na forma de \emph{\textbf{gems}}. Sua instalação é feita por
+    meio da ferramenta \emph{\textbf{gem}}.    
+    
+   \end{itemize}
+    
+  \end{block}
+  
+    \begin{block}{Pacotes ‘‘.zip'' e ‘‘.tar.gz''}
+  
+   \begin{itemize}   
+    
+    \item A menor parte das gemas são distribuídas na forma de arquivo ‘‘.zip'' ou ‘‘.tar.gz''. Motivo pelo qual
+    a sua instalação é feita por meio da leitura dos arquivos \emph{\textbf{README}} ou \emph{\textbf{INSTALL}} 
+    contidos dentro da gema.
+    
+   \end{itemize}
+    
+  \end{block}
+  
+\end{frame}  
+
+
+\begin{frame}
+ \frametitle{Ferramenta gem e o site RubyGems}
+
+  \begin{block}{O programa gem e o site RubyGems}
+  
+   \begin{itemize}
+   
+    \item Criado em abril de 2009 por \emph{\textbf{Nick Quaranto}}.        
+   
+    \item É um sistema de pacotes do Ruby desenvolvido para facilitar a criação, o 
+    compartilhamento, e a instalação de bibliotecas.
+    
+    \item Possui características sinilares a ferramenta \emph{\textbf{apt-get}}, mas ao invés de fazer a 
+    distribuídas de pacotes para \emph{\textbf{Debian GNU/Linux Distribution}} e seus variantes, faz a distribuição 
+    de pacotes para o \emph{\textbf{Ruby}}.        
+    
+    \item Permite fazer buscas e instalações de gemas.
+    
+    \item A partir da versão ‘‘1.9'' do \emph{\textbf{Ruby}} não existe a necessidade de fazer a instalção do 
+    \emph{\textbf{gem}}, pois ele vem por \emph{default} nos pacotes.
+    
+    \item O site possuía o nome \emph{\textbf{Gemcutter}} até a versão ‘‘\emph{1.3.6}'', sendo trocado para 
+    \emph{\textbf{RubyGems}} com o objetivo de solidificar o papel do site na comunidade do \emph{\textbf{Ruby}}.
+    
+   \end{itemize}
+    
+  \end{block}  
+  
 \end{frame}
 
-\subsection{Segurança das Bibliotecas} 
+
+\subsection{Segurança do Ruby} 
 \begin{frame}
- \frametitle{Segurança das Bibliotecas}
- Texto
+ \frametitle{Segurança do Ruby}
+ 
+  \begin{block}{Importância}
+   
+   \begin{itemize}    
+
+   \item Perda de dados sigilosos.
+   
+   \item Perda de dinheiro.
+   
+   \item Indisponibilidade de serviços.
+   
+   \end{itemize}
+   
+  \end{block}
+  
+    \begin{block}{Esquema de Correção}
+   
+   \begin{itemize}    
+
+   \item Reportar vulnerabilidade via e-mail para 
+   \href{mailto:security@ruby-lang.org}{\nolinkurl{security@ruby-lang.org}}. Lista privada com membros 
+   que administram o \emph{\textbf{Ruby}}.
+   
+   \item As vulnerabilidades recebidas por medidas de segurança só são divulgadas para a comunidade quando são 
+   solucionadas.
+   
+   \item Nas divulgações de vulnerabilidade são informados os tipos de erros, os problemas que eles podem causar, 
+   e as soluções que devem ser tomadas.
+   
+   \end{itemize}
+   
+  \end{block}
+ 
+\end{frame}
+
+
+\begin{frame}
+ \frametitle{Segurança das Bibliotecas - Uso de gemas}
+ 
+  \begin{block}{Risco}
+   
+   \begin{itemize}
+   
+    \item Toda gema utilizada na aplicação é instalada localmente no servidor. 
+    
+    \item Caso o autor da gema seja mal intencionado, ele pode conseguir roubar dados do servidor. 
+    
+   \end{itemize} 
+   
+  \end{block}
+  
+  \begin{block}{Solução}
+   
+   \begin{itemize}
+   
+    \item A partir da versão ‘‘\emph{0.8.11}'' o \emph{RubyGems} disponilizou uma solução baseada no uso chaves 
+    de assinaturas criptografadas.
+    
+    \item Com o comando ‘‘\emph{\textbf{gem cert}}'' é possível criar uma par de chaves e empacotar os dados da 
+    assinatura dentro da gema.
+    
+    \item Com o comando ‘‘\emph{\textbf{gem install}}'' é possível fazer a verificação da chave de assinatura 
+    antes da sua instalação.
+    
+    \item Apesar do método ser benéfico, ele não é muito utilizado, pois são necessários muitos passos manuais 
+    e também não existe uma politica de segurança bem definida para essas chaves de assinautra.
+    
+   \end{itemize}      
+   
+  \end{block}
+
+\end{frame}  
+ 
+ 
+\begin{frame}
+ \frametitle{Segurança das Bibliotecas - Reportar Vulnerabilidades}
+ 
+  \begin{block}{Esquema de Correção}
+   
+   \begin{itemize}    
+
+   \item \emph{\textbf{Vulnerabilidades em gemas de outros usuários}}:
+   
+    \begin{itemize}
+   
+     \item Verificar se a vulnerabilidade ainda não é conhecida.
+   
+     \item Enviar e-mail privado para o dono da gema.
+    
+     \item Informar o problema e uma possível solução.
+    
+    \end{itemize}
+   
+   \item \emph{\textbf{Vulnerabilidades nas própias gemas}}:
+   
+    \begin{itemize}
+   
+     \item Criar identificador \emph{\textbf{CVE}} único, enviando e-mail para 
+     \href{cve-assign@mitre.org}{\nolinkurl{cve-assign@mitre.org}}.
+   
+     \item Trabalhar em uma solução para o problema.
+     
+     \item Criar um patch de correção quando o problema for corrigido.
+    
+     \item Informar a comunidade sobre o problema e que essa vulnerabilidade foi corrigida no \emph{patch} ‘‘\emph{X}''.
+     
+     \item Registrar o problema em um \emph{database open source} de vulnerabilidade ( \emph{\textbf{OSVBD}} ) e 
+     enviar e-mail para 
+     \href{ruby-talk@ruby-lang.org}{\nolinkurl{ruby-talk@ruby-lang.org}} com \emph{subject} ‘‘\emph{[ANN][Security]}''
+     informando detalhes sobre as vulnerabilidades, versões com o erro, e ações a seren tomadas.
+    
+    \end{itemize}
+   
+   \end{itemize}
+   
+  \end{block}
+ 
 \end{frame}

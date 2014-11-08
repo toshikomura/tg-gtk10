@@ -1,147 +1,162 @@
  \subsection{Definição}
  \begin{frame}
   \frametitle{Definição}
-  
+
   \begin{block}{Definição de Biblioteca}
-    Conjunto de subprogramas ou rotinas que tem por função principal prover funcionalidades que geralmente são 
+    Conjunto de subprogramas ou rotinas que tem por função principal prover funcionalidades que geralmente são
     utilizadas por desenvolvedores em um determinado contexto.
   \end{block}
-  
-  \begin{block}{Vantagens do Uso de Bibliotecas}
-    O uso de bibliotecas permite a reutilzação de código e a modularização do projeto.
-  \end{block}
- \end{frame}
 
- 
+  \begin{block}{Vantagens do Uso de Bibliotecas}
+
+    \begin{itemize}
+
+     \item O uso de bibliotecas permite a reutilzação de código.
+
+     \item O uso de bibliotecas permite a modularização do projeto.
+
+    \end{itemize}
+
+  \end{block}
+
+\end{frame}
+
+
  \subsection{História}
 \begin{frame}
  \frametitle{História}
- 
-  \begin{itemize}
-  
-   \item \emph{\textbf{COMPOOL} (Communication Pool)}: \emph{Software} desenvolvido em \emph{\textbf{JOVIAL}} 
-   que tinha o objetivo de compartilhar informação entre vários programas.
-   
-   \item \emph{\textbf{COBOL}}: Linguagen de programção que em 1959 possuía um sistema primitivo de bibliotecas.
-   
-   \item \emph{\textbf{FORTRAN}}: Linguagen de programção que possuía um sistema que permitia a compilação de 
-   subprogramas independentemente dos outros. 
-   %ou seja, era permitido compilar o subprograma separadamente e depois 
-   %incluí-lo em outro programa. No entanto esse sistema enfraquecia o compilador que não consegui fazer a verificação 
-   %de tipos entre os subprogramas.
-   
-   \item \emph{\textbf{Simula 67}}: Linguagen de programção orientada a abjetos que em 1965 possibilatava o 
-   armazenamento de classes em arquivos de bibliotecas. Depois esses arquivos de bibliotecas poderiam ser 
-   incorporados em outros programas.
-   
-  \end{itemize}
 
-  
+  \begin{block}{História}
+
+   \begin{itemize}
+
+    \item \emph{\textbf{COMPOOL} (Communication Pool)}: \emph{Software} desenvolvido em \emph{\textbf{JOVIAL}}
+   que tinha o objetivo de compartilhar informação entre vários programas.
+
+    \item \emph{\textbf{COBOL}}: Linguagen de programção que em 1959 possuía um sistema primitivo de bibliotecas.
+
+    \item \emph{\textbf{FORTRAN}}: Linguagen de programção que possuía um sistema que permitia a compilação de
+   subprogramas independentemente dos outros.
+   %ou seja, era permitido compilar o subprograma separadamente e depois
+   %incluí-lo em outro programa. No entanto esse sistema enfraquecia o compilador que não consegui fazer a verificação
+   %de tipos entre os subprogramas.
+
+    \item \emph{\textbf{Simula 67}}: Linguagen de programção orientada a abjetos que em 1965 possibilatava o
+   armazenamento de classes em arquivos de bibliotecas. Depois esses arquivos de bibliotecas poderiam ser
+   incorporados em outros programas.
+
+   \end{itemize}
+
+  \end{block}
+
 \end{frame}
+
 
  \subsection{Classificação}
 \begin{frame}
  \frametitle{Classificação - Formas de Ligamento}
- 
- \begin{block}{Definição}  
- 
+
+ \begin{block}{Definição}
+
   Processo que implica em associar uma biblioteca a um programa ou outra biblioteca.
-  
+
  \end{block}
 
- \begin{block}{Tipos}  
- 
+ \begin{block}{Tipos}
+
   \begin{itemize}
-  
+
    \item \emph{\textbf{Tradicional}}: Os dados da biblioteca são copiados para dentro do executável do outro programa
    ou biblioteca.
-   
-   \item \emph{\textbf{Dinâmica}}: A biblioteca é referênciada no outro programa ou biblioteca. Neste caso não existe 
+
+   \item \emph{\textbf{Dinâmica}}: A biblioteca é referênciada no outro programa ou biblioteca. Neste caso não existe
    tanto trabalho no momento de compilação, pois a biblioteca só será copiada quando o programa for carregado ou outra
    biblioteca for carregada na memória.
-   
+
    \item \emph{\textbf{Remoto}}: A biblioteca é carregada por chamadas de procedimentos remotos. A vantagem é que o
-   programa e a biblioteca não precisam estar necessáriamente na mesma máquina, pois quando o programa requisitar 
+   programa e a biblioteca não precisam estar necessáriamente na mesma máquina, pois quando o programa requisitar
    a biblioteca, ela será transferida pela rede de uma máquina para outra.
-   
+
   \end{itemize}
 
  \end{block}
- 
+
 \end{frame}
+
 
 \begin{frame}
  \frametitle{Classificação - Momentos de Ligação}
- 
- \begin{block}{Definição}  
- 
+
+ \begin{block}{Definição}
+
   É o momento em que a biblioteca é carregada na memória.
-  
+
  \end{block}
 
- \begin{block}{Tipos}  
- 
+ \begin{block}{Tipos}
+
   \begin{itemize}
-  
-   \item \emph{\textbf{Carregamento em Tempo de Carregamento}}: A biblioteca é carregada na memória no mesmo 
+
+   \item \emph{\textbf{Carregamento em Tempo de Carregamento}}: A biblioteca é carregada na memória no mesmo
    momento em que a aplicação esta sendo carregada.
-   
-   \item \emph{\textbf{Carregamento Dinâmica ou Atrasado}}: A biblioteca é carregada na memória somente quando 
+
+   \item \emph{\textbf{Carregamento Dinâmica ou Atrasado}}: A biblioteca é carregada na memória somente quando
    a aplicação faz a requisição da biblioteca.
-   
+
   \end{itemize}
 
  \end{block}
- 
+
 \end{frame}
+
 
 \begin{frame}
  \frametitle{Classificação - Formas de Compartilhamento}
- 
- \begin{block}{Definição}  
- 
+
+ \begin{block}{Definição}
+
   Disponiblidade da biblioteca para vários programas ao memso tempo.
-  
+
  \end{block}
 
- \begin{block}{Tipos}  
- 
-  \begin{itemize}
-  
-   \item \emph{\textbf{Compartilhamento em Disco}}: Programas podem utilizar o mesmo arquivo em disco para acessar a 
-   biblioteca.  
+ \begin{block}{Tipos}
 
-   \begin{itemize}       
-   
-     \item \emph{\textbf{Vantagens}}: Economia de tempo de compilação, espaço ocupado por binários e a possibilidade 
+  \begin{itemize}
+
+   \item \emph{\textbf{Compartilhamento em Disco}}: Programas podem utilizar o mesmo arquivo em disco para acessar a
+   biblioteca.
+
+   \begin{itemize}
+
+     \item \emph{\textbf{Vantagens}}: Economia de tempo de compilação, espaço ocupado por binários e a possibilidade
      de usufruir de atualizações em a necessidade de recompilar o programa.
-   
-     %% Econmia de tempo de compilação e espaço, pois a biblioteca não é copiada para o o binário.    
-   
+
+     %% Econmia de tempo de compilação e espaço, pois a biblioteca não é copiada para o o binário.
+
      \item \emph{\textbf{Desvantagens}}: Caso um biblioteca seja excluida ou danificada, todos os programas que a utilizam
-     ela serão afetados.        
-   
+     ela serão afetados.
+
    \end{itemize}
-   
-   \item \emph{\textbf{Compartilhamento em Memória}}: Programas podem compartilhar o acesso ao mesmo 
-   código da biblioteca na memória. 
-   
-   \begin{itemize}    
-   
+
+   \item \emph{\textbf{Compartilhamento em Memória}}: Programas podem compartilhar o acesso ao mesmo
+   código da biblioteca na memória.
+
+   \begin{itemize}
+
      \item \emph{\textbf{Vantagens}}: Economia de memória e tempo de carregamento.
-   
+
       %% Ambiente multi-tarefa necessita de sincronização para garantir consistência dos dados.
-   
-     \item \emph{\textbf{Desvantagens}}: Desempenho pode ser prejudicado por causa da obrigatoriedade do ambiente 
+
+     \item \emph{\textbf{Desvantagens}}: Desempenho pode ser prejudicado por causa da obrigatoriedade do ambiente
      multi-tarefa e a falta de escalabilidade.
-   
-      %% A falta de escalabilidade é por causa que a partir de uma certa quantidade de processadores não exste nenhum 
-   %% ganho de tempo   
-   
+
+      %% A falta de escalabilidade é por causa que a partir de uma certa quantidade de processadores não exste nenhum
+   %% ganho de tempo
+
    \end{itemize}
-   
+
   \end{itemize}
 
  \end{block}
- 
- \end{frame}
+
+\end{frame}
