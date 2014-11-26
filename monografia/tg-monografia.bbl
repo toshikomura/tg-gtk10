@@ -5,11 +5,6 @@
 \providecommand{\abntbstabout}[1]{}
 \abntbstabout{v-1.8 }
 
-\bibitem{history_of_programming_languages}
-\abntrefinfo{Wexelblat}{WEXELBLAT}{1981}
-{WEXELBLAT, R. \emph{History of Programming Languages}. 1. ed. New York, NY:
-  Academic Press: ACM Monograph Series, 1981.}
-
 \bibitem{libraries_ruby}
 \abntrefinfo{Community}{COMMUNITY}{2014a}
 {COMMUNITY, R. \emph{Ruby Libraries}. 2014. Ruby Site - Libraries.
@@ -61,6 +56,11 @@ Dispon{\'\i}vel em:
 Dispon{\'\i}vel em:
   \htmladdnormallink{$<$http:\-/\-/github\-.com\-/apneadiving\-/Google-Maps-for-Rails$>$}{http://github.com/apneadiving/Google-Maps-for-Rails}.
   Acesso em: 30 out. 2014.}
+
+\bibitem{history_of_programming_languages}
+\abntrefinfo{Wexelblat}{WEXELBLAT}{1981}
+{WEXELBLAT, R. \emph{History of Programming Languages}. 1. ed. New York, NY:
+  Academic Press: ACM Monograph Series, 1981.}
 
 \bibitem{ruby_site}
 \abntrefinfo{Community}{COMMUNITY}{2014}

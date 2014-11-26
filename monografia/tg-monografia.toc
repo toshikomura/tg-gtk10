@@ -1,0 +1,46 @@
+\changetocdepth {3}
+\select@language {brazil}
+\contentsline {chapter}{\chapternumberline {1}Introdu\IeC {\c c}\IeC {\~a}o}{6}{chapter.1}
+\contentsline {chapter}{\chapternumberline {2}Bibliotecas do Ruby}{8}{chapter.2}
+\contentsline {section}{\numberline {2.1}Bibliotecas do Ruby}{8}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}O programa gem}{9}{subsection.2.1.1}
+\contentsline {section}{\numberline {2.2}Seguran\IeC {\c c}a do Ruby}{9}{section.2.2}
+\contentsline {section}{\numberline {2.3}Seguran\IeC {\c c}a das Bibliotecas do Ruby}{10}{section.2.3}
+\contentsline {chapter}{\chapternumberline {3}Cria\IeC {\c c}\IeC {\~a}o de bibliotecas do Ruby}{11}{chapter.3}
+\contentsline {section}{\numberline {3.1}Estrutura de uma Biblioteca do Ruby}{11}{section.3.1}
+\contentsline {section}{\numberline {3.2}Modelo de cria\IeC {\c c}\IeC {\~a}o}{12}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Criando a Estrutura}{13}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Gemspec}{13}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.3}Desenvolvimento de c\IeC {\'o}digo de funcionalidade ou teste}{15}{subsection.3.2.3}
+\contentsline {subsection}{\numberline {3.2.4}C\IeC {\'o}digo de Funcionalidade no Diret\IeC {\'o}rio Lib}{15}{subsection.3.2.4}
+\contentsline {subsection}{\numberline {3.2.5}C\IeC {\'o}digo de Teste no Diret\IeC {\'o}rio Test ou Spec}{19}{subsection.3.2.5}
+\contentsline {subsection}{\numberline {3.2.6}Execu\IeC {\c c}\IeC {\~a}o de testes}{21}{subsection.3.2.6}
+\contentsline {subsection}{\numberline {3.2.7}Exemplo de uso de gemtranslatetoenglish}{22}{subsection.3.2.7}
+\contentsline {chapter}{\chapternumberline {4}Adapta\IeC {\c c}\IeC {\~a}o de bibliotecas do Ruby}{25}{chapter.4}
+\contentsline {section}{\numberline {4.1}Engenharia Reversa}{26}{section.4.1}
+\contentsline {section}{\numberline {4.2}Entendimento da Biblioteca do Ruby}{29}{section.4.2}
+\contentsline {section}{\numberline {4.3}Adapta\IeC {\c c}\IeC {\~o}es}{30}{section.4.3}
+\contentsline {section}{\numberline {4.4}Exemplo de uso de Google-Maps-for-Rails}{34}{section.4.4}
+\contentsline {chapter}{\chapternumberline {5}Conclus\IeC {\~a}o}{37}{chapter.5}
+\contentsline {chapter}{Refer\^encias}{38}{section*.3}
+\renewcommand *{\cftappendixname }{AP\^ENDICE \space }
+\contentsline {part}{Ap\^endices}{40}{section*.4}
+\contentsline {appendix}{\chapternumberline {A}Hist\IeC {\'o}ria e Classifica\IeC {\c c}\IeC {\~a}o de Bibliotecas}{41}{appendix.A}
+\contentsline {section}{\numberline {A.1}Hist\IeC {\'o}ria}{41}{section.A.1}
+\contentsline {section}{\numberline {A.2}Classifica\IeC {\c c}\IeC {\~a}o}{41}{section.A.2}
+\contentsline {subsection}{\numberline {A.2.1}Formas de ligamento}{42}{subsection.A.2.1}
+\contentsline {subsection}{\numberline {A.2.2}Momentos de liga\IeC {\c c}\IeC {\~a}o}{42}{subsection.A.2.2}
+\contentsline {subsection}{\numberline {A.2.3}Formas de compartilhamento}{42}{subsection.A.2.3}
+\contentsline {appendix}{\chapternumberline {B}Conceitos e Hist\IeC {\'o}ria do Ruby}{44}{appendix.B}
+\contentsline {section}{\numberline {B.1}Ruby}{44}{section.B.1}
+\contentsline {section}{\numberline {B.2}Hist\IeC {\'o}ria}{45}{section.B.2}
+\contentsline {section}{\numberline {B.3}API}{46}{section.B.3}
+\contentsline {appendix}{\chapternumberline {C}Uso da Ferramenta gem}{47}{appendix.C}
+\contentsline {appendix}{\chapternumberline {D}Ferramentas utilizadas}{48}{appendix.D}
+\contentsline {section}{\numberline {D.1}VMware\IeC {\textregistered } Player}{48}{section.D.1}
+\contentsline {section}{\numberline {D.2}RVM}{48}{section.D.2}
+\contentsline {section}{\numberline {D.3}Ruby On Rails}{48}{section.D.3}
+\contentsline {section}{\numberline {D.4}Git}{49}{section.D.4}
+\contentsline {appendix}{\chapternumberline {E}Prepara\IeC {\c c}\IeC {\~a}o do ambiente}{50}{appendix.E}
+\contentsline {appendix}{\chapternumberline {F}IRB}{53}{appendix.F}
+\contentsline {appendix}{\chapternumberline {G}API do Google Maps}{55}{appendix.G}

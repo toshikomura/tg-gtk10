@@ -1,0 +1,94 @@
+As bibliotecas podem ser indentificadas pelo seu tipo de classificação, onde as suas classificações
+podem ser definidas pela maneira como elas são ligadas que é explicado na sub-seção
+\ref{section:formas_de_ligamento}, pelo momento que elas são ligadas que é explicado na sub-seção
+\ref{section:momentos_de_ligação}, e pela forma como elas são compartilhadas que é explicado na
+sub-seção \ref{section:formas_de_compartilhamento}.
+
+
+\section{História}
+\label{section:historia_biblioteca}
+
+Os primeiros conceitos que tinham proximidades com a definição de bibliotecas apareceram publicamente
+com o \emph{software} ‘‘\emph{COMPOOL}'' (\emph{Communication Pool}) desenvolvido em \emph{JOVIAL},
+que é uma linguagem de alto nível parecido com \emph{ALGOL}, mas especializada para desenvolvimento
+de sistemas embarcados. O ‘‘\emph{COMPOOL}'' tinha como propósito compartilhar os dados do
+sistema entre vários progrmas, fornecendo assim informação centralizada. Com essa visão o
+‘‘\emph{COMPOOL}'' seguiu os princípios da ciência da computação, separando interesses e
+escondendo informações [\citeonline{history_of_programming_languages}].
+
+As linguagens \emph{COBOL} e \emph{FORTRAN} também possuiam uma prévia implementação do sistema de
+bibliotecas. O \emph{COBOL} em 1959 tinha a capacidade de comportar um sistema primitivo de
+bibliotecas, mas segundo \emph{Jean Sammet} esses sistema era inadequado. Já o
+\emph{FORTRAN} possuia um sistema mais moderno, onde ele permitia que os subprogramas poderiam ser
+compilados de forma independente um dos outros, mas com essa nova funcionalidade o compilador acabou
+ficando mais fraco com relação a ligação, pois com essa possibilidade adicionada ele não conseguia
+fazer a verificação de tipos entre os subprogramas [\citeonline{history_of_programming_languages}].
+
+Por fim chegando no ano de 1965 com a linguagem \emph{Simula 67}, que foi a primeira linguagem
+de programação orientada a objetos que permitia a inclusão de suas classes em arquivos de bibliotecas.
+Ela também permitia que os arquivos de bibliotecas fossem utilizadas em tempo de compilação para
+complementar outros programas [\citeonline{history_of_programming_languages}].
+
+\section{Formas de ligamento}
+\label{section:formas_de_ligamento}
+
+O processo de ligamento implica em associar uma biblioteca a um programa ou outra biblioteca, ou seja,
+é nesse momento que as implementações das funcionalidades são realmentes ligadas ao programa ou
+outra biblioteca.
+
+Esse processo de ligamento pode ser feito de 3 formas diferentes:
+
+\begin{itemize}
+
+ \item \emph{\textbf{Tradicional}} que significa que os dados da biblioteca são copiados para o executável do programa
+ ou outra biblioteca.
+
+ \item \emph{\textbf{Dinâmica}} que significa que ao invés de copiar os dados da biblioteca para o executável, é
+ somente feito uma referência do arquivo da biblioteca. Neste caso o ligador não tem tanto
+ trabalho na compilação, pois ele somente grava a biblioteca a ser utilizada e um indice para
+ ela, passando todo o trabalho para o momento onde a aplicação é carregada para a memória ou para
+ o momento que a aplicação requisita a biblioteca.
+
+ \item \emph{\textbf{Remoto}} que significa que a biblioteca vai ser carregada por chamadas de procedimento remotos,
+ ou seja, a biblioteca pode ser carregada mesmo não estando na mesma máquina do programa ou
+ biblioteca, pois ela é carregada pela rede.
+
+\end{itemize}
+
+\section{Momentos de ligação}
+\label{section:momentos_de_ligação}
+
+O momento de ligação diz respeito ao momento em que a biblioteca vai ser carregada na memória e
+para esse caso existem 2 formas:
+
+\begin{itemize}
+
+ \item \emph{\textbf{Carregamento em tempo de carregamento}} que significa que a biblioteca vai ser
+ carregada na memória quando a aplicação também estiver sendo carregada.
+
+ \item \emph{\textbf{Carregamento dinâmico ou atrasado}} que signfica que a biblioteca só vai ser carregada na
+ memória quando a aplicação requisitar o seu carregamento e isso é feito em tempo de execução.
+
+\end{itemize}
+
+\section{Formas de compartilhamento}
+\label{section:formas_de_compartilhamento}
+
+As formas de compartilhamento de bibliotecas se divide em 2 conceitos. Sendo que o primeiro se refere
+ao compartilhamento de código em disco entre os vários programas. E o segundo se refere ao
+compartilhamento da biblioteca na memória em tempo de execução.
+
+O compartilhamento em mémória traz a vantagem de que dois ou mais programas podem
+compartilhar o acesso ao mesmo código da biblioteca na memória, com isso se evita que a mesma
+biblioteca seja colocada mais de uma vez na memória.
+
+Por exemplo para o segundo conceito, suponha que os programas \emph{P1} e \emph{P2} necessitem de
+uma biblioteca \emph{B} que é carregada no \emph{momento de carregamento}. Suponha
+agora que executamos o programa \emph{P1} e depois de um tempo executamos o programa \emph{P2}, desta
+forma primeiramente o programa \emph{P1} e a biblioteca \emph{B} são carregadas na memória. Como
+também executamos o programa \emph{P2}, ele também é carregado na memória, mas sem a necessidade de
+carregar a biblioteca \emph{B}, pois ela já havia sido carregada anteriomente.
+
+Pensando pelo outro lado, o compartilhamento de memória pode ser um pouco prejudicial
+ao desempenho, pois essa biblioteca deve ser escrita para executar em um ambiente \emph{multi-tarefa}
+e isso pode causar alguns atrasos.

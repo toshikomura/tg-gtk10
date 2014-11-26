@@ -1,16 +1,16 @@
-Até o ano de 2005, a rederização de mapas em uma página web custava caro. Isso ocorria,
-porque para apresentar um mapa, era necessário fazer a transferência de uma grande
-quantidade de dados do servidor para o cliente. Neste caso, existia uma grande quantidade
-de dados, porque era feito a transferência de um mapa inteiro. Como consquência, também
-existia um alto custo no cliente para transformar os dados em um mapa.
+Até o ano de 2005, a rederização de mapas em uma página web custava caro. Isso ocorria
+devido ao fato que um mapa possui muitas informações, deste modo para apresentar um
+mapa, era necessário fazer a transferência de uma grande quantidade de dados do servidor
+para o cliente, e também custava caro fazer a transformação destes dados em um mapa no
+browser do cliente.
 
 Graças ao \emph{Google}, em Fevereiro de 2005, essa dor de cabeça foi aliviada com a criação
 de uma nova solução de rederização, implementada na ferramenta \emph{Google Maps}. Esta nova
 solução, consistia na divisão do mapa em pedaços. No caso, estes pedaços poderiam ser
-requisitados um a um para formar uma parte ou um mapa completo. Com essa nova rederização,
-foi possível solucionar o problema da grande quantidade de dados transferidos, pois somente
-se transfere as partes requisitadas do mapa, e também se solucionou problema da transformação,
-pois a quantidade de dados para se transformar, foi reduzida razoavelmente.
+requisitados um a um para formar uma parte ou um mapa completo. Com essa solução, foi possível
+solucionar o problema da grande quantidade de dados transferidos, pois somente se transfere
+as partes requisitadas do mapa, e também o problema da transformação, pois a quantidade de
+dados para se transformar foi diminuida razoavelmente.
 
 Muitas companias, percebendo a solução revolucionária adotada pelo \emph{Google} na
 ferramenta \emph{Google Maps}, não ficaram atrás, adotando soluções sinilares que
@@ -41,22 +41,25 @@ ao tentar rederizar um mapa em uma página web, não é necessários saber quais
 na chamada da função de rederização de mapas da biblioteca.
 
 O objetivo deste trabalho, é mostrar alguns conceitos básicos sobre bibliotecas, bem
-como a criação do mesmo, apresentando como podemos criar e modificar uma biblioteca do
-\emph{Ruby}.
+como a criação do mesmo, apresentando um tutorial de como se pode criar e modificar
+uma biblioteca do \emph{Ruby}.
 
 O texto apresenta um passo-a-paaso da implementação de uma biblioteca simples e funcional
 do \emph{Ruby}. Como exemplo, será desenvolvido um biblioteca que faz a tradução de
-palavras do português para o inglês. E utilizando este conhecimento de criação de
-bibliotecas, o texto também apresenta os passos básicos que devem ser realizados
-para adaptar uma biblioteca do \emph{Ruby}. Neste caso, será feito a adição da
-funcionalidade de desenhar caminhos entre dois locais, utilizando uma biblioteca do
-\emph{Ruby} que mapeia a \emph{API} do \emph{Google Maps}. 
+palavras do português para o inglês. E o texto também apresenta os passos básicos que
+devem ser realizados para se adaptar uma biblioteca do \emph{Ruby}. Neste caso, será
+feito a adição da funcionalidade de desenhar caminhos entre dois locais, utilizando uma
+biblioteca do \emph{Ruby} que mapeia a \emph{API} do \emph{Google Maps}. 
 
-Este trabalho esta organizado da seguinte maneira: bibliotecas do \emph{Ruby} no
-capítulo \ref{chapter:bibliotecas_do_ruby}, onde será apresentado conceitos sobre
-bibliotecas do \emph{Ruby}, criação de bibliotecas do \emph{Ruby} no capítulo 
-\ref{chapter:criacao_de_bibliotecas_do_ruby}, onde será apresentado um passo-a-passo
-de como criar uma bibliotecas do \emph{Ruby}, adaptação de bibliotecas do \emph{Ruby}
-no capítulo  \ref{chapter:adaptacao_de_bibliotecas_do_ruby}, onde será apresentado um
-tutorial de como adaptar uma biblioteca do \emph{Ruby}, e a conclusão no capítulo
-\ref{chapter:conclusao}.
+Este trabalho esta organizado da seguinte maneira: história e conceitos de
+bibliotecas no capítulo \ref{chapter:bibliotecas}, onde será
+revisado a história das bibliotecas e explicado alguns conceitos básicos sobre elas,
+bibliotecas do \emph{ruby} e segurança no capítulo \ref{chapter:bibliotecas_do_ruby_e_segurança},
+onde será apresentado alguns conceitos das bibliotecas do \emph{Ruby}, criação de
+bibliotecas do \emph{Ruby} no capítulo 
+\ref{chapter:criacao_de_bibliotecas_do_ruby}, onde será apresentado
+um tutorial de como criar uma bibliotecas do \emph{Ruby}, adaptação de
+bibliotecas do \emph{Ruby} no capítulo 
+\ref{chapter:adaptacao_de_bibliotecas_do_ruby}, onde será apresentado
+um tutorial de como adaptar uma biblioteca do \emph{Ruby}, e a
+conclusão no capítulo \ref{chapter:conclusao}.

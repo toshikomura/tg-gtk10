@@ -102,8 +102,8 @@ A forma manual implica em criar todos os diretórios e arquivos manualmente. A f
 execução de um simples comando.
 
 Contudo podemos perceber qua a forma manual não é muito aconselhável, pois perderiamos muito tempo criando
-arquivo por arquivo. Deste modo, utilizaremos a forma automática que além de criar a estrutura,
-prepara um código base dentro dos arquivos. A execução do comando apresentado no código
+arquivo por arquivo. Deste modo, utilizaremos a forma automática que além de criar a estrutra com os arquivos,
+prepara um código base dentro deles. A execução do comando apresentado no código
 \ref{lst:cria_gema_forma_geral} no terminal faz a criação da estrutura básica de forma automática.
 
 \lstinputlisting[ style=customBash, caption={Cria Gema Forma Geral}, label={lst:cria_gema_forma_geral}]
@@ -452,7 +452,9 @@ Contudo no momento do desenvolvimento do código de testes, o aconselhável é p
 na gema, fazer testes com todas as possíveis entradas, verificando se o resultado para cada entrada
 está correto.
 
-Para informações de outra forma de teste, consulte o apêndice \ref{chapter:irb}.
+Caso tenha mais interesse, existe a posibilidade de consultar o apêndice \ref{chapter:irb}, que mostra
+como realizar testes com a ferramenta \emph{IRB}.
+
 
 \subsection{Exemplo de uso de gemtranslatetoenglish}
 \label{subsection:exemplo_de_uso_de_gemtranslatetoenglish}
