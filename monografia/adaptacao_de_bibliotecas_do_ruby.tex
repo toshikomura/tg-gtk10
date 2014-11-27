@@ -6,7 +6,7 @@ Suponha o cenário aonde utilizamos com frequência uma certa gema, no entanto a
 funcionalidades, ela não possui tudo que desejamos. Neste caso, basta fazer a adaptação desta gema, não 
 sendo necessário criar uma nova gema do zero.
 
-Deste modo, este capítulo tem o objetivo de mostrar os passos que devem ser realizados para se adaptar uma
+Este capítulo tem o objetivo de mostrar os passos que devem ser realizados para se adaptar uma
 biblioteca do \emph{Ruby}. Na seção \ref{section:modelo_de_adaptação}, apresentaremos o modelo de adaptação
 que deve ser seguido para adaptar um gema, e depois apresentaremos na seção \ref{section:exemplo_de_adaptação},
 um exemplo da adaptação de uma gema que mapeia a \emph{API} do \emph{Google Maps}.
@@ -27,10 +27,9 @@ cosulte o apêndice \ref{chapter:api_do_google_maps}.
 
 
 Como citado anteriormente, o primeiro passo é encontrar uma gema que atenda boa parte das nossas
-necessidades e que utilizamo com frequência. Apesar de possuirmos a livre escolha da gema e das
-funcionalidades a serem adicionados, devemos tomar cuidado ao adicionar
-qualquer funcionalidade a qualquer gema, pois podemos estar compremetendo o contexto da gema, ou seja, compremetendo
-o objetivo final da biblioteca.
+necessidades e que utilizamo com frequência. Nesse passo, depois de determinar a gema a ser adaptada,
+devemos tomar cuidado ao adicionar qualquer funcionalidade nela, pois podemos estar compremetendo o
+contexto da gema, ou seja, compremetendo o objetivo final da biblioteca.
 
 Para não compremeter o objetivo final da gema, é sempre válido verificar se a funcionalidade
 que estamos adicionando, esta no mesmo contexto da gema. Pois por exemplo em uma biblioteca matemática,
@@ -71,10 +70,10 @@ ou um diagrama de herança.
 
 Agora que realizamos a \emph{engenharia reversa} da \emph{gema} para construir os diagramas
 de alto nível na sub-seção \ref{subsection:engenharia_reversa}. Devemos fazer a anaĺise destes
-diagramas para identificar os elementos do sistema.
+diagramas para identificar os elementos do sistema, como por exmeplo, classes e componentes.
 
 Após a identificação dos elementos, devemos verificar para que cada um deste elemento é utilizado, ou seja,
-verificar o motivo pelo qual determinado elemento existe no sistema.
+verificar o motivo pelo qual, determinado elemento existe no sistema.
 
 Também devemos verificar quais são os principais elementos. Neste caso, os principais elementos
 são aqueles que são indispensáveis para o funcionamento da gema. Como por exemplo, o objeto mapa
@@ -82,6 +81,9 @@ são aqueles que são indispensáveis para o funcionamento da gema. Como por exe
 
 Depois de fazer a identificação dos elementos, passamos para a parte de análise das funcionalidades.
 Nesse passo, verificamos quando os elementos são criados e em quais funcionaliades eles são utlizados.
+
+Desta forma com a identificações dos elementos e das funcionalidades, temos um entendimento completo da
+biblioteca.
 
 
 \subsection{Adaptações}
@@ -96,8 +98,7 @@ quais os elementos existentes no sistema, e o motivo pelo qual eles existem, pod
 necessário incluir novos elementos.
 
 Depois da análise da inclusão de novos elementos, devemos verificar quais os elementos que vão receber
-as novas funcionaliades. Essas funcionalidades obrigatoriamente devem estar relacionadas com o elemento,
-pois podemos modificar drasticamente o objetivo final de um elemento.
+as novas funcionaliades, sempre verificando se não estamos modificando o objetivo final do elemento.
 
 Por fim, após fazer a análise dos elementos e das funcionalidade, devemos considerar os impactos das modificações,
 verificando se nenhuma funcionalidade, já existente, foi afetada.
@@ -145,7 +146,7 @@ Para fazer a adaptação da gema foi necessário fazer um estudo sobre como util
 [\citeonline{beginning_google_maps_api3}] e a 
 \emph{\href{https://developers.google.com/maps/}{Google Maps API V3}} 
 \footnote{Google Maps API V3: \url{https://developers.google.com/maps/}}, onde ambos se complementam 
-ensinando os passos básicos para criar e manipular mapas do \emph{Google}. 
+ensinando os passos básicos para criar e manipular mapas do \emph{Google} utilizando \emph{Javascript}. 
 
 O \emph{Google Maps} e sua respectiva \emph{API} foram criadas por dois irmãos \emph{Lars} e 
 \emph{Jens Rasmussen}, cofundadores da ‘‘\emph{Where 2 Technologies}'', compania dedicada a criação de mapas
@@ -420,16 +421,19 @@ menos 4 \emph{classes} que serão listadas e explicadas logo a seguir:
  
 \end{itemize}
 
-Com conhecimento das características da gema de exemplo e dos objetos para criar direções, podemos
-elaborar as modificações necessárias para que a gema comporte a funcionalidade de gerar direções.
-As adaptações consistem em adicionar a definição das classe necessárias na classe
-‘‘\emph{Primitives}'', assim podemos mapear os objetos dos mapas do \emph{Google} dentro da gema. Depois
-incluir elementos de ‘‘\emph{builders}'' e ‘‘\emph{objects}'' que representem as classes adicionadas,
-assim podemos criar e manipular os novos objetos do \emph{Google Maps}. E por fim, desenvolver as
-funcionalidades para manipular os novos elemntos na classe ‘‘\emph{Handler}'', assim podemos por meio
-da criação e da manipulação dos objetos do \emph{Google Maps}, requisitar e incluir direções nos mapas.
+Com conhecimento das características da gema de exemplo e dos objetos para criar direções, tivemos a
+possiblidade de elaborar as modificações necessárias para que a gema comporte a funcionalidade de
+gerar direções.
 
-Como primeiro passo, sabendo da necessidade da inclusão de ‘‘\emph{DirectionService}'',
+Em linhas gerais, as adaptações consistiram em adicionar a definição das classe
+necessárias na classe ‘‘\emph{Primitives}'', assim conseguimos mapear os objetos dos mapas do
+\emph{Google} dentro da gema. Depois incluimos os elementos de ‘‘\emph{builders}'' e ‘‘\emph{objects}''
+que representem as classes adicionadas, assim conseguimos criar e manipular os novos objetos do
+\emph{Google Maps}. E por fim, desenvolvemos as funcionalidades para manipular os novos elemntos
+na classe ‘‘\emph{Handler}'', assim conseguimos por meio da criação e da manipulação dos objetos do
+\emph{Google Maps}, requisitar e incluir direções nos mapas.
+
+Deste modo, como primeiro passo, sabendo da necessidade da inclusão de ‘‘\emph{DirectionService}'',
 ‘‘\emph{DirectionRender}'', ‘‘\emph{TravelMode}'' e ‘‘\emph{DirectionsStatus}'', decidimos que a primeira
 modificação na gema seria  incluir estas quatros classe nas definições da classe ‘‘\emph{Primitives}''.
 E isso foi feito da seguinte forma, como apresentado no código
@@ -437,14 +441,6 @@ E isso foi feito da seguinte forma, como apresentado no código
 
 \lstinputlisting[ style=customCoffee, caption={Classe Primitives com atributo de Directions}, label={lst:classe_primitives_com_atributos_de_directions}]
 {codigos/classe_primitives_com_atributos_de_directions.coffee}
-
-\begin{figure}[ht]
-  \begin{center}
-    \includegraphics[scale=0.35]{images/novo_diagrama_de_heranca_google_maps_for_rails.png}
-    \caption{Novo Diagrama de Herança Google-Maps-For-Rails}
-    \label{fig:novo_diagrama_de_heranca_google_maps_for_rails}
-  \end{center}  \
-\end{figure}
 
 Em seguida criamos quatro \emph{classes} para o ‘‘\emph{Google}'', sendo que duas são ‘‘\emph{Builders}'' de 
 ‘‘\emph{DirectionService}'' e ‘‘\emph{DirectionRender}'', e as outras duas são ‘‘\emph{Objects}'' também das 
@@ -454,6 +450,14 @@ local aonde inserimos as classes e quais as dependências que elas possuem. No c
 diagrama de herança que desenvolvemos na \emph{engenharia reversa}, mostrado na imagem
 \ref{fig:diagrama_de_heranca_google_maps_for_rails}, com a adição das quatro classes que são representadas 
 por retângulos tracejados.
+
+\begin{figure}[ht]
+  \begin{center}
+    \includegraphics[scale=0.35]{images/novo_diagrama_de_heranca_google_maps_for_rails.png}
+    \caption{Novo Diagrama de Herança Google-Maps-For-Rails}
+    \label{fig:novo_diagrama_de_heranca_google_maps_for_rails}
+  \end{center}  \
+\end{figure}
 
 Agora que acrescentamos estas quatro classes na gema adaptada, devemos adicionar no ‘‘\emph{Handler}'', 
 novas funções para maminpular essas classes. E neste caso, inserimos as funçãoes ‘‘\emph{addDirection()}'' e 
@@ -487,32 +491,34 @@ Analisando as modificações, percebemos que somente inserimos 4 classes e 2 fun
 perceber que as alterações que fizemos, não afetaram o funcionamento da gema, pois não foi
 necessário mexer no código que já existia.
 
-Existem outras possíveis soluções, como por exemplo, a criação de somente uma função para criar os objetos
-de direções e requisitar as mesma ao \emph{Google}, e também poderiamos pensar em mesclar as direções com os
-\emph{markers}, devido ao fato que as direçõs utilizam \emph{markers} para marcar o ponto de inicio e fim.
-No entanto para o primeiro caso, não existiria modularização, e para o segundo caso a modificação possui
-uma complexidade muito alta.
+Existem outras possíveis soluções, como por exemplo, a criação de somente uma função para criar e
+requisitar direções ao \emph{Google}, e também poderiamos pensar em mesclar as direções com os
+\emph{markers}, devido ao fato que as direçõs utilizam \emph{markers} para marcar o ponto de inicio e
+o ponto de fim. No entanto, nenhuma das duas modifcações é benéfica para a biblioteca, pois a primeira
+não faz a modularização, e a segunda aumenta a complexidade da biblioteca.
 
 
 \subsection{API da Biblioteca Adaptada}
 \label{subsection:api_da_biblioteca_adaptada}
 
 
-Apresentaremos rapidamente a \emph{API} da gema adaptada para facilitar o uso da nova funcionalidade
-de direções.
+Para facilitar o uso da nova funcionalidade de direções, apresentaremos rapidamente nesta sub-seção,
+a \emph{API} da gema adaptada.
 
 Basicamente a função adicionada é a \emph{addDirection()} que recebe como parâmetro um local de origem
-e destino, e retorna o caminho entre a origem e o destino no mapa.
-
-Para utilizar a funcionalidade de direção da gema adaptada, basta fazer a instalação da gema, inclui-lá
-no projeto, implementar o código de criar mapas, já usado na gema original, e por fim chamar a função
-\emph{addDirection()} com um local de origem e um local de destino.
-
-Logo a abaixo no código \ref{lst:exemplo_coffeescript_api_google-maps-for-rails_adaptado}, veremos um
-código base para criar um mapa com uma direção.
+e um local de destino. E depois de fazer a requisição ao \emph{Google}, retorna no mapa, o caminho entre
+a origem e o destino.
 
 \lstinputlisting[ style=customCoffee, caption={Exemplo CoffeeScript API Google-Maps-For-Rails Adaptado}, label={lst:exemplo_coffeescript_api_google-maps-for-rails_adaptado}]
 {codigos/exemplo_coffeescript_api_google-maps-for-rails_adaptado.js.coffee}
+
+Para utilizar a funcionalidade de direção da gema adaptada, basta fazer a instalação da gema. Depois incluir
+a gema no projeto em que se deseja utilizar a funcionalidade de direções. Em seguida, dentro do proejto,
+implementar o código de criar mapas que pode ser o mesmo usado na gema original.
+E no fim para criar a direção, chamar a função \emph{addDirection()} com um local de origem e um local de destino.
+
+O código \ref{lst:exemplo_coffeescript_api_google-maps-for-rails_adaptado}, mostra um código base para criar um
+mapa com uma direção.
 
 
 \subsection{Exemplo de Uso da Biblioteca Adaptada}
@@ -528,13 +534,13 @@ a frequência de doenças no mapa do \emph{Google}, utilizando sobreposições. 
 trabalho, essa função ainda não havia sido implementada, mas mesmo assim, fizemos o uso da
 funcionalidade de direções, somente para exemplificar o uso da gema modificada.
 
+\lstinputlisting[ style=customCoffee, caption={Exemplo CoffeeScript que Cria Mapa com Direção}, label={lst:exemplo_coffeescript_que_cria_mapa_com_direcao}]
+{codigos/DiseasesMap/app/assets/javascripts/locations.js.coffee}
+
 Inicialmente fizemos a instalção e inclusão da gema adaptada no arquivo \emph{Gemfile} do projeto. Depois 
 criamos uma estrutura básica de \emph{model/view/controller} de ‘‘\emph{locations}''. E para fazer o uso
 da função de direções utilizamos o código \ref{lst:exemplo_coffeescript_que_cria_mapa_com_direcao},
 explicado logo abaixo.
-
-\lstinputlisting[ style=customCoffee, caption={Exemplo CoffeeScript que Cria Mapa com Direção}, label={lst:exemplo_coffeescript_que_cria_mapa_com_direcao}]
-{codigos/DiseasesMap/app/assets/javascripts/locations.js.coffee}
 
 \begin{itemize}
 
@@ -570,12 +576,12 @@ explicado logo abaixo.
  
 \end{itemize}
 
+\lstinputlisting[ style=customRubyHTML, caption={Exemplo Locations view que Cria Mapa com Direção}, label={lst:exemplo_locations_view_que_cria_mapa_com_direcao}]
+{codigos/index_simplificado.html.erb}
+
 E para mostrar o mapa na view de ‘‘\emph{locations}'' adicionamos o código mostrado em
 \ref{lst:exemplo_locations_view_que_cria_mapa_com_direcao}
 que é parte do código da \emph{view}, explicado logo a seguir.
-
-\lstinputlisting[ style=customRubyHTML, caption={Exemplo Locations view que Cria Mapa com Direção}, label={lst:exemplo_locations_view_que_cria_mapa_com_direcao}]
-{codigos/index_simplificado.html.erb}
 
 \begin{itemize}
 
