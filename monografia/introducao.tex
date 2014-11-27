@@ -9,7 +9,7 @@ de uma nova solução de rederização, implementada na ferramenta \emph{Google 
 solução, consistia na divisão do mapa em pedaços. No caso, estes pedaços poderiam ser
 requisitados um a um para formar uma parte ou um mapa completo. Com essa nova rederização,
 foi possível solucionar o problema da grande quantidade de dados transferidos, pois somente
-se transfere as partes requisitadas do mapa, e também se solucionou problema da transformação,
+se transfere as partes requisitadas do mapa, e também se solucionou o problema da transformação,
 pois a quantidade de dados para se transformar, foi reduzida razoavelmente.
 
 Muitas companias, percebendo a solução revolucionária adotada pelo \emph{Google} na
@@ -19,36 +19,40 @@ também reduziam a carga de trabalho nos servidores. Entre estas ferramentas est
 \emph{Yandex Maps} do \emph{Yandex}.
 
 Para os desenvolvedores, esta nova solução de rederização, tornou-se interessante
-quando se analisou as operações que poderiam ser realizadas sobre os mapas. Por exemplo, nos mapas
-do \emph{Google Maps}, podemos criar um mapa em uma página web, utilizar marcadores para
+quando se analisou as operações que poderiam ser realizadas sobre os mapas. Por exemplo, nos
+mapas do \emph{Google Maps}, podemos criar um mapa em uma página web, utilizar marcadores para
 marcar locais ou regiões do mapa que consideramos importante, e até determinar caminhos
 para ir de um local ao outro.
 
-Por causa destas utilidades, vários programadores perceberam que a nova ferramenta do
-\emph{Google} poderia ser muito útil em seus projeto, e por este motivo decidiram se mobilizar
-na procura de uma forma de incorporar o \emph{Google Maps} em suas aplicações. O
-\emph{Google}, percebendo essa mobilização, resolveu facilitar o acesso a ferramenta, divulgando
-em Junho de 2005 uma \emph{API} (\emph{Application Programming Interface}) para o
-\emph{Google Maps}, descrevendo nesta \emph{API}, detalhes de como importar e utilizar
-as funções da ferramenta.
+Muitos programadores decidiram se mobilizar na procura de uma forma de incorporar o
+\emph{Google Maps} em suas aplicações, pois perceberam que a ferramenta possuía funcionalidade
+muito úteis para o dia-a-dia. O \emph{Google}, percebendo essa mobilização, resolveu facilitar
+o acesso a ferramenta, divulgando em Junho de 2005 uma \emph{API}
+(\emph{Application Programming Interface}) para o \emph{Google Maps}, apresentando
+detalhes de como importar e utilizar as funções da ferramenta.
 
-O \emph{Ruby On Rails} que é um \emph{framework} da linguagem \emph{Ruby}, possui
-bibliotecas que simplificam o acesso da \emph{API} do \emph{Google Maps}. Basicamente estas
-bibliotecas preparam internamente os objetos do mapa e depois mapeiam as funções da
-ferramenta do \emph{Google}. Por exemplo, quando se está utilizando uma destas bibliotecas,
-ao tentar rederizar um mapa em uma página web, não é necessários saber quais os objetos do
-\emph{Google Maps} precisam ser criados, pois estes objetos serão gerados automaticamente
-na chamada da função de rederização de mapas da biblioteca.
+O \emph{Ruby} possui bibliotecas que contém funcionalidade prontas para uso. Algumas destas
+bibliotecas possuem funcionalidades que simplificam o acesso da \emph{API} do \emph{Google Maps}.
+Basicamente estas biblioteca mapeiam as funções da ferramenta do \emph{Google}, preprando
+internamente os objetos dos mapas. Deste modo, ao utilizar uma funcionalidade da biblioteca, não
+é necessários saber quais os objetos do \emph{Google Maps} precisam ser criados, pois estes
+objetos serão gerados automaticamente na chamada da função.
 
-O objetivo deste trabalho, é mostrar uma forma de adaptar uma biblioteca do \emph{Ruby} que
-faz o mapeamento da \emph{API} do \emph{Google Maps}. Para isso será necessário apresentar
-conceitos sobre as bibliotecas do \emph{Ruby}, bem como a criação do mesmo.
+O \emph{Ruby On Rails} é um \emph{framework} da linguagem \emph{Ruby} que facilita o
+desenvolvimento de projetos \emph{web}, fazendo a criação de estrturas básicas por meio da
+execução de linhas de comando, e possibilitando a importação de bibliotecas do \emph{Ruby}.
 
-Neste caso, o texto apresenta um passo-a-paaso da implementação de uma biblioteca simples
+Contudo o objetivo deste trabalho, é mostrar uma forma de adaptar uma biblioteca do \emph{Ruby}
+que faz o mapeamento da \emph{API} do \emph{Google Maps} e apresentar um exemplo de uso desta
+biblioteca em um projeto do \emph{Ruby On Rails}. Para aprimorar o conhecimento, antes será
+necessário apresentar conceitos sobre bibliotecas do \emph{Ruby}, bem como o seu modelo de
+criação.
+
+O texto apresentará um passo-a-paaso da implementação de uma biblioteca simples
 e funcional do \emph{Ruby}. Como exemplo, será desenvolvido um biblioteca que faz a
 tradução de palavras do português para o inglês. E utilizando este conhecimento de criação
-de bibliotecas, o texto também apresenta os passos básicos que devem ser realizados
-para adaptar uma biblioteca do \emph{Ruby}. Neste caso, será feito a adição da
+de bibliotecas, o texto também apresentará os passos básicos que devem ser realizados
+para adaptar uma biblioteca do \emph{Ruby}. Como exemplo, será feito a adição da
 funcionalidade de desenhar caminhos entre dois locais, utilizando uma biblioteca do
 \emph{Ruby} que mapeia a \emph{API} do \emph{Google Maps}. 
 
@@ -56,7 +60,7 @@ Este trabalho está organizado da seguinte maneira: bibliotecas do \emph{Ruby} n
 capítulo \ref{chapter:bibliotecas_do_ruby}, onde será apresentado conceitos sobre
 bibliotecas do \emph{Ruby}, criação de bibliotecas do \emph{Ruby} no capítulo 
 \ref{chapter:criacao_de_bibliotecas_do_ruby}, onde será apresentado um passo-a-passo
-de como criar uma bibliotecas do \emph{Ruby}, adaptação de bibliotecas do \emph{Ruby}
+de como criar uma biblioteca do \emph{Ruby}, adaptação de bibliotecas do \emph{Ruby}
 no capítulo  \ref{chapter:adaptacao_de_bibliotecas_do_ruby}, onde será apresentado um
 tutorial de como adaptar uma biblioteca do \emph{Ruby}, e a conclusão no capítulo
 \ref{chapter:conclusao}.

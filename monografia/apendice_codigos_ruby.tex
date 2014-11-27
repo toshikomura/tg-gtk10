@@ -1,0 +1,63 @@
+Este capítulo tem o objtivo de mostrar detalhadamente os códigos \emph{Ruby} que foram mostrados na forma
+de algoritmo no trabalho.
+
+\lstinputlisting[ style=customRuby, caption={translatetoenglish.rb}, label={lst:translatetoenglish.rb}]
+{codigos/translatetoenglish_simplificado.rb}
+
+O arquivo mostrado no código \ref{lst:translatetoenglish.rb}, explicado logo a seguir. faz referência
+ao algoritmo mostrado no código \ref{lst:algoritmo_de_translatetoenglish.rb}.
+
+\begin{itemize}
+
+  \item ‘‘\emph{module ... end} nas linhas ‘‘1'', ‘‘2'' e ‘‘3'' define a árvore de módulos
+  ‘‘\emph{Gemtranslatetoenglish}'' na raiz, ‘‘\emph{Helpers}'' no segundo nível e ‘‘\emph{Translatetoenglish}'' no
+  terceiro.
+  
+  \item ‘‘\emph{def translate( phrase) ... end}'' da linha ‘‘5'' até a linha ‘‘34'', define
+  a função de tradução da gema, onde foi definido somente duas traduções, ‘‘\emph{OLÁ}''
+  para ‘‘\emph{HELLO}'' e ‘‘MUNDO'' para ‘‘\emph{WORLD}''.
+
+  A árvore definida no código \ref{lst:translatetoenglish.rb} foi necessário por causa do código
+  inserido na linha ‘‘8'' ‘‘\emph{ActionController::Base.helper Gemtranslatetoenglish::Helpers::Translatetoenglish}''
+  no código \ref{lst:gemtranslatetoenglish.rb} que serve para evitar a necesseidade de escrever a
+  \emph{PATH} completa na \emph{view} para chamar uma função da gema na \emph{view}.
+
+\end{itemize}
+
+
+O arquivo mostrado no código \ref{lst:funcoes_adicionais_do_handler}, explicado logo a seguir, faz
+referência ao algoritmo mostrado no código \ref{lst:algoritmo_de_funcoes_adicionais_do_handler}.
+
+\begin{itemize}
+
+ \item Na linha ‘‘2'' é adicionado a função ‘‘\emph{addDirection}'' que recebe como parâmetro 
+ ‘‘\emph{direction\_data}'', que possui o informações do local de origem e local de destino que são 
+ obrigatórios para criar a direção, e ‘‘\emph{provider\_options}'' que pode conter as opções da forma
+ como esse direção deve ser gerada. Essa função tem por objetivo criar as direções e colocá-las no mapas.
+ 
+ \item Na linha ‘‘13'' é adicionado a função ‘‘\emph{calculate\_route}'' com o parâmetro 
+ ‘‘\emph{direction\_data}'', que tem por principal objtivo fazer a requisição para o \emph{Google } de uma 
+ possível direção entre o local de origem ao local de destino.
+ 
+ \item Da linha ‘‘3'' a linha ‘‘10'' é o conteúdo da função ‘‘\emph{addDirection}'', onde se cria os
+ atributos ‘‘\emph{direction\_service}'' e ‘‘\emph{direction\_render}'' para o ‘‘\emph{Handler}''. Para
+ cada um deste atributos, é atribuido o seu respectivo objeto do \emph{Google Maps} com a chamada da função 
+ ‘‘\emph{@\_builder(...)}''. Depois é feito a chamada da função ‘‘\emph{calulate\_route(...)}''
+ para encontrar uma possível direção. E finalmente com o código 
+ ‘‘\emph{@direction\_render.getServiceObject().setMap(@getMap())}'', a direção encontrada é colocado 
+ no mapa.
+ 
+ \item Da linha ‘‘13'' a linha ‘‘20'' é o conteúdo da função ‘‘\emph{calculate\_route(...)}'', onde 
+ inicialmente é colocado em uma variável local o \emph{status Ok} de requisição que será utilizado
+ para verificar se a requisição de direção foi feita com sucesso, e também é criada uma variável local 
+ para o \emph{objeto DirectionRender} do \emph{Google Maps}. Em seguida, através da chamada da função 
+ ‘‘\emph{route(...)}'' do \emph{objeto DirectionService}. Nesta função so parâmetros de entrada são,
+ o local de origem e o local de destino, e como resposta se recebe o \emph{status} da requisição
+ e o \emph{response}. Neste caso, \emph{response} pode ou não conter o caminho solução. Após a execução
+ desta função, caso a resposta venha com o \emph{status Ok}, o \emph{objeto DirectionRender} recebe o
+ caminho solução.
+ 
+\end{itemize}
+
+\lstinputlisting[ style=customCoffee, caption={Funções adicionais do Handler}, label={lst:funcoes_adicionais_do_handler}]
+{codigos/funcoes_adicionais_do_handler.coffee}

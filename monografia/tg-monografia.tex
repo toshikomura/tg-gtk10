@@ -91,7 +91,7 @@ literate=
 \definecolor{myblue}{RGB}{0,0,163}
 \renewcommand{\lstlistingname}{Código}
 
-% Custom XML/RDF style
+% Custom Bash style
 \lstdefinestyle{customBash}{
   extendedchars=true,
   language=Bash,
@@ -194,6 +194,25 @@ literate=
   showtabs=false,
   stepnumber=1,
   stringstyle=\color{magenta},
+  tabsize=1
+}
+
+\lstdefinestyle{customAlgoritmo}{
+  basicstyle=\tiny,  
+  backgroundcolor=\color{white},
+  breaklines=true,
+  captionpos=b,  
+  commentstyle=\color{gray},  
+  morekeywords={se, senao},
+  frame=single,
+  keepspaces=true,
+  numbers=left,
+  numberstyle=\tiny\color{black},
+  rulecolor=\color{black},
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  stepnumber=1,
   tabsize=1
 }
 % ---
@@ -604,6 +623,7 @@ Universidade Federal do Paraná.}
 
 \partapendices
 
+
 \chapter[História e Classificação de Bibliotecas]{História e Classificação de Bibliotecas}
 \label{chapter:história_e_classificação_de_bibliotecas}
 \input{apendice_historia_e_classificacao_de_bibliotecas}
@@ -614,9 +634,9 @@ Universidade Federal do Paraná.}
 \input{apendice_conceitos_e_historia_do_ruby}
 
 
-\chapter[Uso da Ferramenta gem]{Uso da Ferramenta gem}
-\label{chapter:uso_da_ferramenta_gem}
-\input{apendice_uso_da_ferramenta_gem}
+\chapter[Uso da Ferramenta gem]{Projeto RubyGems}
+\label{chapter:projeto_rubygems}
+\input{apendice_projeto_rubygems}
 
 
 \chapter[Ferramentas utilizadas]{Ferramentas Utilizadas}
@@ -629,14 +649,15 @@ Universidade Federal do Paraná.}
 \input{apendice_preparacao_do_ambiente}
 
 
-\chapter[IRB]{IRB}
-\label{chapter:irb}
-\input{apendice_irb}
+\chapter[Execução de Testes]{Execução de Testes}
+\label{chapter:execução_de_testes}
+\input{apendice_execucao_de_testes}
 
 
-\chapter[API do Google Maps]{API do Google Maps}
-\label{chapter:api_do_google_maps}
-\input{apendice_api_do_google_maps}
+\chapter[Códigos Ruby]{Códigos Ruby}
+\label{chapter:codigos_ruby}
+\input{apendice_codigos_ruby}
+
 
 \end{apendicesenv}
 

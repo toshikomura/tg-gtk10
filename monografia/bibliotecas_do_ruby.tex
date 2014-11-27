@@ -18,107 +18,96 @@ permite que os desenvolvedores não se preocupem em fazer implementações repet
 copias de funções de um produto para outro. Isso se deve ao fato que quando a biblioteca for
 incluída em um projeto, a função já vai estar disponível para uso neste projeto.
 
-Para mais informações sobre bibliotecas, consulte o apêndice
-\ref{chapter:história_e_classificação_de_bibliotecas}.
-
 Em seguida, neste capítulo, na seção \ref{section:bibliotecas_do_ruby}, vamos apresentar alguns
-conceitos das bibliotecas do \emph{Ruby}, depois na seção \ref{section:segurança_do_ruby},
-vamos falar um pouco sobre a segurança do \emph{Ruby}, e por fim na seção
-\ref{section:segurança_das_bibliotecas_do_ruby}, vamos falar sobre a segurança das bibliotecas do
-\emph{Ruby}. Caso ainda não conheça a linguagem \emph{Ruby}, consulte o apêndice
-\ref{chapter:conceitos_e_historia_do_ruby}.
+conceitos das bibliotecas do \emph{Ruby}, uma ferramenta que auxlia o acesso a estas bibliotecas, e
+e um modelo de segurança adotado pela comunidade.
+
+Para mais informações sobre bibliotecas, consulte o apêndice
+\ref{chapter:história_e_classificação_de_bibliotecas}, e caso ainda não conheça a linguagem
+\emph{Ruby}, consulte o apêndice \ref{chapter:conceitos_e_historia_do_ruby}.
+
 
 \section{Bibliotecas do Ruby}
 \label{section:bibliotecas_do_ruby}
 
 Assim como muitas linguagens, como por exemplo \emph{C}, \emph{C++}, \emph{Java}, \emph{Python} e muitas
-outras, o \emph{Ruby} também possui um vasto conjunto de bibliotecas, sendo que a maior parte
-delas é distribuída na forma de \emph{gem}. Seu precoesso de instalação é feito por meio do programa
-\emph{gem}, que será explicado na sub-seção \ref{subsection:o_programa_gem} [\citeonline{libraries_ruby}].
+outras, o \emph{Ruby} também possui um vasto conjunto de bibliotecas, distribuídos em 2 tipos diferentes.
 
-Também existe um menor número de bibliotecas que são lançadas como arquivos compactados em ‘‘.zip''
-ou ‘‘.tar.gz''. Seu processo de instalação geralmente é feito por meio de arquivos de ‘‘README''
-ou ‘‘INSTALL'', que possuem as instruções de instalação [\citeonline{libraries_ruby}].
+A primeira forma e mais utilizada, é a distrbuição de bibliotecas na forma de \emph{gem}. O seu precoesso
+de instalação é feito por meio do programa \emph{gem}. Por outro lado em menor número, existe a
+distribuição na formata de arquivos compactados em ‘‘.zip'' ou ‘‘.tar.gz''. O seu processo de instalação
+geralmente é feito por meio de arquivos de ‘‘README'' ou ‘‘INSTALL'', que possuem as instruções de
+instalação [\citeonline{libraries_ruby}]. Em ambos os formatos, as bibliotecas baixadas são códigos fontes,
+devido ao fato que o \emph{Ruby} é uma linguagem interpretada.
 
 As bibliotecas do \emph{Ruby} foram apelidadas com o nome de \emph{gem} ou gemas, justamente pelo
 motivo que a maior parte das bibliotecas é desenvolvida no formato de \emph{gem}.
 
-\subsection{O programa gem}
-\label{subsection:o_programa_gem}
+
+\subsection{Programa gem}
+\label{subsection:programa_gem}
 
 O \emph{\href{https://rubygems.org/}{gem}} \footnote{gem: \url{https://rubygems.org/}} é um sistema
 de pacotes do \emph{Ruby}, desenvolvido para facilitar a criação, o compartilhamento, e a instalação de
 bibliotecas. Esta ferramenta possui características sinilares ao sistema de distruição de pacotes
 \emph{\href{https://packages.qa.debian.org/a/apt.html}{apt-get}}, no entanto ao invés de fazer a distribuição
 de pacotes para \emph{\href{https://www.debian.org/}{Debian GNU/Linux distribution}} e seus variantes, ela faz
-a distribuição de pacotes \emph{Ruby} [\citeonline{libraries_ruby}].
+a distribuição de pacotes \emph{Ruby} por meio do servidor \emph{RubyGems} [\citeonline{libraries_ruby}].
 
-O projeto \emph{RubyGems}, desenvolvedor da ferramenta \emph{gem}, foi criado em Abril de 2009 por
-\emph{\href{https://twitter.com/qrush}{Nick Quaranto}} \footnote{Nick Quaranto: \url{https://twitter.com/qrush}},
-numa tentativa de proporcionar uma melhor \emph{API} para acessar as gemas [\citeonline{about_rubygems}].
+Esta ferramenta nos auxilia a fazer a busca de gemas com o comando
+‘‘ \emph{gem search ‘nome da gema' }''. Ela também nos permite fazer a instalação de
+gemas, utilizando o comando ‘‘ \emph{gem install ‘nome da gema' }'' ou com o comando
+‘‘ \emph{gem install ‘nome da gema'.gem }'' quando o código da gema já está na nossa máquina.
 
-Com o passar do tempo, o projeto cresceu, chegando a possuir mais de 115 \emph{Rubyistis} contribuintes e
-milhões de gemas baixadas [\citeonline{about_rubygems}].
+Para mais informações consulte o apêndice \ref{chapter:projeto_rubygems}.
 
-Até a versão ‘‘\emph{1.3.6}'', o nome do projeto era \emph{Gemcutter}, sendo renomaeda a partir desta versão
-para \emph{RubyGems}, objetivando a solidificação do papel central do site na comunidade do \emph{Ruby}
-[\citeonline{about_rubygems}].
 
-Para mais informações, consulte o apêndice \ref{chapter:uso_da_ferramenta_gem}.
+\subsection{Segurança}
+\label{subsection:segurança_biblioteca_ruby}
 
-\section{Segurança do Ruby}
-\label{section:segurança_do_ruby}
+Antes de fazer a instalação de qualquer biblioteca em qualquer linguagem é necessário verificar
+se a fonte é confiável. Isso não é diferente na linguagem \emph{Ruby}, pois a todo momento podemos
+estar abrindo brechas e com isso correndo riscos de perder informações.
 
-A proteção de dados sempre foi uma questão muito discutida e na comunidade do \emph{Ruby} isso não é
-diferente, justamente porque a todo momento estamos sujeitos a sofrer ataques, e com isso podemos ser
-prejudicados, perdendo dinheiro e informações sigilosas.
+As bibliotecas do \emph{Ruby} possuem como repositório padrão o \emph{RubyGems}. Deste modo, fica claro
+que existe uma grande quantidade de bibliotecas neste repositório, e também que é quase impossível
+garantir que 100\%  destas bibliotecas sejam confiáveis.
 
-A comunidade do \emph{Ruby}, sabendo destes problemas, construiu um esquema para corrigir as
-vulnerabilidades de segurança. Neste esquema, as vulnerabilidade descobertas são reportadas via e-mail para
-\href{mailto:security@ruby-lang.org}{\nolinkurl{security@ruby-lang.org}}, que é uma lista privada com
-membros que administram o \emph{Ruby}, como por exemplo \emph{Ruby commiters}. Neste esquema, os membros da
-lista de segurança, por medidas de segurança, somente compartilham as vulnerabilidades quando elas já estão
-solucionadas. Na publicação da vulnerabilidade é informado o tipo de erro, os problemas que o erro causa,
-e a solução que deve ser tomada para sua correção [\citeonline{security_ruby}].
+A ferramenta \emph{gem} que faz a instalação das gemas no ambiente de desenvolvimento, possuí uma politica
+de segurança que tenta garantir que as bibliotecas instaladas são de uma fonte de confiança. Esta politica
+funciona por meio da verificação de certificados digitais que consiste em um processo de 2 passos. 
 
-Um exemplo é a vulnerabilidade publicada em 10/04/2014, referênciado com o identificador
-\emph{\href{https://cve.mitre.org/}{CVE}}
-(\href{https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-0160}{CVE-2014-0160)}, fala sobre um grave
-problema na implementação no \emph{\href{https://www.openssl.org}{OpenSSL’s}} do \emph{TLS/DTLS} (\emph{transport
-layer security protocols}). Neste problema, uma pessoa mal intencionada poderia roubar dados da memória, tanto
-na comunicação entre o servidor com o cliente, como na comunicação do cliente para o servidor
-[\citeonline{openssl_problem_security_ruby}].
+No primeiro passo, depois da criação da biblioteca, pessoas ou orgãoes validam a confiabilidade da gema por
+meio de verificações e testes de segurança. Após esta verificação, caso a biblioteca seja confiável, ela
+recebe uma assinatura, feita por meio de uma chave privada de um certificado, para comprovar a sua segurança.
+Deste modo, todas as bibliotecas que possuem essa assinatura, são confiáveis, pois pela assinatura sabemos
+que determinada pessoa ou orgão comprovaram que a biblioteca é segura.
 
-\section{Segurança das Bibliotecas do Ruby}
-\label{section:segurança_das_bibliotecas_do_ruby}
-
-Assim como na linguagem \emph{Ruby}, também é necessário tomar alguns cuidados ao se utilizar as suas
-bibliotecas, pois podemos estar abrindo brechas, e com isso correndo riscos de perder informações.
-
-Antes de instalar qualquer biblioteca do \emph{Ruby}, devemos verificar se a fonte da gema é
-confiável. Isso é válido para a instalação de qualquer biblioteca em qualquer linguagem.
-
-O \emph{RubyGems} a partir da versão ‘‘\emph{0.8.11}'', permite a assinatura criptografada de uma \emph{gema}.
-Essa assinatura funciona com o comando ‘‘\emph{gem cert}'', que criar um par de chaves e empacota o dado da
-assinatura dentro da \emph{gema}. O comando ‘‘\emph{gem install}'' permite que se defina uma politica de
-segurança, onde se pode verificar a chave da assinatura antes da instalação [\citeonline{guide_security_rubygems}].
+No segundo passo, o usuário final no momento da instalação da biblioteca, requisita por meio da politica
+de segurança do \emph{RubyGems}, a validação de confiabilidade da biblioteca a ser instalada.
+A politica de segurança mais baixa, é a ‘‘\emph{NoSecurity}'' que não faz nenhuma verificação no momento da
+instalação. E a mais alta, é a politica ‘‘\emph{HighSecurity}'' que só permite a instalação de gemas que
+estão assinadas e sem nenhuma modificação. Neste segundo caso, o \emph{RubyGems} ao receber essa
+requisição, verifica por meio do certificado e da assinatura da biblioteca, se ela recebeu a assinatura
+de alguma pessoa ou orgão de confiança, e se ela não foi modificada após a sua assinatura, pois 
+modificação podem conter códigos maliciosos.
 
 Apesar deste método de chaves criptografadas ser benéfico, ele geralmente não é usado, pois é necessário
 vários passos manuais no desenvolvimento, e também não existe nenhuma medida de confiança bem definida
 para estas chaves de assintura [\citeonline{guide_security_rubygems}].
 
-Assim como o \emph{Ruby}, o \emph{RubyGems} também possui um esquema para reportar vulnerabilidades.
+O \emph{RubyGems} possui um esquema para reportar vulnerabilidades das bibliotecas do \emph{Ruby}.
 Este esquema é divido em duas vertentes. Na primeira se reporta erros na gema de outros usuários e na
 segunda se reporta erros da própia gema.
 
-No caso para reportar vulnerabilidade de \emph{gemas} de outros usuários, sempre é necessário verificar
+Para reportar vulnerabilidade de \emph{gemas} de outros usuários, sempre é necessário verificar
 se a vulnerabilidade ainda não é conhecida. Caso ela ainda não seja conhecida, é recomendado que se
 reporte o erro por um e-mail privado, diretamente para o dono da gema, informando o problema e
 indicando uma possível solução.
 
-Por outro lado caso descubra uma vulnerabilidade em uma de suas \emph{gema}, primeiramente
-é necessário que se requisite um identificador \emph{\href{https://cve.mitre.org/}{CVE}} via e-mail para
-\href{mailto:cve-assign@mitre.org}{\nolinkurl{cve-assign@mitre.org} }, pois deste modo existirá
+Por outro lado para uma vulnerabilidade na própia \emph{gema}, é necessário que se requisite um
+identificador \emph{\href{https://cve.mitre.org/}{CVE}} via e-mail para
+\href{mailto:cve-assign@mitre.org}{\nolinkurl{cve-assign@mitre.org} }, pois deste modo, existirá
 um identificador único para o problema. Com o identificador em mãos, é necessário trabalhar em uma
 possível solução. Assim que encontrar uma solução, será necessário criar um \emph{patch} de correção.
 E finalmente depois de criar o \emph{patch}, deve-se informar a comunidade que existia um problema na
@@ -128,4 +117,4 @@ Para este segundo caso, também recomenda-se adicionar o problema em um \emph{da
 de vulnerabilidade, como por exmeplo o \href{http://osvdb.org/}{OSVDB}. Além disso, também recomenda-se
 enviar um e-mail para \href{mailto:ruby-talk@ruby-lang.org} {\nolinkurl{ruby-talk@ruby-lang.org} } com o
 \emph{subject: ‘‘[ANN][Security]''}, informando detalhes sobre a vulnerabilidade, as versões que
-possuem esse erro, e as ações que devem ser tomadas para corrigir o problema.
+possuem o erro, e as ações que devem ser tomadas para corrigir o problema.

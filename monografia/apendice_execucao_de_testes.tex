@@ -1,10 +1,68 @@
+Este capítulo tem o objtivo de apresentar como se pode realizar a execução de testes da gema de
+exemplo ‘‘\emph{gemtranslatetoenglish}''. Na seção \ref{section:teste_com_rake}, apresentaremos
+como é feita a execução de testes com o \emph{rake}, e apresentaremos na seção
+\ref{section:teste_com_irb}, como realizar testes com a ferramenta \emph{irb}.
+
+
+\section{Testes com rake}
+\label{section:teste_com_rake}
+
+
+Esta seção tem o objetivo de mostrar como se pode realizar os teste, após criar os códigos de
+funcionalidade, visto na sub-seção \ref{subsection:codigo_de_funcionalidade_no_diretorio_lib}, e os códigos
+de teste, visto na sub-seção \ref{subsection:codigo_de_teste_no_diretorio_test_ou_spec}.
+
+Antes de realizarmos os testes, precisamos criar a gema com comando \textbf{‘‘\emph{gem build 'nome da gema'.gemspec}''}
+e fazer a instalação com o comando \textbf{‘‘\emph{sudo gem install 'nome da gema'-'versão da gema'.gem}''}. 
+
+No nosso exemplo, foi fazer a execução dos comandos mostrados no código
+\ref{lst:execucao_que_cria_e_instala_gemtranslatetoenglish} para fazer a criação e a instalação da gema
+‘‘\emph{gemtranslatetoenglish}''.
+
+\lstinputlisting[ style=customBash, caption={Execução que Cria e Instala gemtranslatetoenglish}, label={lst:execucao_que_cria_e_instala_gemtranslatetoenglish}]
+{codigos/execucao_que_cria_e_instala_gemtranslatetoenglish.sh }
+
+Agora após ter implementado o código das funcionalidades, o arquivo de teste
+‘‘\emph{test/test\_check\_translate.rb}'', o arquivo \emph{Rakefile}, e ter feito a criação e a instalação
+da gema de exemplo, podemos realizar os testes com a execução do comando ‘‘\emph{rake}'' no terminal.
+
+Com a execução dos testes, obtemos como resultado o código \ref{lst:execucao_rake_gema_gemtranslatetoenglish},
+explicado logo a seguir.
+
+\lstinputlisting[ style=customBash, caption={Execução rake gema gemtranslatetoenglish}, label={lst:execucao_rake_gema_gemtranslatetoenglish}]
+{codigos/execucao_rake_gema_gemtranslatetoenglish.sh }
+
+\begin{itemize}
+
+ \item Na linha ‘‘1'' é feito a execução do comando ‘‘\emph{rake}'' para se realizar os testes.
+
+ \item Na linha ‘‘5'' é mostrado que foram feitos 2 testes, no caso os 2 que definimos no código
+ \ref{lst:test_check_translate.rb} nas linhas ‘‘8'' a ‘‘11'' no teste ‘‘\emph{test\_world\_translation}''
+ e nas linhas ‘‘12'' a ‘‘15'' no teste ‘‘\emph{test\_text\_translation}''. Também é apresentado na
+ linha ‘‘5'' que foram feitos 4 ‘‘\emph{assertions}'', no caso dois para cada caso de teste feitos por
+ meio do ‘‘\emph{assert\_equal}''. E além disso é apresentado que não ocorreram  \emph{failures}'',
+ ‘‘\emph{errors}'' e ‘‘\emph{skips}''.
+
+\end{itemize}
+
+Deste modo, ao se realizar estes testes garantimos que pelo menos a função ‘‘\emph{translate()}'' da gema
+‘‘\emph{gemtranslatetoenglish}'', esta funcionando como o esperado.
+
+
+\section{Testes com irb}
+\label{section:teste_com_irb}
+
+
+Esta seção tem o objetivo de mostrar como se realiza teste utilizando a ferramenta \emph{irb} que permite
+verificar as funcionalides de uma gema de forma manual, sem a necessidade de inclui-lá em um projeto.
+
 O \emph{\href{http://www.ruby-doc.org/stdlib-2.0/libdoc/irb/rdoc/IRB.html}{IRB}} 
 \footnote{IRB: \url{http://www.ruby-doc.org/stdlib-2.0/libdoc/irb/rdoc/IRB.html}}
 (\emph{Interactive Ruby Shell}) é uma ferramenta do \emph{Ruby} que serve para executar expressões
 interativamente, fazendo a leitura da entrada padrão [\citeonline{irb_doc}].
 
-Caso se deseje fazer os testes de uma gema manualmente sem a necessidade de inclui-lá em um projeto, podemos
-fazer o uso do ‘‘\emph{IRB}'', chamando o comando ‘‘\emph{irb}''.
+%Caso se deseje fazer os testes de uma gema manualmente podemos
+%fazer o uso do ‘‘\emph{IRB}'', chamando o comando ‘‘\emph{irb}''.
 % o seguinte comando mostrado no código ‘‘Código \ref{lst:executa_irb} - Executa IRB'' no terminal para iniciá-lo.
 
 \begin{comment}

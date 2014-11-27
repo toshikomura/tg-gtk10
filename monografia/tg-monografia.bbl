@@ -12,30 +12,8 @@ Dispon{\'\i}vel em:
   \htmladdnormallink{$<$http:\-/\-/www\-.ruby-lang\-.org\-/en\-/libraries\-/$>$}{http://www.ruby-lang.org/en/libraries/}.
   Acesso em: 17 out. 2014.}
 
-\bibitem{about_rubygems}
-\abntrefinfo{Community}{COMMUNITY}{2014b}
-{COMMUNITY, R. \emph{RubyGems About}. 2014. RubyGems Site - About.
-Dispon{\'\i}vel em:
-  \htmladdnormallink{$<$http:\-/\-/rubygems\-.org\-/pages\-/about$>$}{http://rubygems.org/pages/about}.
-  Acesso em: 21 out. 2014.}
-
-\bibitem{security_ruby}
-\abntrefinfo{Community}{COMMUNITY}{2014c}
-{COMMUNITY, R. \emph{Ruby Security}. 2014. Ruby Site - Security.
-Dispon{\'\i}vel em:
-  \htmladdnormallink{$<$http:\-/\-/www\-.ruby-lang\-.org\-/en\-/security\-/$>$}{http://www.ruby-lang.org/en/security/}.
-  Acesso em: 22 out. 2014.}
-
-\bibitem{openssl_problem_security_ruby}
-\abntrefinfo{Community}{COMMUNITY}{2014d}
-{COMMUNITY, R. \emph{OpenSSL Severe Vulnerability in TLS Heartbeat Extension
-  (CVE-2014-0160)}. 2014. Ruby Site - News.
-Dispon{\'\i}vel em:
-  \htmladdnormallink{$<$http:\-/\-/www\-.ruby-lang\-.org\-/en\-/news\-/2014\-/04\-/10\-/severe-openssl-vulnerability\-/$>$}{http://www.ruby-lang.org/en/news/2014/04/10/severe-openssl-vulnerability/}.
-  Acesso em: 22 out. 2014.}
-
 \bibitem{guide_security_rubygems}
-\abntrefinfo{Community}{COMMUNITY}{2014e}
+\abntrefinfo{Community}{COMMUNITY}{2014b}
 {COMMUNITY, R. \emph{RubyGems Guides Security}. 2014. RubyGems Site - Guides -
   Security.
 Dispon{\'\i}vel em:
@@ -43,7 +21,7 @@ Dispon{\'\i}vel em:
   Acesso em: 21 out. 2014.}
 
 \bibitem{guide_what_is_a_gem_rubygems}
-\abntrefinfo{Community}{COMMUNITY}{2014f}
+\abntrefinfo{Community}{COMMUNITY}{2014c}
 {COMMUNITY, R. \emph{RubyGems Guides What is a gem}. 2014. RubyGems Site -
   Guides - What is a gem.
 Dispon{\'\i}vel em:
@@ -56,6 +34,11 @@ Dispon{\'\i}vel em:
 Dispon{\'\i}vel em:
   \htmladdnormallink{$<$http:\-/\-/github\-.com\-/apneadiving\-/Google-Maps-for-Rails$>$}{http://github.com/apneadiving/Google-Maps-for-Rails}.
   Acesso em: 30 out. 2014.}
+
+\bibitem{beginning_google_maps_api3}
+\abntrefinfo{Svennerberg}{SVENNERBERG}{2010}
+{SVENNERBERG, G. \emph{Beginning Google Maps API 3}. 2. ed. New York, NY 10013:
+  Apress, 2010.}
 
 \bibitem{history_of_programming_languages}
 \abntrefinfo{Wexelblat}{WEXELBLAT}{1981}
@@ -83,6 +66,28 @@ Dispon{\'\i}vel em:
 Dispon{\'\i}vel em:
   \htmladdnormallink{$<$http:\-/\-/www\-.ruby-lang\-.org\-/en\-/about\-/$>$}{http://www.ruby-lang.org/en/about/}.
   Acesso em: 17 out. 2014.}
+
+\bibitem{security_ruby}
+\abntrefinfo{Community}{COMMUNITY}{2014a}
+{COMMUNITY, R. \emph{Ruby Security}. 2014. Ruby Site - Security.
+Dispon{\'\i}vel em:
+  \htmladdnormallink{$<$http:\-/\-/www\-.ruby-lang\-.org\-/en\-/security\-/$>$}{http://www.ruby-lang.org/en/security/}.
+  Acesso em: 22 out. 2014.}
+
+\bibitem{openssl_problem_security_ruby}
+\abntrefinfo{Community}{COMMUNITY}{2014b}
+{COMMUNITY, R. \emph{OpenSSL Severe Vulnerability in TLS Heartbeat Extension
+  (CVE-2014-0160)}. 2014. Ruby Site - News.
+Dispon{\'\i}vel em:
+  \htmladdnormallink{$<$http:\-/\-/www\-.ruby-lang\-.org\-/en\-/news\-/2014\-/04\-/10\-/severe-openssl-vulnerability\-/$>$}{http://www.ruby-lang.org/en/news/2014/04/10/severe-openssl-vulnerability/}.
+  Acesso em: 22 out. 2014.}
+
+\bibitem{about_rubygems}
+\abntrefinfo{Community}{COMMUNITY}{2014c}
+{COMMUNITY, R. \emph{RubyGems About}. 2014. RubyGems Site - About.
+Dispon{\'\i}vel em:
+  \htmladdnormallink{$<$http:\-/\-/rubygems\-.org\-/pages\-/about$>$}{http://rubygems.org/pages/about}.
+  Acesso em: 21 out. 2014.}
 
 \bibitem{vmplayer}
 \abntrefinfo{VMware}{VMWARE}{2014}
@@ -125,10 +130,5 @@ Dispon{\'\i}vel em:
 Dispon{\'\i}vel em:
   \htmladdnormallink{$<$http:\-/\-/www\-.ruby-doc\-.org\-/stdlib-2\-.0\-/libdoc\-/irb\-/rdoc\-/IRB\-.html$>$}{http://www.ruby-doc.org/stdlib-2.0/libdoc/irb/rdoc/IRB.html}.
   Acesso em: 28 out. 2014.}
-
-\bibitem{beginning_google_maps_api3}
-\abntrefinfo{Svennerberg}{SVENNERBERG}{2010}
-{SVENNERBERG, G. \emph{Beginning Google Maps API 3}. 2. ed. New York, NY 10013:
-  Apress, 2010.}
 
 \end{thebibliography}

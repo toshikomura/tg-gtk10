@@ -1,26 +1,104 @@
-Como visto no capítulo anterior \ref{chapter:bibliotecas_do_ruby_e_segurança}, a maior parte das bibliotecas do
+Como visto no capítulo anterior \ref{chapter:bibliotecas_do_ruby}, a maior parte das bibliotecas do
 \emph{Ruby} são distribuídas na forma de \emph{gems}, e também vimos na seção
-\ref{subsection:o_programa_gem} deste mesmo cápitulo que a ferramenta \emph{gem} é um sistema de distribuição
+\ref{subsection:programa_gem}, deste mesmo cápitulo que a ferramenta \emph{gem} é um sistema de distribuição
 % sinilar ao  \emph{\href{https://packages.qa.debian.org/a/apt.html}{apt-get}},
 que facilita o compartilhamento e a instalação de \emph{gemas}.
 
 Deste modo, como já temos alguns conhecimento básicos sobre bibliotecas e sobre o \emph{Ruby}. Este cápitulo
-tem o objetivo de mostrar um passo-a-passo que pode ser seguido para criar uma gema.
+tem o objetivo de mostrar um passo-a-passo para criar uma gema.
 
 %A ideia de criar uma gema, geralmente vai surgir quando se perceber que uma determinadade funcionalidade
 %é utilizada frequentemente nos sistemas que a equipe trabalha.
 % (\emph{Ctrl + C}, \emph{Ctrl + V}).
 
-Antes de iniciar o processo de criação de uma gema, precisamos entender para que serve cada um
-de seus compoentes, e isso será explicado logo a seguir na seção \ref{section:estrutura_de_uma_biblioteca_do_ruby}.
-Depois com o conhecimento de cada componente da gema, apresentaremos um modelo de criação de gemas
-na seção \ref{section:modelo_de_criação}. Caso tenha dúvidas sobre as ferramentas utilizadas ou de como preparar
-o ambiente de desenvolvimento, consulte os apêndices \ref{chapter:ferramentas_utilizadas} ou
-\ref{chapter:preparação_do_ambiente}, respectivamente.
+Neste capítulo apresentaremos primeiramente uma modelo de criação de gemas na seção \ref{section:modelo_de_criação},
+depois na seção \ref{section:processo_de_criação}, vamos mostrar detalhadamente com realizar os passos indicados
+na seção \ref{section:modelo_de_criação}, e por fim na seção \ref{section:exemplo_de_criação} apresentaremos um
+exemplo, criando uma gema que faz a tradução de algumas palavras do protuguês para o inglês. Para obter informações
+sobre as ferramentas utilizadas e de como preparar o ambiente de desenvolvimento, consulte os apêndices
+\ref{chapter:ferramentas_utilizadas} e \ref{chapter:preparação_do_ambiente}, respectivamente.
 
 
-\section{Estrutura de uma Biblioteca do Ruby}
-\label{section:estrutura_de_uma_biblioteca_do_ruby}
+\section{Modelo de Criação}
+\label{section:modelo_de_criação}
+
+
+%Ter uma ideia de gema.
+%Criar um proejto com a estrtura básica de uma gema.
+%Determinar dados da gema no arquivo .gemspec.
+%Determinar uma versão para a gema.
+%Criar arquivos de funcionalidade.
+
+%- Criar arquivos de teste.
+%- Executar testes.
+
+O primeiro passo para se criar uma gema, é construir uma solução de um certo problema que será utilizado
+com frequência. Por exemplo, a função que calcula a raiz quadrada de um número, é uma funcionalidade que
+usualmente utilizamos quando estamos fazendo cálculos.
+
+Após encontrar uma ideia para a criação de uma gema, deve-se elaborar um projeto, fazendo o levantamento
+de requisitos, o \emph{design}, a implementação, os testes e a entrega.
+
+Por simplificação, somente apresentaremos a parte de implementação do modelo de criação de uma
+gema, mas nunca se deve esquecer de seguir todos os passos de um projeto, desde o momento da formação da
+ideia até a sua entrega. Caso esses passos não sejam seguidos, existem altos riscos de se perder recursos,
+como tempo e dinheiro.
+
+Quando o projeto chegar no momento da implementação, devemos criar um diretório com o nome do projeto.
+Dentro deste diretório, vamos inserir todos os códigos relacionados a biblioteca, como por exemplo, a
+descrição, a versão, os códigos de funcionalidades, e os códigos de testes.
+
+Após a criação do diretório do projeto, devemos criar um arquivo com a descrição da biblioteca. Esta
+descrição deve conter informações básicas, como por exemplo, o nome, a descrição, os autores, os
+contatos, e as dependências da biblioteca.
+
+Com o arquivo da descrição criado, determinamos uma versão para a biblioteca. Geralmente quando
+estamos no inicio do desenvolvimento da biblioteca do \emph{Ruby}, setamos a versão para
+‘‘\emph{X.X.1}'' ou ‘‘\emph{1.X.X}''.
+
+Com a descrição e a versão da biblioteca determinados, iniciamos o processo de criação de código.
+Esse processo possui dois tipos de desenvolvimento de códigos. O desenvolvimento de códigos de
+funcionalidades que consiste na implementação das funcionalidades da gema. E o desenvolvimento
+de códigos de testes que serve determinar a corretude das funcionalidades.
+
+Por fim, após a implementação dos dois tipos de códigos, devemos realizar a execução dos testes
+para confirmar que as funcionalidades foram implementadas de forma correta.
+
+Para agilizar o processo de implementação, a comunidade do \emph{Ruby}, desenvolveu ferramentas para
+faciliar a criação de aplicações e bibliotecas. Basicamente estas ferramentas, acionados por meio de
+linhas de comando, criam automaticamente esqueletos que possuem os arquivos básicos com informações
+que geralmente são utilizadas. Veremos mais detalhes sobre esse assunto na próxima seção.
+
+
+\begin{comment}
+
+
+Nesta seção, apresentaremos primeiramente como se pode criar uma estrutura básica de uma gema na sub-seção
+\ref{subsection:criando_a_estrutura}, em seguida mostraremos na sub-seção \ref{subsection:gemspec} como
+se deve editar o arquivo \emph{.gemspec}, depois iremos apresentar como se pode desenvolver o código
+de funcionalidades de uma gema na sub-seção \ref{subsection:codigo_de_funcionalidade_no_diretorio_lib},
+sequêncialmente apresentaremos na sub-seção \ref{subsection:codigo_de_teste_no_diretorio_test_ou_spec} como
+implementar o código de testes, em seguida na sub-seção \ref{subsection:execução_de_testes} apresentaremos
+uma forma para executar os testes, e por fim na sub-seção \ref{subsection:exemplo_de_uso_de_gemtranslatetoenglish}
+apresentaremos um exemplo de uso da gema ‘‘\emph{gemtranslatetoenglish}'' dentro de um projeto.
+\end{comment}
+
+
+\section{Processo de Criação}
+\label{section:processo_de_criação}
+
+
+Esta seção, tem o objetivo de mostrar detalhadamente a estrutura básica de uma gema, e também apresentar
+detalhadamente os passos do modelo de criação, vistos na seção \ref{section:modelo_de_criação}.
+
+Contudo, antes de iniciarmos o processo de criação, na sub-seção \ref{subsection:estrutura}, vamos analisar
+detalhadamente todos os elementos da estrtura básica de uma gema, e depois com o este conhecimento
+adquirido, vamos mostrar na sub-seção \ref{subsection:modelo_de_criação_detalhado}, o modelo de criação detalahdo.
+
+
+\subsection{Estrutura}
+\label{subsection:estrutura}
+
 
 Uma gema do \emph{Ruby}, obrigatoriamente deve possui um nome, um número de versão e uma plataforma.
 Internamente ela deve possuir códigos de funcionalidade, uma documentação e um \emph{\textbf{gemspec}}.
@@ -59,73 +137,208 @@ serve cada um destes arquivos e diretórios.
 \end{itemize}
 
 
-\section{Modelo de criação}
-\label{section:modelo_de_criação}
+\subsection{Modelo de Criação Detalhado}
+\label{subsection:modelo_de_criação_detalhado}
 
-O primeiro passo para se criar uma gema, é construir uma solução de um certo problema que será utilizado
-com frequência. Por exemplo, a função que calcula a raiz quadrada de um número, é uma funcionalidade que
-usualmente utilizamos quando estamos fazendo cálculos.
 
-Após encontrar uma ideia para a criação de uma gema, deve-se elaborar um projeto, fazendo o levantamento
-de requisitos, o \emph{design}, a implementação, os testes e a entrega.
+Esta sub-seção tem o objetivo de mostrar detalhadamente o processo de criação de uma gema. Contudo, será
+apresentado na sub-sub-seção \ref{subsubsection:criando_a_estrutura}, uma forma de criação automatica da
+estratua básica de uma gema, depois na sub-sub-seção \ref{subsubsection:inserindo_descrição},
+apresentaremos como inserir os detalhes sobre a gema, em seguida, na sub-sub-seção
+\ref{subsubsection:desenvolver_funcionalidades_ou_testes} que existe a possibilidade de escolher
+entre, implementar os códigos de funcionalidades e depois os códigos de testes, ou implementar os
+códigos de testes e depois implementar os códigos de funcionalides, depois na sub-sub-seção
+\ref{subsubsection:desenvolver_funcionalidades}, apresentaremos como inserir os códigos de testes, em
+seguida apresentaremos na sub-sub-seção \ref{subsubsection:desenvolver_testes}, como inserir os
+códigos de testes.
 
-Por simplificação, nesta seção somente apresentaremos a parte de implementação do modelo de criação de uma
-gema, mas nunca se deve esquecer de seguir todos os passos de um projeto, desde o momento da formação da
-ideia até a sua entrega. Caso esses passos não sejam seguidos, existem altos riscos de se perder recursos,
-como tempo e dinheiro.
 
-Para facilitar a apresentção deste modelo utilizaremos como exemplo a gema
+\subsubsection{Criando a Estrutura}
+\label{subsubsection:criando_a_estrutura}
+
+
+O primeiro passo é fazer a criação da estrutura da gema e isso pode ser feito de forma manual ou automática.
+A forma manual implica em criar todos os diretórios e arquivos manualmente. A forma automática implica na
+execução de um simples comando.
+
+Podemos perceber qua a forma manual não é muito aconselhável, pois perderiamos muito tempo criando
+os arquivos e também poderiamos cometer erros no momento da criação, como por exemplo, escrever errado
+o nome de algum arquivo ou diretório. Contudo, por estes motivos, utilizaremos a forma automática
+que além de criar a estrutura, prepara um código base dentro dos arquivos.
+
+A execução do comando \textbf{‘‘ \emph{bundle gem ‘ nome da gema'} ''} no terminal, faz a criação da
+estrutura básica de forma automática. Neste caso, ‘‘\emph{nome da gema}'' pode ser o nome do projeto
+da biblioteca.
+
+Mais detalhes sobre a criação da estrutura serão abordados no exemplo apresentado na seção
+\ref{section:exemplo_de_criação}. na sub-seção \ref{subsection:criando_a_estrutura_automaticamente}.
+
+
+\subsubsection{Inserindo Descrição}
+\label{subsubsection:inserindo_descrição}
+
+
+Agora que criamos a estrutura básica da gema, devemos fazer a edição do arquivo \emph{\textbf{gemspec}}
+para informar os dados básicos da gema, e iso pode ser feito editando o arquivo ‘‘ \emph{'nome da gema'.gemspec }''.
+
+Detalhes como, autores e e-mails servem para informar quem criou e como se comunicar com os donos da gema,
+nome e descrição servem para informar o objtivo da gema, e dependências servem para informar quais as bibliotecas
+são necessárias para o uso da gema.
+
+Mais detalhes sobre o arquivo ‘‘ \emph{'nome da gema'.gemspec }'', serão abordados no exemplo na seção
+\ref{section:exemplo_de_criação}, na sub-seção \ref{subsection:editando_gemspec}.
+
+
+\subsubsection{Desenvoler Funcionalidades ou Testes}
+\label{subsubsection:desenvolver_funcionalidades_ou_testes}
+
+
+Nesse momento, depois de detalharmos a gema no gemspec, podemos tomar 2 caminhos. Neste caso, o caminho a ser
+tomado é depende da metodologia de projeto que adotadomos no inicio do desenvolvimento, ou seja, é nesse
+momento que podemos desenvolver os códigos das funcinalidades ou implementar os códigos de testes.
+
+Na metodologia tradicional se faz a implementação dos códigos de funcionalidades e depois se
+desenvolve os códigos para testar as funcionalidades. Por outro lado, na metodologia voltada para
+testes, se implementa os códigos de testes para depois se desenvolver os códigos de funcionalidades.
+
+Seguindo a metodologia tradicional, primeiramente iremos fazer o código das funcinalidades da gema.
+Depois ao terminar de criar as funcionalidades, iremos elaborar os arquivos de testes. Mas nada o impede
+de desenvolver os códigos de testes que serão apresentado na sub-sub-seção \ref{subsubsection:desenvolver_testes},
+antes de desenvolver os códigos de funcionalidade, mostrados na sub-seção
+\ref{subsubsection:desenvolver_funcionalidades}.
+
+
+\subsubsection{Desenvolver Funcionalidades}
+\label{subsubsection:desenvolver_funcionalidades}
+
+
+Caso os códigos de funcionalidades sejam desenvolvidos por meio de código \emph{Ruby}, devemos fazer a
+edição e a criação de arquivos no diretório \emph{\textbf{lib}}. Este diretório obrigatoriamente deve
+possuir um arquivo ‘‘ \emph{'nome da gema'.rb }'' e um diretório, também com o nome da gema, com um arquivo
+de versão com o nome ‘‘\emph{version}''. 
+
+Basicamente a descrição da versão de uma gema é uma string com números e pontos. Também é permitido
+colocar ao final a palavra chave ‘‘\emph{pre}'', caso seja um pré-lançamento de alguma versão.
+Por exemplo, ‘‘\emph{1.0.0.pre}'' é um pré-lançamento da versão ‘‘\emph{1.0.0}''.
+
+O \emph{Rubygems} recomenda seguir as seguintes politicas mencionadas logo abaixo que foram consultadas
+em \emph{\href{http://guides.rubygems.org/patterns/\#semantic-versioning}{semantic-versioning}}
+\footnote{semantic-version: \url{http://guides.rubygems.org/patterns/\#semantic-versioning}} e em
+\emph{\href{http://guides.rubygems.org/specification-reference/\#version}{specification-reference-version}}
+\footnote{specification-reference-version: \url{http://guides.rubygems.org/specification-reference/\#version}}.
+
+\begin{itemize}
+ \item PATH : “0.0.X” para pequenas alterações, como por exemplo correção de pequenos \emph{bugs}.
+ \item MINOR: “0.X.0” para médias alterações, como por exemplo alteração/adição de funcionalidades.
+ \item MAJOR: “X.0.0” para grandes alterações, como por exemplo remoção de alguma funcionalidade.
+\end{itemize}
+
+
+\begin{comment}
+Antes de iniciarmos a codificação das funcionalidades da gema, precisamos entender algumas diferenças
+básicas de conceitos do \emph{Ruby}, como por exemplo a diferença entre \emph{module} e \emph{class},
+
+Os ‘‘\emph{modules}'' ou módulos se preferir, definem um conjunto de métodos e constantes. Podemos
+dizer que os métodos dos módulos são estáticos, pois não precisamos instanciar o módulo para usar os
+seus métodos. Contudo podemos dizer que os módulos são parecidos com o conceito de interface do
+\emph{Java}.
+
+Por outro lado a ‘‘\emph{class}'' também é um conjunto de métodos e constantes, no
+entanto para usar os seus métodos e constantes é necessário instância-lá, ou seja, é necessário criar
+um objeto da ‘‘\emph{class}'' na memória para usar os seus respectivos métodos.
+
+Contudo por essas características podemos dizer que uma ‘‘\emph{class}'' é basicamente
+uma subclasse do ‘‘\emph{module}'', pois a ‘‘\emph{class}'' possui 4 métodos a mais, que no caso são
+os métodos ‘‘\emph{initialize()}'', ‘‘\emph{superclass()}'', ‘‘\emph{allocate()}'' e ‘‘\emph{to\_yank()}''.
+
+Agora que temos alguns conceitos do \emph{Ruby} apresentados, podemos continuar com a implementação
+da gema.
+\end{comment}
+
+
+No arquivo ‘‘\emph{lib/'nome da gema'.rb}'' temos a possibilidade de escerver todas as
+funcinalidades desejadas. No entanto é recomendado fazer a modularização por meio do comando
+ ‘‘\emph{require}'' que é utilizado para fazer a chamada de código de outros
+arquivos.
+
+Por exemplo, suponha que desenvolvemos uma gema e depois de um certo tempo precisamos fazer a manutenção do
+seu código. Neste caso, se não modularizamos a gema, a correção de \emph{bugs} ou mesmo a adição de
+novas funcionalidades, torna-se uma tarefa muito complexa, pois não existe nenhuma organização
+estrutural na gema preparada para facilitar esse tipo de operação.
+
+Mais detalhes sobre o arquivo ‘‘\emph{lib/'nome da gema'.rb} '' e os outros códigos de funcionalides do
+diretório ‘‘ \emph{lib/'nome da gema'} '', serão abordados na exemplo na seção
+\ref{section:exemplo_de_criação}, na sub-seção \ref{subsection:codigo_de_funcionalidade_no_diretorio_lib}.
+
+
+\subsubsection{Desenvolver Testes}
+\label{subsubsection:desenvolver_testes}
+
+
+Para se fazer os testes, deve-se criar os arquivos de testes dentro do diretório ‘‘\textbf{\emph{test}}'' ou se
+preferir ‘‘\textbf{\emph{spec}}''. Não existe um padrão especificado, mais recomenda-se criar um arquivo de
+teste com o nome ‘‘\emph{test/test\_‘definição do teste'.rb}''. Neste caso, ‘‘\emph{definição do teste}''
+descreve o nome do teste a ser realizado, como por exemplo, para o arquivo
+‘‘\emph{test/test\_raiz\_quadrada.rb}'', testa a função que calcula a raiz quadrado.s
+
+Após a criação dos arquivos de testes, é recomendado fazer a criação do arquivo ‘‘\textbf{\emph{Rakefile}}'' para
+automatizar os testes. Deste modo, quando for necessário testar a gema, não será necessário chamar teste
+por teste, pois todas as chamadas de teste estarão determinadas no arquivo ‘‘\textbf{\emph{Rakefile}}''.
+
+Vale ressaltar que no momento do desenvolvimento dos códigos de testes, é aconselhável implementar testes
+para cada função da gema, verificado se para todas as entradas possíveis, se recebe o resultado
+esperado.
+
+Mais detalhes sobre os arquivos de testes e o arquivo ‘‘\textbf{\emph{Rakefile}}'', serão abordados no exemplo
+na seção \ref{section:exemplo_de_criação}, na sub-seção \ref{subsection:codigo_de_teste_no_diretorio_test_ou_spec}.
+
+
+\section{Exemplo de Criação}
+\label{section:exemplo_de_criação}
+
+
+Esta seção tem o objtivo de mostrar um exemplo de criação de uma gema utilizando o modelo de criação.
+Para o exemplo, vamos fazer a criação da gema
 \emph{\href{https://github.com/toshikomura/gemtranslatetoenglish/tree/without_path}{gemtranslatetoenglish}}
 \footnote{gemtranslatetoenglish : \url{https://github.com/toshikomura/gemtranslatetoenglish/tree/without_path}},
-que tem como objetivo fazer a tradução de um texto em português para um texto em inglês.
+que tem como objetivo, fazer a tradução de um texto em português para um texto em inglês.
 
 Futuramente pretendemos aumentar o vocabulário da gema de exemplo, mas até o momento de término deste
 trabalho, ela possuía somente a tradução de duas palavras, ‘‘\emph{OLÁ}'' para ‘‘\emph{HELLO}'' e
 ‘‘\emph{MUNDO}'' para ‘‘\emph{WORLD}''. Apesar de possuir pouco vocabulário, a gema ‘‘\emph{gemtranslatetoenglish}''
 possui características suficientes para a aparesentação do tutorial deste trabalho.
 
-Nesta seção, apresentaremos primeiramente como se pode criar uma estrutura básica de uma gema na sub-seção
-\ref{subsection:criando_a_estrutura}, em seguida mostraremos na sub-seção \ref{subsection:gemspec} como
-se deve editar o arquivo \emph{.gemspec}, depois iremos apresentar como se pode desenvolver o código
-de funcionalidades de uma gema na sub-seção \ref{subsection:codigo_de_funcionalidade_no_diretorio_lib},
-sequêncialmente apresentaremos na sub-seção \ref{subsection:codigo_de_teste_no_diretorio_test_ou_spec} como
-implementar o código de testes, em seguida na sub-seção \ref{subsection:execução_de_testes} apresentaremos
-uma forma para executar os testes, e por fim na sub-seção \ref{subsection:exemplo_de_uso_de_gemtranslatetoenglish}
-apresentaremos um exemplo de uso da gema ‘‘\emph{gemtranslatetoenglish}'' dentro de um projeto.
+Nesta seção, vamos apresentar na sub-seção \ref{subsection:criando_a_estrutura_automaticamente}, a criação da
+estrtura básica, depois na sub-seção \ref{subsection:editando_gemspec}, vamos mostrar como detalhar a gema no
+arquivo ‘‘\emph{gemspec}'', em seguida na sub-seção \ref{subsection:codigo_de_funcionalidade_no_diretorio_lib},
+vamos mostar a criação dos códigos de funcionalides, depois vamos apresentar na sub-seção
+\ref{subsection:codigo_de_teste_no_diretorio_test_ou_spec}, a criação dos códigos de testes, e por fim na
+sub-seção \ref{subsection:exemplo_de_uso_da_biblioteca_criada}, apresentaremos um exemplo do uso da gema
+‘‘\emph{gemtranslatetoenglish}'' em um projeto \emph{Ruby On Rails}.
 
 
-\subsection{Criando a Estrutura}
-\label{subsection:criando_a_estrutura}
+\subsection{Criando a Estrutura Automaticamente}
+\label{subsection:criando_a_estrutura_automaticamente}
 
-O primeiro passo é fazer a criação da estrutura da gema e isso pode ser feito de forma manual ou automática.
-A forma manual implica em criar todos os diretórios e arquivos manualmente. A forma automática implica na
-execução de um simples comando.
 
-Contudo podemos perceber qua a forma manual não é muito aconselhável, pois perderiamos muito tempo criando
-arquivo por arquivo. Deste modo, utilizaremos a forma automática que além de criar a estrutura,
-prepara um código base dentro dos arquivos. A execução do comando apresentado no código
-\ref{lst:cria_gema_forma_geral} no terminal faz a criação da estrutura básica de forma automática.
+No caso da nossa gema de exemplo, foi feita a execução do comando \textbf{‘‘\emph{bundle gem gemtranslatetoenglish}''}
+para fazer a criação da estrtura básica de forma automatica. Ao se fazer a execução deste comando de criação, obtemos
+a seguinte estrutura de gema mostrada no código \ref{lst:execucao_que_cria_gema_gemtranslatetoenglish}. 
 
-\lstinputlisting[ style=customBash, caption={Cria Gema Forma Geral}, label={lst:cria_gema_forma_geral}]
-{codigos/cria_gema_forma_geral.sh}
-
-No caso da nossa gema de exemplo, foi feita a execução do seguinte comando apresentado no código
-\ref{lst:cria_gema_gemtranslatetoenglish}.
-
-\lstinputlisting[ style=customBash, caption={Cria Gema gemtranslatetoenglish}, label={lst:cria_gema_gemtranslatetoenglish}]
-{codigos/cria_gema_gemtranslatetoenglish.sh}
-
-Ao se fazer a execução do comando ‘‘\emph{bundle gem gemtranslatetoenglish}'', obtemos a seguinte estrutura de gema mostrada
-no código \ref{lst:execucao_que_cria_gema_gemtranslatetoenglish}. Podemos perceber neste código, que foi feita a criação do
-diretório ‘‘\emph{gemtranslatetoenglish}'' com os arquivos ‘‘\emph{Gemfile}'', ‘‘\emph{Rakefile}'', ‘‘\emph{LICENCE.txt}'',
-‘‘\emph{README.md}'', ‘‘\emph{.gitignore}'', ‘‘\emph{gemtranslatetoenglish.gemspec}'', e o diretório ‘‘\emph{lib}''. E dentro do
-diretório ‘‘\emph{lib}'' foi criado o arquivo ‘‘\emph{gemtranslatetoenglish.rb}'', e o diretório
-‘‘\emph{gemtranslatetoenglish}'' com o arquivo ‘‘\emph{version.rb}'' dentro dele.
+%\lstinputlisting[ style=customBash, caption={Cria Gema gemtranslatetoenglish}, label={lst:cria_gema_gemtranslatetoenglish}]
+%{codigos/cria_gema_gemtranslatetoenglish.sh}
 
 % na imagem ‘‘Figura \ref{fig:execucao_que_cria_gema_gemtranslatetoenglish} - Execução que cria gema gemtranslatetoenglish''.
 
 \lstinputlisting[ style=customBash, caption={Execução que cria gema gemtranslatetoenglish}, label={lst:execucao_que_cria_gema_gemtranslatetoenglish}]
 {codigos/execucao_que_cria_gema_gemtranslatetoenglish.sh}
+
+Podemos perceber no código \ref{lst:execucao_que_cria_gema_gemtranslatetoenglish}, que foi feita a criação do
+diretório ‘‘\emph{gemtranslatetoenglish}'' com os arquivos ‘‘\emph{Gemfile}'', ‘‘\emph{Rakefile}'',
+‘‘\emph{LICENCE.txt}'', ‘‘\emph{README.md}'', ‘‘\emph{.gitignore}'', ‘‘\emph{gemtranslatetoenglish.gemspec}'',
+e o diretório ‘‘\emph{lib}''. E dentro do diretório ‘‘\emph{lib}'' foi criado o arquivo
+‘‘\emph{gemtranslatetoenglish.rb}'', e o diretório ‘‘\emph{gemtranslatetoenglish}'' com o arquivo
+‘‘\emph{version.rb}'' dentro dele.
 
 \begin{comment}
 \begin{figure}[ht]
@@ -136,15 +349,14 @@ diretório ‘‘\emph{lib}'' foi criado o arquivo ‘‘\emph{gemtranslatetoeng
 \end{comment}
 
 
-\subsection{Gemspec}
-\label{subsection:gemspec}
+\subsection{Editando Gemspec}
+\label{subsection:editando_gemspec}
 
-Agora que possuimos a estrutura da gema, devemos fazer a edição do arquivo \emph{\textbf{gemspec}}
-para informar os dados básicos da gema, e isso pode ser feito editando o arquivo ‘‘ 'nome da gema'.gemspec ''.
-No nosso exemplo, fizemos a edição do arquivo ‘‘gemtranslatetoenglish.gemspec'' resultado no arquivo mostrado
-no código \ref{lst:gemspec_gemtranslatetoenglish}
+
+No nosso exemplo, para detalharmos a gema, fizemos a edição do arquivo ‘‘gemtranslatetoenglish.gemspec'',
+resultado no arquivo mostrado no código \ref{lst:gemspec_gemtranslatetoenglish}.
 %na imagem ‘‘Figura \ref{fig:gemspec_gemtranslatetoenglish} - gemspec gemtranslatetoenglish''
-, onde cada linha será explicada com mais detalhes logo a seguir.
+Cada linha deste código será explicada com mais detalhes logo a seguir.
 
 \lstinputlisting[ style=customBash, caption={gemspec gemtranslatetoenglish}, label={lst:gemspec_gemtranslatetoenglish}]
 {codigos/gemtranslatetoenglish/gemtranslatetoenglish.gemspec}
@@ -202,82 +414,21 @@ no código \ref{lst:gemspec_gemtranslatetoenglish}
 \end{itemize}
 
 
-\subsection{Desenvolvimento de código de funcionalidade ou teste}
-\label{subsection:desenvolvimento_de_codigo_de_funcionalidade_ou_teste}
-
-Nesse momento podemos tomar 2 caminhos e isso depende da metodologia de projeto que adotadomos no inicio
-do desenvolvimento, ou seja, é nesse momento que podemos desenvolver o código das funcinalidades
-ou implementar o código de testes.
-
-Na metodologia tradicional se faz a implementação do código de funcionalidades e depois se
-desenvolve o código para testar as funcionalidades. Por outro lado, na metodologia voltada para
-testes, se implementa o código de testes para depois se desenvolver o código de funcionalidades.
-
-Seguindo a metodologia tradicional, primeiramente iremos fazer o código das funcinalidades da gema.
-Depois ao terminar de criar essas funcionalidades, iremos elaborar os arquivos testes, mas nada o impede
-de desenvolver os códigos de testes que serão apresentado na sub-seção
-\ref{subsection:codigo_de_teste_no_diretorio_test_ou_spec}, antes de desenvolver os códigos de funcionalidade
-mostrados na sub-seção \ref{subsection:codigo_de_funcionalidade_no_diretorio_lib}.
-
 \subsection{Código de Funcionalidade no Diretório Lib}
 \label{subsection:codigo_de_funcionalidade_no_diretorio_lib}
 
-Nesta sub-seção vamos aprender a fazer o código de funcionalidade de uma gema, mas caso deseje fazer
-primeiro os códigos de casos de testes, pode-se consultar a sub-seção
-\ref{subsection:codigo_de_teste_no_diretorio_test_ou_spec}, e depois retornar para esta sub-seção para dar
-continuidade ao desenvolvimento.
 
-Caso esse código de funcionalidade seja desenvolvido por meio de código \emph{Ruby}, devemos fazer a
-edição e a criação de arquivos no diretório \emph{\textbf{lib}}. Este diretório obrigatoriamente deve
-possuir um arquivo ‘‘ 'nome da gema'.rb '' e um diretório, com um arquivo de versão, também com o
-nome da gema. No nosso exemplo, podemos verificado no código
-\ref{lst:execucao_que_cria_gema_gemtranslatetoenglish}, que após a execução do comando
-‘‘\emph{bundle gem gemtranslatetoenglish}'', é feita a criação do arquivo
+Nesta sub-seção vamos aprender a fazer os códigos de funcionalidades da gema. No nosso exemplo,
+podemos verificar no código \ref{lst:execucao_que_cria_gema_gemtranslatetoenglish}, que após a
+execução do comando ‘‘\emph{bundle gem gemtranslatetoenglish}'', é feita a criação do arquivo
 ‘‘\emph{lib/gemtranslatetoenglish.rb}'' na linha ‘‘8'', e a criação do drietório
 ‘‘\emph{lib/gemtranslatetoenglish}'' com o arquivo ‘‘\emph{version}'' na linha ‘‘9''.
 
 O arquivo ‘‘\emph{version}'', somente define a versão que a gema está. No nosso exemplo da gema
 ‘‘\emph{gemtranslatetoenglish}'', a primeira versão é a ‘‘\emph{0.0.1}''.
 
-Basicamente a descrição da versão de uma gema é uma string com números e pontos. Também é permitido
-colocar ao final a palavra chave ‘‘\emph{pre}'', caso seja um pré-lançamento de alguma versão.
-Por exemplo, ‘‘\emph{1.0.0.pre}'' é um pré-lançamento da versão ‘‘\emph{1.0.0}''.
-
-O \emph{Rubygems} recomenda seguir as seguintes politicas mencionadas logo abaixo que foram consultadas
-em \emph{\href{http://guides.rubygems.org/patterns/\#semantic-versioning}{semantic-versioning}}
-\footnote{semantic-version: \url{http://guides.rubygems.org/patterns/\#semantic-versioning}} e em
-\emph{\href{http://guides.rubygems.org/specification-reference/\#version}{specification-reference-version}}
-\footnote{specification-reference-version: \url{http://guides.rubygems.org/specification-reference/\#version}}.
-
-\begin{itemize}
- \item PATH : “0.0.X” para pequenas alterações, como por exemplo correção de pequenos \emph{bugs}.
- \item MINOR: “0.X.0” para médias alterações, como por exemplo alteração/adição de funcionalidades.
- \item MAJOR: “X.0.0” para grandes alterações, como por exemplo remoção de alguma funcionalidade.
-\end{itemize}
-
-Antes de iniciarmos a codificação das funcionalidades da gema, precisamos entender algumas diferenças
-básicas de conceitos do \emph{Ruby}, como por exemplo a diferença entre \emph{module} e \emph{class},
-
-Os ‘‘\emph{modules}'' ou módulos se preferir, definem um conjunto de métodos e constantes. Podemos
-dizer que os métodos dos módulos são estáticos, pois não precisamos instanciar o módulo para usar os
-seus métodos. Contudo podemos dizer que os módulos são parecidos com o conceito de interface do
-\emph{Java}.
-
-Por outro lado a ‘‘\emph{class}'' também é um conjunto de métodos e constantes, no
-entanto para usar os seus métodos e constantes é necessário instância-lá, ou seja, é necessário criar
-um objeto da ‘‘\emph{class}'' na memória para usar os seus respectivos métodos.
-
-Contudo por essas características podemos dizer que uma ‘‘\emph{class}'' é basicamente
-uma subclasse do ‘‘\emph{module}'', pois a ‘‘\emph{class}'' possui 4 métodos a mais, que no caso são
-os métodos ‘‘\emph{initialize()}'', ‘‘\emph{superclass()}'', ‘‘\emph{allocate()}'' e ‘‘\emph{to\_yank()}''.
-
-Agora que temos alguns conceitos do \emph{Ruby} apresentados, podemos continuar com a implementação
-da nossa gema.
-
-No arquivo ‘‘ lib/'nome da gema'.rb '' temos a possibilidade de escerver todas as
-funcinalidades desejadas. No nosso exemplo o arquivo ‘‘lib/gemtranslatetoenglish.rb'' é mostrado no código
-\ref{lst:gemtranslatetoenglish.rb}, onde cada linha é explicado
-logo a seguir.
+No nosso exemplo o arquivo ‘‘lib/gemtranslatetoenglish.rb'' é mostrado no código
+\ref{lst:gemtranslatetoenglish.rb}. Cada linha deste código é explicado logo a seguir.
 
 \lstinputlisting[ style=customRuby, caption={gemtranslatetoenglish.rb}, label={lst:gemtranslatetoenglish.rb}]
 {codigos/gemtranslatetoenglish/lib/gemtranslatetoenglish.rb}
@@ -305,51 +456,24 @@ logo a seguir.
 
 \end{itemize}
 
-Podemos perceber que o comando ‘‘\emph{require}'' é utilizado para fazer a chamada de código de outros
-arquivos e isso serve para fazer a modularização da gema que no caso é uma boa prática de programação.
-Suponha que desenvolvemos uma gema e depois de um certo tempo precisamos fazer a manutenção do
-seu código. Neste caso se não modularizamos a gema, a correção de \emph{bugs} ou mesmo a adição de
-novas funcionalidades, torna-se uma tarefa muito complexa, pois não existe nenhuma organização
-estrutural na gema preparada para facilitar esse tipo de operação.
-
 Observando novamente o código \ref{lst:gemtranslatetoenglish.rb}, podemos perceber que na linha ‘‘4''
 foi feito o \emph{require} do arquivo ‘‘\emph{gemtranslatetoenglish/translatetoenglish.rb}'' que
-será mostrado no código \ref{lst:translatetoenglish.rb}, e explicado logo a seguir.
+será mostrado no algoritmo do código \ref{lst:algoritmo_de_translatetoenglish.rb}, e explicado logo a seguir. A
+implementação deste algoritmo está no apêndice \ref{chapter:codigos_ruby} no código \emph{Ruby}
+\ref{lst:translatetoenglish.rb}. A ‘‘\emph{Arvore de modules}'' na linha ‘‘1'', define a árvore de módulos com
+‘‘\emph{Gemtranslatetoenglish}'' na raiz, ‘‘\emph{Helpers}'' no segundo nível e ‘‘\emph{Translatetoenglish}''
+no terceiro. E ‘‘\emph{traducao}'' na linha ‘‘2'', define a função de tradução da gema.
 
-\lstinputlisting[ style=customRuby, caption={translatetoenglish.rb}, label={lst:translatetoenglish.rb}]
-{codigos/translatetoenglish_simplificado.rb}
-
-\begin{itemize}
-
-  \item ‘‘\emph{module ... end} nas linhas ‘‘1'', ‘‘2'' e ‘‘3'' define a árvore de módulos
-  ‘‘\emph{Gemtranslatetoenglish}'' na raiz, ‘‘\emph{Helpers}'' no segundo nível e ‘‘\emph{Translatetoenglish}'' no
-  terceiro.
-  
-  \item ‘‘\emph{def translate( phrase) ... end}'' da linha ‘‘5'' até a linha ‘‘34'', define
-  a função de tradução da gema, onde foi definido somente duas traduções, ‘‘\emph{OLÁ}''
-  para ‘‘\emph{HELLO}'' e ‘‘MUNDO'' para ‘‘\emph{WORLD}''.
-
-  A árvore definida no código \ref{lst:translatetoenglish.rb} foi necessário por causa do código
-  inserido na linha ‘‘8'' ‘‘\emph{ActionController::Base.helper Gemtranslatetoenglish::Helpers::Translatetoenglish}''
-  no código \ref{lst:gemtranslatetoenglish.rb} que serve para evitar a necesseidade de escrever a
-  \emph{PATH} completa na \emph{view} para chamar uma função da gema na \emph{view}.
-
-\end{itemize}
+\lstinputlisting[ style=customRuby, caption={Algoritmo de translatetoenglish.rb}, label={lst:algoritmo_de_translatetoenglish.rb}]
+{codigos/algoritmo_de_translatetoenglish_simplificado.rb}
 
 
 \subsection{Código de Teste no Diretório Test ou Spec}
 \label{subsection:codigo_de_teste_no_diretorio_test_ou_spec}
 
-Lembrando que podemos fazer o desenvolvimento de código de funcinalidades ou o código de testes, e isso é
-dependente da metodologia adotada no inicio do projeto. Esta sub-seção tem o objetivo de mostrar como se pode
-desenvolver o código de casos de testes, mas caso queira fazer o código de funcionalidade antes, se pode
-consutar a sub-seção \ref{subsection:codigo_de_funcionalidade_no_diretorio_lib}.
 
-Para se fazer os testes, deve-se criar os arquivos de testes dentro do diretório ‘‘\emph{test}'' ou se
-preferir ‘‘\emph{spec}''. Não existe um padrão especificado, mais recomenda-se criar um arquivo de
-teste com o nome ‘‘\emph{test/test\_‘definição do teste'.rb}''. No nosso exemplo, criamos o arquivo
-‘‘\emph{test/test\_check\_translate.rb}'' no código \ref{lst:test_check_translate.rb},
-explicado logo a seguir.
+No nosso exemplo, criamos o arquivo ‘‘\emph{test/test\_check\_translate.rb}'' no código
+\ref{lst:test_check_translate.rb}, explicado logo a seguir.
 
 \lstinputlisting[ style=customRuby, caption={Testa translate gemtranslatetoenglish}, label={lst:test_check_translate.rb}]
 {codigos/gemtranslatetoenglish/test/test_check_translate.rb}
@@ -378,13 +502,9 @@ explicado logo a seguir.
 
 \end{itemize}
 
-Agora que temos o nosso arquivo de teste, precisamos criar o arquivo ‘‘\emph{Rakefile}''. Depois na pŕoxima
-sub-seção \ref{subsection:execução_de_testes}, iremos explicar como realizar os teste com a execução da
-ferramenta ‘‘\emph{rake}''.
 
-No nosso exemplo da gema ‘‘\emph{gemtranslatetoenglish}'' desenvolvemos o seguinte arquivo
-‘‘\emph{Rakefile}'' que pode ser visualizado no código \ref{lst:rakefile}, sendo explicado em detalhes
-logo a seguir.
+Depois no nosso exemplo, desenvolvemos o arquivo ‘‘\emph{Rakefile}'' que pode ser visualizado no código
+\ref{lst:rakefile}, explicado em mais detalhes, logo a seguir.
 
 \lstinputlisting[ style=customRuby, caption={Rakefile gemtranslatetoenglish}, label={lst:rakefile}]
 {codigos/gemtranslatetoenglish/Rakefile}
@@ -406,56 +526,13 @@ logo a seguir.
 
 \end{itemize}
 
+Para informações de como realizar a execução dos testes, consulte o apêndice
+\ref{chapter:execução_de_testes}.
 
-\subsection{Execução de testes}
-\label{subsection:execução_de_testes}
 
-Esta sub-seção tem o objetivo de mostrar como se pode realizar os teste, após criar os códigos de
-funcionalidade, visto na sub-seção \ref{subsection:codigo_de_funcionalidade_no_diretorio_lib}, e os códigos
-de teste, visto na sub-seção \ref{subsection:codigo_de_teste_no_diretorio_test_ou_spec}.
+\subsection{Exemplo de Uso da Biblioteca Criada}
+\label{subsection:exemplo_de_uso_da_biblioteca_criada}
 
-Antes de realizarmos os testes, precisamos criar a gema com comando ‘‘\emph{gem build 'nome da gema'.gemspec}''
-e fazer a instalação com o comando ‘‘\emph{sudo gem install 'nome da gema'-'versão da gema'.gem}''. No nosso
-caso é fazer a criação e a instalação da gema ‘‘\emph{gemtranslatetoenglish}'', que pode ser feito da mesma
-forma como no código \ref{lst:execucao_que_cria_e_instala_gemtranslatetoenglish}.
-
-\lstinputlisting[ style=customBash, caption={Execução que Cria e Instala gemtranslatetoenglish}, label={lst:execucao_que_cria_e_instala_gemtranslatetoenglish}]
-{codigos/execucao_que_cria_e_instala_gemtranslatetoenglish.sh }
-
-Agora após ter implementado o código das funcionalidades, o arquivo de teste
-‘‘\emph{test/test\_check\_translate.rb}'', o arquivo \emph{Rakefile}, e ter feito a criação e a instalação
-da gema de exemplo, podemos realizar os testes com a execução do comando ‘‘\emph{rake}'' no terminal.
-
-Com a execução dos testes, obtemos como resultado o código \ref{lst:execucao_rake_gema_gemtranslatetoenglish},
-explicado logo a seguir.
-
-\lstinputlisting[ style=customBash, caption={Execução rake gema gemtranslatetoenglish}, label={lst:execucao_rake_gema_gemtranslatetoenglish}]
-{codigos/execucao_rake_gema_gemtranslatetoenglish.sh }
-
-\begin{itemize}
-
- \item Na linha ‘‘1'' é feito a execução do comando ‘‘\emph{rake}'' para se realizar os testes.
-
- \item Na linha ‘‘5'' é mostrado que foram feitos 2 testes, no caso os 2 que definimos no código
- \ref{lst:test_check_translate.rb} nas linhas ‘‘8'' a ‘‘11'' no teste ‘‘\emph{test\_world\_translation}''
- e nas linhas ‘‘12'' a ‘‘15'' no teste ‘‘\emph{test\_text\_translation}''. Também é apresentado na
- linha ‘‘5'' que foram feitos 4 ‘‘\emph{assertions}'', no caso dois para cada caso de teste feitos por
- meio do ‘‘\emph{assert\_equal}''. E além disso é apresentado que não ocorreram  \emph{failures}'',
- ‘‘\emph{errors}'' e ‘‘\emph{skips}''.
-
-\end{itemize}
-
-Deste modo, ao se realizar estes testes garantimos que pelo menos a função ‘‘\emph{translate()}'' da gema
-‘‘\emph{gemtranslatetoenglish}'', esta funcionando como o esperado.
-
-Contudo no momento do desenvolvimento do código de testes, o aconselhável é para cada função adicionada
-na gema, fazer testes com todas as possíveis entradas, verificando se o resultado para cada entrada
-está correto.
-
-Para informações de outra forma de teste, consulte o apêndice \ref{chapter:irb}.
-
-\subsection{Exemplo de uso de gemtranslatetoenglish}
-\label{subsection:exemplo_de_uso_de_gemtranslatetoenglish}
 
 Esta sub-seção tem o objetivo de mostrar a utilização da gema de exemplo ‘‘\emph{gemtranslatetoenglish}'',
 que criamos no tutorial, em um projeto do \emph{framework Ruby On Rails}.

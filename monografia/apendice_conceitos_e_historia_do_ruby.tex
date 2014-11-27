@@ -1,11 +1,12 @@
 Este capitulo tem o objetivo de mostrar alguns conceitos básicos sobre o \emph{Ruby}, suas
 história, suas bibliotecas, riscos e procedimento de segurança que existem.
-Na seção \ref{ruby} iremos apresentar alguns conceitos da linguagem \emph{Ruby},
-depois vamos falar um pouco sobre sua história na seção \ref{história_ruby}, e no fim vamos ver
-a importância de uma \emph{API} na seção \ref{API}.
+Na seção \ref{section:conceitos_ruby} iremos apresentar alguns conceitos da linguagem \emph{Ruby},
+depois vamos falar um pouco sobre sua história na seção \ref{section:história_ruby}, depois vamos ver
+a importância de uma \emph{API} na seção \ref{section:API_ruby}, e por fim na seção
+\ref{section:segurança_ruby}, vamos falar um pouco sobre a segurança do \emph{Ruby}.
 
-\section{Ruby}
-\label{ruby}
+\section{Conceitos}
+\label{section:conceitos_ruby}
 
 \emph{\href{https://www.ruby-lang.org/en/}{Ruby}} é uma linguagem de programação
 dinâmica de código aberto com foco na simplicidade e produtividade, tem uma sintaxe elegante, é natural de
@@ -50,7 +51,7 @@ por causa do caracter ‘‘\$'' como primeiro caracter.
 {codigos/convencao_ruby.rb}
 
 \section{História}
-\label{história_ruby}
+\label{section:história_ruby}
 
 O \emph{Ruby} foi criado em 24 de fevereiro de 1993 e o com o passar do tempo foi ganhando espaço na
 comunidade de desenvolvedores, chegando em 2006 a ter uma grande massa de aceitação, possuindo várias
@@ -74,7 +75,7 @@ obrigou a criação de grupos especificos, empurrando os usuários da lista prin
 
 
 \section{API}
-\label{API}
+\label{section:API_ruby}
 
 Uma \emph{Application Programming Interface (API)} possui como principal função definir de forma simplificada
 o acesso as funcinalidades de um certo componente, informando ao usuário somente para que serve cada função
@@ -90,3 +91,26 @@ A \emph{API} do \emph{Ruby} não é diferente, ou seja, não é necessário que 
 conhecimento do funcionamento do \emph{core} do \emph{Ruby}
 \footnote{ Core do Ruby: \url{http://www.ruby-doc.org/core-2.1.3/}}, basta saber para que
 serve cada uma de suas funções disponibilizadas, seus parâmetro de entrada e saída com seus respectivos tipos.
+
+\section{Segurança}
+\label{section:segurança_ruby}
+
+A proteção de dados sempre foi uma questão muito discutida e na comunidade do \emph{Ruby} isso não é
+diferente, justamente porque a todo momento estamos sujeitos a sofrer ataques, e com isso podemos ser
+prejudicados, perdendo dinheiro e informações sigilosas.
+
+A comunidade do \emph{Ruby}, sabendo destes problemas, construiu um esquema para corrigir as
+vulnerabilidades de segurança. Neste esquema, as vulnerabilidade descobertas são reportadas via e-mail para
+\href{mailto:security@ruby-lang.org}{\nolinkurl{security@ruby-lang.org}}, que é uma lista privada com
+membros que administram o \emph{Ruby}, como por exemplo \emph{Ruby commiters}. Neste esquema, os membros da
+lista de segurança, por medidas de segurança, somente compartilham as vulnerabilidades quando elas já estão
+solucionadas. Na publicação da vulnerabilidade é informado o tipo de erro, os problemas que o erro causa,
+e a solução que deve ser tomada para sua correção [\citeonline{security_ruby}].
+
+Um exemplo é a vulnerabilidade publicada em 10/04/2014, referênciado com o identificador
+\emph{\href{https://cve.mitre.org/}{CVE}}
+(\href{https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-0160}{CVE-2014-0160)}, fala sobre um grave
+problema na implementação no \emph{\href{https://www.openssl.org}{OpenSSL’s}} do \emph{TLS/DTLS} (\emph{transport
+layer security protocols}). Neste problema, uma pessoa mal intencionada poderia roubar dados da memória, tanto
+na comunicação entre o servidor com o cliente, como na comunicação do cliente para o servidor
+[\citeonline{openssl_problem_security_ruby}].
