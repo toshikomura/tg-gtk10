@@ -1,0 +1,32 @@
+
+
+Started GET "/assets/rails.png" for 127.0.0.1 at 2014-11-28 21:02:35 -0200
+Connecting to database specified by database.yml
+Served asset /rails.png - 200 OK (4ms)
+
+
+Started GET "/locations" for 127.0.0.1 at 2014-11-28 21:02:40 -0200
+Processing by LocationsController#index as HTML
+Completed 500 Internal Server Error in 57ms
+
+ActiveRecord::StatementInvalid (Could not find table 'locations'):
+  app/controllers/locations_controller.rb:5:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.6ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.2ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (16.1ms)
+
+
+Started GET "/locations" for 127.0.0.1 at 2014-11-28 21:35:16 -0200
+Connecting to database specified by database.yml
+Processing by LocationsController#index as HTML
+Completed 500 Internal Server Error in 28ms
+
+ActiveRecord::StatementInvalid (Could not find table 'locations'):
+  app/controllers/locations_controller.rb:5:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.6ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (7.4ms)

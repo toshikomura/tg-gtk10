@@ -5,6 +5,11 @@
 \providecommand{\abntbstabout}[1]{}
 \abntbstabout{v-1.8 }
 
+\bibitem{google_maps_power_tools_for_maximizing_the_api}
+\abntrefinfo{Petroutsos}{PETROUTSOS}{2014}
+{PETROUTSOS, E. \emph{Google Maps: Powwer Tools for Maximizing the API}. 1. ed.
+  New York. NY, 2 Penn Plaza, 10th Floor: McGraw-Hill Osborne Media, 2014.}
+
 \bibitem{libraries_ruby}
 \abntrefinfo{Community}{COMMUNITY}{2014a}
 {COMMUNITY, R. \emph{Ruby Libraries}. 2014. Ruby Site - Libraries.
@@ -39,6 +44,13 @@ Dispon{\'\i}vel em:
 \abntrefinfo{Svennerberg}{SVENNERBERG}{2010}
 {SVENNERBERG, G. \emph{Beginning Google Maps API 3}. 2. ed. New York, NY 10013:
   Apress, 2010.}
+
+\bibitem{coffeescript_site}
+\abntrefinfo{Ashkenas}{ASHKENAS}{2014}
+{ASHKENAS, J. \emph{CoffeeScript}. 2014.
+Dispon{\'\i}vel em:
+  \htmladdnormallink{$<$http:\-/\-/www\-.coffeescript\-.org\-/$>$}{http://www.coffeescript.org/}.
+  Acesso em: 08 dez. 2014.}
 
 \bibitem{history_of_programming_languages}
 \abntrefinfo{Wexelblat}{WEXELBLAT}{1981}
