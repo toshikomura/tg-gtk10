@@ -1,0 +1,91 @@
+ \subsection{Objetivos do Trabalho}
+ \begin{frame}
+  \frametitle{Objetivos do Trabalho}
+  
+  \begin{block}{Objetivos}
+   
+   Apresentar:
+   
+   \begin{itemize}
+   
+    \item  Conceitos sobre as bibliotecas do \emph{\textbf{Ruby}}.         
+    
+    \item  O processo de criação de uma biblioteca do \emph{\textbf{Ruby}}.
+    
+    \item  O processo de adaptação de uma biblioteca do \emph{\textbf{Ruby}}.            
+    
+    \item  Exemplos de uso das bibliotecas do \emph{\textbf{Ruby}}.
+    
+    \begin{itemize}
+    
+     \item Uso da gema ``\emph{\textbf{gemtranslatetoenglish}}'': Tradução do português para o inglês.
+     
+     \item Uso da gema ``\emph{\textbf{Google-Maps-For-Rails Adaptada}}: Determina direções em uma
+     bibliioteca do \emph{\textbf{Ruby}} que mapeia a \emph{\textbf{API}} do
+     \emph{\textbf{Google Maps}}.
+     
+    \end{itemize}
+    
+   \end{itemize}      
+   
+  \end{block}
+  
+\end{frame}
+
+
+ \subsection{Funcionalidades Google-Maps-For-Rails}
+\begin{frame}
+ \frametitle{Funcionalidades Google-Maps-For-Rails}
+   
+  \begin{block}{Funcionalidades}
+   
+   Por meio de código \emph{\textbf{CoffeeScript}}:
+   
+   \begin{itemize}
+   
+    \item  Cria mapas do \emph{\textbf{Google Maps}} em páginas web.
+    
+    \item  Permite a criação de mais de um mapa na mesma página (id).            
+    
+    \item  Cria sobreposições para os mapas (markers, circles, polygon, polylines, etc).        
+
+    \item  Permite a criação de vários sobreposições do mesmo tipo com a chamada de uma única função.
+    
+    \item  Determina fronteiras no mapa, utilizando a posição de markers.
+    
+    \item  Permite readaptação do código \emph{\textbf{core}} para criar e manipular mapas de ferramentas
+    similares ao do \emph{\textbf{Google}} (\emph{\textbf{Bing Maps}}),   
+    
+   \end{itemize}      
+   
+  \end{block}
+ 
+\end{frame}
+
+
+ \subsection{Proposta de Novas Funcionalidades}
+\begin{frame}
+ \frametitle{Proposta de Novas Funcionalidades}
+
+  \begin{block}{Novas Funcionalidades}
+   
+   Por meio de código \emph{\textbf{CoffeeScript}}:
+   
+   \begin{itemize}
+   
+    \item  Gerar direções entre dois lugares no mapa.
+    
+    \item  Permitir a escolha do veículo de locomoção.            
+    
+    \item  Gerar direções entre dois lugares com pontos intermediários obrigatórios.        
+
+    \item  Permitir a troca de cores entre os tracejados entre dois pontos do caminho.
+    
+    \item  Permitir a escolha do tipo de caminho a ser percorrido
+    (mais curto, mais longo, menor tempo, maior tempo, etc).    
+    
+   \end{itemize}      
+   
+  \end{block} 
+ 
+\end{frame}

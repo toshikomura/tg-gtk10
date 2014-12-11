@@ -1,0 +1,139 @@
+\subsection{Conceitos} 
+\begin{frame}
+ \frametitle{Conceitos}
+  
+  \begin{block}{Formas}
+   
+   \begin{itemize}
+   
+    \item Forma \emph{\textbf{gem}}: Forma mais utlizada para distribuição, por isso as bibliotecas do
+    \emph{\textbf{Ruby}} são conhecidas como \emph{\textbf{gems/gemas}}. Seu processo de instalção
+    é feito por meio do programa \emph{\textbf{gem}}.
+    
+    \item Forma \emph{\textbf{arquivo compactado}} em .tar.gz ou .zip: Forma menos utilizada. Seu processo
+    de instalação é feito por meio de arquivos README ou INSTALL.
+    
+   \end{itemize}
+   
+  \end{block}
+
+  \begin{block}{Programa gem}
+   
+   \begin{itemize}
+   
+    \item Similiar ao sistema de distribuição \emph{\textbf{apt-get}}.
+    
+    \item Executado em linhas de comando no formato ``\emph{\textbf{gem $<$operação$>$}}'',
+    
+    onde ``\emph{\textbf{$<$operação$>$}}'' pode ser:
+    
+    \begin{itemize}
+    
+     \item \emph{\textbf{install}} para fazer instalação de gemas.
+     
+     \item \emph{\textbf{search}} para fazer busca de gemas.
+     
+    \end{itemize}
+
+    
+   \end{itemize}
+   
+  \end{block}    
+  
+\end{frame}
+
+
+\begin{frame}
+ \frametitle{Segurança}
+  
+  \begin{block}{Motivos}
+   
+   \begin{enumerate}    
+   
+    \item Abrir brechas.
+     
+    \item Risco de perda de informações.        
+    
+   \end{enumerate}
+   
+  \end{block}  
+  
+  \begin{block}{Processo de Segurança do RubyGems}
+   
+   O \emph{\textbf{RubyGems}} é o repositório de distribuição padrão utlizado no
+   programa \emph{\textbf{gem}}.
+   
+   \begin{enumerate}    
+   
+    \item Certificação da gema.
+    
+    \item Verificação de segurança na instalação da gema.
+    
+   \end{enumerate}
+   
+  \end{block}
+
+  \begin{block}{Reportar Vulnerabilidades}
+   
+   \begin{itemize}
+   
+    \item Vulnerabilidades nas gemas de outros desenvolvedroes
+    
+    \item Vulnerabilidades das própias gemas.
+    
+   \end{itemize}
+   
+  \end{block}    
+  
+\end{frame}
+
+
+\subsection{Processo de Criação} 
+\begin{frame}
+ \frametitle{Processo de Criação}
+ 
+  \begin{block}{Processo}
+  
+    \begin{enumerate}
+     
+     \item Criar a estrutura automaticamente
+      
+      \lstinputlisting[ style=customCoffee, caption={Cria Gema Forma Geral}, label={lst:cria_gema_forma_geral}]
+      {../monografia/codigos/cria_gema_forma_geral.sh}
+      
+     \item Editar ``\emph{\textbf{ `nome da gema'.gemspec}}'' para definir as descrições da gema.
+      
+     \item Desenvolver códigos de funcionalidades.
+     
+     \item Desenvolver códigos de testes.
+      
+    \end{enumerate}      
+  
+  \end{block}
+ 
+\end{frame}
+
+
+\subsection{Uso da gema gemtranslatetoenglish} 
+\begin{frame}
+ \frametitle{Uso da gema gemtranslatetoenglish}
+
+  \begin{block}{Adiciona gema no Gemfile}       
+
+    Acrescenta a gema de tradução no Gemfile do projeto
+  
+    \lstinputlisting[ style=customCoffee, caption={Adiciona gemtranslatetoenglish no Gemfile}, label={lst:adiciona_gemtranslatetoenglish_no_gemfile}]
+    {../monografia/codigos/adiciona_gemtranslatetoenglish_no_gemfile}        
+ 
+  \end{block} 
+ 
+  \begin{block}{Funcionalidade na View}    
+ 
+    Utiliza a funcionalidade de tradução da nova gema em uma view
+ 
+    \lstinputlisting[ style=customCoffee, caption={Exemplo de gemtranslatetoenglish na View}, label={lst:exemplo_do_translate_na_view}]
+    {../monografia/codigos/exemplo_do_translate_na_view.html.erb}         
+ 
+  \end{block}
+ 
+\end{frame}  

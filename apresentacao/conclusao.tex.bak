@@ -1,40 +1,40 @@
 \begin{frame}
 \frametitle{Trabalhos Futuros}
-
+ 
   \begin{block}{Trabalhos Futuros}
-
+   
    \begin{itemize}
-
+   
     \item Para a primeira gema de exemplo \emph{\textbf{gemtranslatetoenglish}}:
-
+    
     \begin{itemize}
-
+    
      \item Abordar mais recursos da linguagem \emph{\textbf{Ruby}}.
-
+     
      \item Desenvolver mais funcionalidades para mostrar mais modelos de teste.
-
+     
     \end{itemize}
 
     \item Para a segunda gema \emph{\textbf{Google-Maps-For-Rails adaptada}}:
-
+    
     \begin{itemize}
-
+    
      \item Incluir a escolha do tipo de veículo para percorrer o caminho.
-
+     
      \item Incluir a possibilidade de inserir pontos intermediários entre a origem e o destino.
-
+     
      \item Incluir a possibilidade de troca as cores entre os tracejados entre dois pontos do caminho.
-
+     
      \item Incluir a possibilidade de escolher o tipo de caminho a ser percorrido
      (mais curto, mais longo, menor tempo, maior tempo, etc).
-
+     
     \end{itemize}
 
-
+    
    \end{itemize}
-
+   
   \end{block}
-
+ 
 \end{frame}
 
 
@@ -42,26 +42,26 @@
  \frametitle{Conclusão}
 
   \begin{block}{Conclusão}
-
+   
    Aprendemos:
-
+   
    \begin{itemize}
-
-    \item Conceitos sobre as bibliotecas do \emph{\textbf{Ruby}}.
-
+   
+    \item Conceitos sobre as bibliotecas do \emph{\textbf{Ruby}}.         
+    
     \item Como criar uma biblioteca do \emph{\textbf{Ruby}}.
-
+    
     \item Como adaptar uma biblioteca do \emph{\textbf{Ruby}}.
-
-    \item Como adicionar funcionalidades em uma biblioteca do \emph{\textbf{Ruby}} que mapeia a
+    
+    \item Como adiconar funcionalidades em uma biblioteca do \emph{\textbf{Ruby}} que mapeia a
     \emph{\textbf{API}} do \emph{\textbf{Google Maps}}.
-
-    \item A utilizar a \emph{\textbf{API}} do \emph{\textbf{Google Maps}}.
-
+    
+    \item A utlizar a \emph{\textbf{API}} do \emph{\textbf{Google Maps}}.
+    
     \item Conceitos sobre a linguagem \emph{\textbf{CoffeeScript}}.
-
-   \end{itemize}
-
+    
+   \end{itemize}      
+   
   \end{block}
-
-\end{frame}
+  
+\end{frame}  
