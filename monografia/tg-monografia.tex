@@ -1,4 +1,4 @@
-%% Copyright 2012-2013 by abnTeX2 group at http://abntex2.googlecode.com/ 
+%% Copyright 2012-2013 by abnTeX2 group at http://abntex2.googlecode.com/
 %%
 %% This work may be distributed and/or modified under the
 %% conditions of the LaTeX Project Public License, either version 1.3
@@ -9,9 +9,9 @@
 %% version 2005/12/01 or later.
 %%
 %% This work has the LPPL maintenance status `maintained'.
-%% 
+%%
 %% The Current Maintainer of this work is the abnTeX2 team, led
-%% by Lauro César Araujo. Further information are available on 
+%% by Lauro César Araujo. Further information are available on
 %% http://abntex2.googlecode.com/
 %%
 \documentclass[
@@ -19,7 +19,7 @@
 	12pt,				% tamanho da fonte
 	openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
 	oneside,				% para impressão em verso e anverso. Oposto a oneside
-	a4paper,				% tamanho do papel. 
+	a4paper,				% tamanho do papel.
 	% -- opções da classe abntex2 --
 	%chapter=TITLE,			% títulos de capítulos convertidos em letras maiúsculas
 	%section=TITLE,			% títulos de seções convertidos em letras maiúsculas
@@ -33,10 +33,10 @@
 	]{abntex2}
 
 % ---
-% Pacotes fundamentais 
+% Pacotes fundamentais
 % ---
 \usepackage{cmap}			% Mapear caracteres especiais no PDF
-\usepackage{lmodern}			% Usa a fonte Latin Modern			
+\usepackage{lmodern}			% Usa a fonte Latin Modern
 \usepackage[T1]{fontenc}			% Selecao de codigos de fonte.
 \usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
 \usepackage{lastpage}			% Usado pela Ficha catalográfica
@@ -53,7 +53,6 @@ literate=
 }
 \usepackage{xcolor}			% Pacote de cores
 % ---
-		
 % ---
 % Pacotes de citações
 % ---
@@ -62,7 +61,7 @@ literate=
 %\usepackage[hyperpageref]{backref}
 \usepackage[num]{abntex2cite}	% Citações padrão ABNT (alf ou num)
 
-% --- 
+% ---
 % CONFIGURAÇÕES DE PACOTES
 % ---
 % Usar com o pacote brazilian do backref
@@ -95,11 +94,11 @@ literate=
 \lstdefinestyle{customBash}{
   extendedchars=true,
   language=Bash,
-  basicstyle=\tiny,  
+  basicstyle=\tiny,
   backgroundcolor=\color{white},
   breaklines=true,
-  captionpos=b,  
-  commentstyle=\color{gray},  
+  captionpos=b,
+  commentstyle=\color{gray},
   morekeywords={bundle, gem, rake, rails, new, generate, create, install, build, sudo},
   frame=single,
   keepspaces=true,
@@ -121,9 +120,9 @@ literate=
   basicstyle=\footnotesize\ttfamily,
   breakatwhitespace=false,
   breaklines=true,
-  captionpos=b,  
-  commentstyle=\color{gray},    
-  keywordstyle=\color{blue},  
+  captionpos=b,
+  commentstyle=\color{gray},
+  keywordstyle=\color{blue},
   morecomment=[l]{//},
   morekeywords={gem, rails, new, generate, public, protected, private, void, print, require, include, assert, assert_equal},
   extendedchars=true,
@@ -149,9 +148,9 @@ literate=
   basicstyle=\footnotesize\ttfamily,
   breakatwhitespace=false,
   breaklines=true,
-  captionpos=b,  
-  commentstyle=\color{gray},    
-  keywordstyle=\color{blue},  
+  captionpos=b,
+  commentstyle=\color{gray},
+  keywordstyle=\color{blue},
   morecomment=[l]{//},
   morekeywords={translate},
   extendedchars=true,
@@ -177,9 +176,9 @@ literate=
   basicstyle=\footnotesize\ttfamily,
   breakatwhitespace=false,
   breaklines=true,
-  captionpos=b,  
-  commentstyle=\color{gray},    
-  keywordstyle=\color{blue},  
+  captionpos=b,
+  commentstyle=\color{gray},
+  keywordstyle=\color{blue},
   morecomment=[l]{//},
   morecomment=[s]{/*}{*/},
   morekeywords={and},
@@ -198,11 +197,11 @@ literate=
 }
 
 \lstdefinestyle{customAlgoritmo}{
-  basicstyle=\tiny,  
+  basicstyle=\tiny,
   backgroundcolor=\color{white},
   breaklines=true,
-  captionpos=b,  
-  commentstyle=\color{gray},  
+  captionpos=b,
+  commentstyle=\color{gray},
   morekeywords={se, senao},
   frame=single,
   keepspaces=true,
@@ -233,7 +232,7 @@ literate=
   Departamento de Informática}
 \tipotrabalho{Trabalho de graduação}
 \preambulo{Trabalho de conclusão do curso de Ciência da Computação.
-Departamento de Informática, Setor de Ciências Exatas, 
+Departamento de Informática, Setor de Ciências Exatas,
 Universidade Federal do Paraná.}
 % ---
 
@@ -246,11 +245,11 @@ Universidade Federal do Paraná.}
 \makeatletter
 \hypersetup{
      	%pagebackref=true,
-	pdftitle={\@title}, 
+	pdftitle={\@title},
 	pdfauthor={\@author},
     	pdfsubject={\imprimirpreambulo},
 	pdfcreator={LaTeX with abnTeX2},
-	pdfkeywords={trabalho acadêmico}, 
+	pdfkeywords={trabalho acadêmico},
 	colorlinks=true,       		% false: boxed links; true: colored links
     	linkcolor=blue,          	% color of internal links
     	citecolor=blue,        		% color of links to bibliography
@@ -259,11 +258,10 @@ Universidade Federal do Paraná.}
 	bookmarksdepth=4
 }
 \makeatother
-% --- 
-
-% --- 
-% Espaçamentos entre linhas e parágrafos 
-% --- 
+% ---
+% ---
+% Espaçamentos entre linhas e parágrafos
+% ---
 % O tamanho do parágrafo é dado por:
 \setlength{\parindent}{1.3cm}
 % Controle do espaçamento entre um parágrafo e outro:
@@ -280,7 +278,7 @@ Universidade Federal do Paraná.}
 % ----
 \begin{document}
 % Retira espaço extra obsoleto entre as frases.
-\frenchspacing 
+\frenchspacing
 % ----------------------------------------------------------
 % ELEMENTOS PRÉ-TEXTUAIS
 % ----------------------------------------------------------
@@ -304,7 +302,7 @@ Universidade Federal do Paraná.}
 % ---
 
 % Isto é um exemplo de Ficha Catalográfica, ou ``Dados internacionais de
-% catalogação-na-publicação''. Você pode utilizar este modelo como referência. 
+% catalogação-na-publicação''. Você pode utilizar este modelo como referência.
 % Porém, provavelmente a biblioteca da sua universidade lhe fornecerá um PDF
 % com a ficha catalográfica definitiva após a defesa do trabalho. Quando estiver
 % com o documento, salve-o como PDF no diretório do seu projeto e substitua todo
@@ -318,30 +316,30 @@ Universidade Federal do Paraná.}
 %	\hrule					% Linha horizontal
 %	\begin{center}				% Minipage Centralizado
 %	\begin{minipage}[c]{12.5cm}		% Largura
-%	
+%
 %	\imprimirautor
-%	
+%
 %	\hspace{0.5cm} \imprimirtitulo  / \imprimirautor. --
 %	\imprimirlocal, \imprimirdata-
-%	
+%
 %	\hspace{0.5cm} \pageref{LastPage} p. : il. (algumas color.) ; 30 cm.\\
-%	
+%
 %	\hspace{0.5cm} \imprimirorientadorRotulo~\imprimirorientador\\
-%	
+%
 %	\hspace{0.5cm}
 %	\parbox[t]{\textwidth}{\imprimirtipotrabalho~--~\imprimirinstituicao,
 %	\imprimirdata.}\\
-	
+
 %	\hspace{0.5cm}
 %		1. Palavra-chave1.
 %		2. Palavra-chave2.
 %		I. Orientador.
 %		II. Universidade xxx.
 %		III. Faculdade de xxx.
-%		IV. Título\\ 			
-	
+%		IV. Título\\
+
 %	\hspace{8.75cm} CDU 02:141:005.7\\
-	
+
 %	\end{minipage}
 %	\end{center}
 %	\hrule
@@ -396,22 +394,22 @@ Universidade Federal do Paraná.}
 %    \vspace*{\fill}\vspace*{\fill}
 %    {\ABNTEXchapterfont\bfseries\Large\imprimirtitulo}
 %    \vspace*{\fill}
-    
+
 %    \hspace{.45\textwidth}
 %    \begin{minipage}{.5\textwidth}
 %        \imprimirpreambulo
 %    \end{minipage}%
 %    \vspace*{\fill}
 %   \end{center}
-    
+
 %   Trabalho aprovado. \imprimirlocal, 13 de dezembro de 2013:
 
-%   \assinatura{\textbf{\imprimirorientador} \\ Orientador} 
+%   \assinatura{\textbf{\imprimirorientador} \\ Orientador}
 %   \assinatura{\textbf{Professor} \\ Convidado 1}
 %   \assinatura{\textbf{Professor} \\ Convidado 2}
    %\assinatura{\textbf{Professor} \\ Convidado 3}
    %\assinatura{\textbf{Professor} \\ Convidado 4}
-      
+
 %   \begin{center}
 %    \vspace*{0.5cm}
 %    {\large\imprimirlocal}
@@ -419,7 +417,7 @@ Universidade Federal do Paraná.}
 %    {\large\imprimirdata}
 %    \vspace*{1cm}
 %  \end{center}
-  
+
 %\end{folhadeaprovacao}
 % ---
 
@@ -499,8 +497,8 @@ Universidade Federal do Paraná.}
 %   This is the english abstract.
 
 %   \vspace{\onelineskip}
- 
-%   \noindent 
+
+%   \noindent
 %   \textbf{Key-words}: latex. abntex. text editoration.
 % \end{otherlanguage*}
 %\end{resumo}
@@ -562,7 +560,7 @@ Universidade Federal do Paraná.}
 \tableofcontents*
 \cleardoublepage
 % ---
-  
+
 % ----------------------------------------------------------
 % ELEMENTOS TEXTUAIS
 % ----------------------------------------------------------
@@ -596,7 +594,7 @@ Universidade Federal do Paraná.}
 % ---
 % Finaliza a parte no bookmark do PDF, para que se inicie o bookmark na raiz
 % ---
-\bookmarksetup{startatroot}% 
+\bookmarksetup{startatroot}%
 % ---
 
 % ----------------------------------------------------------
