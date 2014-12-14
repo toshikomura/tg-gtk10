@@ -5,7 +5,7 @@ $(document).ready(->
     internal:
       id: "map"
   , ->
-    handler.addDirection( { origin: "Insert Origin Location", destination: "Insert Destination Location"})
+    handler.addDirection( { origin: "Insert Origin Location", destination: "Insert Destination Location"}, options)
     return
   return
 )
