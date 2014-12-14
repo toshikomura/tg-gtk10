@@ -43,55 +43,6 @@
 \end{frame}
 
 
-\begin{frame}
- \frametitle{Segurança}
-
-  \begin{block}{Motivos}
-
-   \begin{enumerate}
-
-    \item Abrir brechas, correndo riscos de perder informações.
-
-   \end{enumerate}
-
-  \end{block}
-
-  \begin{block}{Processo de Segurança do RubyGems}
-
-   O \emph{\textbf{RubyGems}} é o repositório de distribuição padrão utilizado no
-   programa \emph{\textbf{gem}}.
-
-   \begin{enumerate}
-
-    \item Certificação da gema.
-
-    \item Verificação de segurança na instalação da gema.
-
-   \end{enumerate}
-
-  \end{block}
-
-  \begin{block}{Reportar Vulnerabilidades}
-
-   \begin{itemize}
-
-    \item Vulnerabilidades nas gemas de outros desenvolvedores
-
-    \item Vulnerabilidades das própias gemas
-    
-    \begin{itemize}
-     \item Criar Identificador \emph{\textbf{CVE}}, criar patch e informar a comunidade.
-     \item Registrar vulnerabilidade no banco \emph{\textbf{OSVBD}} e no \emph{\textbf{ruby-talk}}.
-    \end{itemize}
-
-
-   \end{itemize}
-
-  \end{block}
-
-\end{frame}
-
-
 \subsection{Processo de Criação}
 \begin{frame}
  \frametitle{Processo de Criação}
@@ -107,9 +58,13 @@
 
      \item Editar ``\emph{\textbf{ `nome da gema'.gemspec}}'' para definir as descrições da gema.
 
-     \item Desenvolver códigos de funcionalidades.
+     \item Desenvolver códigos de funcionalidades (diretório \emph{\textbf{lib}}, caso seja código \emph{\textbf{Ruby}}).
 
-     \item Desenvolver códigos de testes.
+     \item Desenvolver códigos de testes (diretório \emph{\textbf{test}} ou \emph{\textbf{spec}}).
+     
+     \item Determinar versão para a \emph{\textbf{gema}}.
+     
+     \item Publicar a gema (\emph{\textbf{gem build ``nome da gema''}}).
 
     \end{enumerate}
 
