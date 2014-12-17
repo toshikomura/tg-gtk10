@@ -137,14 +137,14 @@ O \emph{Google Maps} e sua respectiva \emph{API} foram criadas por dois irmãos 
 \emph{Jens Rasmussen}, cofundadores da ‘‘\emph{Where 2 Technologies}'', companhia dedicada a criação de mapas
 que foi comprada pelo \emph{Google} em 2004 [\citeonline{beginning_google_maps_api3}].
 
-Antes de criação do \emph{Google Maps}, existia um grande problema de rederização que ocorria por causa
+Antes de criação do \emph{Google Maps}, existia um grande problema de renderização que ocorria por causa
 que um mapa era um elemento único. Devido a este fato, podemos perceber que o elemento do mapa
 possuía uma grande quantidade de informações. Deste modo, fica claro que a transferência de um mapa entre
 um servidor e um cliente, era uma tarefa cara, pois era necessário fazer a transferência de uma grande
 quantidade de dados. E além de existir uma alto custo na transferência, também existia um alto custo no
 cliente no momento da transformação das informações em forma de mapa.
 
-O \emph{Google Maps} fez a divisão dos mapa em vários pedaços, uma vez que o problema da rederização
+O \emph{Google Maps} fez a divisão dos mapa em vários pedaços, uma vez que o problema da renderização
 ocorria por causa da representação do mapa em um elemento único
 [\citeonline{google_maps_power_tools_for_maximizing_the_api}]. Nesta solução, os pedaços dos mapas
 poderiam ser requisitados um a um para montar uma parte ou um mapa completo. Desta forma, foi possível
@@ -159,7 +159,7 @@ dos pedaços dos mapas são feito por meio de \emph{Javascript}.
 O processo de manipulação de mapas possui 3 etapas. Na primeira, o usuário por meio do \emph{browser},
 requisita algum local do mapa informando a coordenada e o zoon desejado. Na segunda, o servidor recebe
 a requisição, procura o pedaço, e retorna a imagem do mapa que representa a posição requisitada. Na
-terceira, o \emph{browser} recebe e rederiza a imagem no mapa [\citeonline{beginning_google_maps_api3}].
+terceira, o \emph{browser} recebe e renderiza a imagem no mapa [\citeonline{beginning_google_maps_api3}].
 
 
 \subsection{CoffeeScript}
@@ -397,7 +397,7 @@ menos 4 \emph{classes} que serão listadas e explicadas logo a seguir:
  objetivo de requisitar e receber o caminho entre o local de origem e o local de destino.
 
  \item ‘‘\emph{DirectionRender}'' (\emph{google.maps.DirectionsRenderer}) é a classe que tem o
- objetivo de rederizar no mapa o caminho, entre o local de origem e o local de destino.
+ objetivo de renderizar no mapa o caminho, entre o local de origem e o local de destino.
 
  \item ‘‘\emph{TravelMode}'' (\emph{google.maps.TravelMode}) é a classe que tem o objetivo de
  informar a forma como esse caminho deve ser percorrido, que pode ser caminhando (walking), de carro
